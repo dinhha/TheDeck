@@ -1,0 +1,143 @@
+﻿<div class="clearfix paddingtop10"></div>
+<div class="col-md-9 paddingbootom10">
+    <carousel interval="slideInterval">
+        <slide ng-repeat="m in myslide.Items">
+            <a style="color:{{appconfig.globallinkcolor}}" ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" href="{{m.Attrs[1].AttrValue}}">
+                <img style="margin:auto;" ng-if="m.Attrs[0].AttrValue!='' && m.Attrs[0].AttrValue!=null" ng-src="{{m.Attrs[0].AttrValue}}" />
+            </a>
+        </slide>
+    </carousel>
+</div>
+<div class="col-md-3">
+    <ul class="nav">
+        <li class="menulibottom" ng-repeat="m in myspecial.Items">
+            <div class="col-md-4 col-xs-4">
+                <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" class="img-responsive" />
+            </div>
+            <div class="col-md-8 col-xs-8">
+                <a style="color: {{appconfig.globallinkcolor}}" ng-if="m.Attrs[0].AttrValue!='' && m.Attrs[0].AttrValue!=null" href="{{m.Attrs[0].AttrValue}}">
+                    <span>{{m.Title}}</span>
+                </a>
+                <span ng-if="m.Attrs[0].AttrValue=='' || m.Attrs[0].AttrValue==null">{{m.Title}}
+            </div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>
+<div class="clearfix paddingtop10"></div>
+<div class="homesweet" ng-repeat="p in panels">
+    <div class="homesweet-title" style="border-bottom:2px solid {{appconfig.panellinecolor}}">
+        <ul class="nav nav-tabs">
+            <li>
+                <a ui-sref="main.home.objectshow({Name:p.gObjectName})" class=" homesweet-specialtitle" style="background-color:{{appconfig.paneltitlebgcolor}};color:{{appconfig.paneltitlecolor}};">
+                    {{p.gObjectDisplayName}}
+                </a>
+            </li>
+            <li ng-repeat="c in p.Categorys">
+                <a ui-sref="main.home.contentshow({Slug:c.Slug,ID:c.ID})">{{c.Title}}</a>
+            </li>
+            <li class="pull-right homesweet-more">
+                <a ui-sref="main.home.objectshow({Name:p.gObjectName})">Xem thêm</a>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+    <div class="homesweet-content" ng-if="p.ListBestBuy.length==0">
+        <div class="homesweet-item col-md-2" ng-repeat="i in p.ListShowHome">
+            <div class="homesweet-item-content">
+                <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="saleoff">
+                    - {{((i.gOldPrice-i.gPrice)/i.gOldPrice)*100}}%
+                </div>
+                <div class="clearfix"></div>
+                <div>
+                    <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                        <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                    </a>
+                </div>
+                <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})"> {{i.Title}}</a>
+                <div class="clearfix"></div>
+                <div ng-if="i.gSaleTypeID!='' && !i.gShowPrice" class="homesweet-saletype">
+                    <span class="homesweet-saletype-item" ng-if="i.gSaleTypeID==1">Miễn phí</span>
+                </div>
+                <!--<div ng-if="i.gPublishTypeID!=''">
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==1">Sách in</span>
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==2">Download</span>
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==3">Bộ cài đặt</span>
+                </div>-->
+                <div class="clearfix"></div>
+                <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="homesweet-cartold">
+                    <s class="pull-right">{{i.gOldPrice  | number:0}}</s>
+                </div>
+                <div class="clearfix"></div>
+                <div ng-if="i.gShowPrice" class="homesweet-cart">
+                    <a id="addcart{{i.ID}}" href="javascript:;" ng-class="{'hidden':checkincart(i)}" ng-click="addcart(i.ID,$event)">
+                        <span class="cartlabel"><i class="fa fa-cart-plus"></i>&nbsp;giỏ hàng</span>
+                    </a>
+                    <span ng-if="i.inCart" class="cartlabel" title="Đã trong giỏ hàng"><i class="fa fa-check font-success"></i>&nbsp;giỏ hàng</span>
+                    <span class="pull-right">{{i.gPrice  | number:0}}</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="homesweet-content" ng-if="p.ListBestBuy.length>0">
+        <div class="col-md-6 homesweet-bestbuy">
+            <div class="homesweet-bestbuy-title">
+                Mua nhiều
+            </div>
+            <div class="homesweet-bestbuy-content">
+                <div class="homesweet-itembest col-md-6" ng-repeat="i in p.ListBestBuy">
+                    <div class="col-md-4">
+                        <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                            <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-8"><a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})"> {{i.Title}}</a></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="homesweet-item col-md-2" ng-repeat="i in p.ListShowHome">
+            <div class="homesweet-item-content">
+                <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="saleoff">
+                    - {{((i.gOldPrice-i.gPrice)/i.gOldPrice)*100}}%
+                </div>
+                <div class="clearfix"></div>
+                <div>
+                    <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                        <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                    </a>
+                </div>
+                <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">{{i.Title}}</a>
+                <div class="clearfix"></div>
+                <div ng-if="i.gSaleTypeID!='' && !i.gShowPrice" class="homesweet-saletype">
+                    <span class="homesweet-saletype-item" ng-if="i.gSaleTypeID==1">Miễn phí</span>
+                </div>
+                <!--<div ng-if="i.gPublishTypeID!=''">
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==1">Sách in</span>
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==2">Download</span>
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==3">Bộ cài đặt</span>
+                </div>-->
+                <div class="clearfix"></div>
+                <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="homesweet-cartold">
+                    <s class="pull-right">{{i.gOldPrice  | number:0}}</s>
+                </div>
+                <div class="clearfix"></div>
+                <div ng-if="i.gShowPrice" class="homesweet-cart">
+                    <a id="addcart{{i.ID}}" href="javascript:;" ng-class="{'hidden':checkincart(i)}" ng-click="addcart(i.ID,$event)">
+                        <span class="cartlabel"><i class="fa fa-cart-plus"></i>&nbsp;giỏ hàng</span>
+                    </a>
+                    <span ng-if="i.inCart" class="cartlabel" title="Đã trong giỏ hàng"><i class="fa fa-check font-success"></i>&nbsp;giỏ hàng</span>
+                    <span class="pull-right">{{i.gPrice  | number:0}}</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

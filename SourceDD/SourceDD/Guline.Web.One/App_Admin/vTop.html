@@ -1,0 +1,29 @@
+﻿<nav class="navbar navbar-default navbar-xs" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle pull-right">
+            <span class="sr-only">Menu</span>
+            <i class="fa fa-bars fa-lg"></i>
+        </button>
+        <a class="navbar-brand" ui-sref="main.admin.home">
+            <img ng-src="/Images/logo-guline3.png" />
+        </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+       <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder=" Tìm kiếm tài khoản, bài viết, chuyên muc...">
+          </div>
+        </form>
+      <div class="collapse navbar-collapse pull-right tabbable-line">
+          <ul class="nav nav-tabs">
+             <!--<li ui-sref-active="active"><a ui-sref="main.about"><i class="fa fa-cc"></i>&nbsp;Giới thiệu</a></li>
+    <li ui-sref-active="active"><a ui-sref="main.admin.object"><i class="fa fa-smile-o"></i>&nbsp;Đối tượng</a></li>-->
+              <li ui-sref-active="active"><a ui-sref="main.admin.objecttype"><i class="fa fa-smile-o"></i>&nbsp;Đối tượng</a></li>
+              <li ui-sref-active="active"><a ui-sref="main.admin.user"><i class="fa fa-users"></i>&nbsp;Tài khoản</a></li>
+              <li ui-sref-active="active"><a ui-sref="main.admin.group"><i class="fa fa-skype"></i>&nbsp;Quyền hạn</a></li>
+               <li ui-sref-active="active"><a ui-sref="main.admin.group"><i class="fa fa-cubes"></i>&nbsp;Nhóm</a></li>
+          </ul>
+      </div>  
+    <!-- /.navbar-collapse -->
+</nav>

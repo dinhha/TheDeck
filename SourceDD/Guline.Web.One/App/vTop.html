@@ -1,0 +1,30 @@
+﻿<div class="clearfix"></div>
+<div class="col-md-6" style="padding-top: 10px;">
+    <span ng-repeat="m in menu">
+        <span ng-if="$index!=0">&nbsp;|&nbsp;</span>
+        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width: 50px; max-height: 50px" />
+        <a style="color: {{appconfig.globallinkcolor}}" ng-if="m.Attrs[0].AttrValue!='' && m.Attrs[0].AttrValue!=null" href="{{m.Attrs[0].AttrValue}}">{{m.Title}}</a>
+        <span ng-if="m.Attrs[0].AttrValue=='' || m.Attrs[0].AttrValue==null">{{m.Title}}</span>
+    </span>
+</div>
+<div class="col-md-6">
+    <div class="col-md-3 col-xs-4 pull-right" style="padding-top: 5px;">
+        <a href="#" class="pull-right btn btn-xs hidden-xs"><i class="fa fa-user fa-2x"></i></a>
+        <a ui-sref="main.home.cart" class="pull-right btn btn-xs"><i class="fa fa-shopping-cart fa-2x"></i><sup class="badge alert-warning cartcount" style="color: red; font-size: 15px; font-weight: bold">{{ShoppingCart.Count}}</sup></a>
+    </div>
+    <div class="col-md-9 col-xs-8 pull-left" style="padding-top: 5px;">
+        <div class="input-group">
+            <input type="text" class="form-control col-md-12" placeholder=" Tìm kiếm tài liêu, video..." style="border-radius: 0px; border-bottom: none;">
+            <div class="input-group-addon" style="color:#fff;border-radius: 0px; border-bottom: none; background: {{appconfig.menubarcolor}}"><i class="fa fa-search"></i></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+<div class="cartright hidden">
+    <a ui-sref="main.home.cart" class="pull-right btn btn-xs hidden-xs"><i class="fa fa-shopping-cart fa-2x"></i><sup class="badge alert-warning cartcount" style="color: red; font-size: 15px; font-weight: bold">{{ShoppingCart.Count}}</sup></a>
+    <div class="clearfix"></div>
+    <a class="btn btn-default btn-backtotop" ng-click="gototop()"><i class="fa fa-long-arrow-up"></i></a>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,55 @@
+﻿<div class="col-md-4 col-md-offset-4" style="padding-top: 100px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Đăng nhập hệ thống</h3>
+        </div>
+        <div class="panel-body">
+            <form name="frmfunc" accept-charset="UTF-8" role="form">
+                <fieldset>
+                    <div class="form-group has-feedback" ng-class="{ 'has-success' : frmfunc.username.$valid,'has-error': frmfunc.username.$invalid&&frmfunc.username.$dirty}">
+                        <label>Tài khoản <span class="requiresign">*</span></label>
+                        <input name="username" ng-disabled="running" required ng-model="LogOn.username" type="text" class="form-control" placeholder="Enter username">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'hide':frmfunc.username.$invalid}"></span>
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmfunc.username.$invalid && frmfunc.username.$dirty"></span>
+                        <span class="text-danger" ng-show="frmfunc.username.$invalid">
+                            <span ng-show="frmfunc.username.$touched && frmfunc.username.$error.required"><span>Bạn chưa nhập tài khoản</span></span>
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group has-feedback" ng-class="{ 'has-success' : frmfunc.password.$valid,'has-error': frmfunc.password.$invalid&&frmfunc.password.$dirty}">
+                        <label>Mật khẩu <span class="requiresign">*</span></label>
+                        <input name="password" ng-disabled="running" required ng-model="LogOn.password" type="password" class="form-control" placeholder="Enter password">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'hide':frmfunc.password.$invalid}"></span>
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmfunc.password.$invalid && frmfunc.password.$dirty"></span>
+                        <span class="text-danger" ng-show="frmfunc.password.$invalid">
+                            <span ng-show="frmfunc.password.$touched && frmfunc.password.$error.required"><span>Bạn chưa nhập mật khẩu</span></span>
+                        </span>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="LogOn.remember" value="true">
+                            Ghi nhớ tài khoản
+                        </label>
+                        <a href="javascript:;" class="pull-right">Quên mật khẩu?</a>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+
+                    <button type="submit" ng-class="{'m-progress':running}" ng-disabled="frmfunc.$invalid||running" class="btn-block btn btn-success" ng-click="ok()"><span>Đăng nhập</span></button>
+                    <hr />
+                    <div class="form-group alert alert-danger" ng-show="msg!=null && msg!='' && !running">
+                        {{msg}}
+                    </div>
+
+                    <div class="clearfix"></div>
+                </fieldset>
+            </form>
+            <!-- <hr />
+            <center><h4>OR</h4></center>
+            <input class="btn btn-lg btn-facebook btn-block" type="submit" value="Login via facebook">-->
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

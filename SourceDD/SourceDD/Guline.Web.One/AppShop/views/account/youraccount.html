@@ -1,0 +1,235 @@
+﻿
+<div ui-view="Account" class="col-md-12">
+    <div class="account ">
+        <div class="text-center">
+            <p class="page-title">MY ACCOUNT</p>
+        </div>
+        <div class="col-md-offset-1 col-md-10 account-box p-left-0 p-right-0">
+          <div class="col-md-4 p-left-0">
+              <ul class="account-group">
+                  <li class="account-group-item" ng-class="{'active': accountactive}" ng-click="activeli('account')" ng-init="activeli('account')">
+                      <a href="#"> <strong> ACCOUNT DASHBOARD </strong></a>
+                  </li>
+                  <li class="account-group-item" ng-class="{'active': infoactive}" ng-click="activeli('info')">
+                      <a href="#"> <strong> CONTACT INFORMATION </strong></a>
+                  </li>
+                  <li class="account-group-item" ng-class="{'active': orderactive}" ng-click="activeli('order')">
+                      <a href="#">  <strong> MY ORDERS </strong></a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-8 p-right-0">
+              <div class="col-md-12" ng-show="accountactive">
+                  <p class="account-title"><strong>HELLO, JOSANOL </strong></p>
+                  <p>You can update you contact information and view your order (We recorded your 5 lastest order)</p>
+                  <div class="clearfix"></div>
+                  <div class="col-md-6 p-left-0">
+                      <p class="account-dashboard-title"><strong>CONTACT INFORMATION</strong></p>
+                        <p>Jason Nguyen</p>
+                      <p>jason.n@gmail.com</p>
+                      <br />
+                      <a href="#" class="account-btn-change-password"><strong>CHANGE PASSWORD</strong></a>
+                  </div>
+                  <div class="col-md-6 p-right-0">
+                      <p class="account-dashboard-title"><strong>MY ORDERS</strong></p>
+                      <p><strong class="letter-p-5">#12345</strong></p>
+                      <p><strong class="letter-p-5">#13579</strong></p>
+                      <br />
+                      <a href="#" class="account-btn-change-password" ng-click="activeli('order')"><strong>VIEW MY ODERS</strong></a>
+                  </div>
+              </div>
+              <div class="col-md-12" ng-show="infoactive">
+                  <p class="account-title"><strong>CONTACT INFORMATION </strong></p>
+                  <div class="col-md-12 account-info-box">
+                      <form>
+                          <table class="table-responsive table-xs-border">
+                              <tr>
+                                  <td width="40%">
+                                      <strong>NAME * </strong>
+                                  </td>
+                                  <td width="60%">
+                                      <input name="name" ng-model="accountinfo.name" type="text" class="form-control" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%"></td>
+                                  <td width="60%">
+                                      <div class="col-md-6 p-top-10">
+                                          <input type="radio" ng-model="accountinfo.gender" name="gender" value="Nu" /><strong> MALE</strong>
+                                      </div>
+                                      <div class="col-md-6 p-top-10">
+                                          <input type="radio" ng-model="accountinfo.gender" name="gender" value="Nam" /><strong> FEMALE</strong>
+                                      </div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%">
+                                      <strong>EMAIL * </strong>
+                                  </td>
+                                  <td width="60%">
+                                      <input name="name" ng-model="accountinfo.email" type="text" class="form-control" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%">
+                                      <strong>PHONE NO. * </strong>
+                                  </td>
+                                  <td width="60%">
+                                      <input name="name" ng-model="accountinfo.phone" type="text" class="form-control" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%">
+                                      <strong>ADDRESS * </strong>
+                                  </td>
+                                  <td width="60%">
+                                      <input name="name" ng-model="accountinfo.address" type="text" class="form-control" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%">
+                                      <strong>CITY * </strong>
+                                  </td>
+                                  <td width="60%">
+                                      <input name="name" ng-model="accountinfo.city" type="text" class="form-control" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%">
+                                      <strong>DISTRICT * </strong>
+                                  </td>
+                                  <td width="60%">
+                                      <input name="name" ng-model="accountinfo.district" type="text" class="form-control" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%"></td>
+                                  <td width="60%">
+                                      <p class="p-top-10">
+                                          <strong class="p-right-10">CHANGE PASSWORD</strong> <input type="checkbox" ng-model="changepass" name="changepass" />
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr ng-show="changepass">
+                                  <td width="40%">
+                                      <strong>OLD PASSWORD *</strong>
+                                  </td>
+                                  <td width="60%">
+                                      <p class="p-top-10">
+                                          <input name="oldpass" ng-model="accountinfo.oldpass" type="text" class="form-control" />
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr ng-show="changepass">
+                                  <td width="40%">
+                                      <strong>NEW PASSWORD *</strong>
+                                  </td>
+                                  <td width="60%">
+                                      <p class="p-top-10">
+                                          <input name="oldpass" ng-model="accountinfo.newpass" type="text" class="form-control" />
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr ng-show="changepass">
+                                  <td width="40%">
+                                      <strong>CONFIRM NEW PASSWORD *</strong>
+                                  </td>
+                                  <td width="60%">
+                                      <p class="p-top-10">
+                                          <input name="oldpass" ng-model="accountinfo.repnewpass" type="text" class="form-control" />
+                                      </p>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="40%"></td>
+                                  <td width="60%">
+                                      <div class="text-right p-top-10">
+                                          <a href="#">
+                                              <img src="../../../Images/button-save.png" />
+                                          </a>
+                                      </div>
+                                  </td>
+                              </tr>
+                          </table>
+                      </form>
+                  </div>
+              </div>
+              <div class="col-md-12" ng-show="orderactive">
+                  <p class="account-title"><strong>MY ORDERS </strong></p>
+                  <div ng-show="acountorder.Count==0" class="order-not-found">
+                      No orders found.You have not make an order yet. You want to make one now? <a href="#" class="order-browser">Browse our product</a>
+                  </div>
+                  <div class="account-order-item col-md-12">
+                      <div class="col-md-12 account-order-item-head">
+                          <div class="col-md-8 p-left-0">
+                              <p><strong>ORDER #12345</strong></p>
+                          </div>
+                          <div class="col-md-4 p-right-0 text-right">                          
+                              <img class="show-detail-order-icon" ng-show="!show" ng-click="showdetail()" src="../../../Images/icon-search-expand.png" />
+                              <img class="show-detail-order-icon" ng-show="show"  ng-click="showdetail()" src="../../../Images/icon-search-shortten.png" />
+                          </div>
+                      </div>
+                      <div class="col-md-12 account-order-item-type">
+                          <div class="col-md-offset-6 col-md-6 p-right-0 text-right ">
+                              <div class="col-md-6">
+                                  <strong>TOTAL COST</strong>
+                              </div>
+                              <div class="col-md-6">
+                                  <strong class="sale-text">585,000 đ </strong>
+                              </div>
+                          </div>
+                      </div>
+                     
+                  </div>
+                  <div class="col-md-12 details animate-show" ng-show="show">
+                      <div class="order-item col-md-12">
+                          <div class="col-md-6 p-left-0"><strong>#1 BUCKET HAT SUMMER</strong></div>
+                          <div class="col-md-6 text-right p-right-0"><strong>280.000 đ</strong></div>
+                          <div class="clearfix"></div>
+                          <div class="col-md-12">
+                              <div class="col-md-3"><a href="javascript:;" class="oder-review-option">Color: </a> Multi</div>
+                              <div class="col-md-3"><a href="javascript:;" class="oder-review-option">Size: </a> S</div>
+                              <div class="col-md-3"><a href="javascript:;" class="oder-review-option">Qty: </a> 1</div>
+                              <div class="col-md-3"></div>
+                          </div>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="order-item col-md-12">
+                          <div class="col-md-6 p-left-0"><strong>#1 BUCKET HAT SUMMER</strong></div>
+                          <div class="col-md-6 text-right p-right-0"><strong>280.000 đ</strong></div>
+                          <div class="clearfix"></div>
+                          <div class="col-md-12">
+                              <div class="col-md-3"><a href="javascript:;" class="oder-review-option">Color: </a> Multi</div>
+                              <div class="col-md-3"><a href="javascript:;" class="oder-review-option">Size: </a> S</div>
+                              <div class="col-md-3"><a href="javascript:;" class="oder-review-option">Qty: </a> 1</div>
+                              <div class="col-md-3"></div>
+                          </div>
+                          <div class="clearfix"></div>
+                      </div>
+                  </div>
+                  <div class="account-order-item col-md-12">
+                      <div class="col-md-12 account-order-item-head">
+                          <div class="col-md-8 p-left-0">
+                              <p><strong>ORDER #12345</strong></p>
+                          </div>
+                          <div class="col-md-4 p-right-0 text-right">
+                              <img class="show-detail-order-icon" src="../../../Images/icon-account-orderViewmore.jpg" />
+                          </div>
+                      </div>
+                      <div class="col-md-12 account-order-item-type">
+                          <div class="col-md-offset-6 col-md-6 p-right-0 text-right ">
+                              <div class="col-md-6">
+                                  <strong>TOTAL COST</strong>
+                              </div>
+                              <div class="col-md-6">
+                                  <strong class="sale-text">585,000 đ </strong>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>

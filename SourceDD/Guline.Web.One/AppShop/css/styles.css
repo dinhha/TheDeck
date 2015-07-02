@@ -1,0 +1,943 @@
+﻿
+@font-face {
+  font-family: 'BrandonGrotesque-Bold';
+  src: url('/fonts/BrandonGrotesque-Bold.eot?#iefix') format('embedded-opentype'), 
+       url('/fonts/BrandonGrotesque-Bold.otf')  format('opentype'),
+	     url('/fonts/BrandonGrotesque-Bold.woff') format('woff'), 
+      url('/fonts/BrandonGrotesque-Bold.ttf')  format('truetype'),
+       url('/fonts/BrandonGrotesque-Bold.svg#BrandonGrotesque-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'brandon_grotesque_regularRg';
+    src: url('/fonts/brandon_reg-webfont.eot');
+    src: url('/fonts/brandon_reg-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/brandon_reg-webfont.woff2') format('woff2'), url('/fonts/brandon_reg-webfont.woff') format('woff'), url('/fonts/brandon_reg-webfont.ttf') format('truetype'), url('/fonts/brandon_reg-webfont.svg#brandon_grotesque_regularRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+@font-face {
+    font-family: 'brandon_grotesqueRgIt';
+    src: url('/fonts/brandon_reg_it-webfont.eot');
+    src: url('/fonts/brandon_reg_it-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/brandon_reg_it-webfont.woff2') format('woff2'), url('/fonts/brandon_reg_it-webfont.woff') format('woff'), url('/fonts/brandon_reg_it-webfont.ttf') format('truetype'), url('/fonts/brandon_reg_it-webfont.svg#brandon_grotesqueRgIt') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/*Breacrumb*/
+.breadcrumb{
+    background:none !important;
+}
+.breadcrumb li a{
+    text-decoration:none;
+    color:#d1d2d4;
+    letter-spacing:2px;
+}
+.breadcrumb li.active a{
+    color:#000000;
+    font-weight:bold;
+}
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: ">"
+}
+/*Anime CSS*/
+.animate-show {
+  line-height: 20px;
+  opacity: 1;
+  padding: 10px;
+  background: white;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all linear 0.25s;
+  transition: all linear 0.25s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+}
+/*End Animate*/
+/*Css Padding*/
+.p-0 {
+    padding: 0 !important;
+}
+
+.p-left-0 {
+    padding-left: 0 !important;
+}
+.p-left-10 {
+    padding-left: 10px !important;
+}
+.p-left-20 {
+    padding-left: 20px !important;
+}
+.p-left-40 {
+    padding-left: 40px !important;
+}
+.p-right-0 {
+    padding-right: 0 !important;
+}
+.p-right-10 {
+    padding-right: 10px !important;
+}
+.p-top-10 {
+    padding-top: 10px !important;
+}
+
+.p-top-20 {
+    padding-top: 20px !important;
+}
+
+.p-top-30 {
+    padding-top: 30px !important;
+}
+
+.p-top-40 {
+    padding-top: 40px !important;
+}
+.p-bot-50{
+    padding-bottom:50px;
+}
+/*End Css Padding*/
+
+/*Css Margin*/
+.m-0{
+    margin:0 !important;
+}
+.m-top-10 {
+    margin-top: 10px !important;
+}
+.m-left-10{
+    margin-left: 10px !important;
+}
+.m-right-10{
+    margin-right: 10px !important;
+}
+/*End Css Margin*/
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.breadcrumb{
+    text-transform:uppercase;
+}
+.vietnamese{
+     font-family:Verdana;
+     font-size:11px;
+}
+.page-title {
+    font-size: 24px;
+    letter-spacing:5px;
+    font-family: 'BrandonGrotesque-Bold'; 
+}
+.sale-text {
+    color: #ff0000;
+}
+.letter-p-5{
+    letter-spacing:5px;
+}
+strong{
+    font-family: 'BrandonGrotesque-Bold'; 
+}
+body {
+    font-family: 'brandon_grotesque_regularRg';
+    font-size: 14px;
+}
+
+.v-line{
+    height:5px;
+}
+/*vTOP*/
+.vtop {
+    font-size:13px;
+    font-weight: bold;
+}
+
+.vtop a {
+    color: #333 !important;
+}
+
+.follow, .hot-line, .user-login {
+    margin-top: 75px;
+    position: relative;
+    font-size:14px;
+}
+
+.bag-order {
+    position: relative;
+    margin-top: 75px;
+    padding-left: 0px;
+    font-size:14px;
+}
+
+.follow {
+    padding-left: 0;
+}
+
+.follow .t-nav {
+    display: block;
+    width: 26px;
+    height: 26px;
+    text-indent: -9999px;
+    color: rgba(255,255,255,0);
+    float: right;
+    margin: 0 0 10px 5px;
+}
+
+.follow .t-nav.it-nav {
+    background: url(../Images/icon-insta-pink.png) no-repeat;
+    position: absolute;
+    left: 70px;
+    bottom: -18px;
+}
+
+.follow .t-nav.fb-nav {
+    background: url(../Images/icon-fb-pink.png) no-repeat;
+    position: absolute;
+    left: 98px;
+    bottom: -18px;
+}
+.phone-number {
+    background: url(../Images/icon-phone-pink.png)left center no-repeat;
+    padding-left:30px;
+    margin-left: 5px;
+    color: #000000;
+    font-family: 'BrandonGrotesque-Bold'; 
+    letter-spacing:1px;
+}
+
+.username {
+    
+    cursor: pointer;
+    height: 25px;
+    padding-left:16px;
+    background: url(../Images/icon-lightningBolt-pink.png) left top no-repeat;
+}
+.username .full-name{
+   
+    font-size:12px;
+}
+.show-on-hover {
+    z-index:9;
+    left: 3px;
+    display: none;
+    position: absolute;
+    width: 143px;
+    height: 91px;
+    background: url(../Images/pad-yourAccount.png) no-repeat;
+    top: 25px;
+    list-style: none;
+    padding-top: 13px;
+    padding-right: 17px;
+}
+
+.hoverable:hover .show-on-hover {
+    display: block;
+}
+
+.logo {
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+.bag-order .bag {
+    text-decoration: none;
+    height: 30px;
+    cursor: pointer;
+    padding-left: 28px;
+    padding-top: 5px;
+    background: url(../Images/icon-shoppingBag-pink.png) left center no-repeat;
+}
+/*End vTop*/
+/*gNav*/
+.menu-icon {
+    margin-left: 1px;
+}
+
+.menu-icon li {
+    padding: 0;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+}
+.menu-icon li:first-child{
+    width:28px;
+}
+.menu-icon li.home.active {
+    background: url(../Images/navigation-grey.png) no-repeat 0px;
+}
+
+.menu-icon .home {
+    background: url(../Images/navigation-pink.png) no-repeat 0px;
+}
+
+.menu-icon .clother {
+    background: url(../Images/navigation-pink.png) no-repeat -30px;
+}
+
+.menu-icon .clother.active {
+    background: url(../Images/navigation-grey.png) no-repeat -30px;
+}
+
+.menu-icon .pants {
+    background: url(../Images/navigation-pink.png) no-repeat -75px;
+}
+
+.menu-icon .pants.active {
+    background: url(../Images/navigation-grey.png) no-repeat -75px;
+}
+
+.menu-icon .hat {
+    background: url(../Images/navigation-pink.png) no-repeat -116px;
+}
+
+.menu-icon .hat.active {
+    background: url(../Images/navigation-grey.png) no-repeat -116px;
+}
+
+.menu-icon .umbrella {
+    background: url(../Images/navigation-pink.png) no-repeat -156px;
+}
+
+.menu-icon .umbrella.active {
+    background: url(../Images/navigation-grey.png) no-repeat -156px;
+}
+
+.menu-icon .bag {
+    background: url(../Images/navigation-pink.png) no-repeat -191px;
+}
+
+.menu-icon .bag.active {
+    background: url(../Images/navigation-grey.png) no-repeat -191px;
+}
+
+.menu-icon .boots {
+    background: url(../Images/navigation-pink.png) no-repeat -233px;
+}
+
+.menu-icon .boots.active {
+    background: url(../Images/navigation-grey.png) no-repeat -233px;
+}
+
+.menu-icon .cream {
+    background: url(../Images/navigation-pink.png) no-repeat -268px;
+}
+
+.menu-icon .cream.active {
+    background: url(../Images/navigation-grey.png) no-repeat -268px;
+}
+
+.nav-text {
+    text-transform:uppercase;
+    font-size: 25px;
+    letter-spacing:10px;
+}
+/*End gNav*/
+/*Content*/
+.home-content {
+    margin-top: 10px;
+}
+.product {
+    padding-top: 35px;
+    min-height: 480px;
+}
+.product .title {
+    font-family: 'BrandonGrotesque-Bold'; 
+    letter-spacing:3px;
+    padding-top: 25px;
+    text-transform:uppercase;
+}
+.product .price{
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+
+.product .outofstock-text {
+    color: #50c6ef;
+}
+/*End Content*/
+/*gFooter*/
+.nav-footer a {
+    color: #333 !important;
+}
+
+.nav-footer li {
+    border-right: 1px solid #ccc;
+}
+
+.nav-footer li:last-child {
+    border: none;
+}
+/*End gFooter*/
+
+/*Custom Slider*/
+.slider {
+ 
+    min-height: 400px;
+}
+
+.carousel-indicators .active {
+
+    margin: 0;
+    background-color: #333;
+    border: 1px solid #fff;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+.carousel-indicators {
+    position: absolute;
+    margin-top: 10px;
+    z-index: 15;
+    width: 60%;
+    padding-left: 0;
+    text-align: center;
+    list-style: none;
+}
+/*End Custom Slider*/
+
+
+/*Product Detail*/
+.product-detail .product-title h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    padding-bottom:5px;
+    text-transform: uppercase;
+}
+.product-price{
+    font-size:15px;
+}
+.product-detail .product-title .price {
+    font-size: 12px;
+    color: #f0667c;
+    padding: 7px 0px;
+}
+
+.product-detail .product-des {
+    border-top: 3px solid #fccfd4;
+    padding-top: 20px;
+    min-height: 160px;
+    border-bottom: 1px solid #fccfd4;
+}
+
+.product-detail .product-info {
+    padding-top: 20px;
+}
+
+.product-detail .product-info .size {
+    padding: 0px 6px;
+}
+
+.product-detail .add-to-cart {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.product-detail .share-fb {
+    padding: 10px 0px;
+    border-top: 1px solid #fccfd4;
+    border-bottom: 1px solid #fccfd4;
+}
+
+.product-detail select {
+    width: 110px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 12px;
+    height: 25px;
+    /*border: none;
+    color: white;*/
+    border-color:#fccfd4;
+    font-family: 'BrandonGrotesque-Bold'; 
+    outline: none;
+    /*-webkit-appearance: initial;
+    -moz-appearance: initial;
+    -o-appearance: initial;*/
+}
+
+.product-detail select option {
+    font-family:"brandon_grotesque_regularRg";
+    color: #808080;
+}
+
+/*.product-detail .product_select_color {
+    background: url(../Images/button-color-size-qty-2.png) no-repeat 0px;
+}
+
+.product-detail .product_select_size {
+    background: url(../Images/button-color-size-qty-2.png) no-repeat -130px;
+}
+
+.product-detail .product_select_qty {
+    background: url(../Images/button-color-size-qty-2.png) no-repeat -263px;
+}*/
+
+.product-detail .but-share-fb {
+    color: #000000 !important;
+    text-decoration: none;
+    font-weight: bold;
+    padding-right: 30px;
+    background: url(../Images/facebook-icon-lightBlue-share.png) right center no-repeat;
+}
+
+.product-detail .another-product-title {
+    font-size: 24px;
+    padding-top: 60px;
+    font-family: 'BrandonGrotesque-Bold';
+}
+
+.product-detail .another-product {
+    padding-bottom: 50px;
+}
+
+/*End Product Detail*/
+/*Custom Selected*/
+.selecter-selected {
+    padding-right: 20px;
+    overflow: hidden;
+    border: none;
+    height: 34px;
+    border: none !important;
+    background: url(../Images/ProductImage/arrow-3.png) no-repeat center right 7px #fff0de !important;
+    background-size: 9px;
+}
+
+.selecter-options {
+    border: none;
+    width: 200px;
+    margin-top: 1px;
+    border-radius: 0px 0px 0px 4px;
+    background: #fff0de;
+}
+/*End Custom Selected*/
+
+/*Account*/
+.account, .about ,.contact,.your-bag ,.checkout,.checkout-preview {
+    margin-top: 10px;
+    padding-top: 30px;
+    border-top: 1px solid #fccfd4;
+}
+.account-box{
+    padding-top:50px;
+    padding-bottom:100px;
+}
+.user-info-box {
+    background: url(../Images/pad-yourAccountBig.png) no-repeat;
+    height:410px;
+    width: 50%;
+    margin: 0 auto;
+    margin-top:15px;
+    padding:0px 60px;
+    padding-top:25px;
+    margin-bottom:80px;
+}
+.account-form-input{
+  height: 20px;
+  background: none;
+  border: none;
+  padding-left: 0;
+  box-shadow: none;
+  outline: none;
+  margin: 0;
+  padding: 3px 0px;
+}
+.account-form-group{
+    padding-top:22px;
+    border-bottom:1px solid #ebeced;
+}
+.account-form-group-location{
+     padding-top:15px;
+}
+.form-control[disabled]{
+    background:none;
+}
+.edit-form{
+    float:right;
+ 
+}
+.edit-form a{
+       color:#ccc !important;
+    text-decoration:none;
+}
+.account-form select {
+  width: 160px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+  height: 30px;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  outline: none;
+  -webkit-appearance: initial;
+  -moz-appearance: initial;
+  -o-appearance: initial;
+}
+.account-form select option {
+  color: gray;
+}
+.account-form .select_province {
+    background: url(../Images/button-city.png) no-repeat;
+}
+.account-form .select_district{
+
+    background: url(../Images/button-district.png) no-repeat;
+}
+.link-logout{
+    position:absolute;
+  right: 14px;
+  top: 50px;
+}
+.link-logout a{
+    color:gray !important;
+    text-decoration:none;
+}
+.submit-form-but{
+    border:none;
+}
+.account-group{
+    padding-left:0;
+    margin-bottom:20px;
+}
+.account-group-item{
+    position:relative;
+    display:block;
+      padding: 3px 10px;
+      padding-right:0;
+      letter-spacing:4px;
+      height:30px;
+}
+.account-group-item a{
+    color:#000 !important;
+    text-decoration:none;
+}
+.account-group-item.active{
+    background:#3a3a3c;
+}
+.account-group-item.active strong {
+    color: #fff; 
+    padding-right:15px;
+    background: url(../Images/icon-arrow-account.jpg) right center no-repeat;
+}
+.account-title{
+    letter-spacing:8px;
+    font-size:20px;
+}
+.account-dashboard-title{
+    letter-spacing:5px;
+    border-bottom:1px solid #ccc;
+    padding-top:20px;
+    padding-bottom:10px;
+}
+.account-btn-change-password{
+    background:#d1d2d4;
+    padding:5px 15px;
+    letter-spacing:5px;
+    color:#000000 !important;
+    text-decoration:none;
+}
+.account-info-box{
+    padding:40px 80px;
+    background:#f3f3f4;
+    min-height:500px;
+}
+.account-info-box table{
+    width:100%;
+}
+.account-info-box table td strong{
+     font-size:12px;
+}
+.account-info-box input[type=text] {
+  height: 40px;
+  border-radius: 0;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+}
+.account-link-change-password{
+      color: gray!important;
+  text-decoration: none;
+}
+.order-not-found{
+    padding:20px 25px;
+    background:#f3f3f4;
+}
+.order-browser{
+    color:#f09097 !important;
+}
+.account-order-item{
+    background:#f3f3f4;
+    margin-top:25px;
+    padding:22px 35px 0px 35px;
+}
+.account-order-item-head{
+    border-bottom:1px solid #989a9d;
+}
+.account-order-item-head strong{
+    letter-spacing:8px;
+}
+.account-order-item-type{
+    padding-top:15px;
+    padding-bottom:30px;
+}
+.show-detail-order-icon{
+    cursor:pointer;
+}
+.details{
+    padding-left:30px;
+    padding-right:30px;
+    border-bottom :1px solid #9c9c9d;
+}
+.details .order-item:last-child{
+    border:none!important;
+}
+
+/*End Account*/
+/*About*/
+.about .about-content{
+    padding:35px 0px;
+    width: 60%;
+    margin: 0 auto;
+    font-weight:bold;
+}
+.about .about-img{
+    padding-bottom:48px;
+    border-bottom:2px solid #000000;
+}
+.about .about-title{
+    padding-top:40px;
+}
+.contact-follow{
+    position:relative;
+    margin-top:7px;
+}
+.contact-follow .t-nav.fb-nav {
+  background: url(../Images/icon-fb-grey.png) no-repeat;
+
+}
+.contact-follow .t-nav.it-nav {
+  background: url(../Images/icon-insta-grey.png) no-repeat;
+}
+.contact-follow .t-nav {
+  padding:13px;
+  text-indent: -9999px;
+  color: rgba(255,255,255,0);
+  margin: 0 0 10px 5px;
+}
+/*End About*/
+/*Payment*/
+.payment-box{
+    padding-bottom:40px;
+}
+.payment-method-title{
+    font-family: 'BrandonGrotesque-Bold';
+    font-size:18px;
+    letter-spacing:5px;
+    width:auto;
+    padding-bottom:5px;
+    border-bottom:3px solid #000000;
+}
+.payment-content{
+    padding-top:25px;
+    padding-bottom:40px;
+}
+/*End Payment*/
+/*Bag*/
+.tb-bag tbody{
+    border-bottom:2px solid #ccc;
+}
+.sub-total-text{
+    letter-spacing:2px;
+}
+.note-text{
+    color:#ccc;
+}
+.checkout-step{
+    letter-spacing:18px;
+}
+.checkout-method{
+   border-bottom:5px solid #000;
+    padding:0;
+}
+.checkout-title{
+    border-top:1px solid #ccc;
+    letter-spacing:2px;
+    padding:10px 0px 0px 0px;
+    margin:0;
+    margin-top:15px;
+}
+.checkout-box-title{
+    margin:20px 30px;
+    padding:10px 0px;
+}
+.checkout-box{
+    background:#f3f3f4;
+    min-height:300px;
+    width:95%;
+}
+.box-register{
+    height:550px;
+}
+.login{
+    margin-right:5%;
+}
+.new-md-custom{
+    margin-left:5%;
+}
+.new-xs-custom{
+    margin-left:0;
+}
+.box-title{
+    letter-spacing:2px;
+    border-bottom:1px solid #ccc;
+}
+.box-content{
+    padding:0;
+    margin:10px 30px;
+}
+.box-content table{
+    width:86.5%;
+}
+.box-content label,.box-content strong{
+    font-size:11px;
+    letter-spacing:1px;
+}
+.box-content input[type=text],.box-content input.password{
+    height:40px;
+    border-radius:0px;
+    margin-top:10px;
+    border:none;
+    outline:none;
+}
+.box-content select
+{
+    color:#000000;
+    height:40px;
+    border-radius:0px;
+    margin-top:10px;
+    border:none;
+    outline:none;
+    width:100%;
+}
+.box-content input[type=radio] {
+    height:12px;
+    margin-right:40px;
+    margin-left:20px;
+}
+.btn-info{
+    background:#333;
+    border-color:#000000;
+}
+.checkout-btn-logoin{
+    padding:12px;
+    margin-top:20px;
+    height:40px;
+    background:#000000;
+}
+.box-content a {
+    font-size: 11px;
+    text-decoration: none;
+    letter-spacing: 3px;
+    color: #fff;
+}
+.fogot{
+    padding:10px 0px;
+}
+.checkout-ship-info{
+    padding-bottom:25px;
+}
+.checkout-ship-info table{
+    width:100%;
+}
+.checkout-ship-info input[type=text]{
+    background:#f3f3f4;
+    height:40px;
+    border-radius:0px;
+    margin-top:10px;
+    border:none;
+    outline:none;
+}
+.checkout label{
+    padding-top:13px;
+      font-size: 11px;
+  letter-spacing: 1px;
+}
+.checkout-foot{
+    padding-top:30px;
+    padding-bottom:120px;
+}
+.checkout-preview .review-title{
+    background: url(../Images/icon-edit.png) right center no-repeat;
+    letter-spacing:5px;
+      padding-right:35px;
+}
+.checkout-preview .review-info{
+ background:#f3f3f4;
+ min-height:240px;
+ margin-bottom:30px;
+}
+.checkout-preview .review-info table{
+  width: 90%;
+  margin: 5%;
+}
+.checkout-preview .review-info table tr{
+    height:40px;
+}
+.checkout-preview .review-payment{
+     background:#f3f3f4;
+     padding:25px;
+     margin-bottom:30px;
+}
+.order-review{
+    background:none;
+    padding-bottom:9px;
+    border-bottom:3px solid #000;
+}
+.order-item {
+    border-bottom:1px solid #ccc;
+    padding:15px 0px;
+}
+.order-item:last-child{
+    border-bottom:2px solid #000;
+}
+.order-item .oder-review-option{
+    padding-right:5px;
+    color:#d1d2d4 !important;
+    text-decoration:none;
+}
+.order-review-shipfee{
+    margin-top:30px;
+    padding-bottom:25px;
+    border-bottom:4px solid #000;
+}
+.shipping-chosse {
+    padding:5px;
+    color:#fff;
+    background: url(../Images/button-shippingChoice.png) right center no-repeat;
+}
+.order-review-total{
+    padding:20px 0px;
+}
+.checkout-review{
+    padding:0;
+    border-bottom:1px solid #ccc;
+}
+/*End Bag*/

@@ -1,0 +1,113 @@
+﻿<ol class="breadcrumb">
+    <li><a ui-sref="main.home.index">Trang chủ</a></li>
+    <li class="active">{{obj.gObjectDisplayName}}</li>
+</ol>
+<div class="clearfix"></div>
+<div class="homesweet-content" ng-if="obj.ListBestBuy.length>0">
+    <div class="col-md-6 homesweet-bestbuy">
+        <div class="homesweet-bestbuy-title">
+            Mua nhiều
+        </div>
+        <div class="homesweet-bestbuy-content">
+            <div class="homesweet-itembest" ng-class="{'col-md-4' :obj.ListBestBuy.length>2 ,'col-md-3' :obj.ListBestBuy.length>3,'col-md-2' :obj.ListBestBuy.length>4}" ng-repeat="i in obj.ListBestBuy">
+                <div ng-if="obj.ListBestBuy.length==1">
+                    <div class="col-md-4">
+                        <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                            <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})"><h4>{{i.Title}}</h4></a>
+                        <div ng-if="i.gDescription!='' && i.gDescription!=null" class="catdescription" ng-bind-html="i.gDescription"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="obj.ListBestBuy.length!=1">
+                    <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                        <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                    </a>
+                    <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})"> {{i.Title}}</a>
+                </div>
+                <div ng-if="obj.ListBestBuy.length>4">
+                    <div class="col-md-4">
+                        <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                            <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-8"><a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})"> {{i.Title}}</a></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-3" style="padding:10px">
+    <h4><i class="fa fa-th"></i>&nbsp;{{obj.gObjectDisplayName}}</h4>
+    <ul class="list-group">
+        <li ng-repeat="i in obj.Categorys">
+            <a class="list-group-item" ng-class="{'active' : i.ID==obj.ID}" ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                {{i.Title}}
+            </a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="col-md-3">
+    <div class="fb-like-box" data-href="{{appconfig.fanpageurl}}" data-colorscheme="light" data-show-faces="true" data-header="false" data-width="280px" data-stream="false" data-show-border="false"></div>
+</div>
+<div class="clearfix"></div>
+<div ng-if="p.Childrens.length>0" class="homesweet" ng-repeat="p in obj.Categorys">
+    <div class="homesweet-title" style="border-bottom:2px solid {{appconfig.panellinecolor}}">
+        <ul class="nav nav-pills">
+            <li>
+                <a ui-sref="main.home.contentshow({Slug:p.Slug,ID:p.ID})" class=" homesweet-specialtitle" style="background-color:{{appconfig.paneltitlebgcolor}};color:{{appconfig.paneltitlecolor}};">
+                    {{p.Title}}
+                </a>
+            </li>
+            <li class="pull-right homesweet-more">
+                <a ui-sref="main.home.contentshow({Slug:p.Slug,ID:p.ID})">Xem thêm</a>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="homesweet-item col-md-2" ng-repeat="i in p.Childrens">
+        <div class="homesweet-item-content">
+            <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="saleoff">
+                - {{((i.gOldPrice-i.gPrice)/i.gOldPrice)*100}}%
+            </div>
+            <div class="clearfix"></div>
+            <div>
+                <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                    <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                </a>
+            </div>
+            <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})"> {{i.Title}}</a>
+            <div class="clearfix"></div>
+            <div ng-if="i.gSaleTypeID!='' && !i.gShowPrice" class="homesweet-saletype">
+                <span class="homesweet-saletype-item" ng-if="i.gSaleTypeID==1">Miễn phí</span>
+            </div>
+            <!--<div ng-if="i.gPublishTypeID!=''">
+                <span class="homesweet-saletype" ng-if="i.gPublishTypeID==1">Sách in</span>
+                <span class="homesweet-saletype" ng-if="i.gPublishTypeID==2">Download</span>
+                <span class="homesweet-saletype" ng-if="i.gPublishTypeID==3">Bộ cài đặt</span>
+            </div>-->
+            <div class="clearfix"></div>
+            <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="homesweet-cartold">
+                <s class="pull-right">{{i.gOldPrice  | number:0}}</s>
+            </div>
+            <div class="clearfix"></div>
+            <div ng-if="i.gShowPrice" class="homesweet-cart">
+                <a><i class="fa fa-cart-plus"></i>&nbsp;giỏ hàng</a>
+                <span class="pull-right">{{i.gPrice  | number:0}}</span>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

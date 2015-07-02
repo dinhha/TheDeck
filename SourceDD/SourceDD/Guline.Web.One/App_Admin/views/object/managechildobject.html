@@ -1,0 +1,148 @@
+﻿<ol class="breadcrumb">
+    <li><a ui-sref="main.admin.home" class="active">Trang chủ</a></li>
+    <li><span>{{$state.params.objectname}}</span></li>
+</ol>
+<div class="clearfix"></div>
+<div class="alert alert-{{result.type}}" ng-show="result.text!=''">
+    {{result.text}}
+</div>
+<div class="pull-left mstatus">
+    <h4 class="pull-left">Total</h4>  <span class="badge alert-info">{{page.TotalItems}}</span>
+</div>
+<div class="pull-left mstatus">
+    <h4 class="pull-left">Current page</h4> <span class="badge alert-success">{{page.CurrentPage}}</span>
+</div>
+<div class="pull-left mstatus">
+    <h4 class="pull-left">Total page</h4> <span class="badge alert-warning">{{page.TotalPages}}</span>
+</div>
+<div style="margin-bottom:30px;"></div>
+<div class="clearfix"></div>
+<div class="ppaging">
+    <div class="pull-left margin-right20">
+        <pagination class="pull-left" next-text="»" previous-text="«" ng-change="pageChanged(page)" first-text="Trang đầu" last-text="Trang cuối" total-items="gupagination.totalitems" items-per-page="gupagination.itemperpage" ng-model="gupagination.page" max-size="gupagination.maxsize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+        <div class="clearfix"></div>
+    </div>
+    <div class="pull-left pagesizediv" style="margin-top:25px; padding-left:30px;">
+        
+        <span class="pull-left"><i class="fa fa-eye"></i> &nbsp;Hiển thị&nbsp;</span>
+        
+        <select ng-model="gupagination.itemperpage" ng-change="pageChanged()" class="width-auto">
+            <option value="900">Tất cả</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="30">24</option>
+            <option value="50">48</option>
+            <option value="90">90</option>
+        </select>
+        <span class="pull-left">
+            &nbsp;kết quả.
+        </span>
+        <div class="clearfix"></div>
+    </div>
+    <div class="pull-left margin-right20" style="padding-left:30px;">
+        <label class="pull-left">Danh mục</label>      
+        <select ng-change="pageChanged()" ng-model="mParentID" class="form-control pull-left" ng-options="p.ID as p.Title for p in parents"></select>
+    </div>
+	<div class="pull-left" style="margin-top:15px;padding-left:30px;">
+        <a class="btn btn-danger btndelete hidden" ng-click="delete()">Delete</a>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="table-responsive">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="checkall" ng-click="checkallchange()" /></th>
+                <th>Title</th>
+                <th>Created Date</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody ui-sortable="sortableOptions" ng-model="page.Items">
+
+            <tr ng-repeat="g in page.Items">
+                <td><input type="checkbox" class="chkme" data-id="{{g.ID}}" ng-click="checkchange($event)" /></td>
+
+                <td>
+                    <a ng-if="g.gGroupID!=3" ui-sref="main.admin.editobject({objectname:$state.params.objectname,ID:g.ID})">
+                        {{g.Title}}
+                    </a>
+                    <a ng-if="g.gGroupID==3" ui-sref="main.admin.viewobject({objectname:$state.params.objectname,ID:g.ID})">
+                        {{g.Title}}
+                    </a>
+                    <div class="clear-fix"></div>
+                    <table class="table" style="font-size:11px">
+                        <tr ng-if="atr.AttrType!=15 && atr.AttrType!=4"style="margin-right: 20px; margin-top: 10px;" >
+                            <td ng-repeat="atr in g.Attrs"><b>{{atr.AttrTitle}}:</b></td>
+                            
+                        </tr>
+                        <tr ng-if="atr.AttrType!=15 && atr.AttrType!=4">
+                            <td ng-repeat="atr in g.Attrs">
+                                <div ng-if="atr.AttrType==6">
+                                    <span>{{atr.AttrValue}}</span>
+                                </div>
+                                <div ng-if="atr.AttrType==9">
+                                    <div ng-repeat="item in atr.AttrValueArray" style="padding:2px;">
+                                        <img ng-src="{{item}}" style="width: 50px" />
+                                    </div>
+
+                                </div>
+                                <img ng-if="atr.AttrType==11" ng-src="{{atr.AttrValue}}" style="width: 50px" />
+                                <span ng-if="atr.AttrType==13"><a href="javascript:;">{{atr.AttrValue}}</a></span>
+                                <span ng-if="atr.AttrType==21">
+                                    <span style="color: red">
+                                        {{atr.AttrValue}}
+                                    </span>
+                                </span>
+                                <span ng-if="atr.AttrType==16">
+                                    <span>
+                                        {{atr.AttrValue}}
+                                    </span>
+                                </span>
+                                <span ng-if="atr.AttrType==17">
+                                    <span>
+                                        {{atr.AttrValue}}
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td>{{msdate(g.CreateDate)}}</td>
+                <td>{{g.Status==1?"Show":"Hide"}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+
+</div>
+<div class="ppaging">
+    <div class="pull-left margin-right20">
+        <pagination class="pull-left" next-text="»" previous-text="«" ng-change="pageChanged(page)" first-text="Trang đầu" last-text="Trang cuối" total-items="gupagination.totalitems" items-per-page="gupagination.itemperpage" ng-model="gupagination.page" max-size="gupagination.maxsize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+        <div class="clearfix"></div>
+    </div>
+    <div class="pull-left pagesizediv" style="margin-top:25px; padding-left:30px;">
+        <span class="pull-left"><i class="fa fa-eye"></i> &nbsp;Hiển thị&nbsp;</span><select ng-model="gupagination.itemperpage" ng-change="pageChanged()" class="width-auto">
+            <option value="900">Tất cả</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="30">24</option>
+            <option value="50">48</option>
+            <option value="90">90</option>
+        </select>
+        <span class="pull-left">
+            &nbsp;kết quả.
+        </span>
+        <div class="clearfix"></div>
+    </div>
+	 <div class="pull-left" style="margin-top:15px;padding-left:30px;">
+        <a class="btn btn-danger btndelete hidden" ng-click="delete()">Delete</a>
+    </div>
+</div>
+<div class="clearfix"></div>

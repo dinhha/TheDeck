@@ -1,0 +1,71 @@
+﻿<div style="margin-top:20px;padding-bottom:40px;border-top:2px solid {{appconfig.bottomlinecolor}}">
+    <div class="container gfooter">
+        <div class="col-md-3">
+            <h2 style="color:{{appconfig.bottomtitlecolor}}">{{menu2.name}}</h2>
+            <ul class="nav">
+                <li ng-repeat="m in menu2.menus" class="menulibottom">
+                  
+                    <div class="clearfix" ng-if="m.Attrs[2].AttrValue!='' && m.Attrs[2].AttrValue!=null" style="padding-top:{{m.Attrs[2].AttrValue}}"></div>
+                    <a style="color:{{appconfig.globallinkcolor}}" ng-if="m.Attrs[0].AttrValue!='' && m.Attrs[0].AttrValue!=null" href="{{m.Attrs[0].AttrValue}}">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </a>
+                    <span ng-if="m.Attrs[0].AttrValue=='' || m.Attrs[0].AttrValue==null" href="javascript:;">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+              <h2 style="color:{{appconfig.bottomtitlecolor}}">{{menu3.name}}</h2>
+            <ul class="nav">
+                <li ng-repeat="m in menu3.menus" class="menulibottom">
+                    <div class="clearfix" ng-if="m.Attrs[2].AttrValue!='' && m.Attrs[2].AttrValue!=null" style="padding-top:{{m.Attrs[2].AttrValue}}"></div>
+                    <a style="color:{{appconfig.bottomlinkcolor}}" ng-if="m.Attrs[0].AttrValue!='' && m.Attrs[0].AttrValue!=null" href="{{m.Attrs[0].AttrValue}}">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </a>
+                    <span ng-if="m.Attrs[0].AttrValue=='' || m.Attrs[0].AttrValue==null" href="javascript:;">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <h2 style="color:{{appconfig.bottomtitlecolor}}">{{menu4.name}}</h2>
+            <ul class="nav">
+                <li ng-repeat="m in menu4.menus" class="menulibottom">
+                    <div class="clearfix" ng-if="m.Attrs[2].AttrValue!='' && m.Attrs[2].AttrValue!=null" style="padding-top:{{m.Attrs[2].AttrValue}}"></div>
+                    <a style="color:{{appconfig.globallinkcolor}}" ng-if="m.Attrs[0].AttrValue!='' && m.Attrs[0].AttrValue!=null" href="{{m.Attrs[0].AttrValue}}">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </a>
+                    <span ng-if="m.Attrs[0].AttrValue=='' || m.Attrs[0].AttrValue==null" href="javascript:;">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+           <h2 style="color:{{appconfig.bottomtitlecolor}}">{{menu5.name}}</h2>
+            <ul class="nav">
+                <li ng-repeat="m in menu5.menus" class="menulibottom">
+                    <div class="clearfix" ng-if="m.Attrs[2].AttrValue!='' && m.Attrs[2].AttrValue!=null" style="padding-top:{{m.Attrs[2].AttrValue}}"></div>
+                    <a style="color:{{appconfig.globallinkcolor}}" ng-if="m.Attrs[0].AttrValue!='' && m.Attrs[0].AttrValue!=null" href="{{m.Attrs[0].AttrValue}}">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </a>
+                    <span ng-if="m.Attrs[0].AttrValue=='' || m.Attrs[0].AttrValue==null" href="javascript:;">
+                        <img ng-if="m.Attrs[1].AttrValue!='' && m.Attrs[1].AttrValue!=null" ng-src="{{m.Attrs[1].AttrValue}}" style="max-width:50px;max-height:20px" />&nbsp;<span class="menutxt">{{m.Title}}</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="clearfix"></div>
+    <div class="container" style="margin-top:20px;">
+        <div class="col-md-5" ng-bind-html="appconfig.copyright">
+
+        </div>
+        <div class="col-md-7 table-responsive" ng-bind-html="appconfig.facebookcode"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>

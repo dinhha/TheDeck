@@ -1,0 +1,29 @@
+﻿<div ncy-breadcrumb></div>
+<div ng-if="msg!=''" class="well">
+    {{msg}}
+
+</div>
+<div class="table-responsive">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Created date</th>
+                <th>Order</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody ui-sortable="sortableOptions" ng-model="view.Data.Items" >
+            <tr ng-repeat="g in view.Data.Items">
+                <td>{{$index+1}}</td>
+                <td ng-if="g.justOne"><a ui-sref="main.admin.manageobjectone({objectname:g.Name})">{{g.Title}}</a></td>
+                <td ng-if="!g.justOne"><a ui-sref="main.admin.manageobject({objectname:g.Name})">{{g.Title}}</a></td>
+                <td>{{msdate(g.CreatedDate)}}</td>
+                <td>{{g.gOrder+1}}</td>
+                <td>{{g.Status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

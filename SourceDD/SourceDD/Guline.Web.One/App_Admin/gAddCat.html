@@ -1,0 +1,51 @@
+﻿<div class="col-md-12" style="padding-top: 20px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Thêm Danh mục</h3>
+        </div>
+        <div class="panel-body">
+            <form name="frmfunc" accept-charset="UTF-8" role="form">
+                <fieldset>
+                    <input ng-model="object.gGroupID" name="gGroupID" type="hidden" value="{{GroupID}}" />
+                    <div class="form-group has-feedback" ng-class="{ 'has-success' : frmfunc.title.$valid,'has-error': frmfunc.title.$invalid&&frmfunc.title.$dirty}">
+                        <label>Title <span class="requiresign">*</span></label>
+                        <input name="title" ng-disabled="running" required ng-model="object.Title" type="text" class="form-control" placeholder="Enter title">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'hide':frmfunc.title.$invalid}"></span>
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmfunc.title.$invalid && frmfunc.title.$dirty"></span>
+                        <span class="text-danger" ng-show="frmfunc.title.$invalid">
+                            <span ng-show="frmfunc.title.$touched && frmfunc.title.$error.required"><span>Bạn chưa nhập tên Danh mục</span></span>
+                        </span>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="form-group has-feedback " ng-class="{ 'has-success' : frmfunc.Slug.$valid && frmfunc.Slug.$touched,'has-error': frmfunc.Slug.$invalid&&frmfunc.Slug.$dirty}">
+
+                        <label>Slug <span ng-if="true" class="requiresign">*</span>&nbsp;&nbsp;<span style="font-size: 10px"><i class="fa fa-question-circle"></i></span> </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">{{RgetAttrTypeName(14)}}</div>
+                            <input name="Slug" ng-disabled="running" ng-required="true" ng-readonly="true" ng-model="object.Slug" type="text" class="form-control" placeholder="Enter Slug">
+                        </div>
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="frmfunc.Slug.$valid && frmfunc.Slug.$touched"></span>
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmfunc.Slug.$invalid && frmfunc.Slug.$dirty"></span>
+                        <span class="text-danger" ng-show="frmfunc.Slug.$invalid">
+                            <span ng-show="frmfunc.Slug.$touched && frmfunc.Slug.$error.required"><span>Bạn chưa nhập Slug</span></span>
+                        </span>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <button type="submit" ng-class="{'m-progress':running}" ng-disabled="frmfunc.$invalid||running" class="btn-block btn btn-success" ng-click="ok()"><span>Save</span></button>
+                    <hr />
+                    <div class="form-group alert alert-danger" ng-show="msg!=null && msg!='' && !running">
+                        {{msg}}
+                    </div>
+
+                    <div class="clearfix"></div>
+                </fieldset>
+            </form>
+            <!-- <hr />
+            <center><h4>OR</h4></center>
+            <input class="btn btn-lg btn-facebook btn-block" type="submit" value="Login via facebook">-->
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

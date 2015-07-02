@@ -1,0 +1,41 @@
+﻿<div class="clearfix">
+</div>
+<div class="col-md-4 vtop hidden-xs">
+    <div class="follow col-md-5 ">
+         <span>Follow us at</span> 
+        <a href="{{appconfig.fanpageurl}}" target="_blank" class="t-nav fb-nav"></a>
+        <a href="{{appconfig.instagramurl}}" target="_blank" class="t-nav it-nav"></a>
+     
+    </div>
+    <div class="hot-line p-left-0 col-md-6 ">
+       <span class="phone-number">{{appconfig.hotline}}</span>
+    </div>
+</div>
+<div class="col-md-4 vtop ">
+    <div class="logo text-center">
+        <a ui-sref="main.home.index">
+            <img class="img-responsive center-block" ng-src="{{appconfig.logo}}" />
+        </a>
+    </div>
+</div>
+<div class="col-md-4 vtop">
+    <div class="user-login col-md-offset-4 col-md-6 p-left-0">
+        <span ng-if="currentUser!=null"><a href="#">Login</a></span>
+        <div ng-if="currentUser==null">
+            <div class="hoverable username">Hello <span class="full-name vietnamese">{{Username}}</span>
+            <ul class="list-group user-top show-on-hover text-right">
+                <li><a href="/account">Your account</a></li>
+                <li><a href="#">Log out</a></li>
+            </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="bag-order p-right-0 text-md-right text-xs-left col-md-2">
+        <a href="/bag" class="bag">
+            ( {{currentOrder}} 99)
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>

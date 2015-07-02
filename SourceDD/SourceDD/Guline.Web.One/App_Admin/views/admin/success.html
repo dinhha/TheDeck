@@ -1,0 +1,6 @@
+﻿<div class="well well-sm">
+    <h4>Thao tác thành công</h4>
+    <a class="btn btn-success" ng-if="obj.justone==1" ui-sref="main.admin.manageobjectone({objectname:obj.objectname})"><i class="fa fa-backward"></i>&nbsp;Quay lại đối tượng</a>
+    <a class="btn btn-success" ng-if="obj.id!=0 && obj.justone==0" ui-sref="main.admin.editobject({objectname:obj.objectname,ID:obj.id})"><i class="fa fa-backward"></i>&nbsp;Quay lại đối tượng</a>
+    <a class="btn btn-primary" ng-if="obj.justone==0" ui-sref="main.admin.managechildobject({objectname:obj.objectname,parentid:obj.parentid})"><i class="fa fa-cubes"></i>&nbsp;Về danh sách</a>
+</div>

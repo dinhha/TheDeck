@@ -1,0 +1,135 @@
+﻿<div class="contentsweet-baner" ng-if="obj.ParentID!=null && obj.gUseParentBaner">
+    <img ng-src="{{obj.Parent.gBanner}}" gulzimage class="img-responsive" />
+</div>
+<div class="contentsweet-baner" ng-if="ParentID==null && !obj.gUseParentBaner">
+    <img ng-src="{{obj.gBanner}}" gulzimage class="img-responsive" />
+</div>
+<ol class="breadcrumb">
+    <li><a ui-sref="main.home.index">Trang chủ</a></li>
+    <li><a ng-if="obj.gObjectName!=null" ui-sref="main.home.objectshow({Name:obj.gObjectName})">{{obj.gObjectDisplayName}}</a></li>
+    <li ng-if="obj.ParentID!=null && obj.ParentID.ParentID!=null"><a ui-sref="main.home.contentshow({Slug:obj.Parent.Parent.Slug,ID:obj.Parent.Parent.ID})">{{obj.Parent.Parent.Title}}</a></li>
+    <li ng-if="obj.ParentID!=null"><a ui-sref="main.home.contentshow({Slug:obj.Parent.Slug,ID:obj.Parent.ID})">{{obj.Parent.Title}}</a></li>
+    <li class="active">{{obj.Title}}</li>
+</ol>
+<div class="clearfix"></div>
+<div class="col-md-9">
+    <h2 class="contentsweet-title">
+        {{obj.Title}}
+    </h2>
+    <div ng-if="obj.gDescription!='' && obj.gDescription!=null && obj.gShowDescription" ng-show="isCollapsed" class="well-sm well catdescription" ng-bind-html="obj.gDescription"></div>
+    <div ng-if="obj.ParentID!=null" class="contentsweet-content" ng-bind-html="obj.gContent">
+    </div>
+    <div class="clearfix"></div>
+    <div ng-if="obj.ParentID==null && obj.gDescription!='' && obj.gDescription!=null && obj.gShowDescription" class="objcontentmore">
+        <!--<div ng-if="obj.gDescription!='' && obj.gDescription!=null" ng-show="isCollapsed" class="well-sm well catdescription" ng-bind-html="obj.gDescription"></div>-->
+        <a class="btnexpandmore btn btn-xs btn-default href=" javascript:;" ng-click="isCollapsed = !isCollapsed">
+            <span ng-if="isCollapsed">Hiển thị chi tiết</span>
+            <span ng-if="!isCollapsed">Thu gọn</span>
+        </a>
+        <div ng-if="obj.gContent!='' && obj.gContent!=null" collapse="isCollapsed" class="well-sm well objcontentmore-content" ng-bind-html="obj.gContent">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div ng-if="obj.PageChildrens.TotalItems>0" class="contentsweet-pagelist">
+        <!---begin item--->
+        <div class="homesweet-item col-md-3" ng-repeat="i in obj.PageChildrens.Items">
+            <div class="homesweet-item-content">
+                <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="saleoff">
+                    - {{((i.gOldPrice-i.gPrice)/i.gOldPrice)*100}}%
+                </div>
+                <div class="clearfix"></div>
+                <div>
+                    <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                        <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+                    </a>
+                </div>
+                <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">{{i.Title}}</a>
+                <div class="clearfix"></div>
+                <div ng-if="i.gSaleTypeID!='' && !i.gShowPrice" class="homesweet-saletype">
+                    <span class="homesweet-saletype-item" ng-if="i.gSaleTypeID==1">Miễn phí</span>
+                </div>
+                <!--<div ng-if="i.gPublishTypeID!=''">
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==1">Sách in</span>
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==2">Download</span>
+                    <span class="homesweet-saletype" ng-if="i.gPublishTypeID==3">Bộ cài đặt</span>
+                </div>-->
+                <div class="clearfix"></div>
+                <div ng-if="i.gOldPrice!=null && i.gOldPrice!='' && i.OldPrice!=0 && i.gShowPrice && i.gOldPrice>i.gPrice" class="homesweet-cartold">
+                    <s class="pull-right">{{i.gOldPrice  | number:0}}</s>
+                </div>
+                <div class="clearfix"></div>
+                <div ng-if="i.gShowPrice" class="homesweet-cart">
+                    <a><i class="fa fa-cart-plus"></i>&nbsp;giỏ hàng</a>
+                    <span class="pull-right">{{i.gPrice  | number:0}}</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!---end item--->
+        <div class="clearfix"></div>
+        <div class="pagingdiv">
+            <div class="pull-left margin-right20">
+                <pagination next-text="»" previous-text="«" ng-change="pageChanged(page)" first-text="Trang đầu" last-text="Trang cuối" total-items="gupagination.totalitems" items-per-page="gupagination.itemperpage" ng-model="gupagination.page" max-size="gupagination.maxsize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+                <div class="clearfix"></div>
+            </div>
+            <div class="pull-left pagesizediv ">
+                <span class="pull-left"><i class="fa fa-eye"></i> &nbsp;Hiển thị&nbsp;</span><select ng-model="gupagination.itemperpage" ng-change="pageChanged()" class="width-auto">
+                    <option value="900">Tất cả</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
+                    <option value="30">24</option>
+                    <option value="50">48</option>
+                    <option value="90">90</option>
+                </select>
+                <span class="pull-left">
+                    &nbsp;kết quả.
+                </span>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div ng-if="obj.ParentID!=null">
+        <h4><i class="fa fa-comment"></i>&nbsp;Bình luận</h4>
+        <div class="fb-comments table-responsive" data-href="{{currentUrl}}" data-numposts="5" data-colorscheme="light" style="overflow: hidden"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!----begin right-->
+<div class="col-md-3">
+    <div ng-if="obj.Relatives.length>0 && obj.ParentID==null">
+        <h4><i class="fa fa-th"></i>&nbsp; <a ng-if="obj.gObjectName!=null" ui-sref="main.home.objectshow({Name:obj.gObjectName})">{{obj.gObjectDisplayName}}</a></h4>
+        <ul class="list-group">
+            <li ng-repeat="i in obj.Relatives">
+                <a class="list-group-item" ng-class="{'active' : i.ID==obj.ID}" ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                    {{i.Title}}
+                </a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="fb-like-box" data-href="{{appconfig.fanpageurl}}" data-colorscheme="light" data-show-faces="true" data-header="false" data-width="280px" data-stream="false" data-show-border="false"></div>
+    <div class="clearfix"></div>
+    <div ng-if="obj.Relatives.length>0 && obj.ParentID!=null">
+        <h4>
+            <i class="fa fa-eye"></i>&nbsp;{{obj.Parent.Title}}
+            <a class="btnviewmore pull-right" ui-sref="main.home.contentshow({Slug:obj.Parent.Slug,ID:obj.Parent.ID})">Xem thêm</a>
+        </h4>
+        <div class="contentsweet-relative" ng-repeat="i in obj.Relatives">
+            <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                <img ng-src="{{i.gImage}}" gulzimage class="img-responsive" />
+            </a>
+            <a ui-sref="main.home.contentshow({Slug:i.Slug,ID:i.ID})">
+                {{i.Title}}
+            </a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,49 @@
+﻿
+@{Layout = null;
+  var obj = (Guline.Web.One.gModels.gObject)ViewBag.obj;
+  var config = (Guline.Web.One.gModels.gObject)ViewBag.baseConfig;
+  
+  var tensite=config.Attrs.Where(m=>m.AttrName=="pagetitle").FirstOrDefault().AttrValue;
+  var keyword = config.Attrs.Where(m => m.AttrName == "seodescription").FirstOrDefault().AttrValue;
+  var description = config.Attrs.Where(m => m.AttrName == "seodescription").FirstOrDefault().AttrValue;
+  var url = Request.Url.ToString();
+  var image = config.Attrs.Where(m => m.AttrName == "logosocial").FirstOrDefault().AttrValue;
+  var icon = config.Attrs.Where(m => m.AttrName == "pageicon").FirstOrDefault().AttrValue;
+}
+<!DOCTYPE html>
+<html ng-app="gulineWebApp" ng-controller="rootController">
+<head>
+    
+    <title ng-bind="$state.current.data.title">@Html.Raw(ViewBag.Title == "" || ViewBag.Title == null ? tensite : ViewBag.Title + " - " + tensite)</title>
+    <meta name="keywords" content="@Html.Raw(obj != null && obj.gKeyword != "" && obj.gKeyword != null ? obj.gKeyword:keyword )" />
+    <meta name="description" content="@Html.Raw(obj != null && obj.gSeo != "" && obj.gSeo != null ? obj.gSeo : description)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="@(Request.Url.GetLeftPart(UriPartial.Authority) + (obj != null && obj.gImage != "" && obj.gImage != null ? obj.gImage : image))" />
+    <meta property="og:title" content="@Html.Raw(obj != null && obj.Title != "" && obj.Title != null ? obj.Title :tensite )" />
+    <meta property="og:url" content="http://@(Request.Url.Authority + Request.Url.AbsolutePath)" />
+    <meta property="og:description" content="@Html.Raw(obj != null && obj.gSeo != "" && obj.gSeo != null ? obj.gSeo : description)" />
+    <!-- Twitter summary card metadata -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@Html.Raw(obj != null && obj.Title != "" && obj.Title != null ? obj.Title : tensite)" />
+    <meta property="twitter:title" content="@Html.Raw(obj != null && obj.Title != "" && obj.Title != null ? obj.Title : tensite)" />
+    <meta property="twitter:description" content="@Html.Raw(obj != null && obj.gSeo != "" && obj.gSeo != null ? obj.gSeo : description)" />
+    <meta property="twitter:image" content="@(Request.Url.GetLeftPart(UriPartial.Authority)+(obj != null && obj.gImage != "" && obj.gImage != null ? obj.gImage : image))" />
+    <meta property="twitter:url" content="http://@(Request.Url.Authority + Request.Url.AbsolutePath)" />
+    <link rel="shortcut icon" href="@Url.Content("~" + icon)" />
+    <meta name="author" content="@tensite" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    @Styles.Render("~/Module/basecss.css")
+    @Html.Raw("<script type='text/javascript'> var _gconfig = " + ViewBag.BaseData + "</script>")
+    <base href="@System.Configuration.ConfigurationManager.AppSettings["UrlStart"]" />
+</head>
+<body>
+    <div class="main-guline " id="page" ui-view="gMain">
+    </div>
+    <div class="clearfix"></div>
+    @Scripts.Render("~/Module/basejs.js")
+</body>
+</html>
+

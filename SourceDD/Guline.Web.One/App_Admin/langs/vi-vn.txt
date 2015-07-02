@@ -1,0 +1,15 @@
+﻿ {
+	"load" : {
+	  "page" : {
+		"TITLE" : "Cadcenter",
+		 "MEMBER" : "<i class='fa fa-users'></i> Thành viên"
+		,"RANKING" : "<i class='fa fa-star'></i> BXH tích lũy"
+		,"LOGIN" : "<i class='fa fa-user'></i> Đăng nhập"
+		,"SECURETEXT_ER_REQUIRED" : "Bạn chưa nhập mã bảo vệ."
+		,"SECURETEXT_ER_INVALID" : "Mã bảo vệ gồm 4 ký tự."
+		,"SECURETEXT_PH" : "Nhập mã bảo vệ"
+	  }	  
+	}
+}
+
+

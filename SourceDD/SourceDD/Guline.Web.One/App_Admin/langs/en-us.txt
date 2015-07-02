@@ -1,0 +1,8 @@
+﻿ {
+"load" : {
+  "page" : {
+    "TITLE" : "Helloworld",
+	"MEMBER" : " Members"
+  }
+}
+}

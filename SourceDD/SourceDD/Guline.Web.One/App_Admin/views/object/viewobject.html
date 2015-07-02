@@ -1,0 +1,139 @@
+﻿<ol class="breadcrumb">
+    <li><a ui-sref="main.admin.home" class="active">Trang chủ</a></li>
+    <li><a ui-sref="main.admin.manageobject({objectname:$state.params.objectname})" class="active"><span>{{object.gObjectName}}</span></a></li>
+    <li><span>xem {{object.gObjectName}}</span></li>
+</ol>
+<div class="clearfix"></div>
+<div class="panel">
+    <h3>{{object.gObjectName}} <small>xem</small></h3>
+</div>
+<div class="col-md-10">
+    <form name="frmobject" accept-charset="UTF-8" role="form">
+        <fieldset>
+            <div class="form-group alert alert-{{result.type}}" ng-show="result.text!=''">
+                {{result.text}}
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="form-group has-feedback" ng-class="{ 'has-success' : frmobject.Title.$valid && frmobject.Title.$touched,'has-error': frmobject.Title.$invalid&&frmobject.Title.$dirty}">
+
+                <label>Title <span ng-if="true" class="requiresign">*</span>&nbsp;&nbsp;<span style="font-size: 10px"><i class="fa fa-question-circle"></i></span> </label>
+                <div class="input-group">
+                    <div class="input-group-addon">{{RgetAttrTypeName(1)}}</div>
+                    <input name="Title" ng-disabled="running" ng-required="true" ng-model="object.Title" type="text" class="form-control" placeholder="Enter Title">
+                </div>
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="frmobject.Title.$valid && frmobject.Title.$touched"></span>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmobject.Title.$invalid && frmobject.Title.$dirty"></span>
+                <span class="text-danger" ng-show="frmobject.Title.$invalid">
+                    <span ng-show="frmobject.Title.$touched && frmobject.Title.$error.required"><span>Bạn chưa nhập Title</span></span>
+                </span>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix">
+            </div>
+            <div class="form-group has-feedback" ng-class="{ 'has-success' : frmobject.Slug.$valid && frmobject.Slug.$touched,'has-error': frmobject.Slug.$invalid&&frmobject.Slug.$dirty}">
+
+                <label>Slug <span ng-if="true" class="requiresign">*</span>&nbsp;&nbsp;<span style="font-size: 10px"><i class="fa fa-question-circle"></i></span> </label>
+                <div class="input-group">
+                    <div class="input-group-addon">{{RgetAttrTypeName(14)}}</div>
+                    <input name="Slug" ng-disabled="running" ng-required="true" ng-readonly="true" ng-model="object.Slug" type="text" class="form-control" placeholder="Enter Slug">
+                </div>
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="frmobject.Slug.$valid && frmobject.Slug.$touched"></span>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmobject.Slug.$invalid && frmobject.Slug.$dirty"></span>
+                <span class="text-danger" ng-show="frmobject.Slug.$invalid">
+                    <span ng-show="frmobject.Slug.$touched && frmobject.Slug.$error.required"><span>Bạn chưa nhập Slug</span></span>
+                </span>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix">
+            </div>
+            <div ng-if="object.hasChild" class="form-group has-feedback" ng-class="{ 'has-success' : frmobject.Slug.$valid && frmobject.Slug.$touched,'has-error': frmobject.Slug.$invalid&&frmobject.Slug.$dirty}">
+                <label>Parent &nbsp;&nbsp;<span style="font-size: 10px"><i class="fa fa-question-circle"></i></span> </label>
+                <div class="input-group">
+                    <select ng-model="object.ParentID" class="form-control">
+                        <option value="">--Nút gốc--</option>
+                        <option value="{{p.ID}}" ng-repeat="p in parents">
+                            {{p.Title}}
+                        </option>
+
+                    </select>
+                </div>
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="frmobject.Slug.$valid && frmobject.Slug.$touched"></span>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmobject.Slug.$invalid && frmobject.Slug.$dirty"></span>
+                <span class="text-danger" ng-show="frmobject.Slug.$invalid">
+                    <span ng-show="frmobject.Slug.$touched && frmobject.Slug.$error.required"><span>Bạn chưa nhập Slug</span></span>
+                </span>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix">
+            </div>
+            <!--begin childrens-->
+            <!--End childrens-->
+            <div class="clearfix">
+            </div>
+            <div ng-repeat="attr in object.Attrs" class="form-group has-feedback" ng-class="{ 'has-success' : frmobject.{{attr.AttrName}}.$valid && frmobject.{{attr.AttrName}}.$touched,'has-error': frmobject.{{attr.AttrName}}.$invalid&&frmobject.{{attr.AttrName}}.$dirty}">
+
+                <label>{{attr.AttrTitle}} <span ng-if="attr.AttrRequired" class="requiresign">*</span>&nbsp;&nbsp;<span style="font-size: 10px"><i class="fa fa-question-circle"></i></span> </label>
+
+                <!--phần chung-->
+                <div class="input-group">
+                    <div ng-if="attr.AttrType==1 || attr.AttrType==3" class="input-group-addon">{{RgetAttrTypeName(attr.AttrType)}}</div>
+                    <div ng-if="attr.AttrType==12" class="input-group-addon" style="border: 2px solid #000; background-color: {{attr.AttrValue}}"></div>
+                    <input ng-if="attr.AttrType==12" colorpicker="hex" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" ng-model="attr.AttrValue" type="text" class="form-control" placeholder="Enter {{attr.AttrTitle}}">
+                    <input ng-if="attr.AttrType==1" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" ng-model="attr.AttrValue" type="text" class="form-control" placeholder="Enter {{attr.AttrTitle}}">
+                    <input ng-if="attr.AttrType==3" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" ng-model="attr.AttrValue" type="text" class="form-control" placeholder="Enter {{attr.AttrTitle}}">
+
+                    <input ng-if="attr.AttrType==18" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" ng-model="attr.AttrValue" type="password" class="form-control" placeholder="Enter {{attr.AttrTitle}}">
+                </div>
+
+
+                <div ng-if="attr.AttrType==11">
+                    <div class="col-md-4">
+                        <img ng-src="{{attr.AttrValue}}" class="img-responsive" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input id="ckfinder{{attr.AttrName}}" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" ng-model="attr.AttrValue" type="text" class="form-control" placeholder="Enter {{attr.AttrTitle}}">
+                            <div class="input-group-addon"><a href="javascript:;" ng-click="uploadfile(attr)"><i class="fa fa-cloud-upload"></i></a></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="attr.AttrType==15">
+                    <textarea ckeditor="editorOptions" ng-model="attr.AttrValue" id="editor{{attr.AttrName}}" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired"></textarea>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="attr.AttrType==16">
+                    <textarea ng-model="attr.AttrValue" class="form-control" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" rows=""></textarea>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="attr.AttrType==17">
+                    <textarea ng-model="attr.AttrValue" class="form-control" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" rows=""></textarea>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="attr.AttrType==4">
+                    <textarea ng-model="attr.AttrValue" class="form-control" name="{{attr.AttrName}}" ng-disabled="running" ng-required="attr.AttrRequired" rows="20"></textarea>
+                    <div class="clearfix"></div>
+                </div>
+                <!--end# phần chung-->
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="frmobject.{{attr.AttrName}}.$valid && frmobject.{{attr.AttrName}}.$touched"></span>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-show="frmobject.{{attr.AttrName}}.$invalid && frmobject.{{attr.AttrName}}.$dirty"></span>
+                <span class="text-danger" ng-show="frmobject.{{attr.AttrName}}.$invalid">
+                    <span ng-show="frmobject.{{attr.AttrName}}.$touched && frmobject.{{attr.AttrName}}.$error.required"><span>Bạn chưa nhập {{attr.AttrTitle}}</span></span>
+                </span>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix">
+            </div>
+
+            <div class="clearfix"></div>
+        </fieldset>
+    </form>
+</div>
