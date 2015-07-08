@@ -374,6 +374,9 @@ body {
     border:3px solid #ffffff;
     border-radius:inherit;
 }
+.home-content .btn-home:hover{
+    border:3px solid #000;
+}
 .product {
     padding-top: 35px;
     min-height: 480px;
@@ -393,6 +396,7 @@ body {
 .product .outofstock-text {
     color: #50c6ef;
 }
+
 /*End Content*/
 /*gFooter*/
 .nav-footer{

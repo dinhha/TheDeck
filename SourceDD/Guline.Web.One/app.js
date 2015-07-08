@@ -207,19 +207,22 @@ app.run(['$rootScope', '$state', '$stateParams',
                     templateUrl: _gconfig.baseAppResouceUrl + "/views/home/home.html"
                    , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig',
                      function ($scope, $rootScope, $state, $http, appconfig) {
+                         $rootScope.$broadcast("change_nav", [true, "<strong class='nav-text'> ALL ITEMS </strong>"]);
                          $scope.appconfig = appconfig.config;
-                         setTimeout(init, 5);
-                         function init(){
-                             var tl = new TimelineMax();
-                             tl.from('.vtop', .4, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay:1 });
-                             tl.from('.gNav', .4, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
-                             tl.from('.vtop .logo', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             tl.from('.vtop .sub-nav', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             tl.from('.vtop .main-nav', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             tl.from('.home-content', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             //tl.staggerFromTo(".nav-footer .container", .6, { autoAlpha: 0, rotationY: 90 }, { autoAlpha: 1, rotationY: 0, force3D: true, ease: Power3.easeOut }, "-=.10")
-                                 //.from('.next.paging, .prev.paging', .1, { autoAlpha: 0, ease: Back.easeOut }, '-=2');
-                         }
+                         getData();
+                         function getData() {
+                             $http.get(_gconfig.baseWebUrl + '/api/Object/GetListChildObjectData?objectname=Product').
+                               success(function (res, status, headers, config) {
+                                       if (res.success) {
+                                           $scope.product = res.data;
+                                           console.log($scope.product);
+                                       }
+                                       else {
+                                           $scope.msg = response.msg;
+                                       }
+
+                               });
+                         }//end getdata()
                      }]
                 }
             }
