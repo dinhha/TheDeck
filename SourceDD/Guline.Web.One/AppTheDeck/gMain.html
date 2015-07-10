@@ -1,4 +1,4 @@
-﻿<div id="page_wrapper">
+﻿<div id="page_wrapper" ng-class="getMainClass()">
     <div ui-view="vTop" class="row">
     </div>
     <div class="clearfix"></div>
@@ -12,9 +12,6 @@
 
     </div>
     <div class="clearfix"></div>
-    <div ui-view="vNav">
-
-    </div>
     <div ui-view="vBottom">
     </div>
     <div class="clearfix"></div>
