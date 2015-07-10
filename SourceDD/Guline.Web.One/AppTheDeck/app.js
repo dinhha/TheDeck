@@ -189,6 +189,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                              init();
                          });
                          function init() {
+                             $('.vtop').addClass('home');
                              var tl = new TimelineMax();
                              tl.from('.vtop', .4, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
                              tl.from('.gNav', .4, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
@@ -206,27 +207,6 @@ app.run(['$rootScope', '$state', '$stateParams',
                   , controller: ['$scope', '$state', '$http', 'appconfig',
                     function ($scope, $state, $http, appconfig) {
                         $scope.appconfig = appconfig.config;
-                        var defaultText = "<strong class='nav-text'> ALL ITEMS </strong>";
-                        $scope.defaultText = defaultText;
-                        $scope.cat_text = defaultText;
-                        var isSubPage = false;
-                        $scope.showtext = function (value, name) {
-                            $("." + name).addClass('active');
-                            if (isSubPage) return;
-                            $scope.cat_text = "<strong class='nav-text'>" + value + "</strong>";
-                        }
-                        $scope.defauttext = function (value) {
-                            $("." + value).removeClass('active');
-                            if (isSubPage) return;
-                            $scope.cat_text = "<strong class='nav-text'>" + $scope.defaultText + " </strong>";
-                        }
-                        $scope.$on("change_nav", function (e, args) {
-                            $scope.defaultText = args[1]
-                            $scope.cat_text = args[1];
-                            if (args[0] == false) {
-                                isSubPage = true;
-                            }
-                        });
                     }]
                 }
             }
@@ -359,15 +339,15 @@ app.run(['$rootScope', '$state', '$stateParams',
         }
 
     })
-    .state('main.home.about', {
-        url: "/about",
+    .state('main.home.ourstory', {
+        url: "/our-story",
         ncyBreadcrumb: {
-            label: 'About Us', parent: null
+            label: 'Our Story', parent: null
         },
-        data: { title: "About Us" },
+        data: { title: "Our Story" },
         views: {
             "homeMain": {
-                templateUrl: _gconfig.baseAppResouceUrl + "/views/about/about.html"
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/ourstory/about.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
                  }]

@@ -256,18 +256,12 @@
     <Content Include="AppTheDeck\gNav.html" />
     <Content Include="AppTheDeck\langs\en-us.txt" />
     <Content Include="AppTheDeck\langs\vi-vn.txt" />
-    <Content Include="AppTheDeck\views\about\about.html" />
-    <Content Include="AppTheDeck\views\account\youraccount.html" />
-    <Content Include="AppTheDeck\views\checkout\bag.html" />
-    <Content Include="AppTheDeck\views\checkout\checkout.html" />
-    <Content Include="AppTheDeck\views\checkout\review.html" />
+    <Content Include="AppTheDeck\views\location\location.html" />
+    <Content Include="AppTheDeck\views\ourstory\about.html" />
     <Content Include="AppTheDeck\views\home\home.html" />
     <Content Include="AppTheDeck\views\home\index.html" />
-    <Content Include="AppTheDeck\views\job\job.html" />
     <Content Include="AppTheDeck\views\object\content.html" />
     <Content Include="AppTheDeck\views\object\typecontent.html" />
-    <Content Include="AppTheDeck\views\payment\paymentmethod.html" />
-    <Content Include="AppTheDeck\views\product\product.html" />
     <Content Include="AppTheDeck\vTop.html" />
     <Content Include="AppShop\app.js" />
     <Content Include="AppShop\css\custom-bootstrap.css" />
@@ -1295,6 +1289,7 @@
     <Content Include="Images\icon-twiter.png" />
     <Content Include="Images\line_home.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\ourstory_bg.jpg" />
     <Content Include="Models\Generated\PetaPoco.Generator.ttinclude" />
     <Content Include="Models\Generated\PetaPoco.Core.ttinclude" />
     <Content Include="Models\Generated\Database.tt">
@@ -1314,6 +1309,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Module\angular-google-maps\angular-google-maps.js" />
     <Content Include="Module\angular-material\.bower.json" />
     <Content Include="Module\angular-material\bower.json" />
     <Content Include="Module\angular-material\LICENSE" />
@@ -2663,6 +2659,14 @@
     <Content Include="Views\Emails\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AppTheDeck\views\contactus\" />
+    <Folder Include="AppTheDeck\views\event\" />
+    <Folder Include="AppTheDeck\views\gallery\" />
+    <Folder Include="AppTheDeck\views\giftcard\" />
+    <Folder Include="AppTheDeck\views\martinclub\" />
+    <Folder Include="AppTheDeck\views\menu\" />
+    <Folder Include="AppTheDeck\views\reservation\" />
+    <Folder Include="AppTheDeck\views\thedeckbar\" />
     <Folder Include="App_Admin\services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />

@@ -141,9 +141,8 @@
      font-size:11px;
 }
 .page-title {
-    font-size: 24px;
-    letter-spacing:5px;
-    font-family: 'BrandonGrotesque-Bold'; 
+        font-size:24px;
+        font-family: 'AvenirLTStd-Medium';
 }
 .sale-text {
     color: #ff0000;
@@ -166,7 +165,7 @@ body {
 
     position: relative;
     width: 100%;
-    height:100vh;
+
     background-color: #000;
     left: 0;
     top: 0;
@@ -180,7 +179,16 @@ body {
     background: url(../../Images/background.jpg) 50% 0 no-repeat fixed;
     background-size: cover;
 }
-
+.quota{
+        letter-spacing:1px;
+    font-family:"Georgia";
+    font-size:12px;
+    font-style:italic;
+}
+.quota-author{
+     font-family:"Georgia";
+         font-size:12px;
+}
 .container{
     padding:0;
 }
@@ -192,8 +200,11 @@ body {
     width:100%;
     font-size:13px;
     background:#000000;
+  
+}
+.vtop.home{
     opacity: 0.6;
-    filter: alpha(opacity=60); 
+    filter: alpha(opacity=60);
 }
 .vtop .logo{
     padding:30px 0px;
@@ -331,10 +342,7 @@ body {
 }
 .gNav .quota{
     padding:0px 50px;
-    letter-spacing:1px;
-    font-family:"Georgia";
-    font-size:12px;
-    font-style:italic;
+
 }
 .gNav .reg-frm .form-control {
     margin-top:5px;
@@ -585,7 +593,7 @@ body {
 /*End Custom Selected*/
 
 /*Account*/
-.account, .about ,.contact,.your-bag ,.checkout,.checkout-preview {
+.account,.contact,.your-bag ,.checkout,.checkout-preview {
     margin-top: 10px;
     padding-top: 30px;
     border-top: 1px solid #fccfd4;
@@ -767,36 +775,24 @@ body {
 
 /*End Account*/
 /*About*/
-.about .about-content{
-    padding:35px 0px;
-    width: 60%;
-    margin: 0 auto;
-    font-weight:bold;
-}
-.about .about-img{
-    padding-bottom:48px;
-    border-bottom:2px solid #000000;
-}
-.about .about-title{
-    padding-top:40px;
-}
-.contact-follow{
-    position:relative;
-    margin-top:7px;
-}
-.contact-follow .t-nav.fb-nav {
-  background: url(../Images/icon-fb-grey.png) no-repeat;
-
-}
-.contact-follow .t-nav.it-nav {
-  background: url(../Images/icon-insta-grey.png) no-repeat;
-}
-.contact-follow .t-nav {
-  padding:13px;
-  text-indent: -9999px;
-  color: rgba(255,255,255,0);
-  margin: 0 0 10px 5px;
-}
+    .about{
+        padding-top:25px;
+        color:#ffffff;
+         font-family: 'AvenirLTStd-Medium';
+    }
+    .about-box{
+        margin-bottom:65px;
+    }
+    .about-content{
+        font-size:14px;
+        text-align:justify;
+    }
+    .about-line{
+        border-bottom:1px solid #ccc;
+    }
+    .about-quote{
+        padding-top:20px;
+    }
 /*End About*/
 /*Payment*/
 .payment-box{

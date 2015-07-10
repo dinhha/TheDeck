@@ -31,6 +31,7 @@ namespace Guline.Web.One
                 // "~/Module/humanize-duration/humanize-duration.js",
                                "~/Module/selected/js/selecter.js",
                                "~/Module/easyfb/easyfb.js",
+                               "~/Module/angular-google-maps/angular-google-maps.js",
                                   "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/app.js"
             ));
             bundles.Add(new StyleBundle("~/Module/basecss.css").Include(
