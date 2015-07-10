@@ -256,12 +256,15 @@
     <Content Include="AppTheDeck\gNav.html" />
     <Content Include="AppTheDeck\langs\en-us.txt" />
     <Content Include="AppTheDeck\langs\vi-vn.txt" />
+    <Content Include="AppTheDeck\views\contactus\contact.html" />
     <Content Include="AppTheDeck\views\location\location.html" />
     <Content Include="AppTheDeck\views\ourstory\about.html" />
     <Content Include="AppTheDeck\views\home\home.html" />
     <Content Include="AppTheDeck\views\home\index.html" />
     <Content Include="AppTheDeck\views\object\content.html" />
     <Content Include="AppTheDeck\views\object\typecontent.html" />
+    <Content Include="AppTheDeck\views\photo\photo.html" />
+    <Content Include="AppTheDeck\views\thedeckbar\thedeckbar.html" />
     <Content Include="AppTheDeck\vTop.html" />
     <Content Include="AppShop\app.js" />
     <Content Include="AppShop\css\custom-bootstrap.css" />
@@ -1284,6 +1287,7 @@
     <Content Include="fonts\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\background.jpg" />
+    <Content Include="Images\contact_bg.jpg" />
     <Content Include="Images\icon-email.png" />
     <Content Include="Images\icon-facebook.png" />
     <Content Include="Images\icon-twiter.png" />
@@ -2659,14 +2663,12 @@
     <Content Include="Views\Emails\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppTheDeck\views\contactus\" />
     <Folder Include="AppTheDeck\views\event\" />
     <Folder Include="AppTheDeck\views\gallery\" />
     <Folder Include="AppTheDeck\views\giftcard\" />
     <Folder Include="AppTheDeck\views\martinclub\" />
     <Folder Include="AppTheDeck\views\menu\" />
     <Folder Include="AppTheDeck\views\reservation\" />
-    <Folder Include="AppTheDeck\views\thedeckbar\" />
     <Folder Include="App_Admin\services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />

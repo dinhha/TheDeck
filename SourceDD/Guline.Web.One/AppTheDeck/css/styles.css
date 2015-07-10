@@ -165,7 +165,6 @@ body {
 
     position: relative;
     width: 100%;
-
     background-color: #000;
     left: 0;
     top: 0;
@@ -188,6 +187,13 @@ body {
 .quota-author{
      font-family:"Georgia";
          font-size:12px;
+}
+.comming-soon{
+    padding-top:50px;
+    color:white;
+    font-family: 'AvenirLTStd-Black';
+    font-size:32px;
+    letter-spacing:5px;
 }
 .container{
     padding:0;
@@ -593,7 +599,7 @@ body {
 /*End Custom Selected*/
 
 /*Account*/
-.account,.contact,.your-bag ,.checkout,.checkout-preview {
+.account,.your-bag ,.checkout,.checkout-preview {
     margin-top: 10px;
     padding-top: 30px;
     border-top: 1px solid #fccfd4;
@@ -794,6 +800,18 @@ body {
         padding-top:20px;
     }
 /*End About*/
+/*The Deck Bar*/
+.thedeckbar{
+    background:#000000;
+    min-height:500px;
+}
+ 
+/*End The Deck Bar*/
+/*Contact Us*/
+.contact{
+    padding-top:50px;
+}
+/*En Contact*/
 /*Payment*/
 .payment-box{
     padding-bottom:40px;
