@@ -118,9 +118,6 @@ app.run(['$rootScope', '$state', '$stateParams',
                     templateUrl: _gconfig.baseAppResouceUrl + "/gMain.html"
                    , controller: ['$scope', '$state', '$http',
                      function ($scope, $state, $http) {
-                         $scope.getMainClass = function () {
-                             return $state.current.name == 'main.home.index' ? 'homepage' : "";
-                         }
                      }]
                 }//end vMain
             }
@@ -149,11 +146,37 @@ app.run(['$rootScope', '$state', '$stateParams',
                      function ($scope, $state, $http, appconfig) {
                          //$scope.menu = appconfig.menus[0].Childrens;
                          $scope.appconfig = appconfig.config;
-                         $scope.activeNav = function (state) {
-                             return state == $state.current.name ? "active" : "";
-                         }
+                        
                      }]
 
+                },
+                "vNav": {
+                    templateUrl: _gconfig.baseAppResouceUrl + "/gNav.html"
+                  , controller: ['$scope', '$state', '$http', 'appconfig',
+                    function ($scope, $state, $http, appconfig) {
+                        $scope.appconfig = appconfig.config;
+                        var defaultText = "<strong class='nav-text'> ALL ITEMS </strong>";
+                        $scope.defaultText = defaultText;
+                        $scope.cat_text = defaultText;
+                        var isSubPage = false;
+                        $scope.showtext = function (value, name) {
+                            $("." + name).addClass('active');
+                            if (isSubPage) return;
+                            $scope.cat_text = "<strong class='nav-text'>" + value + "</strong>";
+                        }
+                        $scope.defauttext = function (value) {
+                            $("." + value).removeClass('active');
+                            if (isSubPage) return;
+                            $scope.cat_text = "<strong class='nav-text'>"+$scope.defaultText+" </strong>";
+                        }
+                        $scope.$on("change_nav", function (e, args) {
+                            $scope.defaultText = args[1]
+                            $scope.cat_text = args[1];
+                            if (args[0] == false) {
+                                isSubPage = true;
+                            }
+                        });
+                    }]
                 },
                 "vBottom": {
                     templateUrl: _gconfig.baseAppResouceUrl + "/gBottom.html"
@@ -184,50 +207,23 @@ app.run(['$rootScope', '$state', '$stateParams',
                     templateUrl: _gconfig.baseAppResouceUrl + "/views/home/home.html"
                    , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig',
                      function ($scope, $rootScope, $state, $http, appconfig) {
+                         $rootScope.$broadcast("change_nav", [true, "<strong class='nav-text'> ALL ITEMS </strong>"]);
                          $scope.appconfig = appconfig.config;
-                         jQuery(function () {
-                             init();
-                         });
-                         function init() {
-                             var tl = new TimelineMax();
-                             tl.from('.vtop', .4, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
-                             tl.from('.gNav', .4, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
-                             tl.from('.vtop .logo', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             tl.from('.vtop .sub-nav', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             tl.from('.vtop .main-nav', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             tl.from('.home-content', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             //tl.staggerFromTo(".nav-footer .container", .6, { autoAlpha: 0, rotationY: 90 }, { autoAlpha: 1, rotationY: 0, force3D: true, ease: Power3.easeOut }, "-=.10")
-                             //.from('.next.paging, .prev.paging', .1, { autoAlpha: 0, ease: Back.easeOut }, '-=2');
-                         }
+                         getData();
+                         function getData() {
+                             $http.get(_gconfig.baseWebUrl + '/api/Object/GetListChildObjectData?objectname=Product').
+                               success(function (res, status, headers, config) {
+                                       if (res.success) {
+                                           $scope.product = res.data;
+                                           console.log($scope.product);
+                                       }
+                                       else {
+                                           $scope.msg = response.msg;
+                                       }
+
+                               });
+                         }//end getdata()
                      }]
-                },
-                "vNav": {
-                    templateUrl: _gconfig.baseAppResouceUrl + "/gNav.html"
-                  , controller: ['$scope', '$state', '$http', 'appconfig',
-                    function ($scope, $state, $http, appconfig) {
-                        $scope.appconfig = appconfig.config;
-                        var defaultText = "<strong class='nav-text'> ALL ITEMS </strong>";
-                        $scope.defaultText = defaultText;
-                        $scope.cat_text = defaultText;
-                        var isSubPage = false;
-                        $scope.showtext = function (value, name) {
-                            $("." + name).addClass('active');
-                            if (isSubPage) return;
-                            $scope.cat_text = "<strong class='nav-text'>" + value + "</strong>";
-                        }
-                        $scope.defauttext = function (value) {
-                            $("." + value).removeClass('active');
-                            if (isSubPage) return;
-                            $scope.cat_text = "<strong class='nav-text'>" + $scope.defaultText + " </strong>";
-                        }
-                        $scope.$on("change_nav", function (e, args) {
-                            $scope.defaultText = args[1]
-                            $scope.cat_text = args[1];
-                            if (args[0] == false) {
-                                isSubPage = true;
-                            }
-                        });
-                    }]
                 }
             }
         })
@@ -245,13 +241,16 @@ app.run(['$rootScope', '$state', '$stateParams',
                          $scope.CatName = $state.params.catName;
                          $scope.appconfig = appconfig.config;
                          $rootScope.$broadcast("change_nav", [true, "<strong class='nav-text'>" + $scope.CatName + " </strong>"]);
-                         $scope.loadsize = function (value) {
+                         $scope.loadsize=function(value)
+                         {
                              var size = $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null && f.Color == value });
-                             if (size.length > 0) {
+                             if (size.length > 0)
+                                 {
 
                                  $scope.selectsize = size[0].Size;
                              }
-                             else {
+                             else
+                             {
                                  $scope.selectsize = "";
                              }
 
@@ -274,29 +273,29 @@ app.run(['$rootScope', '$state', '$stateParams',
                                 .success(function (response) {
                                     console.log(response);
                                     if (response.success) {
-
+                                        
                                         $scope.obj = response.data;
                                         $scope.selectcolor = [];
-                                        //$scope.obj.inCart = $scope.checkincart($scope.obj.ID);
-                                        $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null }).forEach(function (f) {
-                                            $scope.selectcolor.push(f.Color);
-                                        });
-                                        $state.current.data.title = $scope.obj.Title;
-                                        $("html, body").animate({
-                                            scrollTop: $('.breadcrumb').offset().top
-                                        }, 1000);
-                                        if (response.data.PageChildrens != null) {
-                                            $scope.gupagination = { totalitems: response.data.PageChildrens.TotalItems, itemperpage: response.data.PageChildrens.ItemsPerPage, page: response.data.PageChildrens.CurrentPage, maxsize: 5 };
-                                        }
-                                    }
-                                    else {
-                                        $scope.msg = response.msg;
-                                    }
-                                }).error(function (data, status, headers, config) {
+                              //$scope.obj.inCart = $scope.checkincart($scope.obj.ID);
+                              $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null }).forEach(function (f) {
+                                  $scope.selectcolor.push(f.Color);
+                              });
+                              $state.current.data.title = $scope.obj.Title;
+                              $("html, body").animate({
+                                  scrollTop: $('.breadcrumb').offset().top
+                              }, 1000);
+                              if (response.data.PageChildrens != null) {
+                                  $scope.gupagination = { totalitems: response.data.PageChildrens.TotalItems, itemperpage: response.data.PageChildrens.ItemsPerPage, page: response.data.PageChildrens.CurrentPage, maxsize: 5 };
+                              }
+                          }
+                          else {
+                              $scope.msg = response.msg;
+                          }
+                      }).error(function (data, status, headers, config) {
 
-                                    $scope.msg = data;
+                          $scope.msg = data;
 
-                                });
+                      });
                          }//end getdata
                      }]
                 }
@@ -318,37 +317,41 @@ app.run(['$rootScope', '$state', '$stateParams',
                      $scope.orderactive = false;
                      $scope.changepass = false;
                      $scope.accountinfo = {
-                         name: 'Jason Nguyen',
+                         name:'Jason Nguyen',
                          gender: "Nu",
                          email: 'jason.nguyen@gmail.com',
                          phone: '0982357990',
                          address: '123 Nguyen Cong Tru',
                          city: 'Ho Chi Minh',
-                         district: '1'
+                         district :'1'
                      };
                      $scope.acountorder = {
-                         Count: 0
+                         Count:0
                      };
-                     $scope.activeli = function (value) {
+                     $scope.activeli=function(value)
+                     {
                          if (value == 'account') {
                              $scope.accountactive = true;
                              $scope.infoactive = false;
                              $scope.orderactive = false;
                          }
-                         else if (value == 'info') {
+                         else if (value == 'info')
+                         {
                              $scope.accountactive = false;
                              $scope.infoactive = true;
                              $scope.orderactive = false;
                          }
-
-                         else {
+                           
+                         else
+                         {
                              $scope.accountactive = false;
                              $scope.infoactive = false;
                              $scope.orderactive = true;
                          }
                      }
                      $scope.show = false;
-                     $scope.showdetail = function () {
+                     $scope.showdetail=function()
+                     {
                          if ($scope.show)
                              $scope.show = false;
                          else
@@ -449,62 +452,67 @@ app.run(['$rootScope', '$state', '$stateParams',
                             $scope.selectedProvince = {};
                             $scope.user = {
                                 username: "",
-                                password: ""
+                                password:""
                             }
                             $scope.userRegister = {
                                 FullName: "",
-                                Password: "",
+                                Password:"",
                                 Gender: "Nam",
                                 Email: "",
                                 Phone: "",
                                 Address: "",
                                 Province: "",
-                                District: ""
+                                District:""
                             }
-                            $scope.loaddistrict = function (selectedProvince) {
+                            $scope.loaddistrict = function (selectedProvince)
+                            {
                                 $scope.selectedProvince = selectedProvince;
                                 getDistrict(selectedProvince.ID);
                             }
                             function getDistrict(value) {
                                 $http.get("api/object/GetListDistrict?ID=" + value)
                                    .success(function (response) {
-                                       $scope.districtlist = response.data;
+                                           $scope.districtlist = response.data;
                                    }).error(function (data, status, headers, config) {
 
                                        $scope.msg = data;
 
                                    });
                             }
-                            $scope.checkasgest = function () {
+                            $scope.checkasgest=function()
+                            {
                                 $scope.isgest = true;
                                 $scope.isregister = false;
                                 $("html, body").animate({
                                     scrollTop: $('.info-box').offset().top
                                 }, 1000);
                             }
-
-                            $scope.register = function () {
+                            
+                            $scope.register=function()
+                            {
                                 $scope.isregister = true;
                                 $scope.isgest = false;
                             }
-                            $scope.registeraccount = function () {
+                            $scope.registeraccount=function()
+                            {
                                 $scope.userRegister.Province = $scope.selectedProvince.Province;
                                 var data = $scope.userRegister;
                                 $http({
                                     method: "post",
                                     url: '/api/User/Register',
                                     data: data,
-                                }).success(function (data, status, headers, config) {
+                                }).success(function (data, status, headers, config) {   
                                     alert('dang ki thanh cong');
-                                    // this callback will be called asynchronously
-                                    // when the response is available
-                                }).
+                                      // this callback will be called asynchronously
+                                      // when the response is available
+                                  }).
                                   error(function (data, status, headers, config) {
                                       // called asynchronously if an error occurs
                                       // or server returns response with an error status.
                                   });
                             }
-                            $scope.logon = function () {
+                            $scope.logon=function()
+                            {
                                 var data = $scope.user;
                                 $http({
                                     method: "post",
@@ -539,22 +547,6 @@ app.run(['$rootScope', '$state', '$stateParams',
                     }
                 }
             })
-    .state('main.home.photo', {
-        url: '/photo',
-        ncyBreadcrumb: {
-            label: 'Photo gallery', parent: null
-        },
-        data: { title: "Photo gallery" },
-        views: {
-            'homeMain': {
-                templateUrl: _gconfig.baseAppResouceUrl + "/views/photo/photo.html",
-                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                function ($scope, $state, $http, appconfig, $timeout) {
-
-                }]
-            }
-        }
-    })
 
 });
 app.directive('gulzimage', function () {
