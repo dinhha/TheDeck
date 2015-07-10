@@ -365,22 +365,22 @@ app.run(['$rootScope', '$state', '$stateParams',
         data: { title: "Contact Us" },
         views: {
             "homeMain": {
-                templateUrl: _gconfig.baseAppResouceUrl + "/views/about/about.html"
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/contactus/contact.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
                  }]
             }
         }
     })
-    .state('main.home.payment', {
-        url: "/paymentmethod",
+    .state('main.home.thedeckbar', {
+        url: "/thedeckbar",
         ncyBreadcrumb: {
-            label: 'Payment Method', parent: null
+            label: 'The Deck Bar', parent: null
         },
-        data: { title: "Payment Method" },
+        data: { title: "The Deck Bar" },
         views: {
             "homeMain": {
-                templateUrl: _gconfig.baseAppResouceUrl + "/views/payment/paymentmethod.html"
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/thedeckbar/thedeckbar.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
                  }]
