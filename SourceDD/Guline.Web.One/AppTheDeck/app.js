@@ -533,7 +533,13 @@ app.run(['$rootScope', '$state', '$stateParams',
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/photo/photo.html",
                 controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                 function ($scope, $state, $http, appconfig, $timeout) {
-
+                    $(document).ready(function () {
+                        $('.pgwSlideshow').pgwSlideshow({
+                            transitionEffect: 'fading',
+                            autoSlide: true,
+                            intervalDuration: 5000
+                        });
+                    });
                 }]
             }
         }

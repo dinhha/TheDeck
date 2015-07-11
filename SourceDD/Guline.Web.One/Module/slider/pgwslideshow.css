@@ -1,0 +1,252 @@
+/**
+ * PgwSlideshow - Version 2.0
+ *
+ * Copyright 2014, Jonathan M. Piat
+ * http://pgwjs.com - http://pagawa.com
+ *
+ * Released under the GNU GPLv3 license - http://opensource.org/licenses/gpl-3.0
+ */
+.pgwSlideshow {
+    width: 100%;
+    margin-bottom: 35px;
+    display: none;
+}
+
+.pgwSlideshow a{
+    color: #fff;
+}
+
+.pgwSlideshow .ps-current {
+    text-align: center;
+    position: relative;
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.pgwSlideshow .ps-current > ul  > li {
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    display: block;
+}
+
+.pgwSlideshow .ps-current > ul  > li img {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
+
+.pgwSlideshow .ps-caption {
+    background: rgba(0, 0, 0, 0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";
+    text-align: left;
+    font-size: 1rem;
+    color: #fff;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 10px;
+    display: none;
+}
+
+.pgwSlideshow .ps-caption span {
+    padding: 7px;
+    display: inline-block;
+}
+
+.pgwSlideshow .ps-list {
+    overflow: hidden;
+    position: relative;
+    margin:0 auto;
+}
+
+.pgwSlideshow .ps-list ul {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    left: 0;
+}
+
+.pgwSlideshow .ps-list li {
+    float: left;
+}
+
+.pgwSlideshow .ps-list li .ps-item {
+    display: block;
+    margin: 18px 9px;
+    opacity: 0.25;
+    filter: alpha(opacity=60);
+    transition: opacity 0.2s;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+}
+
+.pgwSlideshow .ps-list li .ps-item:hover{
+    opacity: 0.8;
+}
+
+.pgwSlideshow .ps-list li img {
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
+.pgwSlideshow .ps-list li .ps-item.ps-selected {
+    float: left;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.pgwSlideshow .ps-prevIcon {
+    /*border-color:transparent #fff transparent;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;*/
+    background: url('../../Images/arrow_l.png');
+    width: 64px;
+    height: 110px;
+    display: block;
+}
+.pgwSlideshow .ps-current .ps-prevIcon:hover {
+        background: url('../../Images/arrow_l_hover.png')
+}
+
+.pgwSlideshow .ps-nextIcon {
+    /*border-color:transparent #fff transparent;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;*/
+    background: url('../../Images/arrow_r.png');
+    width: 64px;
+    height: 110px;
+    display: block;
+}
+.pgwSlideshow .ps-current .ps-nextIcon:hover {
+    background: url('../../Images/arrow_r_hover.png')
+}
+
+.pgwSlideshow .ps-prevIcon, .pgwSlideshow .ps-nextIcon{
+    transition: background-image 0.1s;
+    -webkit-transition: background-image 0.1s;
+    -moz-transition: background-image 0.1s;
+    -o-transition: background-image 0.1s;
+}
+
+.pgwSlideshow .ps-current .ps-prev {
+    /*background: rgba(0, 0, 0, 0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";
+    border: 1px solid #777;
+    border-left: 0;
+    border-radius: 0 4px 4px 0;*/
+    position: absolute;
+    left: 82px;
+    top: 39%;
+    cursor: pointer;
+}
+
+.pgwSlideshow .ps-current .ps-next {
+    /*background: rgba(0, 0, 0, 0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";
+    border: 1px solid #777;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;*/
+    position: absolute;
+    right: 82px;
+    top: 39%;
+    cursor: pointer;
+}
+
+.pgwSlideshow .ps-list .ps-prev, .pgwSlideshow .ps-list .ps-next {
+    cursor: pointer;
+    position: absolute;
+    top: 55px;
+    z-index: 3;
+    display: none;
+}
+.pgwSlideshow .ps-list .ps-prev{
+    left:0;
+}
+.pgwSlideshow .ps-list .ps-next{
+    right:0;
+}
+
+.pgwSlideshow .ps-list .ps-prev .ps-prevIcon, .pgwSlideshow .ps-list .ps-next .ps-nextIcon{
+    width:48px;
+    height:82px;
+    background-size: 48px 82px;
+}
+
+/*
+ * The media-queries are not used because IE8 doesn't support them.
+ */
+.pgwSlideshow.narrow .ps-list li img {
+    width: 60px;
+    height: 60px;
+}
+
+.pgwSlideshow.narrow .ps-current .ps-prev {
+    padding: 15px 15px 15px 12px;
+    top: 40%;
+}
+
+.pgwSlideshow.narrow .ps-current .ps-next {
+    padding: 15px 12px 15px 15px;
+    top: 40%;
+}
+
+.pgwSlideshow.narrow .ps-list .ps-prev {
+    padding: 15px 12px 15px 10px;
+    top: 20px;
+}
+
+.pgwSlideshow.narrow .ps-list .ps-next {
+    padding: 15px 10px 15px 12px;
+    top: 20px;
+}
+
+.pgwSlideshow.narrow .ps-caption {
+    font-size: 0.8rem;
+    padding: 8px;
+}
+.pgwSlideshow ul{
+    padding: 0!important;
+}
+
+.pgwSlideshow .ps-prev, .pgwSlideshow .ps-next{
+    opacity:0;    
+    z-index:3;
+    transition: opacity 0.1s;
+    -webkit-transition: opacity 0.1s;
+    -moz-transition: opacity 0.1s;
+    -o-transition: opacity 0.1s;
+}
+
+.pgwSlideshow .ps-current:hover .ps-prev, .pgwSlideshow .ps-current:hover .ps-next,
+.pgwSlideshow .ps-list:hover .ps-prev, .pgwSlideshow .ps-list:hover .ps-next{
+    opacity: 1;
+}
+
+@media all and (max-width: 800px){
+    .pgwSlideshow .ps-current .ps-prev, .pgwSlideshow .ps-current .ps-next{
+        display:none!important;
+    }
+}
+@media all and (max-width: 480px){
+    .pgwSlideshow .ps-list .ps-prev, .pgwSlideshow .ps-list .ps-next,
+    .pgwSlideshow.narrow .ps-list .ps-next,.pgwSlideshow.narrow .ps-list .ps-prev{
+        width:24px;
+        height:40px;
+        padding:0;
+        top: 30px;
+    }
+    .pgwSlideshow .ps-list .ps-prev .ps-prevIcon, .pgwSlideshow .ps-list .ps-next .ps-nextIcon{
+        width:24px;
+        height:40px;
+        background-size: 24px 40px;
+    }
+}

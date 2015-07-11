@@ -1287,6 +1287,10 @@
     <Content Include="fonts\preview.html" />
     <Content Include="fonts\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\arrow_l.png" />
+    <Content Include="Images\arrow_l_hover.png" />
+    <Content Include="Images\arrow_r.png" />
+    <Content Include="Images\arrow_r_hover.png" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\contact_bg.jpg" />
     <Content Include="Images\icon-email.png" />
@@ -2609,6 +2613,8 @@
     <Content Include="Module\selected\js\jquery.fs.selecter.min.css" />
     <Content Include="Module\selected\js\jquery.fs.selecter.min.js" />
     <Content Include="Module\selected\js\selecter.js" />
+    <Content Include="Module\slider\pgwslideshow.css" />
+    <Content Include="Module\slider\pgwslideshow.js" />
     <Content Include="Module\snap\angular-snap.min.css" />
     <Content Include="Module\snap\angular-snap.min.js" />
     <Content Include="Module\snap\snap.min.js" />

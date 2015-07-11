@@ -1,0 +1,7 @@
+*.dll
+SourceDD/packages/*
+SourceDD/packages/*/*
+SourceDD/packages/*/*/*
+SourceDD/packages/*/*/*/*
+SourceDD/packages/*/*/*/*/*
+SourceDD/Guline.Web.One/obj/*
