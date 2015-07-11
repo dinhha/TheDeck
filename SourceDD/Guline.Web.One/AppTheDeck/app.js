@@ -544,6 +544,22 @@ app.run(['$rootScope', '$state', '$stateParams',
             }
         }
     })
+    .state('main.home.martini_club', {
+        url: '/martini-club',
+        ncyBreadcrumb: {
+            label: 'Martini Club', parent: null
+        },
+        data: { title: "Martini Club" },
+        views: {
+            'homeMain': {
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/martiniclub/martiniclub.html",
+                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
+                function ($scope, $state, $http, appconfig, $timeout) {
+                    
+                }]
+            }
+        }
+    })
 
 });
 app.directive('gulzimage', function () {

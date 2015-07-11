@@ -259,6 +259,7 @@
     <Content Include="AppTheDeck\langs\vi-vn.txt" />
     <Content Include="AppTheDeck\views\contactus\contact.html" />
     <Content Include="AppTheDeck\views\location\location.html" />
+    <Content Include="AppTheDeck\views\martiniclub\martiniclub.html" />
     <Content Include="AppTheDeck\views\ourstory\about.html" />
     <Content Include="AppTheDeck\views\home\home.html" />
     <Content Include="AppTheDeck\views\home\index.html" />
@@ -1298,6 +1299,8 @@
     <Content Include="Images\icon-twiter.png" />
     <Content Include="Images\line_home.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\martini1.png" />
+    <Content Include="Images\martini2.png" />
     <Content Include="Images\ourstory_bg.jpg" />
     <Content Include="Models\Generated\PetaPoco.Generator.ttinclude" />
     <Content Include="Models\Generated\PetaPoco.Core.ttinclude" />
@@ -2673,7 +2676,6 @@
     <Folder Include="AppTheDeck\views\event\" />
     <Folder Include="AppTheDeck\views\gallery\" />
     <Folder Include="AppTheDeck\views\giftcard\" />
-    <Folder Include="AppTheDeck\views\martinclub\" />
     <Folder Include="AppTheDeck\views\menu\" />
     <Folder Include="AppTheDeck\views\reservation\" />
     <Folder Include="App_Admin\services\" />
