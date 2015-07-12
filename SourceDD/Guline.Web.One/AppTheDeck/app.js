@@ -182,12 +182,10 @@ app.run(['$rootScope', '$state', '$stateParams',
             views: {
                 "homeMain": {
                     templateUrl: _gconfig.baseAppResouceUrl + "/views/home/home.html"
-                   , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig',
-                     function ($scope, $rootScope, $state, $http, appconfig) {
-                         $scope.appconfig = appconfig.config;
-                         jQuery(function () {
-                             init();
-                         });
+                   , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', '$timeout',
+                     function ($scope, $rootScope, $state, $http, appconfig, $timeout) {
+                         $scope.appconfig = appconfig.config;                         
+                         $timeout(init);
                          function init() {
                              $('.vtop').addClass('home');
                              var tl = new TimelineMax();
@@ -196,8 +194,13 @@ app.run(['$rootScope', '$state', '$stateParams',
                              tl.from('.vtop .logo', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
                              tl.from('.vtop .sub-nav', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
                              tl.from('.vtop .main-nav', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             tl.from('.home-content', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             //tl.staggerFromTo(".nav-footer .container", .6, { autoAlpha: 0, rotationY: 90 }, { autoAlpha: 1, rotationY: 0, force3D: true, ease: Power3.easeOut }, "-=.10")
+                             tl.from('.home-content p', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
+                             tl.from('.home-content h2', .4, { autoAlpha: 0, y: 0, ease: Back.easeIn });
+                             tl.from('.home-content .btn-home', 1, { autoAlpha: 0, y: 0, ease: Back.easeIn });
+                             tl.from('.gNav .info', .4, { autoAlpha: 0, y: -50, ease: Back.easeOut })
+                             tl.from('.gNav .cbp-qtcontent', .4, { autoAlpha: 0, y: -100, ease: Back.easeOut })
+                             tl.from('.gNav .reg-frm', .4, { autoAlpha: 0, x: 100, ease: Back.easeOut })
+                             tl.staggerFromTo(".nav-footer .container", .6, { autoAlpha: 0, rotationY: 90 }, { autoAlpha: 1, rotationY: 0, force3D: true, ease: Power3.easeOut }, "-=.10")
                              //.from('.next.paging, .prev.paging', .1, { autoAlpha: 0, ease: Back.easeOut }, '-=2');
                          }
                      }]
@@ -530,7 +533,29 @@ app.run(['$rootScope', '$state', '$stateParams',
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/photo/photo.html",
                 controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                 function ($scope, $state, $http, appconfig, $timeout) {
-
+                    $(document).ready(function () {
+                        $('.pgwSlideshow').pgwSlideshow({
+                            transitionEffect: 'fading',
+                            autoSlide: true,
+                            intervalDuration: 5000
+                        });
+                    });
+                }]
+            }
+        }
+    })
+    .state('main.home.martini_club', {
+        url: '/martini-club',
+        ncyBreadcrumb: {
+            label: 'Martini Club', parent: null
+        },
+        data: { title: "Martini Club" },
+        views: {
+            'homeMain': {
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/martiniclub/martiniclub.html",
+                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
+                function ($scope, $state, $http, appconfig, $timeout) {
+                    
                 }]
             }
         }

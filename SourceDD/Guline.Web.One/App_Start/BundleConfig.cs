@@ -32,6 +32,7 @@ namespace Guline.Web.One
                                "~/Module/selected/js/selecter.js",
                                "~/Module/easyfb/easyfb.js",
                                "~/Module/angular-google-maps/angular-google-maps.js",
+                               "~/Module/slider/pgwslideshow.js",
                                   "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/app.js"
             ));
             bundles.Add(new StyleBundle("~/Module/basecss.css").Include(
@@ -39,6 +40,7 @@ namespace Guline.Web.One
                       "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/css/custom-bootstrap.css",
                       "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/css/styles.css",
                       "~/Module/fa/css/font-awesome.min.css",
+                        "~/Module/slider/pgwslideshow.css",
                       "~/Module/ng-loadingbar/loading-bar.css"));
 
 

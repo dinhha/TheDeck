@@ -219,7 +219,7 @@ body {
     background:#000000;
   
 }
-.vtop.home{
+.homepage .vtop{
     opacity: 0.6;
     filter: alpha(opacity=60);
 }
@@ -438,6 +438,7 @@ body {
     bottom: 0;
     width: 100%;
     letter-spacing:2px;
+    z-index:5;
 }
 .nav-footer img{
     margin-bottom:5px;
@@ -1042,3 +1043,24 @@ body {
     border-bottom:1px solid #ccc;
 }
 /*End Bag*/
+/*Martini Club*/
+.martini-club{
+    padding:25px 25px 0;
+    color:#ffffff;
+    font-family: 'AvenirLTStd-Medium';
+}
+.martini-box{
+    margin-bottom: 65px;
+}
+.ddeck-form input,.ddeck-form button{
+    border-radius: 0;
+}
+.ddeck-form input{
+    height:30px;
+}
+.ddeck-form .btn.btn-default{
+    background-color:#444;
+    color: #fff;
+    border:none;
+    padding: 12px;
+}
