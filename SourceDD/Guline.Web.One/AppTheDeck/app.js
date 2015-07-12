@@ -194,14 +194,34 @@ app.run(['$rootScope', '$state', '$stateParams',
                              tl.from('.vtop .logo', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
                              tl.from('.vtop .sub-nav', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
                              tl.from('.vtop .main-nav', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             tl.from('.home-content p', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             tl.from('.home-content h2', .4, { autoAlpha: 0, y: 0, ease: Back.easeIn });
-                             tl.from('.home-content .btn-home', 1, { autoAlpha: 0, y: 0, ease: Back.easeIn });
-                             tl.from('.gNav .info', .4, { autoAlpha: 0, y: -50, ease: Back.easeOut })
-                             tl.from('.gNav .cbp-qtcontent', .4, { autoAlpha: 0, y: -100, ease: Back.easeOut })
-                             tl.from('.gNav .reg-frm', .4, { autoAlpha: 0, x: 100, ease: Back.easeOut })
-                             tl.staggerFromTo(".nav-footer .container", .6, { autoAlpha: 0, rotationY: 90 }, { autoAlpha: 1, rotationY: 0, force3D: true, ease: Power3.easeOut }, "-=.10")
-                             //.from('.next.paging, .prev.paging', .1, { autoAlpha: 0, ease: Back.easeOut }, '-=2');
+                             tl.from('.home-content', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
+
+
+                             var delayTransition = 5000;
+                             var slides = $('#slider_home img');
+                             var slideBtns = $('#slider_button span');
+                             var current = 0;
+                             var interVal = setInterval(setSlide, delayTransition);
+
+                             $('#slider_button span').on('click', function () {
+                                 if (!$(this).is('.current')) {
+                                     clearInterval(interVal);
+                                     setSlide(slideBtns.index($(this)));
+                                     interVal = setInterval(setSlide, delayTransition);
+                                 }
+                             });
+                             
+                             function setSlide(to) {
+                                 if (to == null) {
+                                     to = (current == slides.length - 1 ? 0 : current+1);
+                                 }
+
+                                 TweenMax.to(slides.eq(current), .4, { autoAlpha: 0, ease: Power0.easeOut });
+                                 TweenMax.fromTo(slides.eq(to), .2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
+                                 slideBtns.eq(current).removeClass('current');
+                                 slideBtns.eq(to).addClass('current');
+                                 current = to;
+                             }
                          }
                      }]
                 },
