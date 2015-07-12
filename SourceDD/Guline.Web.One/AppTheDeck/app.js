@@ -187,7 +187,6 @@ app.run(['$rootScope', '$state', '$stateParams',
                          $scope.appconfig = appconfig.config;                         
                          $timeout(init);
                          function init() {
-                             $('.vtop').addClass('home');
                              var tl = new TimelineMax();
                              tl.from('.vtop', .4, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
                              tl.from('.gNav', .4, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
@@ -407,17 +406,65 @@ app.run(['$rootScope', '$state', '$stateParams',
             }
         }
     })
-    .state('main.home.job', {
-        url: "/jobs",
+    .state('main.home.location', {
+        url: "/location",
         ncyBreadcrumb: {
             label: 'Jobs', parent: null
         },
         data: { title: "Jobs" },
         views: {
             "homeMain": {
-                templateUrl: _gconfig.baseAppResouceUrl + "/views/job/job.html"
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/location/location.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
+                     initialize();
+                     function initialize() {
+                         var myLatlng = new google.maps.LatLng(10.806738, 106.744477);
+                         var mapOptions = {
+                             center: myLatlng,
+                             zoom: 17,
+                             mapTypeId: google.maps.MapTypeId.HYBRID
+                         };
+                         var map = new google.maps.Map(document.getElementById('map-canvas'),
+                             mapOptions);
+                         var marker = new google.maps.Marker({
+                             position: myLatlng,
+                             animation: google.maps.Animation.DROP,
+                             map: map,
+                             title: 'The Deck Sai Gon'
+                         });
+                         var contentString = '<div id="content">' +
+                                 '<img src="../../../Images/dedeckMap.png"></div>';
+
+                         var infowindow = new google.maps.InfoWindow({
+                             content: contentString
+                         });
+                         google.maps.event.addListener(infowindow, 'domready', function () {
+
+                             // Reference to the DIV which receives the contents of the infowindow using jQuery
+                             var iwOuter = $('.gm-style-iw');
+
+                             /* The DIV we want to change is above the .gm-style-iw DIV.
+                              * So, we use jQuery and create a iwBackground variable,
+                              * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+                              */
+                             var iwBackground = iwOuter.prev();
+
+                             // Remove the background shadow DIV
+                             iwBackground.children(':nth-child(2)').css({ 'display': 'none' });
+
+                             // Remove the white background DIV
+                             iwBackground.children(':nth-child(4)').css({ 'display': 'none' });
+                             iwOuter.parent().parent().css({ top: '50px' });
+                             iwBackground.children(':nth-child(3)').attr('style', function (i, s) { return s + 'display: none !important;' });
+
+                         });
+                         google.maps.event.addListener(marker, 'click', function () {
+
+                             infowindow.open(map, marker);
+
+                         });
+                     }
                  }]
             }
         }

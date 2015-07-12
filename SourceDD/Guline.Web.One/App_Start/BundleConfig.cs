@@ -22,8 +22,7 @@ namespace Guline.Web.One
                                , "~/Module/ng/angular-animate.min.js"
                                , "~/Module/ng-loadingbar/loading-bar.js"
                                , "~/Module/ui-breadcrumb/angular-breadcrumb.min.js"
-                //, "~/Module/ngui-bootstrap/ngui-bootstrap-tpls.min.js",
-                            
+                //, "~/Module/ngui-bootstrap/ngui-bootstrap-tpls.min.js",                         
                                 , "~/Module/ngui-bootstrap/ui-bootstrap-tpls-0.13.0.js",
                                "~/Module/ngui-route/ngui-route.js",
                 // "~/Module/momentjs/min/moment.min.js",
@@ -31,7 +30,7 @@ namespace Guline.Web.One
                 // "~/Module/humanize-duration/humanize-duration.js",
                                "~/Module/selected/js/selecter.js",
                                "~/Module/easyfb/easyfb.js",
-                               "~/Module/angular-google-maps/angular-google-maps.js",
+                               "~/Module/angular-google-maps/hvgMap.angular.ui.js",
                                "~/Module/slider/pgwslideshow.js",
                                   "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/app.js"
             ));
