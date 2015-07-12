@@ -121,6 +121,9 @@
 .m-top-10 {
     margin-top: 10px !important;
 }
+.m-top-20 {
+    margin-top: 20px !important;
+}
 .m-left-10{
     margin-left: 10px !important;
 }
@@ -151,12 +154,20 @@
     letter-spacing:5px;
 }
 strong{
-    font-family: 'BrandonGrotesque-Bold'; 
+    font-family: 'AvenirLTStd-Black';
 }
 body {
     font-family: 'brandon_grotesque_regularRg';
     font-size: 14px;
 }
+.main-title{
+    font-family: 'AvenirLTStd-Black';
+    font-size:24px;
+    text-transform:uppercase;
+    color:white;
+    letter-spacing:2px;
+}
+
 #page{
     position: relative;
     overflow: hidden;
@@ -810,6 +821,27 @@ body {
 /*Contact Us*/
 .contact{
     padding-top:50px;
+    color:white;
+}
+.contact-content{
+    font-size:12px;
+      font-family: 'AvenirLTStd-Medium';
+      margin-bottom:100px;
+}
+.contact form{
+    font-size:14px;
+}
+.contact .btn-submit{
+  font-size:18px;
+  letter-spacing:5px;
+  color:white;
+}
+.contact .box-submit{
+      background-color: #444444;
+      padding:10px;
+}
+.contact .form-control {
+    border-radius:inherit;
 }
 /*En Contact*/
 /*Payment*/

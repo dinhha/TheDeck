@@ -6,8 +6,8 @@
         <div class="col-md-offset-2 contact-box col-md-10">
             <p class="main-title">Contact us</p>
 
-            <div class="col-md-12 p-left-0 p-right-0 about-content">
-                <div class="col-md-4">
+            <div class="col-md-12 p-left-0 p-right-0 contact-content">
+                <div class="col-md-4 p-left-0">
                     <p>
                         38 Nguyen U Di St., Thao Dien, An Phu
                         <br />
@@ -22,7 +22,33 @@
                 </div>
                 <div class="col-md-8">
                     <form>
+                        <div class="col-md-6 p-left-0">
+                            <p>Last name :*</p>
+                            <input type="text" class="form-control" ng-model="contact.LastName" />
+                        </div>
+                        <div class="col-md-6 p-right-0">
+                            <p>First name :*</p>
+                            <input type="text" class="form-control" ng-model="contact.FirstName" />
+                        </div>
+                        <div class="col-md-6 p-left-0">
+                            <p>Email :*</p>
+                            <input type="text" class="form-control" ng-model="contact.FirstName" />
+                        </div>
+                        <div class="col-md-6 p-right-0">
+                            <p>Mobile :*</p>
+                            <input type="text" class="form-control" ng-model="contact.FirstName" />
+                        </div>
+                        <div class="col-md-12 p-left-0 p-right-0">
+                            <p>Message :*</p>
+                            <textarea rows="5" style="height:150px;" ng-model="contact.Message" class="form-control">
 
+                            </textarea>
+                        </div>
+                        <a href="" ng-click="sendcontact()" class="btn-submit">
+                            <div class="col-md-12 p-left-0 p-right-0 m-top-20 text-center box-submit">
+                                SUBMIT
+                            </div>
+                        </a>
                     </form>
                 </div>
             </div>
