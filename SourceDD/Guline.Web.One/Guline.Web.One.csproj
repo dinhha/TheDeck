@@ -232,6 +232,7 @@
     <Compile Include="gModels\gObjectGroup.cs" />
     <Compile Include="gModels\gOrganize.cs" />
     <Compile Include="gModels\gPanelObject.cs" />
+    <Compile Include="gModels\GuMail.cs" />
     <Compile Include="gModels\GuSecurity.cs" />
     <Compile Include="gModels\LocationModel.cs" />
     <Compile Include="gModels\Receiver.cs" />
@@ -1322,6 +1323,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Module\angular-google-maps\angular-google-maps.js" />
+    <Content Include="Module\angular-google-maps\hvgMap.angular.ui.js" />
     <Content Include="Module\angular-material\.bower.json" />
     <Content Include="Module\angular-material\bower.json" />
     <Content Include="Module\angular-material\LICENSE" />
@@ -2674,7 +2676,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppTheDeck\views\event\" />
-    <Folder Include="AppTheDeck\views\gallery\" />
     <Folder Include="AppTheDeck\views\giftcard\" />
     <Folder Include="AppTheDeck\views\menu\" />
     <Folder Include="AppTheDeck\views\reservation\" />

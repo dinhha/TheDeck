@@ -845,6 +845,10 @@ body {
     border-radius:inherit;
 }
 /*En Contact*/
+/*Location*/
+#map-canvas { height: 615px; margin: 0; padding: 0;}
+/*End Location*/
+
 /*Payment*/
 .payment-box{
     padding-bottom:40px;
