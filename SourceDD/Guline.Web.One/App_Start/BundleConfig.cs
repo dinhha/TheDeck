@@ -33,6 +33,7 @@ namespace Guline.Web.One
                                "~/Module/easyfb/easyfb.js",
                                "~/Module/angular-google-maps/hvgMap.angular.ui.js",
                                "~/Module/slider/pgwslideshow.js",
+                               "~/Module/textrator/jquery.textrotator.js",
                                   "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/app.js"
             ));
             bundles.Add(new StyleBundle("~/Module/basecss.css").Include(

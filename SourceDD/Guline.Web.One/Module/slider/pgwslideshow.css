@@ -112,7 +112,7 @@
     display: block;
 }
 .pgwSlideshow .ps-current .ps-prevIcon:hover {
-        background: url('../../Images/arrow_l_hover.png')
+        background: url('../../Images/arrow_l.png')
 }
 
 .pgwSlideshow .ps-nextIcon {
@@ -125,7 +125,7 @@
     display: block;
 }
 .pgwSlideshow .ps-current .ps-nextIcon:hover {
-    background: url('../../Images/arrow_r_hover.png')
+    background: url('../../Images/arrow_r.png')
 }
 
 .pgwSlideshow .ps-prevIcon, .pgwSlideshow .ps-nextIcon{

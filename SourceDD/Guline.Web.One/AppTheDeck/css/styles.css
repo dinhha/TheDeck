@@ -27,12 +27,16 @@
 
 
 @font-face {
-    font-family: 'brandon_grotesqueRgIt';
-    src: url('/fonts/brandon_reg_it-webfont.eot');
-    src: url('/fonts/brandon_reg_it-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/brandon_reg_it-webfont.woff2') format('woff2'), url('/fonts/brandon_reg_it-webfont.woff') format('woff'), url('/fonts/brandon_reg_it-webfont.ttf') format('truetype'), url('/fonts/brandon_reg_it-webfont.svg#brandon_grotesqueRgIt') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'AvenirLTStd-Heavy';
+  src: url('/fonts/AvenirLTStd-Heavy.eot?#iefix') format('embedded-opentype'), 
+       url('/fonts/AvenirLTStd-Heavy.otf')  format('opentype'),
+	     url('/fonts/AvenirLTStd-Heavy.woff') format('woff'),
+       url('/fonts/AvenirLTStd-Heavy.ttf')  format('truetype'),
+       url('/fonts/AvenirLTStd-Heavy.svg#AvenirLTStd-Heavy') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
+
 /*Breacrumb*/
 .breadcrumb{
     background:none !important;
@@ -160,7 +164,7 @@ strong{
     font-family: 'AvenirLTStd-Black';
 }
 body {
-    font-family: 'brandon_grotesque_regularRg';
+    font-family: 'AvenirLTStd-Medium';
     font-size: 14px;
 }
 .main-title{
@@ -202,6 +206,10 @@ body {
      font-family:"Georgia";
          font-size:12px;
 }
+#quote_slider {
+  list-style: none;
+}
+#quote_slider li { display: none; }
 .comming-soon{
     padding-top:50px;
     color:white;
@@ -267,7 +275,8 @@ body {
     filter: alpha(opacity=60);
 }
 .vtop .logo{
-    padding:30px 0px;
+    padding-top:30px;
+    padding-bottom:30px;
 }
 .vtop a {
     color: #fff !important;
@@ -862,6 +871,54 @@ body {
 }
  
 /*End The Deck Bar*/
+/*Menu*/
+.main-banner{
+    position:relative;
+}
+.dowloadourmenu{
+    background:#000000;
+    letter-spacing:3px;
+    padding:30px 60px; 
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-176px;
+    margin-top:-100px;
+      opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+.menu{
+    color:#fff;
+    font-family:'AvenirLTStd-Medium';
+}
+.menu-box{
+    margin-bottom:50px;
+}
+.menu .title{
+    font-family: 'AvenirLTStd-Heavy';
+    text-transform:uppercase;
+    font-size:28px;
+}
+.menu-item{
+    display:table;
+    margin-bottom:40px;
+}
+.menu-item p {
+    font-size: 18px;
+    text-transform: uppercase;
+    padding-bottom:5px;
+    background: url(../Images/menu/menu_title_bg.jpg) right bottom repeat-x;
+}
+.menu-item-title{
+    padding-top:10px;
+    font-size:16px;
+}
+.menu .menu-item-des{
+    font-size:12px;
+    padding:0;
+    line-height:9px;
+}
+/*end Menu*/
 /*Contact Us*/
 .contact,.event{
     padding-top:50px;
@@ -1158,7 +1215,35 @@ body {
 }
 .reservation-box{
     margin-bottom: 65px;
+    border:2px solid #1c1c1c;
+    padding-bottom:20px;
+}
+.reservation-box ul.nav {
+    width:100%;
+}
+.reservation-box ul.nav li{
+    width:33.333333333333333%;
+}
+.reservation-box ul.nav li.active{
+    background:white;
+}
+.reservation-box ul.nav li.active a{
+    color:#000000;
+    border:none;
+}
+.reservation-box ul.nav li a{
+    color:#f3f3f4;
+    letter-spacing:1px;
+}
+.reservation-box ul.nav li{
+    border:3px solid #ffffff;
 }
 .reservation-box .ddeck-form{
     margin-top: 35px;   
+}
+.reservation-box .ddeck-form .btn{
+    font-size:18px;
+    letter-spacing:5px;
+    padding-left:50px;
+    padding-right:50px;
 }
