@@ -233,77 +233,6 @@ app.run(['$rootScope', '$state', '$stateParams',
                 }
             }
         })
-        .state('main.home.product', {
-            url: "/:catName/:productID-:id",
-            ncyBreadcrumb: {
-                label: 'ProductPage', parent: null
-            },
-            data: { title: "Product" },
-            views: {
-                "homeMain": {
-                    templateUrl: _gconfig.baseAppResouceUrl + "/views/product/product.html"
-                   , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
-                     function ($scope, $rootScope, $state, $http, appconfig) {
-                         $scope.CatName = $state.params.catName;
-                         $scope.appconfig = appconfig.config;
-                         $rootScope.$broadcast("change_nav", [true, "<strong class='nav-text'>" + $scope.CatName + " </strong>"]);
-                         $scope.loadsize = function (value) {
-                             var size = $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null && f.Color == value });
-                             if (size.length > 0) {
-
-                                 $scope.selectsize = size[0].Size;
-                             }
-                             else {
-                                 $scope.selectsize = "";
-                             }
-
-                         }
-                         //$scope.checkincart = function (id) {
-                         //    var mobj = $(appconfig.ShoppingCart.List).filter(function () {
-                         //        return this.ID == id;
-                         //    }).first();
-
-
-                         //    if (mobj != null && mobj.length > 0)
-                         //        return true;
-                         //    else
-                         //        return false;
-                         //}
-
-                         getData();
-                         function getData() {
-                             $http.get("api/object/GetObjectContent?ID=" + $state.params.id)
-                                .success(function (response) {
-                                    console.log(response);
-                                    if (response.success) {
-
-                                        $scope.obj = response.data;
-                                        $scope.selectcolor = [];
-                                        //$scope.obj.inCart = $scope.checkincart($scope.obj.ID);
-                                        $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null }).forEach(function (f) {
-                                            $scope.selectcolor.push(f.Color);
-                                        });
-                                        $state.current.data.title = $scope.obj.Title;
-                                        $("html, body").animate({
-                                            scrollTop: $('.breadcrumb').offset().top
-                                        }, 1000);
-                                        if (response.data.PageChildrens != null) {
-                                            $scope.gupagination = { totalitems: response.data.PageChildrens.TotalItems, itemperpage: response.data.PageChildrens.ItemsPerPage, page: response.data.PageChildrens.CurrentPage, maxsize: 5 };
-                                        }
-                                    }
-                                    else {
-                                        $scope.msg = response.msg;
-                                    }
-                                }).error(function (data, status, headers, config) {
-
-                                    $scope.msg = data;
-
-                                });
-                         }//end getdata
-                     }]
-                }
-            }
-        })
     .state('main.home.account', {
         url: "/account",
         ncyBreadcrumb: {
@@ -469,126 +398,6 @@ app.run(['$rootScope', '$state', '$stateParams',
             }
         }
     })
-     .state('main.home.bag', {
-         url: "/bag",
-         ncyBreadcrumb: {
-             label: 'Your Bag', parent: null
-         },
-         data: { title: "Your Bag" },
-         views: {
-             "homeMain": {
-                 templateUrl: _gconfig.baseAppResouceUrl + "/views/checkout/bag.html"
-                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                  function ($scope, $state, $http, appconfig, $timeout) {
-                  }]
-             }
-         }
-     })
-           .state('main.home.checkout', {
-               url: "/checkout",
-               ncyBreadcrumb: {
-                   label: 'Checkout Page', parent: null
-               },
-               data: { title: "Checkout" },
-               views: {
-                   "homeMain": {
-                       templateUrl: _gconfig.baseAppResouceUrl + "/views/checkout/checkout.html"
-                      , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                        function ($scope, $state, $http, appconfig, $timeout) {
-                            $scope.provincelist = appconfig.province;
-                            $scope.selectedProvince = {};
-                            $scope.user = {
-                                username: "",
-                                password: ""
-                            }
-                            $scope.userRegister = {
-                                FullName: "",
-                                Password: "",
-                                Gender: "Nam",
-                                Email: "",
-                                Phone: "",
-                                Address: "",
-                                Province: "",
-                                District: ""
-                            }
-                            $scope.loaddistrict = function (selectedProvince) {
-                                $scope.selectedProvince = selectedProvince;
-                                getDistrict(selectedProvince.ID);
-                            }
-                            function getDistrict(value) {
-                                $http.get("api/object/GetListDistrict?ID=" + value)
-                                   .success(function (response) {
-                                       $scope.districtlist = response.data;
-                                   }).error(function (data, status, headers, config) {
-
-                                       $scope.msg = data;
-
-                                   });
-                            }
-                            $scope.checkasgest = function () {
-                                $scope.isgest = true;
-                                $scope.isregister = false;
-                                $("html, body").animate({
-                                    scrollTop: $('.info-box').offset().top
-                                }, 1000);
-                            }
-
-                            $scope.register = function () {
-                                $scope.isregister = true;
-                                $scope.isgest = false;
-                            }
-                            $scope.registeraccount = function () {
-                                $scope.userRegister.Province = $scope.selectedProvince.Province;
-                                var data = $scope.userRegister;
-                                $http({
-                                    method: "post",
-                                    url: '/api/User/Register',
-                                    data: data,
-                                }).success(function (data, status, headers, config) {
-                                    alert('dang ki thanh cong');
-                                    // this callback will be called asynchronously
-                                    // when the response is available
-                                }).
-                                  error(function (data, status, headers, config) {
-                                      // called asynchronously if an error occurs
-                                      // or server returns response with an error status.
-                                  });
-                            }
-                            $scope.logon = function () {
-                                var data = $scope.user;
-                                $http({
-                                    method: "post",
-                                    url: '/api/User/Login',
-                                    data: data,
-                                }).success(function (data, status, headers, config) {
-                                    $scope.Username = data.FullName;
-                                    // this callback will be called asynchronously
-                                    // when the response is available
-                                }).
-                                  error(function (data, status, headers, config) {
-                                      // called asynchronously if an error occurs
-                                      // or server returns response with an error status.
-                                  });
-                            }
-                        }]
-                   }
-               }
-           })
-            .state('main.home.review', {
-                url: "/review",
-                ncyBreadcrumb: {
-                    label: 'Review Order', parent: null
-                },
-                data: { title: "Review Order" },
-                views: {
-                    "homeMain": {
-                        templateUrl: _gconfig.baseAppResouceUrl + "/views/checkout/review.html"
-                       , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                         function ($scope, $state, $http, appconfig, $timeout) {
-                         }]
-                    }
-                }
-            })
     .state('main.home.photo', {
         url: '/photo',
         ncyBreadcrumb: {
@@ -623,6 +432,28 @@ app.run(['$rootScope', '$state', '$stateParams',
                 controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                 function ($scope, $state, $http, appconfig, $timeout) {
                     
+                }]
+            }
+        }
+    })
+
+    .state('main.home.reservation', {
+        url: '/reservation/:type',
+        ncyBreadcrumb: {
+            label: 'Reservation', parent: null
+        },
+        data: { title: "Reservation" },
+        views: {
+            'homeMain': {
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/reservation/reservation.html",
+                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
+                function ($scope, $state, $http, appconfig, $timeout) {
+
+                    var currentTab = "table" || $state.params.type;
+
+                    $scope.getActiveClass = function (type) {
+                        return currentTab == type ? "active" : "";
+                    }
                 }]
             }
         }

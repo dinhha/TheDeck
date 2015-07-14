@@ -22,6 +22,7 @@ namespace Guline.Web.One
                                , "~/Module/ng/angular-animate.min.js"
                                , "~/Module/ng-loadingbar/loading-bar.js"
                                , "~/Module/ui-breadcrumb/angular-breadcrumb.min.js"
+                               , "~/Module/bootstrap/js/bootstrap.min.js"
                 //, "~/Module/ngui-bootstrap/ngui-bootstrap-tpls.min.js",                         
                                 , "~/Module/ngui-bootstrap/ui-bootstrap-tpls-0.13.0.js",
                                "~/Module/ngui-route/ngui-route.js",

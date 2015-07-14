@@ -1096,7 +1096,10 @@ body {
 .martini-box{
     margin-bottom: 65px;
 }
-.ddeck-form input,.ddeck-form button{
+.ddeck-form{
+    margin-top:15px;
+}
+.ddeck-form input,.ddeck-form button,.ddeck-form select,.ddeck-form textarea{
     border-radius: 0;
 }
 .ddeck-form input{
@@ -1107,4 +1110,37 @@ body {
     color: #fff;
     border:none;
     padding: 12px;
+}
+
+.ddeck-form .radio label{
+    padding-left: 0;
+    margin-bottom: 5px;
+}
+
+.ddeck-form input[type="radio"] {
+    display:none;
+}
+.ddeck-form input[type="radio"] + label span {
+    display:inline-block;
+    width:18px;
+    height:18px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(/Images/radio_bg.png) no-repeat;
+    cursor:pointer;
+}
+.ddeck-form input[type="radio"]:checked + label span {
+    background:url(/Images/radio_bg_checked.png) no-repeat;
+}
+/*Reservation*/
+.reservation{
+    padding:25px 25px 0;
+    color:#ffffff;
+    font-family: 'AvenirLTStd-Medium';
+}
+.reservation-box{
+    margin-bottom: 65px;
+}
+.reservation-box .ddeck-form{
+    margin-top: 35px;   
 }
