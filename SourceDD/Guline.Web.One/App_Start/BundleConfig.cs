@@ -34,6 +34,7 @@ namespace Guline.Web.One
                                "~/Module/angular-google-maps/hvgMap.angular.ui.js",
                                "~/Module/slider/pgwslideshow.js",
                                "~/Module/textrator/jquery.textrotator.js",
+                                "~/Module/greensock/plugins/ScrollToPlugin.js",
                                   "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/app.js"
             ));
             bundles.Add(new StyleBundle("~/Module/basecss.css").Include(
