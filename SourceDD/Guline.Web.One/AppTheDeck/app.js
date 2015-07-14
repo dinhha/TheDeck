@@ -244,68 +244,31 @@ app.run(['$rootScope', '$state', '$stateParams',
                        templateUrl: _gconfig.baseAppResouceUrl + "/views/menu/menu.html"
                       , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
                         function ($scope, $rootScope, $state, $http, appconfig) {
-                            $scope.CatName = $state.params.catName;
-                            $scope.appconfig = appconfig.config;
-                            $rootScope.$broadcast("change_nav", [true, "<strong class='nav-text'>" + $scope.CatName + " </strong>"]);
-                            $scope.loadsize = function (value) {
-                                var size = $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null && f.Color == value });
-                                if (size.length > 0) {
+                            var $window = $(window);
+                            var scrollTime = 0.5;
+                            var scrollDistance = 170;
 
-                                    $scope.selectsize = size[0].Size;
-                                }
-                                else {
-                                    $scope.selectsize = "";
-                                }
-
-                            }
-                            //$scope.checkincart = function (id) {
-                            //    var mobj = $(appconfig.ShoppingCart.List).filter(function () {
-                            //        return this.ID == id;
-                            //    }).first();
-
-
-                            //    if (mobj != null && mobj.length > 0)
-                            //        return true;
-                            //    else
-                            //        return false;
-                            //}
-
-                            getData();
-                            function getData() {
-                                $http.get("api/object/GetObjectContent?ID=" + $state.params.id)
-                                   .success(function (response) {
-                                       console.log(response);
-                                       if (response.success) {
-
-                                           $scope.obj = response.data;
-                                           $scope.selectcolor = [];
-                                           //$scope.obj.inCart = $scope.checkincart($scope.obj.ID);
-                                           $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null }).forEach(function (f) {
-                                               $scope.selectcolor.push(f.Color);
-                                           });
-                                           $state.current.data.title = $scope.obj.Title;
-                                           $("html, body").animate({
-                                               scrollTop: $('.breadcrumb').offset().top
-                                           }, 1000);
-                                           if (response.data.PageChildrens != null) {
-                                               $scope.gupagination = { totalitems: response.data.PageChildrens.TotalItems, itemperpage: response.data.PageChildrens.ItemsPerPage, page: response.data.PageChildrens.CurrentPage, maxsize: 5 };
-                                           }
-                                       }
-                                       else {
-                                           $scope.msg = response.msg;
-                                       }
-                                   }).error(function (data, status, headers, config) {
-
-                                       $scope.msg = data;
-
-                                   });
-                            }//end getdata
+                            $window.on('mousewheel DOMMouseScroll', function (event) {
+                                event.preventDefault();
+                                var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
+                                var scrollTop = $window.scrollTop();
+                                var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+                                TweenMax.to($window, scrollTime, {
+                                    scrollTo: {
+                                        y: finalScroll,
+                                        autoKill: true
+                                    },
+                                    ease: Power1.easeOut,
+                                    autoKill: true,
+                                    overwrite: 1
+                                });
+                            });
                         }]
                    }
                }
            })
         .state('main.home.giftcard', {
-            url: "/menu",
+            url: "/giftcard",
             ncyBreadcrumb: {
                 label: 'Gift Card', parent: null
             },
@@ -315,62 +278,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                     templateUrl: _gconfig.baseAppResouceUrl + "/views/giftcard/giftcard.html"
                    , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
                      function ($scope, $rootScope, $state, $http, appconfig) {
-                         $scope.CatName = $state.params.catName;
-                         $scope.appconfig = appconfig.config;
-                         $rootScope.$broadcast("change_nav", [true, "<strong class='nav-text'>" + $scope.CatName + " </strong>"]);
-                         $scope.loadsize = function (value) {
-                             var size = $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null && f.Color == value });
-                             if (size.length > 0) {
 
-                                 $scope.selectsize = size[0].Size;
-                             }
-                             else {
-                                 $scope.selectsize = "";
-                             }
-
-                         }
-                         //$scope.checkincart = function (id) {
-                         //    var mobj = $(appconfig.ShoppingCart.List).filter(function () {
-                         //        return this.ID == id;
-                         //    }).first();
-
-
-                         //    if (mobj != null && mobj.length > 0)
-                         //        return true;
-                         //    else
-                         //        return false;
-                         //}
-
-                         getData();
-                         function getData() {
-                             $http.get("api/object/GetObjectContent?ID=" + $state.params.id)
-                                .success(function (response) {
-                                    console.log(response);
-                                    if (response.success) {
-
-                                        $scope.obj = response.data;
-                                        $scope.selectcolor = [];
-                                        //$scope.obj.inCart = $scope.checkincart($scope.obj.ID);
-                                        $scope.obj.Attrs[2].CustomObjectsValue.filter(function (f) { return f != null }).forEach(function (f) {
-                                            $scope.selectcolor.push(f.Color);
-                                        });
-                                        $state.current.data.title = $scope.obj.Title;
-                                        $("html, body").animate({
-                                            scrollTop: $('.breadcrumb').offset().top
-                                        }, 1000);
-                                        if (response.data.PageChildrens != null) {
-                                            $scope.gupagination = { totalitems: response.data.PageChildrens.TotalItems, itemperpage: response.data.PageChildrens.ItemsPerPage, page: response.data.PageChildrens.CurrentPage, maxsize: 5 };
-                                        }
-                                    }
-                                    else {
-                                        $scope.msg = response.msg;
-                                    }
-                                }).error(function (data, status, headers, config) {
-
-                                    $scope.msg = data;
-
-                                });
-                         }//end getdata
+                
                      }]
                 }
             }
