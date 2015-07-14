@@ -259,8 +259,11 @@
     <Content Include="AppTheDeck\langs\en-us.txt" />
     <Content Include="AppTheDeck\langs\vi-vn.txt" />
     <Content Include="AppTheDeck\views\contactus\contact.html" />
+    <Content Include="AppTheDeck\views\event\event.html" />
+    <Content Include="AppTheDeck\views\giftcard\giftcard.html" />
     <Content Include="AppTheDeck\views\location\location.html" />
     <Content Include="AppTheDeck\views\martiniclub\martiniclub.html" />
+    <Content Include="AppTheDeck\views\menu\menu.html" />
     <Content Include="AppTheDeck\views\ourstory\about.html" />
     <Content Include="AppTheDeck\views\home\home.html" />
     <Content Include="AppTheDeck\views\home\index.html" />
@@ -1295,6 +1298,17 @@
     <Content Include="Images\arrow_r_hover.png" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\contact_bg.jpg" />
+    <Content Include="Images\dedeckMap.png" />
+    <Content Include="Images\event_bg.jpg" />
+    <Content Include="Images\gallery\image1.png" />
+    <Content Include="Images\gallery\image2.png" />
+    <Content Include="Images\gallery\thumb1.png" />
+    <Content Include="Images\gallery\thumb2.png" />
+    <Content Include="Images\gallery\thumb3.png" />
+    <Content Include="Images\gallery\thumb4.png" />
+    <Content Include="Images\gallery\thumb5.png" />
+    <Content Include="Images\gallery\thumb6.png" />
+    <Content Include="Images\gallery\thumb7.png" />
     <Content Include="Images\icon-email.png" />
     <Content Include="Images\icon-facebook.png" />
     <Content Include="Images\icon-twiter.png" />
@@ -2675,9 +2689,6 @@
     <Content Include="Views\Emails\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppTheDeck\views\event\" />
-    <Folder Include="AppTheDeck\views\giftcard\" />
-    <Folder Include="AppTheDeck\views\menu\" />
     <Folder Include="AppTheDeck\views\reservation\" />
     <Folder Include="App_Admin\services\" />
     <Folder Include="App_Data\" />

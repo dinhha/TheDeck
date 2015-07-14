@@ -9,7 +9,7 @@
             <div class="col-md-12 p-right-0">
                 <div class="sub-nav pull-right">
                     <ul class="nav nav-tabs">
-                        <li><a href="javascript:;">gift card</a></li>
+                        <li><a ui-sref="main.home.giftcard">gift card</a></li>
                         <li><a ui-sref="main.home.location">location</a></li>
                         <li ><a ui-sref="main.home.contact">contact us</a></li>
                         <li><a href="javascript:;">reservation</a></li>
@@ -21,9 +21,9 @@
                 <ul class="nav nav-tabs">
                     <li ng-class="activeNav('main.home.index')"><a class="cmn-t-underline" ui-sref="main.home.index">Home</a></li>
                     <li ng-class="activeNav('main.home.ourstory')"><a  class="cmn-t-underline" ui-sref="main.home.ourstory">Our Story</a></li>
-                    <li><a class="cmn-t-underline" href="javascript:;">Menu</a></li>
+                    <li ng-class="activeNav('main.home.menu')"><a class="cmn-t-underline" ui-sref="main.home.menu">Menu</a></li>
                     <li ng-class="activeNav('main.home.thedeckbar')"><a class="cmn-t-underline" ui-sref="main.home.thedeckbar">The deck bar</a></li>
-                    <li><a class="cmn-t-underline" href="javascript:;">Event & Catering</a></li>
+                    <li ng-class="activeNav('main.home.event')"><a class="cmn-t-underline" ui-sref="main.home.event">Event & Catering</a></li>
                     <li ng-class="activeNav('main.home.photo')"><a class="cmn-t-underline" ui-sref="main.home.photo">Gallery</a></li>
                     <li ng-class="activeNav('main.home.martini_club')"><a class="cmn-t-underline" ui-sref="main.home.martini_club">The matini club</a></li>
                 </ul>

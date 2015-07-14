@@ -109,6 +109,9 @@
 .p-top-40 {
     padding-top: 40px !important;
 }
+.p-top-45 {
+    padding-top: 45px !important;
+}
 .p-bot-50{
     padding-bottom:50px;
 }
@@ -860,7 +863,7 @@ body {
  
 /*End The Deck Bar*/
 /*Contact Us*/
-.contact{
+.contact,.event{
     padding-top:50px;
     color:white;
 }
@@ -888,7 +891,22 @@ body {
 /*Location*/
 #map-canvas { height: 615px; margin: 0; padding: 0;}
 /*End Location*/
-
+/*Event*/
+.event-content {
+    font-size:14px;
+      font-family: 'AvenirLTStd-Medium';
+      margin-bottom:100px;
+    text-align:justify;
+}
+.event-content .btn-form{
+     font-size:18px;
+  letter-spacing:5px;
+  color:#ffffff !important;
+}
+.event-content .box-form{
+      background-color: #444444;
+      padding:10px;
+}
 /*Payment*/
 .payment-box{
     padding-bottom:40px;
