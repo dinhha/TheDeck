@@ -4,18 +4,18 @@
 <div class="container reservation">
     <div class="col-md-12 p-left-0 p-right-0 reservation-box">
         <ul class="nav nav-tabs">
-            <li role="presentation" ng-class="getActiveClass('table')">
+            <li role="presentation" ng-class="getActiveTabClass('table')">
                 <a data-toggle="tab" href="#table" class="text-center page-title ">TABLE BOOKING</a>
             </li>
-            <li role="presentation" ng-class="getActiveClass('boat')">
+            <li role="presentation" ng-class="getActiveTabClass('boat')">
                 <a data-toggle="tab" href="#boat" class="text-center page-title">BOAT BOOKING</a>
             </li>
-            <li role="presentation" ng-class="getActiveClass('event')">
+            <li role="presentation" ng-class="getActiveTabClass('event')">
                 <a data-toggle="tab" href="#event" class="text-center page-title">EVENT BOOKING</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div id="table" class="tab-pane fade in active">
+            <div id="table" class="tab-pane fade {{getActiveTabContent('table')}}">
                 <div class="col-md-offset-2 col-md-8">
                     <form role="form" class="ddeck-form">
                         <p>Please fill in your information, we will contact you shortly.</p>
@@ -105,7 +105,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p>
-                                    Total price: 3.850.000 vnd <a href="#" class="active">(download our price chart)</a><br/>
+                                    Total price: 3.850.000 vnd <a href="#" class="active">(download our price chart)</a><br />
                                     <span style="font-size:75%">*Inclusions: The Deck signature welcome drink</span>
                                 </p>
                             </div>
@@ -122,15 +122,110 @@
                     </form>
                 </div>
             </div>
-            <div id="boat" class="tab-pane fade">
-                
+            <div id="boat" class="tab-pane fade {{getActiveTabContent('boat')}}">
                 <div class="col-md-offset-2 col-md-8">
-                    <h3 class="text-center">Coming soon</h3>
+                    <form role="form" class="ddeck-form">
+                        <div class="row">
+                            <p>We also provide of other boat services that you might be interested in.</p>
+                        </div>
+                        <p>I. PLEASE CHOOSE YOUR BOAT TYPE :</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default {{activePanel(bType) ? 'panel-active' : ''}}" ng ng-repeat="bType in boatTypeList track by $index">
+                                        <div class="panel-heading">
+                                            <a class="panel-title" data-toggle="collapse" data-parent="#accordion" href="javascript:" ng-click="chooseBoatType(bType)">
+                                                <input type="radio" value="{{bType}}" id="boat_type{{$index}}" name="boat_type" ng-model="boatType">
+                                                <label for="boat_type{{$index}}"><span></span>{{bType}}</label>
+                                            </a>
+                                        </div>
+                                        <div class="panel-collapse collapse {{activePanel(bType) ? 'in' : ''}}">
+                                            <div class="panel-body">
+                                                <img class="img-responsive img-full" src="/Images/boat4.jpg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-0">
+                                <p style="margin-left: 40px;">+ Up to 12 people</p>
+                                <p style="font-size:75%">*Inclusions: Only yacht rental (excluding food, beverage, VAT, service), bespoke to your heart desire.</p>
+                            </div>
+                        </div>
+
+                        <p>II. EXTRA INFORMATION</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="extra_nOfpeo">Nb of people : *</label>
+                                    <input type="text" class="form-control" id="extra_nOfpeo">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="extra_hour">Hour(s)</label>
+                                    <input type="text" class="form-control" id="extra_hour">
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>III. PERSONAL INFORMATION</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="perInfo_lastname">Last name : *</label>
+                                    <input type="text" class="form-control" id="perInfo_lastname">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="perInfo_firstname">First name : *</label>
+                                    <input type="text" class="form-control" id="perInfo_firstname">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="perInfo_email">Email : *</label>
+                                    <input type="email" class="form-control" id="perInfo_email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="perInfo_mobile">Mobile : *</label>
+                                    <input type="text" class="form-control" id="perInfo_mobile">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="perInfo_date">Date : *</label>
+                                    <input type="text" class="form-control" id="perInfo_date">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="perInfo_time">Time : *</label>
+                                    <input type="text" class="form-control" id="perInfo_time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="pull-right">Total price: 21.850.000 vnd (download our price chart)</p>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default pull-right">BOOK NOW</button>
+                    </form>
                 </div>
-                </div>
-            <div id="event" class="tab-pane fade">
+            </div>
+            <div id="event" class="tab-pane fade {{getActiveTabContent('event')}}">
                 <div class="col-md-offset-2 col-md-8">
-                   
+
                     <form role="form" class="ddeck-form">
                         <p>To organize you event in one of our establishments, contact us by completing the form below and together we will create your perfect event.</p>
                         <div class="row">
@@ -162,7 +257,7 @@
                                     <input type="text" class="form-control" id="address" required>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -211,8 +306,8 @@
                                 </div>
                             </div>
                         </div>
-          
-                        
+
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">

@@ -1207,6 +1207,27 @@ body {
 .ddeck-form input[type="radio"]:checked + label span {
     background:url(/Images/radio_bg_checked.png) no-repeat;
 }
+.ddeck-form .panel-default,
+.ddeck-form .panel-default>.panel-heading+.panel-collapse>.panel-body,
+.ddeck-form .panel-default>.panel-heading{
+    background: none;
+    border: none;
+}
+.ddeck-form .panel-heading{
+    padding: 5px 0;
+}
+.ddeck-form .panel-title, .ddeck-form a.panel-title{
+    color: #fff;
+}
+.ddeck-form .panel-default>.panel-heading+.panel-collapse>.panel-body{
+    padding: 15px 0;
+}
+.ddeck-form .panel-default>.panel-heading{
+    background: url(/Images/accordiion.png) right no-repeat;
+}
+.ddeck-form .panel-default.panel-active .panel-heading{
+    background: url(/Images/accordiion_active.png) right no-repeat;
+}
 /*Reservation*/
 .reservation{
     padding:25px 25px 0;

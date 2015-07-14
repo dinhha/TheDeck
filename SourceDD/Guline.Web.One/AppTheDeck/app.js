@@ -580,7 +580,7 @@ app.run(['$rootScope', '$state', '$stateParams',
     })
 
     .state('main.home.reservation', {
-        url: '/reservation/:type',
+        url: '/reservation',
         ncyBreadcrumb: {
             label: 'Reservation', parent: null
         },
@@ -588,13 +588,34 @@ app.run(['$rootScope', '$state', '$stateParams',
         views: {
             'homeMain': {
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/reservation/reservation.html",
-                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                function ($scope, $state, $http, appconfig, $timeout) {
+                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout", '$location',
+                function ($scope, $state, $http, appconfig, $timeout, $location) {
 
-                    var currentTab = "table" || $state.params.type;
+                    var currentTab = "table";
+                    if ($location.hash() != null && $location.hash() != '')
+                        currentTab = $location.hash();
+                    $scope.boatTypeList = [
+                        "Cocktail Cruise",
+                        "The Cu Chi Tunnel Experience",
+                        "Corporate or private sunset cruise on a handcrafted dutch boat",
+                        "Luxury yachtCorporate or private sunset cruise on a handcrafted dutch boat"
+                    ]
+                    $scope.boatType = "Cocktail Cruise";
 
-                    $scope.getActiveClass = function (type) {
+                    $scope.getActiveTabClass = function (type) {
                         return currentTab == type ? "active" : "";
+                    }
+
+                    $scope.getActiveTabContent = function (type) {
+                        return currentTab == type ? "in active" : "";
+                    }
+
+                    $scope.chooseBoatType = function (boatType) {
+                        $scope.boatType = boatType;
+                    }
+
+                    $scope.activePanel = function (boatType) {
+                        return $scope.boatType == boatType;
                     }
                 }]
             }

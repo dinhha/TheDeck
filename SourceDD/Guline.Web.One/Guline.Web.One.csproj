@@ -2697,11 +2697,7 @@
     <Content Include="Views\Emails\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppTheDeck\views\event\" />
     <Folder Include="AppTheDeck\views\gallery\" />
-    <Folder Include="AppTheDeck\views\giftcard\" />
-    <Folder Include="AppTheDeck\views\menu\" />
-<Folder Include="AppTheDeck\views\reservation\" />
     <Folder Include="App_Admin\services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
