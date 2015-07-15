@@ -114,7 +114,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="note">Note</label>
-                                    <textarea class="form-control" id="note"></textarea>
+                                    <textarea class="form-control" id="note" rows="4"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-default {{activePanel(bType) ? 'panel-active' : ''}}" ng ng-repeat="bType in boatTypeList track by $index">
                                         <div class="panel-heading">
-                                            <a class="panel-title" data-toggle="collapse" data-parent="#accordion" href="javascript:" ng-click="chooseBoatType(bType)">
+                                            <a class="panel-title radio" data-toggle="collapse" data-parent="#accordion" href="javascript:" ng-click="chooseBoatType(bType)">
                                                 <input type="radio" value="{{bType}}" id="boat_type{{$index}}" name="boat_type" ng-model="boatType">
                                                 <label for="boat_type{{$index}}"><span></span>{{bType}}</label>
                                             </a>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
-                                <p style="margin-left: 40px;">+ Up to 12 people</p>
+                                <p class="p-left-40">+ Up to 12 people</p>
                                 <p style="font-size:75%">*Inclusions: Only yacht rental (excluding food, beverage, VAT, service), bespoke to your heart desire.</p>
                             </div>
                         </div>

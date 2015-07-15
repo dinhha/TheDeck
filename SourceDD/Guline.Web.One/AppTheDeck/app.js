@@ -243,10 +243,15 @@ app.run(['$rootScope', '$state', '$stateParams',
                    "homeMain": {
                        templateUrl: _gconfig.baseAppResouceUrl + "/views/menu/menu.html"
                       , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
-                        function ($scope, $rootScope, $state, $http, appconfig) {
+                        function ($scope, $rootScope, $state, $http, appconfig, $timeout) {
                             var $window = $(window);
                             var scrollTime = 0.5;
                             var scrollDistance = 170;
+
+                            $timeout(function () {
+                                $('.parallax-window').parallax({ zIndex: 100 });
+                                $window.trigger('load.px.parallax');
+                            }, 50);
 
                             $window.on('mousewheel DOMMouseScroll', function (event) {
                                 event.preventDefault();

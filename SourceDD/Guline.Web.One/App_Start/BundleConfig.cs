@@ -35,6 +35,7 @@ namespace Guline.Web.One
                                "~/Module/slider/pgwslideshow.js",
                                "~/Module/textrator/jquery.textrotator.js",
                                 "~/Module/greensock/plugins/ScrollToPlugin.js",
+                                "~/Module/parallax/parallax.js",
                                   "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/app.js"
             ));
             bundles.Add(new StyleBundle("~/Module/basecss.css").Include(
