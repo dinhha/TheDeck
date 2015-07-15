@@ -143,6 +143,7 @@
     if (this.naturalHeight && this.naturalWidth || this.$slider[0].complete) {
       this.$slider.trigger('load');
     }
+    Parallax.setup();
 
   };
 
@@ -259,7 +260,7 @@
     isBusy:       false,
 
     setup: function() {
-      if (this.isReady) return;
+      //if (this.isReady) return;
 
       var $doc = $(document), $win = $(window);
 

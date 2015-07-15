@@ -1330,6 +1330,7 @@
     <Content Include="Images\gallery\IMG_2216.JPG" />
     <Content Include="Images\gallery\IMG_2252.JPG" />
     <Content Include="Images\gallery\IMG_2263.JPG" />
+    <Content Include="Images\menu\menu_bg2.jpg" />
     <Content Include="Images\radio_bg.png" />
     <Content Include="Images\radio_bg_checked.png" />
     <Content Include="Images\contact_bg.jpg" />
@@ -2663,7 +2664,7 @@
     <Content Include="Module\ng\i18n\angular-locale_zu-za.js" />
     <Content Include="Module\ng\i18n\angular-locale_zu.js" />
     <Content Include="Module\ng\version.txt" />
-    <Content Include="Module\parallax\parallax.min.js" />
+    <Content Include="Module\parallax\parallax.js" />
     <Content Include="Module\selected\css\selecter.css" />
     <Content Include="Module\selected\js\jquery.fs.selecter.css" />
     <Content Include="Module\selected\js\jquery.fs.selecter.js" />

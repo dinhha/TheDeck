@@ -270,6 +270,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                             });
                         }]
                    }
+               },
+               onExit: function () {
+                   $('.parallax-mirror').remove();
                }
            })
         .state('main.home.giftcard', {
