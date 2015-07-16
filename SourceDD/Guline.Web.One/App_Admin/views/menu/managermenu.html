@@ -1,6 +1,6 @@
 ﻿<ol class="breadcrumb">
     <li><a ui-sref="main.admin.home" class="active">Trang chủ</a></li>
-    <li><span>Quản lí User</span></li>
+    <li><span>Danh mục Menu</span></li>
 </ol>
 <div class="clearfix"></div>
 <div class="alert alert-{{result.type}}" ng-show="result.text!=''">
@@ -25,11 +25,8 @@
                 <th>
                     <input type="checkbox" class="checkall" ng-click="checkallchange()" />
                 </th>
+                <th>Group</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Status</th>
-                <th></th>
             </tr>
         </thead>
         <tbody ui-sortable="sortableOptions" ng-model="data.Items">
@@ -38,19 +35,19 @@
                     <input type="checkbox" class="chkme" data-id="{{g.ID}}" ng-click="checkchange($event)" />
                 </td>
                 <td>
-                    <a href="javascript:;" ng-click="showInfo(g.ID)">
-                        {{g.FullName}}
+                   {{g.GroupName}}
+                </td>
+
+                <td>
+                   
+                    <a ui-sref="main.admin.menudetail({catID:g.ID})">
+                        {{g.Name}}
                     </a>
                 </td>
-                <td>
-                    {{g.Email}}
-                </td>
-                <td>{{g.Phone}}</td>
-                <td>{{g.Status==1?"Enable":"None"}}</td>
-                <td></td>
             </tr>
         </tbody>
     </table>
+    <a href="javascript:;" ng-click="addgroup()" class="btn btn-facebook">Add Menu Group</a>
     <div class="clearfix"></div>
 
 </div>

@@ -335,5 +335,29 @@ namespace Guline.Web.One.DIImpl
         {
             return db.Fetch<string>("Select District from dataDistrict where ProvinceID=@0", ProvinceID);
         }
+        public Page<MenuCategory> ListMenuCategory(int page , int pagesize)
+        {
+            return db.Page<MenuCategory>(page, pagesize, "Select * from MenuCategory");
+        }
+        public Page<MenuDetails> GetDetailMenu(long catid,int page,int pagesize)
+        {
+            return db.Page<MenuDetails>(page, pagesize, "Select * from MenuDetails where MenuID=@0", catid);
+        }
+        public void AddMenuItem(MenuDetails menu)
+        {
+            db.Insert(menu);
+        }
+        public void UpdateMenuItem(MenuDetails menu)
+        {
+            db.Update(menu);
+        }
+        public void DeleteMenuItem(MenuDetails menu)
+        {
+            db.Delete(menu);
+        }
+        public void AddMenuCategory(MenuCategory menugroup)
+        {
+            db.Insert(menugroup);
+        }
     }
 }

@@ -419,5 +419,62 @@ namespace Guline.Web.One.Areas.Api.Controllers
         {
             return Json(new { data = sc.GetDistrictList(ID), msg = "Danh sach quan huyen" }, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult ListMenuCategory(int page=1,int pagesize=10)
+        {
+            return Json(new { data = sc.ListMenuCategory(page,pagesize), msg = "List Menu Category" }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetDetailMenu(long MenuCatID,int page=1,int pagesize=10)
+        {
+            return Json(new { data = sc.GetDetailMenu(MenuCatID,page, pagesize), msg = "List Menu Detail" }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult AddMenuItem(MenuDetails menu, string SubItemsJSON)
+        {
+            try {
+                    menu.SubItems = SubItemsJSON;
+                    sc.AddMenuItem(menu);
+                    return Json(new { success = true, msg = "Thêm menu thành công" }, JsonRequestBehavior.AllowGet);
+             }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult UpdateItem(MenuDetails menu, string SubItemsJSON)
+        {
+            try
+            {
+                menu.SubItems = SubItemsJSON;
+                sc.UpdateMenuItem(menu);
+                return Json(new { success = true, msg = "Cập nhật menu thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult DeleteMenuItem(MenuDetails menu)
+        {
+            try
+            {
+                sc.DeleteMenuItem(menu);
+                return Json(new { success = true, msg = "Xóa menu thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult AddMenuCategory(MenuCategory menugroup)
+        {
+            try
+            {
+                sc.AddMenuCategory(menugroup);
+                return Json(new { success = true, msg = "Xóa menu thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

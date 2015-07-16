@@ -23,7 +23,7 @@ namespace Guline.Web.One.gModels
         public string Address { get; set; }
         public int Status { get; set; }
         public long gOrganizeID { get; set; }
-        public bool Gender { get; set; }
+        public string Gender { get; set; }
         public string Province { get; set; }
         public string District { get; set; }
         [PetaPoco.Ignore]

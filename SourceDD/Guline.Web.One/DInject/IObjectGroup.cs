@@ -1,6 +1,7 @@
 ﻿using System;
 using Guline.Web.One.gModels;
 using System.Collections.Generic;
+using PetaPoco;
 namespace Guline.Web.One.DInject
 {
     public interface IObjectGroup
@@ -53,5 +54,17 @@ namespace Guline.Web.One.DInject
         List<ProvinceModel> GetListProvince();
 
         List<string> GetDistrictList(int ProvinceID);
+
+        Page<MenuCategory> ListMenuCategory(int page, int pagesize);
+
+        Page<MenuDetails> GetDetailMenu(long MenuCatID,int page, int pagesize);
+
+        void AddMenuItem(MenuDetails menu);
+
+        void UpdateMenuItem(MenuDetails menu);
+
+        void DeleteMenuItem(MenuDetails menu);
+
+        void AddMenuCategory(MenuCategory menugroup);
     }
 }

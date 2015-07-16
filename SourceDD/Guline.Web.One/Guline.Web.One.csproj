@@ -235,6 +235,7 @@
     <Compile Include="gModels\GuMail.cs" />
     <Compile Include="gModels\GuSecurity.cs" />
     <Compile Include="gModels\LocationModel.cs" />
+    <Compile Include="gModels\MenuCategory.cs" />
     <Compile Include="gModels\Receiver.cs" />
     <Compile Include="gModels\SendMail.cs" />
     <Compile Include="gModels\SeoMeta.cs" />
@@ -307,14 +308,15 @@
     <Content Include="App_Admin\views\admin\success.html" />
     <Content Include="App_Admin\gAddCat.html" />
     <Content Include="App_Admin\views\Mail\SendMail.html" />
+    <Content Include="App_Admin\views\menu\addmenugroup.html" />
     <Content Include="App_Admin\views\objecttype\index.html" />
     <Content Include="App_Admin\views\object\addeditobject.html" />
     <Content Include="App_Admin\views\object\managechildobject.html" />
     <Content Include="App_Admin\views\object\manageobject.html" />
     <Content Include="App_Admin\views\object\manageone.html" />
     <Content Include="App_Admin\views\object\viewobject.html" />
-    <Content Include="App_Admin\views\user\manageruser.html" />
-    <Content Include="App_Admin\views\user\userinfo.html" />
+    <Content Include="App_Admin\views\menu\managermenu.html" />
+    <Content Include="App_Admin\views\menu\menudetail.html" />
     <Content Include="App_Admin\vTop.html" />
     <Content Include="Areas\Api\reservation.html" />
     <Content Include="ckeditor\adapters\jquery.js" />

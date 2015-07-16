@@ -1,0 +1,118 @@
+﻿<div class="clearfix"></div>
+<div style="padding:10px; border: 1px solid; margin-bottom:20px;">
+    <div class="clearfix"></div>
+    <div class="col-md-12">
+        <div class="clearfix"></div>
+        <div >
+            <h4>Add Menu</h4>
+            <form name="addMenu" novalidate>
+                <div class="col-md-12">
+                    <div class="col-md-6"><label>Name</label> </div>
+                    <div class="col-md-6">
+                        <input type="text" required class="form-control" name="name" ng-model="additem.Name" placeholder="Input your Menu Name" />
+                    </div>
+
+                </div>
+                <div class="col-md-12" style="margin-top:10px;">
+                    <div class="col-md-6"><label>Description</label> </div>
+                    <div class="col-md-6">
+                        <textarea class="form-control" ng-model="additem.Description" rows="2"></textarea>
+
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top:10px;">
+                    <div class="col-md-6"><label>Price</label> </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" ng-model="additem.Price" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top:10px;">
+                    <div class="col-md-2"><label>SubItem (SET)</label> </div>
+                    <div class="col-md-10">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in additem.SubItems">
+                                    <td>
+                                        <p>{{item.Name}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{item.Description}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                        <input type="text" name="subName" class="form-control" ng-model="subitem.Name" required />
+
+                                    </td>
+                                    <td>
+                                        <textarea class="form-control" rows="1" ng-model="subitem.Description"></textarea>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a class="btn btn-facebook" ng-disabled="addMenu.subName.$invalid" ng-click="addsubitem(subitem)">Add Sub item</a>
+                    </div>
+                </div>
+            </form>
+            <div class="text-right col-md-12" style="margin-top:10px;">
+                <input type="submit" class="btn btn-danger"
+                       ng-disabled="addMenu.name.$invalid" ng-click="additemMenu()" value="Save">
+            </div>
+        </div>
+
+        <div class="clearfix" style="border-bottom:1px solid;padding-bottom:5px;"></div>
+        <h4>Menu Details</h4>
+        <div class="clearfix"></div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="item in data.Items">
+                    <td><strong>{{item.Name}}</strong></td>
+                    <td><strong>{{item.Description}}</strong></td>
+                    <td><strong>{{item.Price}}</strong></td>
+                    <td>
+                        <button class="btn btn-facebook" ng-click="edit(item)">Edit</button>
+                        <button class="btn btn-info" ng-click="delete(item)">Delete</button>
+                    </td>
+                </tr>
+                <!--<tr>
+                    <td>
+                        <strong>{{data.Name}}</strong>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="data.FullName" name="Name" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="data.Phone" name="Phone" />
+                    </td>
+                    <td><input type="text" class="form-control" ng-model="data.Address" name="Address" /></td>
+
+                    <td><input type="text" class="form-control" ng-model="data.Province" name="Province" disabled /></td>
+                    <td><input type="text" class="form-control" ng-model="data.District" name="District" disabled /></td>
+                </tr>-->
+            </tbody>
+        </table>
+
+        <div class="clearfix"></div>
+        <p ng-bind-html="msg"></p>
+
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

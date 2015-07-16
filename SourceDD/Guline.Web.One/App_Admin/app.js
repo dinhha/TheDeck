@@ -1258,34 +1258,31 @@ app.run(['$rootScope', '$state', '$stateParams',
                 }//end vMain
             }
         })
-         .state('main.admin.manageruser', {
-             url: "/user",
+         .state('main.admin.managermenu', {
+             url: "/menu",
              ncyBreadcrumb: {
-                 label: 'Quản lí người dùng'
+                 label: 'Danh mục menu'
              },
-             data: { title: "Quản lí người dùng" },
+             data: { title: "Danh mục menu" },
              views: {
                  "adMain": {
-                     templateUrl: _gconfig.baseAppResouceUrl + "/views/user/manageruser.html"
+                     templateUrl: _gconfig.baseAppResouceUrl + "/views/menu/managermenu.html"
                     , controller: ['$scope', '$state', '$http','$modal',
                       function ($scope, $state, $http, $modal) {
-                          $scope.fillterObject = {
-                              Email: "",
-                              Phone:""
-                          }
                           $scope.page = 1;
                           $scope.pagezise = "10";
-                          loadData($scope.page, $scope.pagezise, $scope.fillterObject);
-                          function loadData(page, itemperpage, fillter)
+                          loadData($scope.page, $scope.pagezise);
+                          function loadData(page, itemperpage)
                           {
                               $http({
                                   method: "post",
-                                  url: _gconfig.baseWebUrl + '/api/User/UserManager',
-                                  data: $.extend({UserID:3, Page: page, Pagezise: itemperpage }, fillter),
+                                  url: _gconfig.baseWebUrl + '/api/Object/ListMenuCategory',
+                                  data: {Page: page, Pagezise: itemperpage },
                               }).success(function (data, status, headers, config) {
-                                  $scope.data = data.Data.List;
-                                  $scope.page = data.Data.List.CurrentPage;
-                                  $scope.pagezise = data.Data.List.ItemsPerPage;
+                                  $scope.data = data.data;
+                                  console.log($scope.data);
+                                  $scope.page = data.data.CurrentPage;
+                                  $scope.pagezise = data.data.ItemsPerPage;
                                   // this callback will be called asynchronously
                                   // when the response is available
                               }).error(function (data, status, headers, config) {
@@ -1296,24 +1293,21 @@ app.run(['$rootScope', '$state', '$stateParams',
                           $scope.LoadPage=function()
                           {
                            
-                              loadData($scope.page, $scope.pagezise, $scope.fillterObject);
+                              loadData($scope.page, $scope.pagezise);
                           }
-                          $scope.showInfo=function(value)
+                          $scope.addgroup= function ()
                           {
                               var modalInstance = $modal.open({
                                   animation: $scope.animationsEnabled,
-                                  templateUrl: _gconfig.baseAppResouceUrl + "/views/user/userinfo.html",
-                                  controller: 'UserDetailModalCtrl',
-                                  size: 'lg',
+                                  templateUrl: _gconfig.baseAppResouceUrl + "/views/menu/addmenugroup.html",
+                                  controller: 'MenuDetailModalCtrl',
+                                  size: 'md',
                                   resolve: {
-                                      UserID: function () {
-                                          return value;
-                                      }
                                   }
                               });
 
                               modalInstance.result.then(function () {
-                                  loadData($scope.page, $scope.pagezise, $scope.fillterObject);
+                                  loadData($scope.page, $scope.pagezise);
                               }, function () {
 
                               });
@@ -1323,6 +1317,154 @@ app.run(['$rootScope', '$state', '$stateParams',
                  }//end vMain
              }
          })
+         .state('main.admin.menudetail', {
+             url: "/detail/:catID",
+             ncyBreadcrumb: {
+                 label: 'Menu Detail'
+             },
+             data: { title: "Menu Detail" },
+             views: {
+                 "adMain": {
+                     templateUrl: _gconfig.baseAppResouceUrl + "/views/menu/menudetail.html"
+                    , controller: ['$scope', '$state', '$http',
+                      function ($scope, $state, $http) {
+                                 $scope.ID = $state.params.catID;
+                                 $scope.msg = "";
+                                 $scope.running = false;
+                                 $scope.page = 1;
+                                 $scope.itemperpage = 10
+                                 init();
+                                 function loadData()
+                                 {
+                                     $http({
+                                         method: "post",
+                                         url: _gconfig.baseWebUrl + '/api/Object/GetDetailMenu',
+                                         data: { MenuCatID: $scope.ID, page: $scope.page, pagezise: $scope.itemperpage },
+                                     }).success(function (data, status, headers, config) {
+                                         $scope.data = data.data;
+                                         $scope.data.Items.forEach(function (item, i) {
+                                             $scope.data.Items[i].SubItems = JSON.parse(item.SubItems);
+                                         })
+                                         console.log(data.data);
+                                         // this callback will be called asynchronously
+                                         // when the response is available
+                                     }).error(function (data, status, headers, config) {
+                                         // called asynchronously if an error occurs
+                                         // or server returns response with an error status.
+                                     });
+                                 }
+                                 function init() {
+                                     loadData();
+                                 }
+                                 $scope.additem = {
+                                     ID:0,
+                                     MenuID: $scope.ID,
+                                     Name: "",
+                                     Description: "",
+                                     Price: "",
+                                     SubItemsJSON:"",
+                                     SubItems: []
+                                 }
+                                 $scope.subitem = {
+                                     Name: "",
+                                     Description: ""
+                                 }
+                                 $scope.addsubitem = function (obj) {
+                                     $scope.additem.SubItems.push(obj);
+                                     $scope.subitem = {};
+                                 }
+                                 $scope.edit=function(obj)
+                                 {                                     
+                                     $scope.additem = obj;
+                                 }
+                                 $scope.delete=function(obj)
+                                 {
+                                     var confirm = window.confirm("Are you sure ?");
+                                     if(confirm)
+                                     {
+                                         $http.post(_gconfig.baseWebUrl + '/api/Object/DeleteMenuItem', obj).
+                                                                 success(function (res, status, headers, config) {
+                                                                     if (res.success) {
+                                                                         $scope.result = { text: "Lưu thành công", type: "success" };
+                                                                         loadData();
+                                                                     }
+                                                                     else {
+                                                                         $scope.result = { text: res.msg, type: "danger" };
+                                                                     }
+                                                                     $scope.running = false;
+                                                                 }).error(function (data, status, headers, config) {
+
+                                                                     $scope.msg = data;
+                                                                     $scope.running = false;
+                                                                 });
+                                     }
+                                 }
+                                 $scope.additemMenu = function () {
+                                     if ($scope.additem.ID != 0)
+                                     {
+                                         $scope.running = true;
+                                         $scope.additem.SubItemsJSON = angular.toJson($scope.additem.SubItems);
+                                         $http.post(_gconfig.baseWebUrl + '/api/Object/UpdateItem', $scope.additem).
+                                          success(function (res, status, headers, config) {
+                                              if (res.success) {
+                                                  $scope.result = { text: "Lưu thành công", type: "success" };
+                                                  $scope.data.Items.push($scope.additem);
+                                                  $scope.additem = {
+                                                      ID: 0,
+                                                      MenuID: $scope.ID,
+                                                      Name: "",
+                                                      Description: "",
+                                                      Price: "",
+                                                      SubItemsJSON: "",
+                                                      SubItems: []
+                                                  };
+                                                  $scope.subitem = {};
+                                              }
+                                              else {
+                                                  $scope.result = { text: res.msg, type: "danger" };
+                                              }
+                                              $scope.running = false;
+                                          }).error(function (data, status, headers, config) {
+
+                                              $scope.msg = data;
+                                              $scope.running = false;
+                                          });
+                                     }
+                                     else
+                                         {
+                                                                 $scope.running = true;
+                                                                 $scope.additem.SubItemsJSON = angular.toJson($scope.additem.SubItems);
+                                                                 $http.post(_gconfig.baseWebUrl + '/api/Object/AddMenuItem', $scope.additem).
+                                                                  success(function (res, status, headers, config) {
+                                                                      if (res.success) {
+                                                                          $scope.result = { text: "Lưu thành công", type: "success" };
+                                                                          loadData();
+                                                                          $scope.additem = {
+                                                                              ID: 0,
+                                                                              MenuID: $scope.ID,
+                                                                              Name: "",
+                                                                              Description: "",
+                                                                              Price: "",
+                                                                              SubItemsJSON: "",
+                                                                              SubItems: []
+                                                                          };
+                                                                          $scope.subitem = {};
+                                                                      }
+                                                                      else {
+                                                                          $scope.result = { text: res.msg, type: "danger" };
+                                                                      }
+                                                                      $scope.running = false;
+                                                                  }).error(function (data, status, headers, config) {
+
+                                                                      $scope.msg = data;
+                                                                      $scope.running = false;
+                                                                  });
+                                     }
+                                 }
+                             }]
+                        }//end login
+                    }
+                })
         .state('login', {
             url: "/login",
             data: { title: "User Login" },
@@ -1456,34 +1598,18 @@ app.controller('AddCategoryModalCtrl', function ($scope, $http, $modalInstance, 
     }
 
 });
-app.controller('UserDetailModalCtrl', function ($scope, $http, $modalInstance, UserID)
+app.controller('MenuDetailModalCtrl', function ($scope, $http, $modalInstance)
 {
-    $scope.ID = UserID;
     $scope.msg = "";
     $scope.running = false;
-    init();
-    function init()
-    {
-        $http({
-            method: "post",
-            url: _gconfig.baseWebUrl + '/api/User/GetDetailUser',
-            data: { UserID: $scope.ID },
-        }).success(function (data, status, headers, config) {
-            $scope.data = data.data;
-            // this callback will be called asynchronously
-            // when the response is available
-        }).error(function (data, status, headers, config) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-    }
-    $scope.ok = function (obj) {
+    $scope.object = {};
+    $scope.ok = function () {
         $scope.running = true;
-        console.log(obj);
-        $http.post(_gconfig.baseWebUrl + '/api/User/Update',obj).
+        $http.post(_gconfig.baseWebUrl + '/api/object/AddMenuCategory', $scope.object).
                                      success(function (res, status, headers, config) {
                                          if (res.success) {
                                              $scope.result = { text: "Lưu thành công", type: "success" };
+                                             $scope.object.ID = res.data;
                                              $modalInstance.close();
                                          }
                                          else {
