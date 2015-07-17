@@ -479,7 +479,23 @@ app.run(['$rootScope', '$state', '$stateParams',
                                }
                                $scope.sortableOptions = {
                                    // called after a node is dropped
-                                   stop: function (e, ui) {
+                                   stop: function (e, ui) {  $scope.gupagination = {};
+                               if ($state.params.page != undefined) {
+                                   $scope.gupagination.page = $state.params.page;
+                               }
+                               else {
+                                   $scope.gupagination.page = 1;
+                               }
+                               if ($state.params.pagesize != undefined) {
+                                   $scope.gupagination.itemperpage = $state.params.pagesize;
+                               }
+                               else {
+                                   $scope.gupagination.itemperpage = 12;
+                               }
+                               getData();
+                               $scope.pageChanged = function () {
+                                   getData();
+                               };
 
                                        $scope.updatesort();
                                    }
@@ -1463,20 +1479,36 @@ app.run(['$rootScope', '$state', '$stateParams',
                      templateUrl: _gconfig.baseAppResouceUrl + "/views/menu/managermenu.html"
                     , controller: ['$scope', '$state', '$http','$modal',
                       function ($scope, $state, $http, $modal) {
-                          $scope.page = 1;
-                          $scope.pagezise = "10";
-                          loadData($scope.page, $scope.pagezise);
+                          $scope.gupagination = {};
+                          if ($state.params.page != undefined) {
+                              $scope.gupagination.page = $state.params.page;
+                          }
+                          else {
+                              $scope.gupagination.page = 1;
+                          }
+                          if ($state.params.pagesize != undefined) {
+                              $scope.gupagination.itemperpage = $state.params.pagesize;
+                          }
+                          else {
+                              $scope.gupagination.itemperpage = 12;
+                          }
+                          loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                          $scope.pageChanged = function () {
+                              loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                          };
                           function loadData(page, itemperpage)
                           {
+                              
                               $http({
                                   method: "post",
                                   url: _gconfig.baseWebUrl + '/api/Object/ListMenuCategory',
-                                  data: {Page: page, Pagezise: itemperpage },
-                              }).success(function (data, status, headers, config) {
-                                  $scope.data = data.data;
-                                  console.log($scope.data);
-                                  $scope.page = data.data.CurrentPage;
-                                  $scope.pagezise = data.data.ItemsPerPage;
+                                  data: {page: page, pagesize: itemperpage },
+                              }).success(function (res, status, headers, config) {
+                                  $scope.data = res.data;
+                                  if (res.data.TotalItems > 0) {
+                                      $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
+                                  };
+                                  console.log($scope.gupagination);
                                   // this callback will be called asynchronously
                                   // when the response is available
                               }).error(function (data, status, headers, config) {
@@ -1486,8 +1518,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                           }
                           $scope.LoadPage=function()
                           {
-                           
-                              loadData($scope.page, $scope.pagezise);
+                              loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
                           }
                           $scope.addgroup= function ()
                           {
