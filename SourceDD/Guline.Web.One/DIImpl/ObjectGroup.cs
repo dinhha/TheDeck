@@ -359,5 +359,29 @@ namespace Guline.Web.One.DIImpl
         {
             db.Insert(menugroup);
         }
+        public Page<TableBooking> ListTableBooking(int page, int pagesize)
+        {
+            return db.Page<TableBooking>(page, pagesize, "Select * from TableBooking order by ID DESC");
+        }
+        public Page<BoatBooking> ListBoatBooking(int page, int pagesize)
+        {
+            return db.Page<BoatBooking>(page, pagesize, "Select * from BoatBooking order by ID DESC");
+        }
+        public Page<EventBooking> ListEventBooking(int page, int pagesize)
+        {
+            return db.Page<EventBooking>(page, pagesize, "Select * from EventBooking order by ID DESC");
+        }
+        public void TableBooking(TableBooking table)
+        {
+            db.Insert(table);
+        }
+        public void BoatBooking(BoatBooking boat)
+        {
+            db.Insert(boat);
+        }
+        public void EventBooking(EventBooking eventbk)
+        {
+            db.Insert(eventbk);
+        }
     }
 }

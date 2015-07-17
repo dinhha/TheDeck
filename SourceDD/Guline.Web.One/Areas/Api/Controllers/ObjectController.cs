@@ -476,5 +476,55 @@ namespace Guline.Web.One.Areas.Api.Controllers
                 return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
             }
         }
+        #region Booking
+        public JsonResult ListTableBook(int page=1,int pagesize=10)
+        {
+            return Json(new { data = sc.ListTableBooking(page, pagesize), msg = "List Table Booking" }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ListBoatBook(int page = 1, int pagesize = 10)
+        {
+            return Json(new { data = sc.ListBoatBooking(page, pagesize), msg = "List Boat Booking" }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ListEventBook(int page = 1, int pagesize = 10)
+        {
+            return Json(new { data = sc.ListEventBooking(page, pagesize), msg = "List Event Booking" }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult TableBooking(TableBooking table)
+        {
+            try
+            {
+                sc.TableBooking(table);
+                return Json(new { success = true, msg = "Book thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult BoatBooking(BoatBooking boat)
+        {
+            try
+            {
+                sc.BoatBooking(boat);
+                return Json(new { success = true, msg = "Book thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult EventBooking(EventBooking ev)
+        {
+            try
+            {
+                sc.EventBooking(ev);
+                return Json(new { success = true, msg = "Book thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
     }
 }

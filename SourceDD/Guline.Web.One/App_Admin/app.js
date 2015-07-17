@@ -1258,6 +1258,200 @@ app.run(['$rootScope', '$state', '$stateParams',
                 }//end vMain
             }
         })
+        .state('main.admin.martiniclub', {
+            url: "/martiniclub",
+            ncyBreadcrumb: {
+                label: 'Member Martiniclub'
+            },
+            data: { title: "Member Martiniclub" },
+            views: {
+                "adMain": {
+                    templateUrl: _gconfig.baseAppResouceUrl + "/views/admin/martiniclub.html"
+                   , controller: ['$scope', '$state', '$http', '$modal',
+                     function ($scope, $state, $http, $modal) {
+                         $scope.page = 1;
+                         $scope.pagezise = "10";
+                         loadData($scope.page, $scope.pagezise);
+                         function loadData(page, itemperpage) {
+                             $http({
+                                 method: "post",
+                                 url: _gconfig.baseWebUrl + '/api/Object/ListTableBook',
+                                 data: { Page: page, Pagezise: itemperpage },
+                             }).success(function (data, status, headers, config) {
+                                 $scope.data = data.data;
+                                 console.log($scope.data);
+                                 $scope.page = data.data.CurrentPage;
+                                 $scope.pagezise = data.data.ItemsPerPage;
+                                 // this callback will be called asynchronously
+                                 // when the response is available
+                             }).error(function (data, status, headers, config) {
+                                 // called asynchronously if an error occurs
+                                 // or server returns response with an error status.
+                             });
+                         }
+                         $scope.LoadPage = function () {
+
+                             loadData($scope.page, $scope.pagezise);
+                         }
+                     }]
+                }//end vMain
+            }
+        })
+          .state('main.admin.contact', {
+              url: "/contact",
+              ncyBreadcrumb: {
+                  label: 'List Contact'
+              },
+              data: { title: "List Contact" },
+              views: {
+                  "adMain": {
+                      templateUrl: _gconfig.baseAppResouceUrl + "/views/admin/contact.html"
+                     , controller: ['$scope', '$state', '$http', '$modal',
+                       function ($scope, $state, $http, $modal) {
+                           $scope.page = 1;
+                           $scope.pagezise = "10";
+                           loadData($scope.page, $scope.pagezise);
+                           function loadData(page, itemperpage) {
+                               $http({
+                                   method: "post",
+                                   url: _gconfig.baseWebUrl + '/api/Object/ListContact',
+                                   data: { Page: page, Pagezise: itemperpage },
+                               }).success(function (data, status, headers, config) {
+                                   $scope.data = data.data;
+                                   console.log($scope.data);
+                                   $scope.page = data.data.CurrentPage;
+                                   $scope.pagezise = data.data.ItemsPerPage;
+                                   // this callback will be called asynchronously
+                                   // when the response is available
+                               }).error(function (data, status, headers, config) {
+                                   // called asynchronously if an error occurs
+                                   // or server returns response with an error status.
+                               });
+                           }
+                           $scope.LoadPage = function () {
+
+                               loadData($scope.page, $scope.pagezise);
+                           }
+                       }]
+                  }//end vMain
+              }
+          })
+         .state('main.admin.table', {
+             url: "/table",
+             ncyBreadcrumb: {
+                 label: 'Danh sách book Bàn'
+             },
+             data: { title: "Danh sách book Bàn" },
+             views: {
+                 "adMain": {
+                     templateUrl: _gconfig.baseAppResouceUrl + "/views/booking/table.html"
+                    , controller: ['$scope', '$state', '$http', '$modal',
+                      function ($scope, $state, $http, $modal) {
+                          $scope.page = 1;
+                          $scope.pagezise = "10";
+                          loadData($scope.page, $scope.pagezise);
+                          function loadData(page, itemperpage) {
+                              $http({
+                                  method: "post",
+                                  url: _gconfig.baseWebUrl + '/api/Object/ListTableBook',
+                                  data: { Page: page, Pagezise: itemperpage },
+                              }).success(function (data, status, headers, config) {
+                                  $scope.data = data.data;
+                                  console.log($scope.data);
+                                  $scope.page = data.data.CurrentPage;
+                                  $scope.pagezise = data.data.ItemsPerPage;
+                                  // this callback will be called asynchronously
+                                  // when the response is available
+                              }).error(function (data, status, headers, config) {
+                                  // called asynchronously if an error occurs
+                                  // or server returns response with an error status.
+                              });
+                          }
+                          $scope.LoadPage = function () {
+
+                              loadData($scope.page, $scope.pagezise);
+                          }
+                      }]
+                 }//end vMain
+             }
+         })
+         .state('main.admin.boat', {
+             url: "/boat",
+             ncyBreadcrumb: {
+                 label: 'Danh sách book thuyền'
+             },
+             data: { title: "Danh sách book thuyền" },
+             views: {
+                 "adMain": {
+                     templateUrl: _gconfig.baseAppResouceUrl + "/views/booking/boat.html"
+                    , controller: ['$scope', '$state', '$http', '$modal',
+                      function ($scope, $state, $http, $modal) {
+                          $scope.page = 1;
+                          $scope.pagezise = "10";
+                          loadData($scope.page, $scope.pagezise);
+                          function loadData(page, itemperpage) {
+                              $http({
+                                  method: "post",
+                                  url: _gconfig.baseWebUrl + '/api/Object/ListBoatBook',
+                                  data: { Page: page, Pagezise: itemperpage },
+                              }).success(function (data, status, headers, config) {
+                                  $scope.data = data.data;
+                                  console.log($scope.data);
+                                  $scope.page = data.data.CurrentPage;
+                                  $scope.pagezise = data.data.ItemsPerPage;
+                                  // this callback will be called asynchronously
+                                  // when the response is available
+                              }).error(function (data, status, headers, config) {
+                                  // called asynchronously if an error occurs
+                                  // or server returns response with an error status.
+                              });
+                          }
+                          $scope.LoadPage = function () {
+
+                              loadData($scope.page, $scope.pagezise);
+                          }
+                      }]
+                 }//end vMain
+             }
+         })
+         .state('main.admin.events', {
+             url: "/events",
+             ncyBreadcrumb: {
+                 label: 'Danh sách book sự kiện'
+             },
+             data: { title: "Danh sách book sự kiện" },
+             views: {
+                 "adMain": {
+                     templateUrl: _gconfig.baseAppResouceUrl + "/views/booking/event.html"
+                    , controller: ['$scope', '$state', '$http', '$modal',
+                      function ($scope, $state, $http, $modal) {
+                          $scope.page = 1;
+                          $scope.pagezise = "10";
+                          loadData($scope.page, $scope.pagezise);
+                          function loadData(page, itemperpage) {
+                              $http({
+                                  method: "post",
+                                  url: _gconfig.baseWebUrl + '/api/Object/ListEventBook',
+                                  data: { Page: page, Pagezise: itemperpage },
+                              }).success(function (data, status, headers, config) {
+                                  $scope.data = data.data;
+                                  console.log($scope.data);
+                                  $scope.page = data.data.CurrentPage;
+                                  $scope.pagezise = data.data.ItemsPerPage;
+                                  // this callback will be called asynchronously
+                                  // when the response is available
+                              }).error(function (data, status, headers, config) {
+                                  // called asynchronously if an error occurs
+                                  // or server returns response with an error status.
+                              });
+                          }
+                          $scope.LoadPage = function () {
+                              loadData($scope.page, $scope.pagezise);
+                          }
+                      }]
+                 }//end vMain
+             }
+         })
          .state('main.admin.managermenu', {
              url: "/menu",
              ncyBreadcrumb: {

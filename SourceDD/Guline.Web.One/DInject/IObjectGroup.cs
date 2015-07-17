@@ -66,5 +66,11 @@ namespace Guline.Web.One.DInject
         void DeleteMenuItem(MenuDetails menu);
 
         void AddMenuCategory(MenuCategory menugroup);
+        Page<TableBooking> ListTableBooking(int page, int pagesize);
+        Page<BoatBooking> ListBoatBooking(int page, int pagesize);
+        Page<EventBooking> ListEventBooking(int page, int pagesize);
+        void TableBooking(TableBooking table);
+        void BoatBooking(BoatBooking table);
+        void EventBooking(EventBooking table);
     }
 }

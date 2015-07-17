@@ -235,6 +235,7 @@
     <Compile Include="gModels\GuMail.cs" />
     <Compile Include="gModels\GuSecurity.cs" />
     <Compile Include="gModels\LocationModel.cs" />
+    <Compile Include="gModels\MartiniClub.cs" />
     <Compile Include="gModels\MenuCategory.cs" />
     <Compile Include="gModels\Receiver.cs" />
     <Compile Include="gModels\SendMail.cs" />
@@ -302,11 +303,16 @@
     <Content Include="App_Admin\gNav.html" />
     <Content Include="App_Admin\langs\en-us.txt" />
     <Content Include="App_Admin\langs\vi-vn.txt" />
+    <Content Include="App_Admin\views\admin\contact.html" />
     <Content Include="App_Admin\views\admin\home.html" />
     <Content Include="App_Admin\views\admin\index.html" />
     <Content Include="App_Admin\views\admin\left.html" />
+    <Content Include="App_Admin\views\admin\martiniclub.html" />
     <Content Include="App_Admin\views\admin\success.html" />
     <Content Include="App_Admin\gAddCat.html" />
+    <Content Include="App_Admin\views\booking\boat.html" />
+    <Content Include="App_Admin\views\booking\event.html" />
+    <Content Include="App_Admin\views\booking\table.html" />
     <Content Include="App_Admin\views\Mail\SendMail.html" />
     <Content Include="App_Admin\views\menu\addmenugroup.html" />
     <Content Include="App_Admin\views\objecttype\index.html" />
