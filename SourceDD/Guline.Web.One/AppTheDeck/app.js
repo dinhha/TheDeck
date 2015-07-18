@@ -63,22 +63,27 @@ function url_friendly(alias) {
     str = str.replace(/\s+/g, '-').toLowerCase();
     return str;
 }
+app = angular.module('gulineWebApp', ['ezfb', 'ui.router', 'ui.bootstrap', 'pascalprecht.translate', 'ncy-angular-breadcrumb', 'chieffancypants.loadingBar', 'ngAnimate', 'ngCookies', 'angular-flash.service', 'angular-flash.flash-alert-directive', ]);
+app.config(['$translateProvider', 'cfpLoadingBarProvider', "$sceProvider", '$locationProvider', 'ezfbProvider', 'flashProvider',
+    function ($translateProvider, cfpLoadingBarProvider, $sceProvider, $locationProvider, ezfbProvider, flashProvider) {
+        //cfpLoadingBarProvider.includeSpinner = false;
+        $translateProvider.useStaticFilesLoader({
+            prefix: _gconfig.appPath + '/langs/',
+            suffix: '.txt'
+        });
+        $translateProvider.preferredLanguage('vi-vn');
+        $sceProvider.enabled(false);
 
-app = angular.module('gulineWebApp', ['ezfb', 'ui.router', 'ui.bootstrap', 'pascalprecht.translate', 'ncy-angular-breadcrumb', 'chieffancypants.loadingBar', 'ngAnimate', 'ngCookies']);
-app.config(['$translateProvider', 'cfpLoadingBarProvider', "$sceProvider", '$locationProvider', 'ezfbProvider', function ($translateProvider, cfpLoadingBarProvider, $sceProvider, $locationProvider, ezfbProvider) {
-    //cfpLoadingBarProvider.includeSpinner = false;
-    $translateProvider.useStaticFilesLoader({
-        prefix: _gconfig.appPath + '/langs/',
-        suffix: '.txt'
-    });
-    $translateProvider.preferredLanguage('vi-vn');
-    $sceProvider.enabled(false);
+        $locationProvider.html5Mode(true);
+        ezfbProvider.setInitParams({
+            appId: '269534733223147'
+        });
 
-    $locationProvider.html5Mode(true);
-    ezfbProvider.setInitParams({
-        appId: '269534733223147'
-    });
-}]);
+        flashProvider.errorClassnames.push('alert-danger');
+        flashProvider.warnClassnames.push('alert-warning');
+        flashProvider.infoClassnames.push('alert-info');
+        flashProvider.successClassnames.push('alert-success');
+    }]);
 app.factory('broadcastService', function ($rootScope) {
 
     var broadcastService = {};
@@ -184,7 +189,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                     templateUrl: _gconfig.baseAppResouceUrl + "/views/home/home.html"
                    , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', '$timeout',
                      function ($scope, $rootScope, $state, $http, appconfig, $timeout) {
-                         $scope.appconfig = appconfig.config;                         
+                         $scope.appconfig = appconfig.config;
                          $timeout(init);
                          function init() {
                              var tl = new TimelineMax();
@@ -209,10 +214,10 @@ app.run(['$rootScope', '$state', '$stateParams',
                                      interVal = setInterval(setSlide, delayTransition);
                                  }
                              });
-                             
+
                              function setSlide(to) {
                                  if (to == null) {
-                                     to = (current == slides.length - 1 ? 0 : current+1);
+                                     to = (current == slides.length - 1 ? 0 : current + 1);
                                  }
 
                                  TweenMax.to(slides.eq(current), .4, { autoAlpha: 0, ease: Power0.easeOut });
@@ -246,33 +251,131 @@ app.run(['$rootScope', '$state', '$stateParams',
                         function ($scope, $rootScope, $state, $http, appconfig, $timeout) {
                             var $window = $(window);
                             var scrollTime = 0.5;
-                            var scrollDistance = 170;
+                            var scrollDistance = 320;
 
-                            $timeout(function () {
-                                $('.parallax-window').parallax({ zIndex: 100 });
-                                $window.trigger('load.px.parallax');
-                            }, 50);
+                            var pWidth = 1550, pHeight = 400;
+                            var rHeight = $window.width() / pWidth * pHeight;
+
 
                             $window.on('mousewheel DOMMouseScroll', function (event) {
                                 event.preventDefault();
+                                scrollTime = 0.5
                                 var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
                                 var scrollTop = $window.scrollTop();
                                 var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+                                scrollTo(finalScroll);
+                            });
+
+                            $window.on('keydown', function (event) {
+                                var scrollTop = $window.scrollTop(), delta = 0, scroll = false;
+                                scrollTime = 0.5;
+                                switch (event.keyCode) {
+                                    case 33: //page up
+                                        event.preventDefault();
+                                        scroll = true;
+                                        scrollTop -= document.documentElement.clientHeight;
+                                        break;
+                                    case 34: //page down
+                                        event.preventDefault();
+                                        scroll = true;
+                                        scrollTop += document.documentElement.clientHeight;
+                                        break;
+                                    case 35: //end
+                                        event.preventDefault();
+                                        scroll = true;
+                                        scrollTop = document.body.offsetHeight - document.documentElement.clientHeight;
+                                        scrollTime = 2;
+                                        break;
+                                    case 36: //home
+                                        event.preventDefault();
+                                        scroll = true;
+                                        scrollTop = 0;
+                                        scrollTime = 2;
+                                        break;
+                                    case 38: //arrow up
+                                        event.preventDefault();
+                                        scroll = true;
+                                        scrollTop -= scrollDistance;
+                                        break;
+                                    case 40: //arrow down
+                                        event.preventDefault();
+                                        scroll = true;
+                                        scrollTop += scrollDistance;
+                                        break;
+                                    default:
+                                }
+                                if (scroll) scrollTo(scrollTop);
+                            });
+
+                            function scrollTo(position) {
                                 TweenMax.to($window, scrollTime, {
                                     scrollTo: {
-                                        y: finalScroll,
+                                        y: position,
                                         autoKill: true
                                     },
                                     ease: Power1.easeOut,
                                     autoKill: true,
                                     overwrite: 1
                                 });
+                            }
+
+                            $scope.menuGroups = [];
+                            $scope.menuGroupDetails = {};
+
+                            $http({
+                                method: "post",
+                                url: _gconfig.baseWebUrl + '/api/Object/ListMenuCategory',
+                                data: { page: 1, pagesize: 100 },
+                            }).success(function (res, status, headers, config) {
+                                $scope.data = res.data.Items;
+
+                                res.data.Items.forEach(function (menuCat, i) {
+                                    $http({
+                                        method: "post",
+                                        url: _gconfig.baseWebUrl + '/api/Object/GetDetailMenu',
+                                        data: { MenuCatID: menuCat.ID, page: 1, pagezise: 100 },
+                                    }).success(function (data, status, headers, config) {
+                                        data.data.Items.forEach(function (item, i) {
+                                            data.data.Items[i].SubItems = JSON.parse(item.SubItems);
+                                        });
+                                        menuCat.menus = data.data.Items;
+                                    });
+                                    if ($scope.menuGroups.indexOf(menuCat.GroupName) == -1) {
+                                        $scope.menuGroups.push(menuCat.GroupName);
+                                        $scope.menuGroupDetails[menuCat.GroupName] = {
+                                            name: menuCat.GroupName,
+                                            cates: { left: [], right: [], center: [] }
+                                        };
+                                    }
+                                    var position = (menuCat.Position || "").replace(/\s/g, '').toLowerCase();
+                                    if (position == 'left' || position == 'right' || position == 'center')
+                                        $scope.menuGroupDetails[menuCat.GroupName].cates[position].push(menuCat);
+                                });
+
+                                $timeout(function () {
+                                    //$('.parallax-window').css('height', rHeight);
+                                    //$('#parallax' + (i + 1)).parallax("0%", 0.1);
+
+                                    //$('.img-holder').css('height', rHeight);
+                                    $('.img-holder').imageScroll({
+                                        container: $('.menu'),
+                                        speed: .2,
+                                        holderMinHeight: 200,
+                                        holderMaxHeight: rHeight,
+                                        mediaWidth: 1550,
+                                        mediaHeight: 684,
+                                    });
+                                });
                             });
+
+                            $('#page_wrapper').addClass('menu');
                         }]
                    }
                },
                onExit: function () {
                    $('.parallax-mirror').remove();
+                   $('.downloadourmenu').remove();
+                   $('#page_wrapper').removeClass('menu');
                }
            })
         .state('main.home.giftcard', {
@@ -287,7 +390,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                    , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
                      function ($scope, $rootScope, $state, $http, appconfig) {
 
-                
+
                      }]
                 }
             }
@@ -373,8 +476,22 @@ app.run(['$rootScope', '$state', '$stateParams',
         views: {
             "homeMain": {
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/contactus/contact.html"
-               , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                 function ($scope, $state, $http, appconfig, $timeout) {
+               , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout", 'flash',
+                 function ($scope, $state, $http, appconfig, $timeout, flash) {
+                     $scope.contact = {};
+                     $scope.sendcontact = function () {
+                         $http.post(_gconfig.baseWebUrl + '/api/Object/AddContact', $scope.contact).
+                             success(function (res, status, headers, config) {
+                                 if (res.success) {
+                                     flash.success = res.msg;
+                                 }
+                                 else {
+                                     flash.error = res.msg;
+                                 }
+                             }).error(function (data, status, headers, config) {
+                                 flash.error = res.msg;
+                             });
+                     }
                  }]
             }
         }
@@ -488,9 +605,22 @@ app.run(['$rootScope', '$state', '$stateParams',
         views: {
             'homeMain': {
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/martiniclub/martiniclub.html",
-                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                function ($scope, $state, $http, appconfig, $timeout) {
-                    
+                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout", 'flash',
+                function ($scope, $state, $http, appconfig, $timeout, flash) {
+                    $scope.member = {};
+                    $scope.save = function () {
+                        $http.post(_gconfig.baseWebUrl + '/api/Object/AddMartini', $scope.member).
+                            success(function (res, status, headers, config) {
+                                if (res.success) {
+                                    flash.success = res.msg;
+                                }
+                                else {
+                                    flash.error = res.msg;
+                                }
+                            }).error(function (data, status, headers, config) {
+                                flash.error = res.msg;
+                            });
+                    }
                 }]
             }
         }
@@ -505,19 +635,38 @@ app.run(['$rootScope', '$state', '$stateParams',
         views: {
             'homeMain': {
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/reservation/reservation.html",
-                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout", '$location',
-                function ($scope, $state, $http, appconfig, $timeout, $location) {
+                controller: ['$scope', '$state', '$http', 'appconfig', "$timeout", '$location', 'flash',
+                function ($scope, $state, $http, appconfig, $timeout, $location, flash) {
 
                     var currentTab = "table";
                     if ($location.hash() != null && $location.hash() != '')
                         currentTab = $location.hash();
+
+                    $scope.boatType = {
+                        Cocktail: "Cocktail Cruise",
+                        CuChi: "The Cu Chi Tunnel Experience",
+                        Corp: "Corporate or private sunset cruise on a handcrafted dutch boat",
+                        Luxury: "Luxury yachtCorporate or private sunset cruise on a handcrafted dutch boat"
+                    };
+
                     $scope.boatTypeList = [
-                        "Cocktail Cruise",
-                        "The Cu Chi Tunnel Experience",
-                        "Corporate or private sunset cruise on a handcrafted dutch boat",
-                        "Luxury yachtCorporate or private sunset cruise on a handcrafted dutch boat"
+                        {
+                            name: $scope.boatType.Cocktail,
+                            des: ["Rose wine, Chef’s signature canapés, botted water, chilled towels, and service staff for groups of 8 or more."]
+                        },
+                        {
+                            name: $scope.boatType.CuChi,
+                            des: ["Pick up at Hotel in D1, light breakfast, picnic lunch, wine, soft drinks, bottled water, chilled towels, entrance fee, English speaking guide and service staff."]
+                        },
+                        {
+                            name: $scope.boatType.Corp,
+                            des: ["Rose wine, Chef’s signature canapés, bottled water, chilled towels and service staff for groups of 8 or more"]
+                        },
+                        {
+                            name: $scope.boatType.Luxury,
+                            des: ["Only yacht rental (excluding food, beverage, VAT, service), bespoke to your heart desire.", "+ Up to 12 people"]
+                        }                        
                     ]
-                    $scope.boatType = "Cocktail Cruise";
 
                     $scope.getActiveTabClass = function (type) {
                         return currentTab == type ? "active" : "";
@@ -528,11 +677,161 @@ app.run(['$rootScope', '$state', '$stateParams',
                     }
 
                     $scope.chooseBoatType = function (boatType) {
-                        $scope.boatType = boatType;
+                        $scope.boat.TypeBoat = boatType;
                     }
 
                     $scope.activePanel = function (boatType) {
-                        return $scope.boatType == boatType;
+                        return $scope.boat.TypeBoat == boatType;
+                    }
+
+                    var BoatTaxiPrice = {
+                        'Oneway':{2: 2200000, add: 400000},
+                        'Return': {2: 2750000, add: 550000}
+                    }
+                    
+                    //Table booking
+                    $scope.table = {
+                        HasBoat: false,
+                        Price: 0
+                    };
+                    $scope.hasBoat = 'false';
+                    $scope.tablePrice = 0;
+                    $scope.$watch('hasBoat', function (hasBoat) {
+                        $scope.table.HasBoat = hasBoat == 'true';
+                        if ($scope.table.HasBoat)
+                            $scope.table.TypeBoat = 'Oneway';
+                    });
+                    $scope.$watch('table.NumberofBoat', function () { calcPrice('table'); });
+                    $scope.$watch('table.TypeBoat', function () { calcPrice('table'); });
+
+                    //Boat booking
+                    $scope.boat = {
+                        TypeBoat: $scope.boatType.Cocktail,
+                        Price: 0
+                    };
+                    $scope.$watch('boat.NumofPeople', function () { calcPrice('boat'); });
+                    $scope.$watch('boat.TypeBoat', function () { calcPrice('boat'); });
+                    $scope.$watch('boat.Hours', function () { calcPrice('boat'); });
+                    $scope.minPeo = 1;
+                    $scope.maxPeo = 1000;
+
+                    //Event booking
+                    $scope.eventList = ['Company team building', 'End year party'];
+                    $scope.event = {
+                        TypeEvent: $scope.eventList[0]
+                    };
+
+                    //-----------
+                    $scope.book = function (type) {
+                        try{
+                            switch (type) {
+                                case 'table':
+                                    $scope.table.Date = new Date($('#date').val());
+                                    $scope.table.Time = $('#time').val();
+                                
+                                    $http.post(_gconfig.baseWebUrl + '/api/Object/TableBooking', $scope.table).
+                                        success(function (res, status, headers, config) {
+                                            if (res.success) {
+                                                flash.success = res.msg;
+                                            }
+                                            else {
+                                                flash.error = res.msg;
+                                            }
+                                        }).error(function (data, status, headers, config) {
+                                            flash.error = res.msg;
+                                        });
+                                    break
+                                case 'boat':
+                                    $scope.boat.Date = new Date($('#perInfo_date').val());
+                                    $scope.boat.Time = $('#perInfo_time').val();
+                                    console.log($scope.boat);
+
+                                    $http.post(_gconfig.baseWebUrl + '/api/Object/BoatBooking', $scope.boat).
+                                        success(function (res, status, headers, config) {
+                                            if (res.success) {
+                                                flash.success = res.msg;
+                                            }
+                                            else {
+                                                flash.error = res.msg;
+                                            }
+                                        }).error(function (data, status, headers, config) {
+                                            flash.error = res.msg;
+                                        });
+                                    break
+                                case 'event':
+                                    $scope.event.EventDate = new Date($('#event_date').val());
+                                    console.log($scope.event);
+
+                                    $http.post(_gconfig.baseWebUrl + '/api/Object/EventBooking', $scope.event).
+                                        success(function (res, status, headers, config) {
+                                            if (res.success) {
+                                                flash.success = res.msg;
+                                            }
+                                            else {
+                                                flash.error = res.msg;
+                                            }
+                                        }).error(function (data, status, headers, config) {
+                                            flash.error = res.msg;
+                                        });
+                                    break
+                            }
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }
+                    
+                    function calcPrice(type) {
+                        switch (type) {
+                            case 'table':
+                                if ($scope.table.HasBoat && $scope.table.NumberofBoat != null && $scope.table.TypeBoat != null) {
+                                    $scope.table.Price = ($scope.table.NumberofBoat > 0) * BoatTaxiPrice[$scope.table.TypeBoat][2];
+                                    $scope.table.Price += ($scope.table.NumberofBoat > 2 ? $scope.table.NumberofBoat - 2 : 0) * BoatTaxiPrice[$scope.table.TypeBoat]['add'];
+                                }
+                                break;
+                            case 'boat':
+                                if ($scope.boat.NumofPeople != null && $scope.boat.TypeBoat != null) {
+                                    switch ($scope.boat.TypeBoat) {
+                                        case $scope.boatType.Cocktail:
+                                            var price = {
+                                                1: { '2': 4550000, 'add': 800000 },
+                                                2: { '2': 6800000, 'add': 950000 }
+                                            }
+                                            if ($scope.boat.Hours != null) {
+                                                var h = $scope.boat.Hours == 1 ? 1 : 2;
+                                                $scope.boat.Price = ($scope.boat.NumofPeople > 0) * (price[h]['2'] * (Math.floor($scope.boat.Hours / h)) + price[1]['2'] * ($scope.boat.Hours % 2 && $scope.boat.Hours > 2));
+                                                $scope.boat.Price += ($scope.boat.NumofPeople > 2 ? $scope.boat.NumofPeople - 2 : 0) * (price[h]['add'] * Math.floor($scope.boat.Hours / h) + price[1]['add'] * ($scope.boat.Hours % 2 && $scope.boat.Hours > 2));
+                                            }
+                                            $scope.minPeo = 1;
+                                            $scope.maxPeo = 1000;
+                                            break;
+                                        case $scope.boatType.CuChi:
+                                            var price = {
+                                                '2': 13000000,
+                                                'add': 2200000
+                                            }
+                                            $scope.boat.Price = ($scope.boat.NumofPeople > 0) * price['2'];
+                                            $scope.boat.Price += ($scope.boat.NumofPeople > 2 ? $scope.boat.NumofPeople - 2 : 0) * price['add'];
+                                            $scope.minPeo = 1;
+                                            $scope.maxPeo = 1000;
+                                            break;
+                                        case $scope.boatType.Corp:
+                                            var price = 1400000;
+                                            if ($scope.boat.Hours != null)
+                                                $scope.boat.Price = $scope.boat.NumofPeople * price * $scope.boat.Hours;
+                                            $scope.minPeo = 12;
+                                            $scope.maxPeo = 27;
+                                            break;
+                                        case $scope.boatType.Luxury:
+                                            var price = 6900000;
+                                            if ($scope.boat.Hours != null)
+                                                $scope.boat.Price = price * $scope.boat.Hours;
+                                            $scope.minPeo = 1;
+                                            $scope.maxPeo = 12;
+                                            break;
+                                    }
+                                }
+                                break;
+                        }
                     }
                 }]
             }
@@ -563,3 +862,24 @@ app.filter("range", function () {
         return input;
     }
 })
+
+app.directive('ngRequired', function () {
+    return function (scope, element, attr) {
+        var requireModel = attr.ngRequired;
+        scope.$watch(requireModel, function (required) {
+            if (required)
+                element.attr('required', "");
+            else
+                element.removeAttr('required');
+        });
+    }
+});
+app.directive('formatNumber', function () {
+    return function (scope, element, attr) {
+        var numberModel = attr.formatNumber;
+        scope.$watch(numberModel, function (number) {
+            if (number != null)
+                element.text((number + "").replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+        });
+    }
+});

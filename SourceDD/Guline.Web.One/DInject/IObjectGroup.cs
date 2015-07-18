@@ -72,5 +72,8 @@ namespace Guline.Web.One.DInject
         void TableBooking(TableBooking table);
         void BoatBooking(BoatBooking table);
         void EventBooking(EventBooking table);
+        void AddContact(Contact contact);
+        void AddMartini(MartiniClub martini);
+
     }
 }

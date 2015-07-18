@@ -1490,7 +1490,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                               $scope.gupagination.itemperpage = $state.params.pagesize;
                           }
                           else {
-                              $scope.gupagination.itemperpage = 12;
+                              $scope.gupagination.itemperpage = 120;
                           }
                           loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
                           $scope.pageChanged = function () {
@@ -1507,8 +1507,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                                   $scope.data = res.data;
                                   if (res.data.TotalItems > 0) {
                                       $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
+                                      $scope.gupagination.itemperpage = 90;
                                   };
-                                  console.log($scope.gupagination);
+                                  console.log($scope.data);
                                   // this callback will be called asynchronously
                                   // when the response is available
                               }).error(function (data, status, headers, config) {
@@ -1532,12 +1533,13 @@ app.run(['$rootScope', '$state', '$stateParams',
                               });
 
                               modalInstance.result.then(function () {
-                                  loadData($scope.page, $scope.pagezise);
+                                  loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
                               }, function () {
 
                               });
                           }
-                 
+
+                          
                       }]
                  }//end vMain
              }
@@ -1557,7 +1559,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                                  $scope.msg = "";
                                  $scope.running = false;
                                  $scope.page = 1;
-                                 $scope.itemperpage = 10
+                                 $scope.itemperpage = 100
                                  init();
                                  function loadData()
                                  {
@@ -1581,6 +1583,13 @@ app.run(['$rootScope', '$state', '$stateParams',
                                  function init() {
                                      loadData();
                                  }
+
+                                 $scope.$watch('additem.Price', function (price) {
+                                     if (price != '') {
+                                         $scope.additem.Price = price.replace(/(\d)\s+(\d)/g, '$1$2').replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+                                     }
+                                 });
+
                                  $scope.additem = {
                                      ID:0,
                                      MenuID: $scope.ID,

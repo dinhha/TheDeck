@@ -12,6 +12,7 @@ namespace Guline.Web.One.gModels
         public long ID { get; set; }
         public string Name { get; set; }
         public string GroupName { get; set; }
+        public string Position { get; set; }
     }
 
     [PetaPoco.TableName("MenuDetails")]

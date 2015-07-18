@@ -525,6 +525,30 @@ namespace Guline.Web.One.Areas.Api.Controllers
                 return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
             }
         }
+        public JsonResult AddMartini(MartiniClub martini)
+        {
+            try
+            {
+                sc.AddMartini(martini);
+                return Json(new { success = true, msg = "Đăng ký thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult AddContact(Contact contact)
+        {
+            try
+            {
+                sc.AddContact(contact);
+                return Json(new { success = true, msg = "Tin nhắn của bạn đã gửi thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
         #endregion
     }
 }

@@ -12,6 +12,15 @@
 
     </div>
     <div class="clearfix"></div>
+    <div flash-alert="error" active-class="in alert-flash" class="fade" duration="3000">
+        <button type="button" class="close" ng-click="hide()">&times;</button>
+        <span class="alert-message">{{flash.message}}</span>
+    </div>
+
+    <div flash-alert="success" active-class="in alert-flash" class="fade " duration="3000">
+        <button type="button" class="close" ng-click="hide()">&times;</button>
+        <span class="alert-message">{{flash.message}}</span>
+    </div>
     <div ui-view="vBottom">
     </div>
     <div class="clearfix"></div>

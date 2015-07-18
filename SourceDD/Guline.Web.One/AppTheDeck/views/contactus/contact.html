@@ -21,32 +21,35 @@
                     </p>
                 </div>
                 <div class="col-md-8">
-                    <form>
+                    <form class="ddeck-form" ng-submit="sendcontact()" style="margin-top:0">
                         <div class="col-md-6 p-left-0">
                             <p>Last name :*</p>
-                            <input type="text" class="form-control" ng-model="contact.LastName" />
+                            <input type="text" id="lastname" class="form-control" ng-model="contact.LastName" required />
                         </div>
                         <div class="col-md-6 p-right-0">
                             <p>First name :*</p>
-                            <input type="text" class="form-control" ng-model="contact.FirstName" />
+                            <input type="text" id="firstname" class="form-control" ng-model="contact.FirstName" required />
                         </div>
                         <div class="col-md-6 p-left-0 m-top-10">
                             <p>Email :*</p>
-                            <input type="text" class="form-control" ng-model="contact.FirstName" />
+                            <input type="text" id="email" class="form-control" ng-model="contact.Email" required />
                         </div>
                         <div class="col-md-6 p-right-0 m-top-10">
                             <p>Mobile :*</p>
-                            <input type="text" class="form-control" ng-model="contact.FirstName" />
+                            <input type="text" id="mobile" class="form-control" ng-model="contact.Mobile" required />
                         </div>
                         <div class="col-md-12 p-left-0 p-right-0 m-top-10">
                             <p>Message :*</p>
-                            <textarea rows="5" style="height:150px;" ng-model="contact.Message" class="form-control"></textarea>
+                            <textarea rows="5" style="height:150px;" ng-model="contact.Message" class="form-control" required></textarea>
                         </div>
-                        <a href="" ng-click="sendcontact()" class="btn-submit">
-                            <div class="col-md-12 p-left-0 p-right-0 m-top-20 text-center box-submit">
-                                SUBMIT
-                            </div>
-                        </a>
+                        <div class="col-md-12 p-left-0 p-right-0 m-top-20">
+                            <button type="submit" class="btn btn-default btn-block">SUBMIT</button>
+                        </div>
+                        <!--<a href="" ng-click="sendcontact()" class="btn-submit">
+            <div class="col-md-12 p-left-0 p-right-0 m-top-20 text-center box-submit">
+                SUBMIT
+            </div>
+        </a>-->
                     </form>
                 </div>
             </div>

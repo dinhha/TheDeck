@@ -17,19 +17,19 @@
         <div class="tab-content">
             <div id="table" class="tab-pane fade {{getActiveTabContent('table')}}">
                 <div class="col-md-offset-2 col-md-8">
-                    <form role="form" class="ddeck-form">
+                    <form role="form" class="ddeck-form" ng-submit="book('table')">
                         <p>Please fill in your information, we will contact you shortly.</p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastname">Last name : *</label>
-                                    <input type="text" class="form-control" id="lastname" required>
+                                    <input type="text" class="form-control" id="lastname" required ng-model="table.LastName">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firstname">First name : *</label>
-                                    <input type="text" class="form-control" id="firstname" required>
+                                    <input type="text" class="form-control" id="firstname" required ng-model="table.FirstName">
                                 </div>
                             </div>
                         </div>
@@ -37,13 +37,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Email : *</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                    <input type="email" class="form-control" id="email" required ng-model="table.Email">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="mobile">Mobile : *</label>
-                                    <input type="text" class="form-control" id="mobile" required>
+                                    <input type="text" class="form-control" id="mobile" required ng-model="table.Mobile">
                                 </div>
                             </div>
                         </div>
@@ -61,11 +61,19 @@
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            $(function () {
+                                $('#date').datetimepicker({ format: 'L' });
+                                $('#time').datetimepicker({ format: 'LT' });
+                            });
+                        </script>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nbOfP">Nb of people : *</label>
-                                    <input type="text" class="form-control" id="nbOfP" required>
+                                    <input type="number" min="1" class="form-control" id="nbOfP" required ng-model="table.NumofPeople">
                                 </div>
                             </div>
                         </div>
@@ -77,35 +85,37 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="radio">
-                                    <input type="radio" value="" id="dont_book" name="book_type">
+                                    <input type="radio" value="false" id="dont_book" name="book_type" ng-model="hasBoat">
                                     <label for="dont_book"><span></span>Don’t book boat</label>
                                 </div>
                                 <div class="radio">
-                                    <input type="radio" value="" id="book_boat" name="book_type">
+                                    <input type="radio" value="true" id="book_boat" name="book_type" ng-model="hasBoat">
                                     <label for="book_boat"><span></span>Book private boat taxi (Date: 26/06/2015 - Time: 17h30)</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row {{table.HasBoat ? '' : 'disabled'}}">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="noPeo1">Nb of people : *</label>
-                                    <input type="text" class="form-control" id="noPeo1">
+                                    <input type="number" min="1" class="form-control" id="noPeo1" ng-model="table.NumberofBoat" ng-required="table.HasBoat" ng-disabled="!table.HasBoat">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="type">Type : *</label>
-                                    <select class="form-control" id="type">
-                                        <option>Return</option>
+                                    <select class="form-control" id="type" ng-model="table.TypeBoat" ng-required="table.HasBoat" ng-disabled="!table.HasBoat">
+                                        <option value="Oneway">One Way</option>
+                                        <option value="Return">Return</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row {{table.HasBoat ? '' : 'disabled'}}">
                             <div class="col-md-12">
                                 <p>
-                                    Total price: 3.850.000 vnd <a href="#" class="active">(download our price chart)</a><br />
+                                    Total price: <span format-number="table.Price"></span> vnd 
+                                    <a href="/files/Boat Experiences.pdf" target="_blank" class="active">(download our price chart)</a><br />
                                     <span style="font-size:75%">*Inclusions: The Deck signature welcome drink</span>
                                 </p>
                             </div>
@@ -114,7 +124,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="note">Note</label>
-                                    <textarea class="form-control" id="note" rows="4"></textarea>
+                                    <textarea class="form-control" id="note" rows="4" ng-model="table.Note"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +134,7 @@
             </div>
             <div id="boat" class="tab-pane fade {{getActiveTabContent('boat')}}">
                 <div class="col-md-offset-2 col-md-8">
-                    <form role="form" class="ddeck-form">
+                    <form role="form" class="ddeck-form" ng-submit="book('boat')">
                         <div class="row">
                             <p>We also provide of other boat services that you might be interested in.</p>
                         </div>
@@ -132,26 +142,22 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel-group" id="accordion">
-                                    <div class="panel panel-default {{activePanel(bType) ? 'panel-active' : ''}}" ng ng-repeat="bType in boatTypeList track by $index">
+                                    <div class="panel panel-default {{activePanel(bType.name) ? 'panel-active' : ''}}" ng ng-repeat="bType in boatTypeList">
                                         <div class="panel-heading">
-                                            <a class="panel-title radio" data-toggle="collapse" data-parent="#accordion" href="javascript:" ng-click="chooseBoatType(bType)">
-                                                <input type="radio" value="{{bType}}" id="boat_type{{$index}}" name="boat_type" ng-model="boatType">
-                                                <label for="boat_type{{$index}}"><span></span>{{bType}}</label>
+                                            <a class="panel-title radio" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" ng-click="chooseBoatType(bType.name)">
+                                                <input type="radio" value="{{bType.name}}" id="boat_type{{$index}}" name="boat_type" ng-model="boat.TypeBoat">
+                                                <label for="boat_type{{$index}}"><span></span>{{bType.name}}</label>
                                             </a>
                                         </div>
-                                        <div class="panel-collapse collapse {{activePanel(bType) ? 'in' : ''}}">
+                                        <div class="panel-collapse collapse {{activePanel(bType.name) ? 'in' : '' }}">
                                             <div class="panel-body">
                                                 <img class="img-responsive img-full" src="/Images/boat4.jpg">
+                                                <p class="p-left-40 p-top-10">{{bType.des[1]}}</p>
+                                                <p style="font-size:75%">Inclusions : {{bType.des[0]}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-md-offset-0">
-                                <p class="p-left-40">+ Up to 12 people</p>
-                                <p style="font-size:75%">*Inclusions: Only yacht rental (excluding food, beverage, VAT, service), bespoke to your heart desire.</p>
                             </div>
                         </div>
 
@@ -160,13 +166,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="extra_nOfpeo">Nb of people : *</label>
-                                    <input type="text" class="form-control" id="extra_nOfpeo">
+                                    <input type="number" min="{{minPeo}}" max="{{maxPeo}}" class="form-control" id="extra_nOfpeo" ng-model="boat.NumofPeople">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 {{boat.TypeBoat == boatType.CuChi ? 'disabled' : ''}}">
                                 <div class="form-group">
                                     <label for="extra_hour">Hour(s)</label>
-                                    <input type="text" class="form-control" id="extra_hour">
+                                    <input type="number" min="1" class="form-control" id="extra_hour" ng-model="boat.Hours" ng-disabled="boat.TypeBoat == boatType.CuChi">
                                 </div>
                             </div>
                         </div>
@@ -176,13 +182,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="perInfo_lastname">Last name : *</label>
-                                    <input type="text" class="form-control" id="perInfo_lastname">
+                                    <input type="text" class="form-control" id="perInfo_lastname" ng-model="boat.LastName" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="perInfo_firstname">First name : *</label>
-                                    <input type="text" class="form-control" id="perInfo_firstname">
+                                    <input type="text" class="form-control" id="perInfo_firstname" ng-model="boat.FirstName" required>
                                 </div>
                             </div>
                         </div>
@@ -190,13 +196,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="perInfo_email">Email : *</label>
-                                    <input type="email" class="form-control" id="perInfo_email">
+                                    <input type="email" class="form-control" id="perInfo_email" ng-model="boat.Email" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="perInfo_mobile">Mobile : *</label>
-                                    <input type="text" class="form-control" id="perInfo_mobile">
+                                    <input type="text" class="form-control" id="perInfo_mobile" ng-model="boat.Mobile" required>
                                 </div>
                             </div>
                         </div>
@@ -204,19 +210,28 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="perInfo_date">Date : *</label>
-                                    <input type="text" class="form-control" id="perInfo_date">
+                                    <input type="text" class="form-control" id="perInfo_date" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="perInfo_time">Time : *</label>
-                                    <input type="text" class="form-control" id="perInfo_time">
+                                    <input type="text" class="form-control" id="perInfo_time" required>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            $(function () {
+                                $('#perInfo_date').datetimepicker({ format: 'L' });
+                                $('#perInfo_time').datetimepicker({ format: 'LT' });
+                            });
+                        </script>
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="pull-right">Total price: 21.850.000 vnd (download our price chart)</p>
+                                <p class="pull-right">
+                                    Total price: <span format-number="boat.Price"></span> vnd 
+                                    <a href="/files/Boat Experiences.pdf" target="_blank" class="active">(download our price chart)</a>
+                                </p>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-default pull-right">BOOK NOW</button>
@@ -226,35 +241,35 @@
             <div id="event" class="tab-pane fade {{getActiveTabContent('event')}}">
                 <div class="col-md-offset-2 col-md-8">
 
-                    <form role="form" class="ddeck-form">
+                    <form role="form" class="ddeck-form" ng-submit="book('event')">
                         <p>To organize you event in one of our establishments, contact us by completing the form below and together we will create your perfect event.</p>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="lastname">Company  : *</label>
-                                    <input type="text" class="form-control" id="company" required>
+                                    <label for="company">Company  : *</label>
+                                    <input type="text" class="form-control" id="company" required ng-model="event.Company">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">Last Name : *</label>
-                                    <input type="email" class="form-control" id="lastname" required>
+                                    <label for="lastname">Last Name : *</label>
+                                    <input type="text" class="form-control" id="lastname" required ng-model="event.LastName">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="mobile">First Name : *</label>
-                                    <input type="text" class="form-control" id="firstname" required>
+                                    <label for="firstname">First Name : *</label>
+                                    <input type="text" class="form-control" id="firstname" required ng-model="event.FirstName">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="date">Address : *</label>
-                                    <input type="text" class="form-control" id="address" required>
+                                    <label for="address">Address : *</label>
+                                    <input type="text" class="form-control" id="address" required ng-model="event.Address">
                                 </div>
                             </div>
 
@@ -262,46 +277,49 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="nbOfP">Email: *</label>
-                                    <input type="text" class="form-control" id="email" required>
+                                    <label for="email">Email: *</label>
+                                    <input type="email" class="form-control" id="email" required ng-model="event.Email">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="nbOfP">Telephone: *</label>
-                                    <input type="text" class="form-control" id="telphone" required>
+                                    <label for="telphone">Telephone: *</label>
+                                    <input type="text" class="form-control" id="telphone" required ng-model="event.TelPhone">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="nbOfP">Mobile: *</label>
-                                    <input type="text" class="form-control" id="mobile" required>
+                                    <label for="mobile">Mobile: *</label>
+                                    <input type="text" class="form-control" id="mobile" required ng-model="event.Mobile">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="nbOfP">Event date: *</label>
-                                    <input type="text" class="form-control" id="telphone" required>
+                                    <label for="event_date">Event date: *</label>
+                                    <input type="text" class="form-control" id="event_date" required>
                                 </div>
+                                <script>
+                                    $(function () {
+                                        $('#event_date').datetimepicker({ format: 'L' });
+                                    });
+                                </script>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nbOfP">Nb of people: *</label>
-                                    <input type="text" class="form-control" id="mobile" required>
+                                    <input type="number" class="form-control" id="nbOfP" required ng-model="event.NumofPeople">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="type">Choose your event : *</label>
-                                    <select class="form-control" id="type">
-                                        <option>Company team building</option>
-                                        <option>End year party</option>
+                                    <label for="typeEvent">Choose your event : *</label>
+                                    <select class="form-control" id="typeEvent" ng-model="event.TypeEvent" ng-options="ev for ev in eventList track by ev">
                                     </select>
                                 </div>
                             </div>
@@ -312,7 +330,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="note">Note to us</label>
-                                    <textarea class="form-control" id="note"></textarea>
+                                    <textarea class="form-control" id="note" ng-model="event.Note"></textarea>
                                 </div>
                             </div>
                         </div>

@@ -383,5 +383,13 @@ namespace Guline.Web.One.DIImpl
         {
             db.Insert(eventbk);
         }
+        public void AddMartini(MartiniClub martini)
+        {
+            db.Insert(martini);
+        }
+        public void AddContact(Contact contact)
+        {
+            db.Insert(contact);
+        }
     }
 }

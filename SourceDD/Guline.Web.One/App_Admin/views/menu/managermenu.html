@@ -27,6 +27,7 @@
                 </th>
                 <th>Group</th>
                 <th>Name</th>
+                <th>Position</th>
             </tr>
         </thead>
         <tbody ui-sortable="sortableOptions" ng-model="data.Items">
@@ -44,6 +45,7 @@
                         {{g.Name}}
                     </a>
                 </td>
+                <td>{{g.Position}}</td>
             </tr>
         </tbody>
     </table>

@@ -22,7 +22,7 @@ namespace Guline.Web.One
                                , "~/Module/ng/angular-animate.min.js"
                                , "~/Module/ng-loadingbar/loading-bar.js"
                                , "~/Module/ui-breadcrumb/angular-breadcrumb.min.js"
-                               , "~/Module/bootstrap/js/bootstrap.min.js"
+                               , "~/Module/bootstrap/js/bootstrap.js"
                 //, "~/Module/ngui-bootstrap/ngui-bootstrap-tpls.min.js",                         
                                 , "~/Module/ngui-bootstrap/ui-bootstrap-tpls-0.13.0.js",
                                "~/Module/ngui-route/ngui-route.js",
@@ -35,15 +35,22 @@ namespace Guline.Web.One
                                "~/Module/slider/pgwslideshow.js",
                                "~/Module/textrator/jquery.textrotator.js",
                                 "~/Module/greensock/plugins/ScrollToPlugin.js",
-                                "~/Module/parallax/parallax.js",
+                                "~/Module/parallax/jquery.imageScroll.js",
+                                "~/Module/alert/angular-flash.js",
+                                "~/Module/bootstrap/js/moment.js",
+                                "~/Module/bootstrap/js/collapse.js",
+                                "~/Module/bootstrap/js/transition.js",
+                                "~/Module/bootstrap-datetimepicker/bootstrap-datetimepicker.js",
                                   "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/app.js"
             ));
             bundles.Add(new StyleBundle("~/Module/basecss.css").Include(
-                      "~/Module/bootstrap/css/bootstrap.min.css",
+                      "~/Module/bootstrap/css/bootstrap.css",
                       "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/css/custom-bootstrap.css",
                       "~/" + System.Configuration.ConfigurationManager.AppSettings["AppPath"] + "/css/styles.css",
                       "~/Module/fa/css/font-awesome.min.css",
                         "~/Module/slider/pgwslideshow.css",
+                        "~/Module/alert/angular-flash.css",
+                        "~/Module/bootstrap-datetimepicker/bootstrap-datetimepicker.css",
                       "~/Module/ng-loadingbar/loading-bar.css"));
 
 
