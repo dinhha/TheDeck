@@ -359,6 +359,10 @@ namespace Guline.Web.One.DIImpl
         {
             db.Insert(menugroup);
         }
+        public void DeleteMenuCategory(MenuCategory menugroup)
+        {
+            db.Delete(menugroup);
+        }
         public Page<TableBooking> ListTableBooking(int page, int pagesize)
         {
             return db.Page<TableBooking>(page, pagesize, "Select * from TableBooking order by ID DESC");
@@ -382,6 +386,14 @@ namespace Guline.Web.One.DIImpl
         public void EventBooking(EventBooking eventbk)
         {
             db.Insert(eventbk);
+        }
+        public Page<MartiniClub> ListMartini(int page, int pagesize)
+        {
+            return db.Page<MartiniClub>(page, pagesize, "Select * from MartinClub order by ID DESC");
+        }
+        public Page<Contact> ListContact(int page, int pagesize)
+        {
+            return db.Page<Contact>(page, pagesize, "Select * from Contact order by ID DESC");
         }
         public void AddMartini(MartiniClub martini)
         {

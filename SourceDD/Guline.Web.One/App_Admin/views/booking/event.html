@@ -22,53 +22,51 @@
     <table class="table table-hover">
         <thead>
             <tr>
+                <th>Company</th>
                 <th>Last name</th>
                 <th>First name</th>
                 <th>Email</th>
+                <th>Address</th>
                 <th>Mobile</th>
                 <th>Date</th>
-                <th>Time</th>
                 <th>
                     Nb of people
                 </th>
                 <th>
-                    Book Boat
+                    Tel Phone
                 </th>
                 <th>
-                    Nb of people of Boat
+                    Event Date
                 </th>
                 <th>
-                    Type
+                    TypeEvent
                 </th>
                 <th>
                     Note
-                </th>
-                <th>
-                    Price
                 </th>
             </tr>
         </thead>
         <tbody ui-sortable="sortableOptions" ng-model="data.Items">
             <tr ng-repeat="g in data.Items">
+                <td>{{g.Company}}</td>
                 <td>
                     {{g.LastName}}
                 </td>
                 <td>
                     {{g.FirstName}}
                 </td>
-
+          
                 <td>
                     {{g.Email}}
                 </td>
+                <td>{{g.Address}}</td>
                 <td>{{g.Mobile}}</td>
                 <td>{{g.DateText}}</td>
-                <td>{{g.Time}}</td>
                 <td>{{g.NumofPeople}}</td>
-                <td>{{g.HasBoat==true?"Yes":"No"}}</td>
-                <td>{{g.NumberofBoat}}</td>
-                <td>{{g.TypeBoat}}</td>
+                <td>{{g.TelPhone}}</td>
+                <td>{{g.EventDateText}}</td>
+                <td>{{g.TypeEvent}}</td>
                 <td>{{g.Note}}</td>
-                <td>{{g.Price}}</td>
             </tr>
         </tbody>
     </table>
@@ -83,7 +81,7 @@
     </div>
     <div class="pull-left pagesizediv" style="margin-top:25px; padding-left:30px;">
         <span class="pull-left"><i class="fa fa-eye"></i> &nbsp;Hiển thị&nbsp;</span>
-        <select ng-model="pagezise" ng-change="LoadPage()" class="width-auto">
+        <select ng-model="gupagination.itemperpage" ng-change="LoadPage()" class="width-auto">
             <option value="900">Tất cả</option>
             <option value="1">1</option>
             <option value="4">4</option>

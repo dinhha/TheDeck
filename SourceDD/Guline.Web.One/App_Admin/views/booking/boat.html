@@ -26,22 +26,14 @@
                 <th>First name</th>
                 <th>Email</th>
                 <th>Mobile</th>
+                <th>Num of People</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>
-                    Nb of people
+                    Type Boat
                 </th>
                 <th>
-                    Book Boat
-                </th>
-                <th>
-                    Nb of people of Boat
-                </th>
-                <th>
-                    Type
-                </th>
-                <th>
-                    Note
+                   Hours
                 </th>
                 <th>
                     Price
@@ -61,13 +53,11 @@
                     {{g.Email}}
                 </td>
                 <td>{{g.Mobile}}</td>
+                <td>{{g.NumofPeople}}</td>
                 <td>{{g.DateText}}</td>
                 <td>{{g.Time}}</td>
-                <td>{{g.NumofPeople}}</td>
-                <td>{{g.HasBoat==true?"Yes":"No"}}</td>
-                <td>{{g.NumberofBoat}}</td>
                 <td>{{g.TypeBoat}}</td>
-                <td>{{g.Note}}</td>
+                <td>{{g.Hours}}</td>
                 <td>{{g.Price}}</td>
             </tr>
         </tbody>
@@ -83,7 +73,7 @@
     </div>
     <div class="pull-left pagesizediv" style="margin-top:25px; padding-left:30px;">
         <span class="pull-left"><i class="fa fa-eye"></i> &nbsp;Hiển thị&nbsp;</span>
-        <select ng-model="pagezise" ng-change="LoadPage()" class="width-auto">
+        <select ng-model="gupagination.itemperpage" ng-change="LoadPage()" class="width-auto">
             <option value="900">Tất cả</option>
             <option value="1">1</option>
             <option value="4">4</option>

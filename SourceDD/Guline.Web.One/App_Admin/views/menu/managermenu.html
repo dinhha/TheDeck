@@ -22,19 +22,14 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>
-                    <input type="checkbox" class="checkall" ng-click="checkallchange()" />
-                </th>
                 <th>Group</th>
                 <th>Name</th>
                 <th>Position</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody ui-sortable="sortableOptions" ng-model="data.Items">
             <tr ng-repeat="g in data.Items">
-                <td>
-                    <input type="checkbox" class="chkme" data-id="{{g.ID}}" ng-click="checkchange($event)" />
-                </td>
                 <td>
                    {{g.GroupName}}
                 </td>
@@ -46,6 +41,7 @@
                     </a>
                 </td>
                 <td>{{g.Position}}</td>
+                <td><a class="btn btn-facebook" ng-click="delete(g)">Delete</a></td>
             </tr>
         </tbody>
     </table>

@@ -476,6 +476,18 @@ namespace Guline.Web.One.Areas.Api.Controllers
                 return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
             }
         }
+        public JsonResult DeleteMenuCategory(MenuCategory menugroup)
+        {
+            try
+            {
+                sc.DeleteMenuCategory(menugroup);
+                return Json(new { success = true, msg = "Xóa menu thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
         #region Booking
         public JsonResult ListTableBook(int page=1,int pagesize=10)
         {
@@ -524,6 +536,14 @@ namespace Guline.Web.One.Areas.Api.Controllers
             {
                 return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
             }
+        }
+        public JsonResult ListMartiniClub(int page = 1, int pagesize = 10)
+        {
+            return Json(new { data = sc.ListMartini(page, pagesize), msg = "List Martini" }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ListContact(int page = 1, int pagesize = 10)
+        {
+            return Json(new { data = sc.ListContact(page, pagesize), msg = "List Event Booking" }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult AddMartini(MartiniClub martini)
         {

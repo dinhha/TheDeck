@@ -29,12 +29,6 @@ namespace Guline.Web.One.gModels
     public class InfoBooking:Info
     {
         public int NumofPeople { get; set; }
-    }
-    [TableName("TableBooking")]
-    [PrimaryKey("ID")]
-    public class TableBooking:InfoBooking
-    {
-        public long ID { get; set; }
         public DateTime Date { get; set; }
         [ResultColumn]
         public string DateText
@@ -44,6 +38,12 @@ namespace Guline.Web.One.gModels
                 return Date.ToString();
             }
         }
+    }
+    [TableName("TableBooking")]
+    [PrimaryKey("ID")]
+    public class TableBooking:InfoBooking
+    {
+        public long ID { get; set; }
         public string Time { get; set; }
         public bool HasBoat { get; set; }
         public int? NumberofBoat { get; set; }
@@ -56,15 +56,6 @@ namespace Guline.Web.One.gModels
     public class BoatBooking : InfoBooking
     {
         public long ID { get; set; }
-        public DateTime Date { get; set; }
-        [ResultColumn]
-        public string DateText
-        {
-            get
-            {
-                return Date.ToString();
-            }
-        }
         public string Time { get; set; }
         public string  TypeBoat{ get; set; }
         public int Hours { get; set; }

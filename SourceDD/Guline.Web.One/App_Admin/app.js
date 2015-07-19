@@ -1285,19 +1285,35 @@ app.run(['$rootScope', '$state', '$stateParams',
                     templateUrl: _gconfig.baseAppResouceUrl + "/views/admin/martiniclub.html"
                    , controller: ['$scope', '$state', '$http', '$modal',
                      function ($scope, $state, $http, $modal) {
-                         $scope.page = 1;
-                         $scope.pagezise = "10";
+                         $scope.gupagination = {};
+                         if ($state.params.page != undefined) {
+                             $scope.gupagination.page = $state.params.page;
+                         }
+                         else {
+                             $scope.gupagination.page = 1;
+                         }
+                         if ($state.params.pagesize != undefined) {
+                             $scope.gupagination.itemperpage = $state.params.pagesize;
+                         }
+                         else {
+                             $scope.gupagination.itemperpage = 10;
+                         }
+                         loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                         $scope.pageChanged = function () {
+                             loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                         };
                          loadData($scope.page, $scope.pagezise);
                          function loadData(page, itemperpage) {
                              $http({
                                  method: "post",
-                                 url: _gconfig.baseWebUrl + '/api/Object/ListTableBook',
-                                 data: { Page: page, Pagezise: itemperpage },
-                             }).success(function (data, status, headers, config) {
-                                 $scope.data = data.data;
-                                 console.log($scope.data);
-                                 $scope.page = data.data.CurrentPage;
-                                 $scope.pagezise = data.data.ItemsPerPage;
+                                 url: _gconfig.baseWebUrl + '/api/Object/ListMartiniClub',
+                                 data: { page: page, pagesize: itemperpage },
+                             }).success(function (res, status, headers, config) {
+                                 $scope.data = res.data;
+                                 if (res.data.TotalItems > 0) {
+                                     $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
+
+                                 };
                                  // this callback will be called asynchronously
                                  // when the response is available
                              }).error(function (data, status, headers, config) {
@@ -1307,7 +1323,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                          }
                          $scope.LoadPage = function () {
 
-                             loadData($scope.page, $scope.pagezise);
+                             loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
                          }
                      }]
                 }//end vMain
@@ -1324,19 +1340,35 @@ app.run(['$rootScope', '$state', '$stateParams',
                       templateUrl: _gconfig.baseAppResouceUrl + "/views/admin/contact.html"
                      , controller: ['$scope', '$state', '$http', '$modal',
                        function ($scope, $state, $http, $modal) {
-                           $scope.page = 1;
-                           $scope.pagezise = "10";
+                           $scope.gupagination = {};
+                           if ($state.params.page != undefined) {
+                               $scope.gupagination.page = $state.params.page;
+                           }
+                           else {
+                               $scope.gupagination.page = 1;
+                           }
+                           if ($state.params.pagesize != undefined) {
+                               $scope.gupagination.itemperpage = $state.params.pagesize;
+                           }
+                           else {
+                               $scope.gupagination.itemperpage = 10;
+                           }
+                           loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                           $scope.pageChanged = function () {
+                               loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                           };
                            loadData($scope.page, $scope.pagezise);
                            function loadData(page, itemperpage) {
                                $http({
                                    method: "post",
                                    url: _gconfig.baseWebUrl + '/api/Object/ListContact',
-                                   data: { Page: page, Pagezise: itemperpage },
-                               }).success(function (data, status, headers, config) {
-                                   $scope.data = data.data;
-                                   console.log($scope.data);
-                                   $scope.page = data.data.CurrentPage;
-                                   $scope.pagezise = data.data.ItemsPerPage;
+                                   data: { page: page, pagesize: itemperpage },
+                               }).success(function (res, status, headers, config) {
+                                   $scope.data = res.data;
+                                   if (res.data.TotalItems > 0) {
+                                       $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
+
+                                   };
                                    // this callback will be called asynchronously
                                    // when the response is available
                                }).error(function (data, status, headers, config) {
@@ -1346,7 +1378,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                            }
                            $scope.LoadPage = function () {
 
-                               loadData($scope.page, $scope.pagezise);
+                               loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
                            }
                        }]
                   }//end vMain
@@ -1363,30 +1395,45 @@ app.run(['$rootScope', '$state', '$stateParams',
                      templateUrl: _gconfig.baseAppResouceUrl + "/views/booking/table.html"
                     , controller: ['$scope', '$state', '$http', '$modal',
                       function ($scope, $state, $http, $modal) {
-                          $scope.page = 1;
-                          $scope.pagezise = "10";
-                          loadData($scope.page, $scope.pagezise);
-                          function loadData(page, itemperpage) {
-                              $http({
-                                  method: "post",
-                                  url: _gconfig.baseWebUrl + '/api/Object/ListTableBook',
-                                  data: { Page: page, Pagezise: itemperpage },
-                              }).success(function (data, status, headers, config) {
-                                  $scope.data = data.data;
-                                  console.log($scope.data);
-                                  $scope.page = data.data.CurrentPage;
-                                  $scope.pagezise = data.data.ItemsPerPage;
-                                  // this callback will be called asynchronously
-                                  // when the response is available
-                              }).error(function (data, status, headers, config) {
-                                  // called asynchronously if an error occurs
-                                  // or server returns response with an error status.
-                              });
-                          }
-                          $scope.LoadPage = function () {
+                              $scope.gupagination = {};
+                              if ($state.params.page != undefined) {
+                                  $scope.gupagination.page = $state.params.page;
+                              }
+                              else {
+                                  $scope.gupagination.page = 1;
+                              }
+                              if ($state.params.pagesize != undefined) {
+                                  $scope.gupagination.itemperpage = $state.params.pagesize;
+                              }
+                              else {
+                                  $scope.gupagination.itemperpage = 10;
+                              }
+                              loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                              $scope.pageChanged = function () {
+                                  loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                              };
+                              function loadData(page, itemperpage) {
+                                  $http({
+                                      method: "post",
+                                      url: _gconfig.baseWebUrl + '/api/Object/ListTableBook',
+                                      data: { page: page, pagesize: itemperpage },
+                                  }).success(function (res, status, headers, config) {
+                                      $scope.data = res.data;
+                                      if (res.data.TotalItems > 0) {
+                                          $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
 
-                              loadData($scope.page, $scope.pagezise);
-                          }
+                                      };
+                                      // this callback will be called asynchronously
+                                      // when the response is available
+                                  }).error(function (data, status, headers, config) {
+                                      // called asynchronously if an error occurs
+                                      // or server returns response with an error status.
+                                  });
+                              }
+                              $scope.LoadPage = function () {
+
+                                  loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                              }
                       }]
                  }//end vMain
              }
@@ -1402,19 +1449,34 @@ app.run(['$rootScope', '$state', '$stateParams',
                      templateUrl: _gconfig.baseAppResouceUrl + "/views/booking/boat.html"
                     , controller: ['$scope', '$state', '$http', '$modal',
                       function ($scope, $state, $http, $modal) {
-                          $scope.page = 1;
-                          $scope.pagezise = "10";
-                          loadData($scope.page, $scope.pagezise);
+                          $scope.gupagination = {};
+                          if ($state.params.page != undefined) {
+                              $scope.gupagination.page = $state.params.page;
+                          }
+                          else {
+                              $scope.gupagination.page = 1;
+                          }
+                          if ($state.params.pagesize != undefined) {
+                              $scope.gupagination.itemperpage = $state.params.pagesize;
+                          }
+                          else {
+                              $scope.gupagination.itemperpage = 10;
+                          }
+                          loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                          $scope.pageChanged = function () {
+                              loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                          };
                           function loadData(page, itemperpage) {
                               $http({
                                   method: "post",
                                   url: _gconfig.baseWebUrl + '/api/Object/ListBoatBook',
-                                  data: { Page: page, Pagezise: itemperpage },
-                              }).success(function (data, status, headers, config) {
-                                  $scope.data = data.data;
-                                  console.log($scope.data);
-                                  $scope.page = data.data.CurrentPage;
-                                  $scope.pagezise = data.data.ItemsPerPage;
+                                  data: { page: page, pagesize: itemperpage },
+                              }).success(function (res, status, headers, config) {
+                                  $scope.data = res.data;
+                                  if (res.data.TotalItems > 0) {
+                                      $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
+
+                                  };
                                   // this callback will be called asynchronously
                                   // when the response is available
                               }).error(function (data, status, headers, config) {
@@ -1424,7 +1486,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                           }
                           $scope.LoadPage = function () {
 
-                              loadData($scope.page, $scope.pagezise);
+                              loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
                           }
                       }]
                  }//end vMain
@@ -1441,19 +1503,35 @@ app.run(['$rootScope', '$state', '$stateParams',
                      templateUrl: _gconfig.baseAppResouceUrl + "/views/booking/event.html"
                     , controller: ['$scope', '$state', '$http', '$modal',
                       function ($scope, $state, $http, $modal) {
-                          $scope.page = 1;
-                          $scope.pagezise = "10";
-                          loadData($scope.page, $scope.pagezise);
+                          $scope.gupagination = {};
+                          if ($state.params.page != undefined) {
+                              $scope.gupagination.page = $state.params.page;
+                          }
+                          else {
+                              $scope.gupagination.page = 1;
+                          }
+                          if ($state.params.pagesize != undefined) {
+                              $scope.gupagination.itemperpage = $state.params.pagesize;
+                          }
+                          else {
+                              $scope.gupagination.itemperpage = 10;
+                          }
+                          loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                          $scope.pageChanged = function () {
+                              loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                          };
                           function loadData(page, itemperpage) {
                               $http({
                                   method: "post",
                                   url: _gconfig.baseWebUrl + '/api/Object/ListEventBook',
-                                  data: { Page: page, Pagezise: itemperpage },
-                              }).success(function (data, status, headers, config) {
-                                  $scope.data = data.data;
+                                  data: { page: page, pagesize: itemperpage },
+                              }).success(function (res, status, headers, config) {
+                                  $scope.data = res.data;
                                   console.log($scope.data);
-                                  $scope.page = data.data.CurrentPage;
-                                  $scope.pagezise = data.data.ItemsPerPage;
+                                  if (res.data.TotalItems > 0) {
+                                      $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
+                                    
+                                  };
                                   // this callback will be called asynchronously
                                   // when the response is available
                               }).error(function (data, status, headers, config) {
@@ -1462,7 +1540,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                               });
                           }
                           $scope.LoadPage = function () {
-                              loadData($scope.page, $scope.pagezise);
+                              loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
                           }
                       }]
                  }//end vMain
@@ -1509,7 +1587,6 @@ app.run(['$rootScope', '$state', '$stateParams',
                                       $scope.gupagination = { totalitems: res.data.TotalItems, itemperpage: res.data.ItemsPerPage, page: res.data.CurrentPage, maxsize: 5 };
                                       $scope.gupagination.itemperpage = 90;
                                   };
-                                  console.log($scope.data);
                                   // this callback will be called asynchronously
                                   // when the response is available
                               }).error(function (data, status, headers, config) {
@@ -1538,7 +1615,26 @@ app.run(['$rootScope', '$state', '$stateParams',
 
                               });
                           }
+                          $scope.delete = function (obj) {
+                              var confirm = window.confirm("Are you sure ?");
+                              if (confirm) {
+                                  $http.post(_gconfig.baseWebUrl + '/api/Object/DeleteMenuCategory', obj).
+                                                          success(function (res, status, headers, config) {
+                                                              if (res.success) {
+                                                                  $scope.result = { text: "Lưu thành công", type: "success" };
+                                                                  loadData($scope.gupagination.page, $scope.gupagination.itemperpage);
+                                                              }
+                                                              else {
+                                                                  $scope.result = { text: res.msg, type: "danger" };
+                                                              }
+                                                              $scope.running = false;
+                                                          }).error(function (data, status, headers, config) {
 
+                                                              $scope.msg = data;
+                                                              $scope.running = false;
+                                                          });
+                              }
+                          }
                           
                       }]
                  }//end vMain
@@ -1847,7 +1943,7 @@ app.controller('MenuDetailModalCtrl', function ($scope, $http, $modalInstance)
                                              $modalInstance.close();
                                          }
                                          else {
-                                             $scope.result = { text: msg, type: "danger" };
+                                             $scope.result = { text: res.msg, type: "danger" };
                                          }
                                          $scope.running = false;
                                      }).error(function (data, status, headers, config) {
