@@ -234,6 +234,14 @@ app.run(['$rootScope', '$state', '$stateParams',
                   , controller: ['$scope', '$state', '$http', 'appconfig',
                     function ($scope, $state, $http, appconfig) {
                         $scope.appconfig = appconfig.config;
+                        $('#quote_slider').textRotator({
+                            random: true,
+                            fadeIn: 1000,
+                            fadeOut: 500,
+                            duration: 5000,
+                            debug: false
+
+                        })
                     }]
                 }
             }
@@ -368,14 +376,33 @@ app.run(['$rootScope', '$state', '$stateParams',
                                 });
                             });
 
-                            $('#page_wrapper').addClass('menu');
+                            $scope.getIdMenu = function (menu) { return menu.toLowerCase().replace(/\s/, ''); };
+
+                            var onShow = false;
+                            $window.on('scroll', function () {
+                                if ($window.scrollTop() > 150) {
+                                    if (!onShow) {
+                                        TweenMax.fromTo(".subMenu", 0.2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
+                                        onShow = true;
+                                    }
+                                }
+                                else {
+                                    TweenMax.to(".subMenu", 0.5, {
+                                        autoAlpha: 0,
+                                        ease: Power1.easeOut
+                                    });
+                                    onShow = false;
+                                }
+                            });
+
+                            $('#page_wrapper').addClass('white');
                         }]
                    }
                },
                onExit: function () {
                    $('.parallax-mirror').remove();
                    $('.downloadourmenu').remove();
-                   $('#page_wrapper').removeClass('menu');
+                   $('#page_wrapper').removeClass('white');
                }
            })
         .state('main.home.giftcard', {
@@ -398,30 +425,15 @@ app.run(['$rootScope', '$state', '$stateParams',
     .state('main.home.event', {
         url: "/event",
         ncyBreadcrumb: {
-            label: 'event', parent: null
+            label: 'Event', parent: null
         },
-        data: { title: "event" },
+        data: { title: "Event" },
         views: {
             "homeMain": {
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/event/event.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
-                     $scope.accountactive = false;
-                     $scope.infoactive = false;
-                     $scope.orderactive = false;
-                     $scope.changepass = false;
-                     $scope.accountinfo = {
-                         name: 'Jason Nguyen',
-                         gender: "Nu",
-                         email: 'jason.nguyen@gmail.com',
-                         phone: '0982357990',
-                         address: '123 Nguyen Cong Tru',
-                         city: 'Ho Chi Minh',
-                         district: '1'
-                     };
-                     $scope.acountorder = {
-                         Count: 0
-                     };
+                     
                      $scope.activeli = function (value) {
                          if (value == 'account') {
                              $scope.accountactive = true;
@@ -447,8 +459,11 @@ app.run(['$rootScope', '$state', '$stateParams',
                          else
                              $scope.show = true;
                      }
+                     $('#page_wrapper').addClass('white');
                  }]
             }
+        }, onExit: function () {
+            $('#page_wrapper').removeClass('white');
         }
 
     })
@@ -463,8 +478,28 @@ app.run(['$rootScope', '$state', '$stateParams',
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/ourstory/about.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
+                     $timeout(function () {
+                         $('#quote_slider1').textRotator({
+                             random: true,
+                             fadeIn: 1000,
+                             fadeOut: 500,
+                             duration: 5000,
+                             debug: false
+
+                         });
+                         $('#quote_slider2').textRotator({
+                             random: true,
+                             fadeIn: 1000,
+                             fadeOut: 500,
+                             duration: 5000,
+                             debug: false
+                         });
+                     }, 100);
+                     $('#page_wrapper').addClass('white');
                  }]
             }
+        }, onExit: function () {
+            $('#page_wrapper').removeClass('white');
         }
     })
     .state('main.home.contact', {
@@ -492,8 +527,11 @@ app.run(['$rootScope', '$state', '$stateParams',
                                  flash.error = res.msg;
                              });
                      }
+                     $('#page_wrapper').addClass('white');
                  }]
             }
+        }, onExit: function () {
+            $('#page_wrapper').removeClass('white');
         }
     })
     .state('main.home.thedeckbar', {
@@ -621,8 +659,11 @@ app.run(['$rootScope', '$state', '$stateParams',
                                 flash.error = res.msg;
                             });
                     }
+                    $('#page_wrapper').addClass('white');
                 }]
             }
+        }, onExit: function () {
+            $('#page_wrapper').removeClass('white');
         }
     })
 
@@ -838,6 +879,21 @@ app.run(['$rootScope', '$state', '$stateParams',
         }
     })
 
+    .state('main.home.career', {
+        url: "/career",
+        ncyBreadcrumb: {
+            label: 'Career', parent: null
+        },
+        data: { title: "Career" },
+        views: {
+            "homeMain": {
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/career/career.html"
+               , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
+                 function ($scope, $state, $http, appconfig, $timeout) {
+                 }]
+            }
+        }
+    })
 });
 app.directive('gulzimage', function () {
     return {

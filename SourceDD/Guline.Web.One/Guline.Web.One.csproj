@@ -260,6 +260,7 @@
     <Content Include="AppTheDeck\gNav.html" />
     <Content Include="AppTheDeck\langs\en-us.txt" />
     <Content Include="AppTheDeck\langs\vi-vn.txt" />
+    <Content Include="AppTheDeck\views\career\career.html" />
     <Content Include="AppTheDeck\views\contactus\contact.html" />
     <Content Include="AppTheDeck\views\event\event.html" />
     <Content Include="AppTheDeck\views\giftcard\giftcard.html" />
