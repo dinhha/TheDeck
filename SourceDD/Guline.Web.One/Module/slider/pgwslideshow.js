@@ -85,7 +85,7 @@
 
         // Update the current height
         var updateHeight = function(height, animate) {
-
+            return true;
             // Check maxHeight
             if (pgwSlideshow.config.maxHeight) {
                 if (height + pgwSlideshow.plugin.find('.ps-list').height() > pgwSlideshow.config.maxHeight) {

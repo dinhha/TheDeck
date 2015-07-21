@@ -123,6 +123,73 @@ app.run(['$rootScope', '$state', '$stateParams',
                     templateUrl: _gconfig.baseAppResouceUrl + "/gMain.html"
                    , controller: ['$scope', '$state', '$http',
                      function ($scope, $state, $http) {
+
+                         var $window = $(window);
+                         var scrollTime = 0.5;
+                         var scrollDistance = 320;
+                         var speed = 0.2 / 600;
+
+                         $window.on('mousewheel DOMMouseScroll', function (event) {
+                             event.preventDefault();
+                             scrollTime = 0.5
+                             var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
+                             var scrollTop = $window.scrollTop();
+                             var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+                             scrollTo(finalScroll);
+                         });
+
+                         $window.on('keydown', function (event) {
+                             var scrollTop = $window.scrollTop(), delta = 0, scroll = false;
+                             scrollTime = 0.5;
+                             switch (event.keyCode) {
+                                 case 33: //page up
+                                     event.preventDefault();
+                                     scroll = true;
+                                     scrollTop -= document.documentElement.clientHeight;
+                                     break;
+                                 case 34: //page down
+                                     event.preventDefault();
+                                     scroll = true;
+                                     scrollTop += document.documentElement.clientHeight;
+                                     break;
+                                 case 35: //end
+                                     event.preventDefault();
+                                     scroll = true;
+                                     scrollTop = document.body.offsetHeight - document.documentElement.clientHeight;
+                                     scrollTime = Math.abs(scrollTop - $window.scrollTop()) * speed;
+                                     break;
+                                 case 36: //home
+                                     event.preventDefault();
+                                     scroll = true;
+                                     scrollTop = 0;
+                                     scrollTime = Math.abs(scrollTop - $window.scrollTop()) * speed;
+                                     break;
+                                 case 38: //arrow up
+                                     event.preventDefault();
+                                     scroll = true;
+                                     scrollTop -= scrollDistance;
+                                     break;
+                                 case 40: //arrow down
+                                     event.preventDefault();
+                                     scroll = true;
+                                     scrollTop += scrollDistance;
+                                     break;
+                                 default:
+                             }
+                             if (scroll) scrollTo(scrollTop);
+                         });
+
+                         function scrollTo(position) {
+                             TweenMax.to($window, scrollTime, {
+                                 scrollTo: {
+                                     y: position,
+                                     autoKill: true
+                                 },
+                                 ease: Power1.easeOut,
+                                 autoKill: true,
+                                 overwrite: 1
+                             });
+                         }
                          $scope.getMainClass = function () {
                              return $state.current.name == 'main.home.index' ? 'homepage' : "";
                          }
@@ -195,9 +262,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                              var tl = new TimelineMax();
                              tl.from('.vtop', .4, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
                              tl.from('.gNav', .4, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
-                             tl.from('.vtop .logo', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             tl.from('.vtop .sub-nav', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             tl.from('.vtop .main-nav', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
+                             //tl.from('.vtop .logo', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
+                             //tl.from('.vtop .sub-nav', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
+                             //tl.from('.vtop .main-nav', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
                              tl.from('.home-content', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
 
 
@@ -258,74 +325,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                       , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
                         function ($scope, $rootScope, $state, $http, appconfig, $timeout) {
                             var $window = $(window);
-                            var scrollTime = 0.5;
-                            var scrollDistance = 320;
-
                             var pWidth = 1550, pHeight = 400;
                             var rHeight = $window.width() / pWidth * pHeight;
-
-
-                            $window.on('mousewheel DOMMouseScroll', function (event) {
-                                event.preventDefault();
-                                scrollTime = 0.5
-                                var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
-                                var scrollTop = $window.scrollTop();
-                                var finalScroll = scrollTop - parseInt(delta * scrollDistance);
-                                scrollTo(finalScroll);
-                            });
-
-                            $window.on('keydown', function (event) {
-                                var scrollTop = $window.scrollTop(), delta = 0, scroll = false;
-                                scrollTime = 0.5;
-                                switch (event.keyCode) {
-                                    case 33: //page up
-                                        event.preventDefault();
-                                        scroll = true;
-                                        scrollTop -= document.documentElement.clientHeight;
-                                        break;
-                                    case 34: //page down
-                                        event.preventDefault();
-                                        scroll = true;
-                                        scrollTop += document.documentElement.clientHeight;
-                                        break;
-                                    case 35: //end
-                                        event.preventDefault();
-                                        scroll = true;
-                                        scrollTop = document.body.offsetHeight - document.documentElement.clientHeight;
-                                        scrollTime = 2;
-                                        break;
-                                    case 36: //home
-                                        event.preventDefault();
-                                        scroll = true;
-                                        scrollTop = 0;
-                                        scrollTime = 2;
-                                        break;
-                                    case 38: //arrow up
-                                        event.preventDefault();
-                                        scroll = true;
-                                        scrollTop -= scrollDistance;
-                                        break;
-                                    case 40: //arrow down
-                                        event.preventDefault();
-                                        scroll = true;
-                                        scrollTop += scrollDistance;
-                                        break;
-                                    default:
-                                }
-                                if (scroll) scrollTo(scrollTop);
-                            });
-
-                            function scrollTo(position) {
-                                TweenMax.to($window, scrollTime, {
-                                    scrollTo: {
-                                        y: position,
-                                        autoKill: true
-                                    },
-                                    ease: Power1.easeOut,
-                                    autoKill: true,
-                                    overwrite: 1
-                                });
-                            }
 
                             $scope.menuGroups = [];
                             $scope.menuGroupDetails = {};
@@ -383,18 +384,28 @@ app.run(['$rootScope', '$state', '$stateParams',
                                 if ($window.scrollTop() > 150) {
                                     if (!onShow) {
                                         TweenMax.fromTo(".subMenu", 0.2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
+                                        TweenMax.fromTo("#gotop", 0.2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
                                         onShow = true;
                                     }
                                 }
                                 else {
-                                    TweenMax.to(".subMenu", 0.5, {
-                                        autoAlpha: 0,
-                                        ease: Power1.easeOut
-                                    });
+                                    TweenMax.to(".subMenu", 0.5, { autoAlpha: 0, ease: Power1.easeOut });
+                                    TweenMax.to("#gotop", 0.5, { autoAlpha: 0, ease: Power1.easeOut });
                                     onShow = false;
                                 }
                             });
 
+                            $("#gotop").on('click', function () {
+                                TweenMax.to($window, 0.5, {
+                                    scrollTo: {
+                                        y: 0,
+                                        autoKill: true
+                                    },
+                                    ease: Power1.easeOut,
+                                    autoKill: true,
+                                    overwrite: 1
+                                });
+                            });
                             $('#page_wrapper').addClass('white');
                         }]
                    }
@@ -433,7 +444,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/event/event.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
-                     
+
                      $scope.activeli = function (value) {
                          if (value == 'account') {
                              $scope.accountactive = true;
@@ -629,6 +640,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                             autoSlide: true,
                             intervalDuration: 5000
                         });
+                        var realHeight = document.documentElement.clientWidth / 1550 * 710;
+                        $('.ps-current').css('height', realHeight);
                     });
                 }]
             }
@@ -706,7 +719,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                         {
                             name: $scope.boatType.Luxury,
                             des: ["Only yacht rental (excluding food, beverage, VAT, service), bespoke to your heart desire.", "+ Up to 12 people"]
-                        }                        
+                        }
                     ]
 
                     $scope.getActiveTabClass = function (type) {
@@ -726,10 +739,10 @@ app.run(['$rootScope', '$state', '$stateParams',
                     }
 
                     var BoatTaxiPrice = {
-                        'Oneway':{2: 2200000, add: 400000},
-                        'Return': {2: 2750000, add: 550000}
+                        'Oneway': { 2: 2200000, add: 400000 },
+                        'Return': { 2: 2750000, add: 550000 }
                     }
-                    
+
                     //Table booking
                     $scope.table = {
                         HasBoat: false,
@@ -764,12 +777,12 @@ app.run(['$rootScope', '$state', '$stateParams',
 
                     //-----------
                     $scope.book = function (type) {
-                        try{
+                        try {
                             switch (type) {
                                 case 'table':
                                     $scope.table.Date = new Date($('#date').val());
                                     $scope.table.Time = $('#time').val();
-                                
+
                                     $http.post(_gconfig.baseWebUrl + '/api/Object/TableBooking', $scope.table).
                                         success(function (res, status, headers, config) {
                                             if (res.success) {
@@ -820,7 +833,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                             console.log(e);
                         }
                     }
-                    
+
                     function calcPrice(type) {
                         switch (type) {
                             case 'table':

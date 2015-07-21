@@ -166,8 +166,9 @@ body a{
      font-size:11px;
 }
 .page-title {
-        font-size:24px;
-        font-family: 'AvenirLTStd-Medium';
+    font-size:24px;
+    font-family: 'AvenirLTStd-Medium';
+    letter-spacing: 2px;
 }
 .sale-text {
     color: #ff0000;
@@ -484,6 +485,7 @@ body {
 }
 .home-content .btn-home:hover{
     border:3px solid #000;
+    background: rgba(0,0,0, 0.75)
 }
 .product {
     padding-top: 35px;
@@ -982,6 +984,17 @@ body {
         letter-spacing: 2px;
         text-decoration: none;
     }
+#gotop{
+    background: url(/Images/go-top.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    cursor: pointer;
+    z-index: 120;
+    opacity: 0;
+}
 /*end Menu*/
 /*Contact Us*/
 .contact,.event{
@@ -1027,6 +1040,9 @@ body {
 .event-content .box-form{
       background-color: #444444;
       padding:10px;
+}
+.event h5{
+    font-family: AvenirLTStd-Black;
 }
 /*Payment*/
 .payment-box{
@@ -1347,7 +1363,7 @@ body {
 }
 .reservation-box ul.nav li a{
     color:#f3f3f4;
-    letter-spacing:1px;
+    letter-spacing:2px;
 }
 .reservation-box ul.nav li{
     border:3px solid #ffffff;
