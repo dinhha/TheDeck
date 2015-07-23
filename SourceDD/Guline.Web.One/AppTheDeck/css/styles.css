@@ -542,6 +542,9 @@ body {
     font-size:12px;
     letter-spacing:1px;
 }
+#page_wrapper.white .nav-footer .container{
+    color: #fff!important;
+}
 /*End gFooter*/
 
 /*Custom Slider*/

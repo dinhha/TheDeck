@@ -260,12 +260,12 @@ app.run(['$rootScope', '$state', '$stateParams',
                          $timeout(init);
                          function init() {
                              var tl = new TimelineMax();
-                             tl.from('.vtop', .4, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
-                             tl.from('.gNav', .4, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
-                             //tl.from('.vtop .logo', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             //tl.from('.vtop .sub-nav', .4, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             //tl.from('.vtop .main-nav', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             tl.from('.home-content', .4, { autoAlpha: 0, y: 0, ease: Back.easeOut });
+                             tl.from('.vtop', 1, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
+                             tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
+                             tl.from('.vtop .logo, .vtop .sub-nav, .vtop .main-nav, .home-content', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
+                             //tl.from('.vtop .sub-nav', 0, { autoAlpha: 0, y: -20, ease: Back.easeOut });
+                             //tl.from('.vtop .main-nav', 0, { autoAlpha: 0, y: 0, ease: Back.easeOut });
+                             //tl.from('.home-content', 0, { autoAlpha: 0, y: 0, ease: Back.easeOut });
 
 
                              var delayTransition = 5000;
@@ -612,11 +612,11 @@ app.run(['$rootScope', '$state', '$stateParams',
                              iwOuter.parent().parent().css({ top: '50px' });
                              iwBackground.children(':nth-child(3)').attr('style', function (i, s) { return s + 'display: none !important;' });
 
+                             iwOuter.next().css({ "top": "12px", "right": "40px" });
                          });
                          google.maps.event.addListener(marker, 'click', function () {
 
                              infowindow.open(map, marker);
-
                          });
                      }
                  }]
