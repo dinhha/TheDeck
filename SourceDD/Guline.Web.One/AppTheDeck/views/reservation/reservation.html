@@ -5,7 +5,7 @@
     <div class="col-md-12 p-left-0 p-right-0 reservation-box">
         <ul class="nav nav-tabs">
             <li>
-            
+
             </li>
             <li role="presentation" ng-class="getActiveTabClass('table')">
                 <a data-toggle="tab" href="#table" class="text-center page-title ">TABLE BOOKING</a>
@@ -98,6 +98,11 @@
                             </div>
                         </div>
                         <div class="row {{table.HasBoat ? '' : 'disabled'}}">
+                            <div class="col-md-12">
+                                <p>
+                                    Arrive to The Deck in style by boat direct to the dining room steps.  The only restaurant in Saigon where you can arrive by your own private speedboat.
+                                </p>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="noPeo1">Nb of people : *</label>
@@ -117,7 +122,7 @@
                         <div class="row {{table.HasBoat ? '' : 'disabled'}}">
                             <div class="col-md-12">
                                 <p>
-                                    Total price: <span format-number="table.Price"></span> vnd 
+                                    Total price: <span format-number="table.Price"></span> vnd
                                     <a href="/files/Boat Experiences.pdf" target="_blank" class="active">(download our price chart)</a><br />
                                     <span style="font-size:75%">*Inclusions: The Deck signature welcome drink</span>
                                 </p>
@@ -154,6 +159,7 @@
                                         </div>
                                         <div class="panel-collapse collapse {{activePanel(bType.name) ? 'in' : '' }}">
                                             <div class="panel-body">
+                                                <p">{{bType.caption}}</p>
                                                 <img class="img-responsive img-full" src="/Images/boat{{$index+1}}.jpg">
                                                 <p class="p-left-40 p-top-10">{{bType.des[1]}}</p>
                                                 <p style="font-size:75%">Inclusions : {{bType.des[0]}}</p>
@@ -232,7 +238,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="pull-right">
-                                    Total price: <span format-number="boat.Price"></span> vnd 
+                                    Total price: <span format-number="boat.Price"></span> vnd
                                     <a href="/files/Boat Experiences.pdf" target="_blank" class="active">(download our price chart)</a>
                                 </p>
                             </div>
@@ -322,8 +328,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="typeEvent">Choose your event : *</label>
-                                    <select class="form-control" id="typeEvent" ng-model="event.TypeEvent" ng-options="ev for ev in eventList track by ev">
-                                    </select>
+                                    <select class="form-control" id="typeEvent" ng-model="event.TypeEvent" ng-options="ev for ev in eventList track by ev"></select>
                                 </div>
                             </div>
                         </div>

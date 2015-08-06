@@ -228,11 +228,14 @@ body {
 }
 #quote_slider li,#quote_slider1 li,#quote_slider2 li { display: none; }
 .comming-soon{
-    padding-top:50px;
-    color:white;
+    padding-top:50px;   
     font-family: 'AvenirLTStd-Black';
     font-size:32px;
     letter-spacing:5px;
+    display: table-cell;
+    height: 400px;
+    width: 3000px;
+    vertical-align: middle;
 }
 .container{
     padding:0;
@@ -463,7 +466,7 @@ body {
     font-family: 'AvenirLTStd-Black';
     text-transform:uppercase;
     font-size:18px;
-    margin-top: 65px;
+    margin-top: 45px;
     letter-spacing:3px;
 }
 .home-content p{
@@ -902,7 +905,6 @@ body {
 /*End About*/
 /*The Deck Bar*/
 .thedeckbar{
-    background:#000000;
     min-height:500px;
 }
  
@@ -937,7 +939,7 @@ body {
 .menu .title{
     font-family: 'AvenirLTStd-Heavy';
     text-transform:uppercase;
-    letter-spacing:25px;
+    letter-spacing:15px;
     font-size:28px;
 }
 .menu .download-sexy {
@@ -992,12 +994,18 @@ body {
     margin-bottom: 0;
 }
     .subMenu ul li a{
-          padding: 14px 35px;
+          padding: 14px 30px;
         display: block;
         color: #fff;
         letter-spacing: 2px;
         text-decoration: none;
     }
+    .subMenu ul li:first-child a {
+        padding-left: 0;
+    }
+     .subMenu ul li:last-child a{
+         padding-right: 0;
+     }
 #gotop{
     background: url(/Images/go-top.png) no-repeat;
     width: 40px;
@@ -1327,7 +1335,7 @@ body {
     font-size: 100%;
 }
 .ddeck-form .panel-default>.panel-heading+.panel-collapse>.panel-body{
-    padding: 15px 0;
+    padding: 5px 15px 0;
 }
 .ddeck-form .panel-default>.panel-heading{
     background: url(/Images/accordiion.png) right no-repeat;

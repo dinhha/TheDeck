@@ -428,9 +428,12 @@ app.run(['$rootScope', '$state', '$stateParams',
                    , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
                      function ($scope, $rootScope, $state, $http, appconfig) {
 
+                         $('#page_wrapper').addClass('white');
 
                      }]
                 }
+            }, onExit: function () {
+                $('#page_wrapper').removeClass('white');
             }
         })
     .state('main.home.event', {
@@ -556,8 +559,11 @@ app.run(['$rootScope', '$state', '$stateParams',
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/thedeckbar/thedeckbar.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
+                     $('#page_wrapper').addClass('white');
                  }]
             }
+        }, onExit: function () {
+            $('#page_wrapper').removeClass('white');
         }
     })
     .state('main.home.location', {
@@ -706,19 +712,23 @@ app.run(['$rootScope', '$state', '$stateParams',
                     $scope.boatTypeList = [
                         {
                             name: $scope.boatType.Cocktail,
-                            des: ["Rose wine, Chef’s signature canapés, botted water, chilled towels, and service staff for groups of 8 or more."]
+                            des: ["Rose wine, Chef’s signature canapés, botted water, chilled towels, and service staff for groups of 8 or more."],
+                            caption: "Capture the life on the banks of the Saigon River for a pre-dinner sunset cruise. Enjoy our chef’s selection of canapés. Ideal for romantic evenings, family outings or dinner with friends."
                         },
                         {
                             name: $scope.boatType.CuChi,
-                            des: ["Pick up at Hotel in D1, light breakfast, picnic lunch, wine, soft drinks, bottled water, chilled towels, entrance fee, English speaking guide and service staff."]
+                            des: ["Pick up at Hotel in D1, light breakfast, picnic lunch, wine, soft drinks, bottled water, chilled towels, entrance fee, English speaking guide and service staff."],
+                            caption: "The Cu Chu Tunnels are an immense network of connecting underground tunnels used during the time of the Vietnam War. The Deck “Cu Chi Experience” will guide you and your guests by private speedboat to the site of The tunnels. You will be accompanied by our knowledgable tour guides all at your own pace. A light breakfast will be served on-board before entering the tunnels, picnic lunch and ice cold rose wine."
                         },
                         {
                             name: $scope.boatType.Corp,
-                            des: ["Rose wine, Chef’s signature canapés, bottled water, chilled towels and service staff for groups of 8 or more"]
+                            des: ["Rose wine, Chef’s signature canapés, bottled water, chilled towels and service staff for groups of 8 or more"],
+                            caption: "Ideal for corporate team building or a group outing. Made by hand in Holland cruise along the Mekong River while enjoying our selection of canapés and Rose. BBQ also now available!"
                         },
                         {
                             name: $scope.boatType.Luxury,
-                            des: ["Only yacht rental (excluding food, beverage, VAT, service), bespoke to your heart desire.", "+ Up to 12 people"]
+                            des: ["Only yacht rental (excluding food, beverage, VAT, service), bespoke to your heart desire.", "+ Up to 12 people"],
+                            caption: "One of the only 2 level luxury Yachts for rent in Saigon. For up to 13 people you and your guests can cruise the Mekong while sipping your favourite libations and sampling our chef’s selection of canapés. Bespoke this boat excursion to your hearts desire!"
                         }
                     ]
 
