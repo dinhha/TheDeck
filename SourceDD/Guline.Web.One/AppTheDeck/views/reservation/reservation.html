@@ -4,13 +4,16 @@
 <div class="container reservation">
     <div class="col-md-12 p-left-0 p-right-0 reservation-box">
         <ul class="nav nav-tabs">
+            <li>
+            
+            </li>
             <li role="presentation" ng-class="getActiveTabClass('table')">
                 <a data-toggle="tab" href="#table" class="text-center page-title ">TABLE BOOKING</a>
             </li>
-            <li role="presentation" ng-class="getActiveTabClass('boat')">
+            <li role="presentation" ng-class="getActiveTabClass('boat')" style="display:none;">
                 <a data-toggle="tab" href="#boat" class="text-center page-title">BOAT BOOKING</a>
             </li>
-            <li role="presentation" ng-class="getActiveTabClass('event')">
+            <li role="presentation" ng-class="getActiveTabClass('event')" style="display:none;">
                 <a data-toggle="tab" href="#event" class="text-center page-title">EVENT BOOKING</a>
             </li>
         </ul>

@@ -890,9 +890,9 @@ body {
         font-size:14px;
         text-align:justify;
     }
-    .about-line{
+    /*.about-line{
         border-bottom:1px solid #ccc;
-    }
+    }*/
     .about-quote{
         padding-top:20px;
     }
@@ -937,7 +937,18 @@ body {
 .menu .title{
     font-family: 'AvenirLTStd-Heavy';
     text-transform:uppercase;
+    letter-spacing:25px;
     font-size:28px;
+}
+.menu .download-sexy {
+    color: #fff;
+    padding: 6px 11px;
+    background-image: url('../../Images/menu/menu-sexy-button.jpg');
+    font-size: 10px;
+    letter-spacing: 2px;
+    position: absolute;
+    right: 0;
+    top: 25px;
 }
 .menu-item{
     display:table;
@@ -1026,6 +1037,11 @@ body {
 }
 /*En Contact*/
 /*Location*/
+.img-location {
+    min-height: 500px;
+     background: url(../Images/map.png) center center no-repeat;
+    background-size:cover;
+}
 #map-canvas { height: 615px; margin: 0; padding: 0;}
 /*End Location*/
 /*Event*/
@@ -1041,7 +1057,7 @@ body {
   color:#ffffff !important;
 }
 .event-content .box-form{
-      background-color: #444444;
+      background-color: #000000;
       padding:10px;
 }
 .event h5{
@@ -1251,6 +1267,9 @@ body {
     color:#ffffff;
     font-family: 'AvenirLTStd-Medium';
 }
+.martini-club .comming-soon{
+    color:#000000;
+}
 .martini-box{
     margin-bottom: 65px;
 }
@@ -1264,7 +1283,7 @@ body {
     height:30px;
 }
 .ddeck-form .btn.btn-default{
-    background-color:#444;
+    background-color:#000;
     color: #fff;
     border:none;
     padding: 12px;
@@ -1348,7 +1367,7 @@ body {
 }
 .reservation-box{
     margin-bottom: 65px;
-    border:2px solid #1c1c1c;
+    /*border:2px solid #1c1c1c;*/
     padding-bottom:20px;
 }
 .reservation-box ul.nav {
@@ -1369,7 +1388,7 @@ body {
     letter-spacing:2px;
 }
 .reservation-box ul.nav li{
-    border:3px solid #ffffff;
+    border:3px solid #000;
 }
 
 #page_wrapper.white{
