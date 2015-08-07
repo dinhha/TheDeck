@@ -322,8 +322,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                views: {
                    "homeMain": {
                        templateUrl: _gconfig.baseAppResouceUrl + "/views/menu/menu.html"
-                      , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout",
-                        function ($scope, $rootScope, $state, $http, appconfig, $timeout) {
+                      , controller: ['$scope', "$rootScope", '$state', '$http', 'appconfig', "$timeout", "$location", "$anchorScroll",
+                        function ($scope, $rootScope, $state, $http, appconfig, $timeout, $location, $anchorScroll) {
                             var $window = $(window);
                             var pWidth = 1550, pHeight = 400;
                             var rHeight = $window.width() / pWidth * pHeight;
@@ -375,6 +375,11 @@ app.run(['$rootScope', '$state', '$stateParams',
                                         mediaHeight: 684,
                                     });
                                 });
+                                $timeout(function () {
+                                    if ($location.hash()) {
+                                        $anchorScroll();
+                                    }
+                                }, 1000);
                             });
 
                             $scope.getIdMenu = function (menu) { return menu.toLowerCase().replace(/\s/, ''); };
@@ -437,7 +442,7 @@ app.run(['$rootScope', '$state', '$stateParams',
             }
         })
     .state('main.home.event', {
-        url: "/event",
+        url: "/event/:type",
         ncyBreadcrumb: {
             label: 'Event', parent: null
         },
@@ -474,6 +479,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                              $scope.show = true;
                      }
                      $('#page_wrapper').addClass('white');
+                     $scope.type = $state.params.type;
                  }]
             }
         }, onExit: function () {

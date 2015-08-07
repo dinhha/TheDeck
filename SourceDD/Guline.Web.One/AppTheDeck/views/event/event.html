@@ -3,7 +3,7 @@
         <img class="img-responsive img-full" src="../../../Images/event_bg.jpg" />
     </div>
     <div class="event container">
-        <div class="col-md-offset-1 contact-box col-md-10">
+        <!--<div class="col-md-offset-1 contact-box col-md-10">
 
             <div class="col-md-12 p-left-0 p-right-0 event-content">
                 <div class="col-md-6 p-left-0">
@@ -50,6 +50,85 @@
                     </a>
                 </div>
             </div>
+        </div>-->
+        <div class="col-md-12">
+            <div class="row col-md-12 event-header">
+                <ul class="list-inline">
+                    <li><a ui-sref="main.home.event({type:'private'})">PRIVATE & SPECIAL EVENTS</a></li>
+                    <li><a ui-sref="main.home.event({type:'corporate'})">CORPORATE EVENTS</a></li>
+                    <li><a ui-sref="main.home.event({type:'wedding'})">WEDDING</a></li>
+                    <li><a ui-sref="main.home.event({type:'catering'})">CATERING</a></li>
+                    <li><a ui-sref="main.home.event({type:'arrive-boat'})">ARRIVE BY BOAT</a></li>
+                    <li><a ui-sref="main.home.event({type:'gallery'})">GALLERY</a></li>
+                </ul>
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type==null || type == ''">
+                <p class="page-title">INTRODUCTION</p>
+                Since its opening in August 2008, The Deck Saigon has become one of the leading restaurants in Vietnam and attracts a stylish crowd who come for serious food and cocktails in a seriously stylish venue.  Its fabulous river side location and unique style make it one of the most popular destinations in Ho Chi Minh City. There is no other location like this in Asia’s most exciting and chic city.
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type=='private'">
+                <p class="page-title">PRIVATE & SPECIAL EVENTS</p>
+                The Deck Saigon offers a flexible open air event space on the banks of the Saigon River suitable for all types of private events. From intimate celebrations to large receptions and dinners, our team will create the right atmosphere for you and your guests to enjoy and relax. Our professional and friendly team will be there to help you every step of the way, from initial enquiry right through to the actual event.
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type=='corporate'">
+                <p class="page-title">CORPORATE EVENTS</p>
+                The Deck Saigon offers the perfect setting for your corporate events. Enchant your colleagues and clients by hosting your function in our stunning venue, with the most beautiful river as a backdrop.  Our flexible facilities can cater for seated or buffet dinners, product launches, press events, fashion shows, film shoots. With unbeatable natural light enhanced by the Saigon River, beautiful garden, private bar and top class food, our professional and friendly team will make your event one to remember!
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type=='wedding'">
+                <p class="page-title">WEDDINGS</p>
+                Make your special day even more special by tying the knot in a venue like no other! Our stunning scenery will create the best backdrop for your wedding celebration, and our Event Team will do the rest, going above and beyond to ensure your event runs to perfection and exceeds your expectations. Let our Event Team deal with the tiny details – from flower arrangements, to décor and music – and our Head Chef create a bespoke menu that will delight everyone, just relax and enjoy your day!!!
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type=='catering'">
+                <p class="page-title">CATERING</p>
+                Comming soon
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type=='arrive-boat'">
+                <p class="page-title">ARRIVE BY BOAT</p>
+                <div class="col-md-12 p-left-0">
+                    <h5>PRIVATE BOAT TAXI</h5>
+                    Arrive to The Deck in style by boat direct to the dining room steps.  The only restaurant in Saigon where you can arrive by your own private speedboat.
+                </div>
+                <div class="col-md-12 m-top-20 p-left-0" ">
+                    <h5>COCKTAIL CRUISE</h5>
+                    Capture the life on the banks of the Saigon River for a pre-dinner sunset cruise. Enjoy our chef’s selection of canapés. Ideal for romantic evenings, family outings or dinner with friends.
+                </div>
+                <div class="col-md-12 m-top-20 p-left-0" ">
+                    <h5>CU CHI TUNNELS</h5>
+                    The Cu Chu Tunnels are an immense network of connecting underground tunnels used during the time of the Vietnam War. The Deck “Cu Chi Experience” will guide you and your guests by private speedboat to the site of The tunnels. You will be accompanied by our knowledgable tour guides all at your own pace. A light breakfast will be served on-board before entering the tunnels, picnic lunch and ice cold rose wine.
+                </div>
+                <div class="col-md-12 m-top-20 p-left-0" ">
+                    <h5>DUTCH BOAT</h5>
+                    Ideal for corporate team building or a group outing. Made by hand in Holland cruise along the Mekong River while enjoying our selection of canapés and Rose. BBQ also now available!
+                </div>
+                <div class="col-md-12 m-top-20 p-left-0" ">
+                    <h5>LUXURY YACHT</h5>
+                    One of the only 2 level luxury Yachts for rent in Saigon. For up to 13 people you and your guests can cruise the Mekong while sipping your favourite libations and sampling our chef’s selection of canapés. Bespoke this boat excursion to your hearts desire!
+                </div>
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type=='gallery'">
+                <p class="page-title"></p>
+                Coming soon
+            </div>
+            <div class="row col-md-12 event-content" ng-if="type=='boat-experience'">
+                <p class="page-title">BOAT EXPERIENCE</p>
+                Arrive in style – moor your boat at our dock – walk directly up the steps into The Deck Saigon.
+                If you would like to arrive in style we will organise a boat to pick you up from down town. You can also start your party on a boat by booking a one hour Private Sunset Cruise and enjoy the beautiful scenery whilst sipping a glass of rosé wine and savouring a selection of mouthwatering canapés.  Alternatively we are only a 15 minute drive from the centre. Please contact us on <a href="mailto:info@thedecksaigon.vn">info@thedecksaigon.vn</a> for further information.
+            </div>
         </div>
+    </div>
+    <div class="subMenu" ng-if="type=='private' || type=='corporate' || type=='wedding' || type=='arrive-boat'">
+        <ul ng-if="type=='private' || type=='corporate' || type=='wedding'" class="list-inline">
+            <li><a target="_blank" href="/menu#brunch">BRUNCH MENU</a></li>
+            <li><a target="_blank" href="/menu#lunch">LUNCH MENU</a></li>
+            <li><a target="_blank" href="#">DRINKS MENU</a></li>
+            <li><a target="_blank" href="#">CANAPÉS MENU</a></li>
+            <li><a target="_blank" href="/menu#dinner">DINNER MENU</a></li>
+            <li><a target="_blank" href="#">SPECIAL EVENT CALENDAR</a></li>
+            <li><a target="_blank" href="/photo">PHOTO GALLERY</a></li>
+            <li><a ui-sref="main.home.event({type:'boat-experience'})">BOAT EXPERIENCE</a></li>
+        </ul>
+        <ul ng-if="type=='arrive-boat'">
+            <li><a target="_blank" href="/files/Boat Quotation.pdf">DOWNLOAD BOAT SERVICES</a></li>
+        </ul>
     </div>
 </div>

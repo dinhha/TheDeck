@@ -532,6 +532,9 @@ body {
 .nav-footer a {
     color: #fff !important;
 }
+.nav-footer a:hover{
+    text-decoration:none;
+}
 
 .nav-footer li {
     padding-right:27px;
@@ -1019,7 +1022,7 @@ body {
 }
 /*end Menu*/
 /*Contact Us*/
-.contact,.event{
+.contact{
     padding-top:50px;
     color:white;
 }
@@ -1053,11 +1056,16 @@ body {
 #map-canvas { height: 615px; margin: 0; padding: 0;}
 /*End Location*/
 /*Event*/
+.event{
+    padding-top:30px;
+    color:white;
+}
 .event-content {
     font-size:14px;
       font-family: 'AvenirLTStd-Medium';
       margin-bottom:100px;
     text-align:justify;
+    margin-top: 10px;
 }
 .event-content .btn-form{
      font-size:18px;
@@ -1070,6 +1078,24 @@ body {
 }
 .event h5{
     font-family: AvenirLTStd-Black;
+}
+.eventpage .subMenu li a{
+    padding: 14px 0px;
+}
+.eventpage .subMenu{
+    opacity: 1;
+}
+.event-header .list-inline li a{
+    color: #000;
+    padding: 14px 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.event-header .list-inline li:first-child a {
+    padding-left:0;
+}
+.event-header .list-inline li:last-child a {
+    padding-right:0;
 }
 /*Payment*/
 .payment-box{
