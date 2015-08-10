@@ -3,7 +3,7 @@
 </div>
 <div class="container reservation">
     <div class="col-md-12 p-left-0 p-right-0 reservation-box">
-        <ul class="nav nav-tabs">
+        <!--<ul class="nav nav-tabs">
             <li>
 
             </li>
@@ -16,7 +16,9 @@
             <li role="presentation" ng-class="getActiveTabClass('event')" style="display:none;">
                 <a data-toggle="tab" href="#event" class="text-center page-title">EVENT BOOKING</a>
             </li>
-        </ul>
+        </ul>-->
+        <div class="row col-md-12"><p class="page-title">RESERVATION</p></div>
+
         <div class="tab-content">
             <div id="table" class="tab-pane fade {{getActiveTabContent('table')}}">
                 <div class="col-md-offset-2 col-md-8">
@@ -87,43 +89,45 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="radio">
+                                <!--<div class="radio">
                                     <input type="radio" value="false" id="dont_book" name="book_type" ng-model="hasBoat">
                                     <label for="dont_book"><span></span>Don’t book boat</label>
                                 </div>
                                 <div class="radio">
                                     <input type="radio" value="true" id="book_boat" name="book_type" ng-model="hasBoat">
                                     <label for="book_boat"><span></span>Book private boat taxi (Date: 26/06/2015 - Time: 17h30)</label>
+                                </div>-->
+
+                                <div class="checkbox">
+                                    <input type="checkbox" id="book_boat" name="book_type" ng-model="hasBoat">
+                                    <label for="book_boat">
+                                        <span></span>Arrive by boat&nbsp;
+                                        (<a href="/files/Boat Experiences.pdf" target="_blank" class="active">Download our price chart</a>)
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row {{table.HasBoat ? '' : 'disabled'}}">
-                            <!--<div class="col-md-12">
-                                <p>
-                                    Arrive to The Deck in style by boat direct to the dining room steps.  The only restaurant in Saigon where you can arrive by your own private speedboat.
-                                </p>
-                            </div>-->
+                        <div class="row" ng-show="hasBoat">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="noPeo1">Nb of people : *</label>
-                                    <input type="number" min="1" class="form-control" id="noPeo1" ng-model="table.NumberofBoat" ng-required="table.HasBoat" ng-disabled="!table.HasBoat">
+                                    <input type="number" min="1" class="form-control" id="noPeo1" ng-model="table.NumberofBoat" ng-required="table.HasBoat">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="type">Type : *</label>
-                                    <select class="form-control" id="type" ng-model="table.TypeBoat" ng-required="table.HasBoat" ng-disabled="!table.HasBoat">
+                                    <select class="form-control" id="type" ng-model="table.TypeBoat" ng-required="table.HasBoat">
                                         <option value="Oneway">One Way</option>
                                         <option value="Return">Return</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row {{table.HasBoat ? '' : 'disabled'}}">
+                        <div class="row" ng-show="hasBoat">
                             <div class="col-md-12">
                                 <p>
-                                    Total price: <span format-number="table.Price"></span> vnd
-                                    <a href="/files/Boat Experiences.pdf" target="_blank" class="active">(download our price chart)</a><br />
+                                    Total price: <span format-number="table.Price"></span> vnd<br />
                                     <span style="font-size:75%">*Inclusions: The Deck signature welcome drink</span>
                                 </p>
                             </div>
@@ -136,7 +140,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-default pull-right">BOOK NOW</button>
+                        <button type="submit" class="button-sexy pull-right">BOOK NOW</button>
                     </form>
                 </div>
             </div>

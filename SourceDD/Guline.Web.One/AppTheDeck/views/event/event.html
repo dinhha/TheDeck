@@ -54,11 +54,11 @@
         <div class="col-md-12">
             <div class="row col-md-12 event-header">
                 <ul class="list-inline">
-                    <li><a ui-sref="main.home.event({type:'private'})">PRIVATE & SPECIAL EVENTS</a></li>
-                    <li><a ui-sref="main.home.event({type:'corporate'})">CORPORATE EVENTS</a></li>
-                    <li><a ui-sref="main.home.event({type:'wedding'})">WEDDING</a></li>
-                    <li><a ui-sref="main.home.event({type:'catering'})">CATERING</a></li>
-                    <li><a ui-sref="main.home.event({type:'arrive-boat'})">ARRIVE BY BOAT</a></li>
+                    <li><a ng-class="getActiveClass('private')" ui-sref="main.home.event({type:'private'})">PRIVATE & SPECIAL EVENTS</a></li>
+                    <li><a ng-class="getActiveClass('corporate')" ui-sref="main.home.event({type:'corporate'})">CORPORATE EVENTS</a></li>
+                    <li><a ng-class="getActiveClass('wedding')" ui-sref="main.home.event({type:'wedding'})">WEDDING</a></li>
+                    <li><a ng-class="getActiveClass('catering')" ui-sref="main.home.event({type:'catering'})">GOURMET CATERING</a></li>
+                    <li><a ng-class="getActiveClass('arrive-boat')" ui-sref="main.home.event({type:'arrive-boat'})">ARRIVE BY BOAT</a></li>
                     <li><a ui-sref="main.home.photo">GALLERY</a></li>
                 </ul>
             </div>

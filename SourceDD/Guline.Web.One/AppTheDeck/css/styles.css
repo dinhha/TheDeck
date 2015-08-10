@@ -945,12 +945,15 @@ body {
     letter-spacing:15px;
     font-size:28px;
 }
-.menu .download-sexy {
+.button-sexy {
     color: #fff;
     padding: 6px 11px;
     background-image: url('../../Images/menu/menu-sexy-button.jpg');
     font-size: 10px;
     letter-spacing: 2px;
+    padding: 4px 14px;
+}
+.menu .button-sexy{    
     position: absolute;
     right: 0;
     top: 25px;
@@ -1066,6 +1069,7 @@ body {
       margin-bottom:100px;
     text-align:justify;
     margin-top: 10px;
+    min-height: 250px;
 }
 .event-content .btn-form{
      font-size:18px;
@@ -1076,6 +1080,9 @@ body {
       background-color: #000000;
       padding:10px;
 }
+.event-content .page-title{
+    font-size: 23px;
+}
 .event h5{
     font-family: AvenirLTStd-Black;
 }
@@ -1085,11 +1092,22 @@ body {
 .eventpage .subMenu{
     opacity: 1;
 }
+.event-header .list-inline {
+    margin: 0 0 35px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+.event-header .list-inline li{
+    padding:0;
+}
 .event-header .list-inline li a{
     color: #000;
     padding: 14px 10px;
     font-weight: bold;
     text-decoration: none;
+}
+.event-header .list-inline li a.active{
+    font-family: "AvenirLTStd-Black";
 }
 .event-header .list-inline li:first-child a {
     padding-left:0;
@@ -1312,9 +1330,14 @@ body {
 }
 .ddeck-form input,.ddeck-form button,.ddeck-form select,.ddeck-form textarea{
     border-radius: 0;
+    border: 1px solid #555;
+    padding: 4px 8px;
 }
-.ddeck-form input{
-    height:30px;
+.ddeck-form input, .ddeck-form select{
+    height:28px;
+}
+.ddeck-form button{
+    padding: 4px 14px;
 }
 .ddeck-form .btn.btn-default{
     background-color:#000;
@@ -1323,12 +1346,12 @@ body {
     padding: 12px;
 }
 
-.ddeck-form .radio label{
+.ddeck-form .radio label,.ddeck-form .checkbox label{
     padding-left: 0;
     margin-bottom: 5px;
 }
 
-.ddeck-form input[type="radio"] {
+.ddeck-form input[type="radio"], .ddeck-form input[type="checkbox"] {
     display:none;
 }
 .ddeck-form input[type="radio"] + label span {
@@ -1342,6 +1365,19 @@ body {
 }
 .ddeck-form input[type="radio"]:checked + label span {
     background:url(/Images/radio_bg_checked.png) no-repeat;
+}
+
+.ddeck-form input[type="checkbox"] + label span {
+    display:inline-block;
+    width:18px;
+    height:18px;
+    margin:-3px 4px 0 0;
+    vertical-align:middle;
+    background:url(/Images/checkbox_bg.png) no-repeat left;
+    cursor:pointer;
+}
+.ddeck-form input[type="checkbox"]:checked + label span {
+    background:url(/Images/checkbox_bg_checked.png) no-repeat left;
 }
 
 .ddeck-form .panel-group{
@@ -1385,6 +1421,9 @@ body {
     color: #fff;
     text-decoration: underline;
 }
+.white .ddeck-form a{
+    color: #000;
+}
 .ddeck-form .form-control[disabled]{
     background: #333;
     border: 1px solid #333;
@@ -1423,6 +1462,11 @@ body {
 }
 .reservation-box ul.nav li{
     border:3px solid #000;
+}
+
+.reservation-box .page-title{
+    text-align: center;
+    margin-top: 20px;
 }
 
 #page_wrapper.white{

@@ -480,6 +480,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                      }
                      $('#page_wrapper').addClass('white');
                      $scope.type = $state.params.type;
+                     $scope.getActiveClass = function (type) {
+                         return type == $scope.type ? 'active' : "";
+                     }
                  }]
             }
         }, onExit: function () {
@@ -764,10 +767,10 @@ app.run(['$rootScope', '$state', '$stateParams',
                         HasBoat: false,
                         Price: 0
                     };
-                    $scope.hasBoat = 'false';
+                    $scope.hasBoat = false;
                     $scope.tablePrice = 0;
                     $scope.$watch('hasBoat', function (hasBoat) {
-                        $scope.table.HasBoat = hasBoat == 'true';
+                        $scope.table.HasBoat = hasBoat;
                         if ($scope.table.HasBoat)
                             $scope.table.TypeBoat = 'Oneway';
                     });
@@ -850,6 +853,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                         }
                     }
 
+                    $('#page_wrapper').addClass('white');
+
                     function calcPrice(type) {
                         switch (type) {
                             case 'table':
@@ -905,6 +910,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                     }
                 }]
             }
+        }, onExit: function () {
+            $('#page_wrapper').removeClass('white');
         }
     })
 
