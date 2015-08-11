@@ -43,7 +43,10 @@
                             <textarea rows="5" style="height:150px;" ng-model="contact.Message" class="form-control" required></textarea>
                         </div>
                         <div class="col-md-12 p-left-0 p-right-0 m-top-20">
-                            <button type="submit" class="btn btn-default btn-block">SUBMIT</button>
+                            <div class="col-md-4 col-md-offset-4">
+                                <button type="submit" ng-click="sendcontact()" class="btn  button-sexy btn-block">SUBMIT</button>
+                            </div>
+                          
                         </div>
                         <!--<a href="" ng-click="sendcontact()" class="btn-submit">
             <div class="col-md-12 p-left-0 p-right-0 m-top-20 text-center box-submit">

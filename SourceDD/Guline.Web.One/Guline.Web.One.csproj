@@ -1375,6 +1375,7 @@
     <Content Include="Images\reservation_bg.jpg" />
     <Content Include="Images\slider_active.jpg" />
     <Content Include="Images\slider_nomal.png" />
+    <Content Include="Images\TDJobVacancy.jpeg" />
     <Content Include="Models\Generated\PetaPoco.Generator.ttinclude" />
     <Content Include="Models\Generated\PetaPoco.Core.ttinclude" />
     <Content Include="Models\Generated\Database.tt">
