@@ -1052,8 +1052,8 @@ body {
 /*En Contact*/
 /*Location*/
 .img-location {
-    min-height: 500px;
-     background: url(../Images/map.png) center center no-repeat;
+    height: 600px;
+    background: url(../Images/map.jpg) center center no-repeat;
     background-size:cover;
 }
 #map-canvas { height: 615px; margin: 0; padding: 0;}

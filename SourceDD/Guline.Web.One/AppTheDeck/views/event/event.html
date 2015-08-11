@@ -57,7 +57,7 @@
                     <li><a ng-class="getActiveClass('private')" ui-sref="main.home.event({type:'private'})">PRIVATE & SPECIAL EVENTS</a></li>
                     <li><a ng-class="getActiveClass('corporate')" ui-sref="main.home.event({type:'corporate'})">CORPORATE EVENTS</a></li>
                     <li><a ng-class="getActiveClass('wedding')" ui-sref="main.home.event({type:'wedding'})">WEDDING</a></li>
-                    <li><a ng-class="getActiveClass('catering')" ui-sref="main.home.event({type:'catering'})">GOURMET CATERING</a></li>
+                    <li><a ng-class="getActiveClass('gourmet-catering')" ui-sref="main.home.event({type:'gourmet-catering'})">GOURMET CATERING</a></li>
                     <li><a ng-class="getActiveClass('arrive-boat')" ui-sref="main.home.event({type:'arrive-boat'})">ARRIVE BY BOAT</a></li>
                     <li><a ui-sref="main.home.photo">GALLERY</a></li>
                 </ul>
@@ -78,9 +78,11 @@
                 <p class="page-title">WEDDINGS</p>
                 Make your special day even more special by tying the knot in a venue like no other! Our stunning scenery will create the best backdrop for your wedding celebration, and our Event Team will do the rest, going above and beyond to ensure your event runs to perfection and exceeds your expectations. Let our Event Team deal with the tiny details – from flower arrangements, to décor and music – and our Head Chef create a bespoke menu that will delight everyone, just relax and enjoy your day!!!
             </div>
-            <div class="row col-md-12 event-content" ng-if="type=='catering'">
-                <p class="page-title">CATERING</p>
-                Comming soon
+            <div class="row col-md-12 event-content" ng-if="type=='gourmet-catering'">
+                <p class="page-title">GOURMET CATERING</p>
+                Why not bring The Deck Saigon to your home! Let our Chef create an individualised menu for your corporate or special event and our mixologists bring our famous cocktails to your party. Whether it is a wedding celebration or drinks reception, The Deck Saigon can cater for almost any occasion. We can provide a full catering package, to include food, drinks and serving staff, or only drop off our beautifully presented food to your door for you to serve and impress your guests!
+
+                Please contact our experienced and friendly team to request a full proposal.
             </div>
             <div class="row col-md-12 event-content" ng-if="type=='arrive-boat'">
                 <p class="page-title">ARRIVE BY BOAT</p>
@@ -116,7 +118,7 @@
             </div>
         </div>
     </div>
-    <div class="subMenu" ng-if="type=='private' || type=='corporate' || type=='wedding' || type=='arrive-boat'">
+    <div class="subMenu" ng-if="type=='private' || type=='corporate' || type=='wedding' || type=='arrive-boat'" style="font-size:12px;">
         <ul ng-if="type=='private' || type=='corporate' || type=='wedding'" class="list-inline">
             <li><a target="_blank" href="/menu#brunch">BRUNCH MENU</a></li>
             <li><a target="_blank" href="/menu#lunch">LUNCH MENU</a></li>
