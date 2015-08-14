@@ -772,7 +772,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                     $scope.$watch('hasBoat', function (hasBoat) {
                         $scope.table.HasBoat = hasBoat;
                         if ($scope.table.HasBoat)
-                            $scope.table.TypeBoat = 'Oneway';
+                            $scope.table.TypeBoat = 'Return';
                     });
                     $scope.$watch('table.NumberofBoat', function () { calcPrice('table'); });
                     $scope.$watch('table.TypeBoat', function () { calcPrice('table'); });

@@ -52,8 +52,9 @@
             </div>
         </div>-->
         <div class="col-md-12">
-            <div class="row col-md-12 event-header">
+            <div class="row col-md-12 event-header text-center">
                 <ul class="list-inline">
+                    <li><a ng-class="getActiveClass('')" ui-sref="main.home.event({type:''})">INTRODUCTION</a></li>
                     <li><a ng-class="getActiveClass('private')" ui-sref="main.home.event({type:'private'})">PRIVATE & SPECIAL EVENTS</a></li>
                     <li><a ng-class="getActiveClass('corporate')" ui-sref="main.home.event({type:'corporate'})">CORPORATE EVENTS</a></li>
                     <li><a ng-class="getActiveClass('wedding')" ui-sref="main.home.event({type:'wedding'})">WEDDING</a></li>
@@ -82,7 +83,7 @@
                 <p class="page-title">GOURMET CATERING</p>
                 Why not bring The Deck Saigon to your home! Let our Chef create an individualised menu for your corporate or special event and our mixologists bring our famous cocktails to your party. Whether it is a wedding celebration or drinks reception, The Deck Saigon can cater for almost any occasion. We can provide a full catering package, to include food, drinks and serving staff, or only drop off our beautifully presented food to your door for you to serve and impress your guests!
 
-                Please contact our experienced and friendly team to request a full proposal.
+                Please <a ui-sref="main.home.contact" target="_blank" class="active">contact</a> our experienced and friendly team to request a full proposal.
             </div>
             <div class="row col-md-12 event-content" ng-if="type=='arrive-boat'">
                 <p class="page-title">ARRIVE BY BOAT</p>
@@ -118,16 +119,21 @@
             </div>
         </div>
     </div>
-    <div class="subMenu" ng-if="type=='private' || type=='corporate' || type=='wedding' || type=='arrive-boat'" style="font-size:12px;">
-        <ul ng-if="type=='private' || type=='corporate' || type=='wedding'" class="list-inline">
-            <li><a target="_blank" href="/menu#brunch">BRUNCH MENU</a></li>
+    <div class="subMenu" ng-if="type=='private' || type=='corporate' || type=='wedding' || type=='arrive-boat'">
+        <ul ng-if="type=='private' || type=='corporate'" class="list-inline">
             <li><a target="_blank" href="/menu#lunch">LUNCH MENU</a></li>
-            <li><a target="_blank" href="#">DRINKS MENU</a></li>
-            <li><a target="_blank" href="#">CANAPÉS MENU</a></li>
+            <li><a target="_blank" href="/menu#brunch">BRUNCH MENU</a></li>
             <li><a target="_blank" href="/menu#dinner">DINNER MENU</a></li>
-            <li><a target="_blank" href="#">SPECIAL EVENT CALENDAR</a></li>
-            <li><a target="_blank" href="/photo">PHOTO GALLERY</a></li>
-            <li><a ui-sref="main.home.event({type:'boat-experience'})">BOAT EXPERIENCE</a></li>
+            <li><a target="_blank" href="#">TASTING MENU</a></li>
+            <li><a target="_blank" href="#">CANAPÉS MENU</a></li>
+            <li><a target="_blank" href="#">DRINK MENU</a></li>
+            <!-- <li><a target="_blank" href="/photo">PHOTO GALLERY</a></li>
+            <li><a ui-sref="main.home.event({type:'boat-experience'})">BOAT EXPERIENCE</a></li> -->
+        </ul>
+		<ul ng-if="type=='wedding'" class="list-inline">
+            <li><a target="_blank" href="#">TASTING MENU</a></li>
+            <li><a target="_blank" href="#">CANAPÉS MENU</a></li>
+            <li><a target="_blank" href="#">DRINK MENU</a></li>
         </ul>
         <ul ng-if="type=='arrive-boat'">
             <li><a target="_blank" href="/files/Boat Quotation.pdf">DOWNLOAD BOAT SERVICES</a></li>

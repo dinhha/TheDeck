@@ -1087,7 +1087,7 @@ body {
     font-family: AvenirLTStd-Black;
 }
 .eventpage .subMenu li a{
-    padding: 14px 0px;
+    padding: 14px 15px;
 }
 .eventpage .subMenu{
     opacity: 1;
