@@ -222,7 +222,21 @@ app.run(['$rootScope', '$state', '$stateParams',
                          //$scope.menu = appconfig.menus[0].Childrens;
                          $scope.appconfig = appconfig.config;
                          $scope.activeNav = function (state) {
-                             return state == $state.current.name ? "active" : "";
+							 var stateName = state.split("/")[0];
+							 var params = {};
+							 if (state.split("/")[1])
+							     state.split("/")[1].split(",").forEach(function (p) {
+							         params[p.split(":")[0]] = p.split(":")[1];
+							     });
+
+							 if (stateName == $state.current.name){
+							     if (Object.keys($state.params).length > 0) {
+							         for (var k in params) if ($state.params[k] != params[k]) return "";
+							         return Object.keys($state.params).length == Object.keys(params).length ? "active" : "";
+							     }
+								 return "active";
+							 }
+                             return "";
                          }
                      }]
 
