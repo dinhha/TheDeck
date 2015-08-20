@@ -2,34 +2,61 @@
 </div>
 <div class="vtop">
     <div class="container">
-        <div class="col-md-2 logo">
-            <a href="/"><img src="../Images/logo.png" /></a>
-        </div>
-        <div class="col-md-10 header-nav">
-            <div class="col-md-12 p-right-0">
-                <div class="sub-nav pull-right">
-                    <ul class="nav nav-tabs">
-                        <li><a ui-sref="main.home.photo">gallery</a></li>
-                        <li><a ui-sref="main.home.giftcard">gift card</a></li>
-                        <!-- <li><a ui-sref="main.home.location">location</a></li> -->
-                        <li ><a ui-sref="main.home.contact">contact us</a></li>
-                        <li><a ui-sref="main.home.reservation">reservation</a></li>
+        <div class="col-md-12 col-xs12">
+            <div class="col-md-2 col-xs-4 logo">
+                <a href="/"><img src="../Images/logo.png" /></a>
+            </div>
+            <div class="col-md-10 header-nav hidden-xs">
+                <div class="col-md-12 p-right-0">
+                    <div class="sub-nav pull-right">
+                        <ul class="nav nav-tabs">
+                            <li><a ui-sref="main.home.photo">gallery</a></li>
+                            <li><a ui-sref="main.home.giftcard">gift card</a></li>
+                            <!-- <li><a ui-sref="main.home.location">location</a></li> -->
+                            <li><a ui-sref="main.home.contact">contact us</a></li>
+                            <li><a ui-sref="main.home.reservation">reservation</a></li>
 
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-nav pull-right ">
+                    <ul class="nav nav-tabs">
+                        <li ng-class="activeNav('main.home.index')"><a class="cmn-t-underline" ui-sref="main.home.index">Home</a></li>
+                        <li ng-class="activeNav('main.home.ourstory')"><a class="cmn-t-underline" ui-sref="main.home.ourstory">Our Story</a></li>
+                        <li ng-class="activeNav('main.home.menu')"><a class="cmn-t-underline" ui-sref="main.home.menu">Menu</a></li>
+                        <li ng-class="activeNav('main.home.arrive_boat')"><a class="cmn-t-underline" ui-sref="main.home.arrive_boat">Arrive by boat</a></li>
+                        <li ng-class="activeNav('main.home.event')"><a class="cmn-t-underline" ui-sref="main.home.event">Events & Catering</a></li>
+                        <li ng-class="activeNav('main.home.thedeckbar')"><a class="cmn-t-underline" ui-sref="main.home.thedeckbar">The deck bar</a></li>
+                        <!-- <li ng-class="activeNav('main.home.photo')"><a class="cmn-t-underline" ui-sref="main.home.photo">Gallery</a></li> -->
+                        <li ng-class="activeNav('main.home.martini_club')"><a class="cmn-t-underline" ui-sref="main.home.martini_club">The martini club</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="main-nav pull-right ">
-                <ul class="nav nav-tabs">
-                    <li ng-class="activeNav('main.home.index')"><a class="cmn-t-underline" ui-sref="main.home.index">Home</a></li>
-                    <li ng-class="activeNav('main.home.menu')"><a class="cmn-t-underline" ui-sref="main.home.menu">Menu</a></li>
-                    <li ng-class="activeNav('main.home.event/type:arrive-boat')"><a class="cmn-t-underline" ui-sref="main.home.event({type: 'arrive-boat'})">Arrive by boat</a></li>
-                    <li ng-class="activeNav('main.home.ourstory')"><a  class="cmn-t-underline" ui-sref="main.home.ourstory">Our Story</a></li>
-                    <li ng-class="activeNav('main.home.event/type:')"><a class="cmn-t-underline" ui-sref="main.home.event">Events & Catering</a></li>
-                    <li ng-class="activeNav('main.home.thedeckbar')"><a class="cmn-t-underline" ui-sref="main.home.thedeckbar">The deck bar</a></li>
-                    <!-- <li ng-class="activeNav('main.home.photo')"><a class="cmn-t-underline" ui-sref="main.home.photo">Gallery</a></li> -->
-                    <li ng-class="activeNav('main.home.martini_club')"><a class="cmn-t-underline" ui-sref="main.home.martini_club">The martini club</a></li>
-                </ul>
+            <div class="col-xs-8 p-left-0 visible-xs">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xs12 visible-xs" id="mobile-nav">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ng-class="activeNav('main.home.index')"><a ui-sref="main.home.index">Home</a></li>
+                <li ng-class="activeNav('main.home.ourstory')"><a ui-sref="main.home.ourstory">Our story</a></li>
+                <li ng-class="activeNav('main.home.menu')"><a ui-sref="main.home.menu">Menu</a></li>
+                <li ng-class="activeNav('main.home.arrive_boat')"><a ui-sref="main.home.arrive_boat">Arrive by boat</a></li>
+                <li ng-class="activeNav('main.home.event')"><a ui-sref="main.home.event">Events & Catering</a></li>
+                <li ng-class="activeNav('main.home.thedeckbar')"><a ui-sref="main.home.thedeckbar">The Deck Dar</a></li>
+                <li ng-class="activeNav('main.home.martini_club')"><a ui-sref="main.home.martini_club">The Martini club</a></li>
+            </ul>
+            <hr />
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="main.home.photo">Gallery</a></li>
+                <li><a ui-sref="main.home.giftcard">Gift card</a></li>
+                <li><a ui-sref="main.home.contact">Contact us</a></li>
+                <li><a ui-sref="main.home.reservation">Reservation</a></li>
+            </ul>
         </div>
     </div>
 </div>
