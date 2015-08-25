@@ -108,7 +108,10 @@ app.run(['$rootScope', '$state', '$stateParams',
         $rootScope.$stateParams = $stateParams;
         //$rootScope.msdate = convertfromMSDate;
 
-
+        $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+            $("#mobile-nav #navbar").removeClass("in");
+            if (toState.name == "main.home.index") $("#page_wrapper").removeClass("white");
+        });
     }
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -202,7 +205,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                              'placement':'top',
                              'showplaylist':false,
                              'playlist':[
-                                 {'title':'abc','url':'http://localhost:5666/files/a.mp3'}
+                                 { 'title': 'The Deck Song', 'url': 'http://3c.guline.com/files/web-song-1.m4a' }
                              ]
                          };
 
@@ -480,38 +483,46 @@ app.run(['$rootScope', '$state', '$stateParams',
                          $timeout(init);
                          function init() {
                              var tl = new TimelineMax();
-                             tl.from('.vtop', 1, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
-                             tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
-                             tl.from('.vtop .logo, .vtop .sub-nav, .vtop .main-nav, .home-content, .navbar-header', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             //tl.from('.vtop .sub-nav', 0, { autoAlpha: 0, y: -20, ease: Back.easeOut });
-                             //tl.from('.vtop .main-nav', 0, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                             //tl.from('.home-content', 0, { autoAlpha: 0, y: 0, ease: Back.easeOut });
 
+                             var isMobile = window.innerWidth <= 768;
 
-                             var delayTransition = 5000;
-                             var slides = $('#slider_home img');
-                             var slideBtns = $('#slider_button span');
-                             var current = 0;
-                             var interVal = setInterval(setSlide, delayTransition);
+                             if (!isMobile) {
+                                 tl.from('.vtop', 1, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
+                                 tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
+                                 tl.from('.vtop .logo, .vtop .sub-nav, .vtop .main-nav, .home-content, .navbar-header', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
 
-                             $('#slider_button span').on('click', function () {
-                                 if (!$(this).is('.current')) {
-                                     clearInterval(interVal);
-                                     setSlide(slideBtns.index($(this)));
-                                     interVal = setInterval(setSlide, delayTransition);
+                                 var delayTransition = 5000;
+                                 var slides = $('#slider_home img');
+                                 var slideBtns = $('#slider_button span');
+                                 var current = 0;
+                                 var interVal = setInterval(setSlide, delayTransition);
+
+                                 $('#slider_button span').on('click', function () {
+                                     if (!$(this).is('.current')) {
+                                         clearInterval(interVal);
+                                         setSlide(slideBtns.index($(this)));
+                                         interVal = setInterval(setSlide, delayTransition);
+                                     }
+                                 });
+
+                                 function setSlide(to) {
+                                     if (to == null) {
+                                         to = (current == slides.length - 1 ? 0 : current + 1);
+                                     }
+
+                                     TweenMax.to(slides.eq(current), .4, { autoAlpha: 0, ease: Power0.easeOut });
+                                     TweenMax.fromTo(slides.eq(to), .2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
+                                     slideBtns.eq(current).removeClass('current');
+                                     slideBtns.eq(to).addClass('current');
+                                     current = to;
                                  }
-                             });
+                             } else {
+                                 tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
+                                 tl.from('.home-content', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
 
-                             function setSlide(to) {
-                                 if (to == null) {
-                                     to = (current == slides.length - 1 ? 0 : current + 1);
-                                 }
-
-                                 TweenMax.to(slides.eq(current), .4, { autoAlpha: 0, ease: Power0.easeOut });
-                                 TweenMax.fromTo(slides.eq(to), .2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
-                                 slideBtns.eq(current).removeClass('current');
-                                 slideBtns.eq(to).addClass('current');
-                                 current = to;
+                                 var bgRatio = 700 / 684;
+                                 var imgHeight = Math.floor(window.innerWidth / bgRatio);
+                                 $(".home-content").css("height", imgHeight + "px");
                              }
                          }
                      }]
