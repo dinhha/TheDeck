@@ -1,6 +1,6 @@
 ﻿<ol class="breadcrumb">
-    <li><a ui-sref="main.admin.home" class="active">Trang chủ</a></li>
-    <li><span>Danh mục Menu</span></li>
+    <li><a ui-sref="main.admin.home" class="active">Homepage</a></li>
+    <li><span> Menu Category</span></li>
 </ol>
 <div class="clearfix"></div>
 <div class="alert alert-{{result.type}}" ng-show="result.text!=''">
@@ -52,13 +52,13 @@
 <div class="clearfix"></div>
 <div class="ppaging">
     <div class="pull-left margin-right20">
-        <pagination class="pull-left" next-text="»" previous-text="«" ng-change="pageChanged(page)" first-text="Trang đầu" last-text="Trang cuối" total-items="data.TotalItems" items-per-page="gupagination.itemperpage" ng-model="gupagination.page" max-size="gupagination.maxsize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+        <pagination class="pull-left" next-text="»" previous-text="«" ng-change="pageChanged(page)" first-text="First Page" last-text="Last Page" total-items="data.TotalItems" items-per-page="gupagination.itemperpage" ng-model="gupagination.page" max-size="gupagination.maxsize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
         <div class="clearfix"></div>
     </div>
     <div class="pull-left pagesizediv" style="margin-top:25px; padding-left:30px;">
-        <span class="pull-left"><i class="fa fa-eye"></i> &nbsp;Hiển thị&nbsp;</span>
+        <span class="pull-left"><i class="fa fa-eye"></i> &nbsp;Show&nbsp;</span>
         <select ng-model="gupagination.itemperpage" ng-change="LoadPage()" class="width-auto">
-            <option value="900">Tất cả</option>
+            <option value="900">All</option>
             <option value="1">1</option>
             <option value="4">4</option>
             <option value="8">8</option>
@@ -69,7 +69,7 @@
             <option value="90">90</option>
         </select>
         <span class="pull-left">
-            &nbsp;kết quả.
+            &nbsp;Result.
         </span>
         <div class="clearfix"></div>
     </div>

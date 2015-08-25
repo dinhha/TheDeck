@@ -33,55 +33,55 @@
     <accordion-group ng-repeat="s in subjects" heading="{{s.Title}}" is-open="s.isExpandMenu">
         <ul class="list-group">
             <li ng-if="s.hasAdd" class="list-group-item">
-                <a ui-sref="main.admin.addobject({objectname:s.Name})"><i class="fa fa-plus"></i>&nbsp;Thêm [{{s.Title}}]</a>
+                <a ui-sref="main.admin.addobject({objectname:s.Name})"><i class="fa fa-plus"></i>&nbsp;Add [{{s.Title}}]</a>
             </li>
             <li ng-if="!s.justOne && !s.hasChild" class="list-group-item">
-                <a ui-sref="main.admin.manageobject({objectname:s.Name})"><i class="fa fa-cubes"></i>&nbsp;Quản lý [{{s.Title}}]</a>
+                <a ui-sref="main.admin.manageobject({objectname:s.Name})"><i class="fa fa-cubes"></i>&nbsp;Manager [{{s.Title}}]</a>
             </li>
             <li ng-if="s.hasChild" class="list-group-item">
-                <a ui-sref="main.admin.manageobject({objectname:s.Name})"><i class="fa fa-cube"></i>&nbsp;Danh mục [{{s.Title}}]</a>
+                <a ui-sref="main.admin.manageobject({objectname:s.Name})"><i class="fa fa-cube"></i>&nbsp;Category [{{s.Title}}]</a>
             </li>
 
             <li ng-if="s.hasChild" class="list-group-item">
-                <a ui-sref="main.admin.managechildobject({objectname:s.Name})"><i class="fa fa-cube"></i>&nbsp;Quản lý [{{s.Title}}]</a>
+                <a ui-sref="main.admin.managechildobject({objectname:s.Name})"><i class="fa fa-cube"></i>&nbsp; Category [{{s.Title}}] Management</a>
             </li>
 
             <li ng-if="s.justOne" class="list-group-item">
-                <a ui-sref="main.admin.manageobjectone({objectname:s.Name})"><i class="fa fa-edit"></i>&nbsp;Chỉnh sửa</a>
+                <a ui-sref="main.admin.manageobjectone({objectname:s.Name})"><i class="fa fa-edit"></i>&nbsp;Edit</a>
             </li>
         </ul>
     </accordion-group>
     <accordion-group heading="Menu">
         <ul class="list-group">
             <li class="list-group-item">
-                <a ui-sref="main.admin.managermenu"><i class="fa fa-cubes"></i>&nbsp;Quản lí [Menu]</a>
+                <a ui-sref="main.admin.managermenu"><i class="fa fa-cubes"></i>&nbsp; [Menu] Management</a>
             </li>
         </ul>
     </accordion-group>
     <accordion-group heading="MartiniClub">
         <ul class="list-group">
             <li class="list-group-item">
-                <a ui-sref="main.admin.martiniclub"><i class="fa fa-cubes"></i>&nbsp;Quản lí [Martiniclub]</a>
+                <a ui-sref="main.admin.martiniclub"><i class="fa fa-cubes"></i>&nbsp;[Martiniclub] Management</a>
             </li>
         </ul>
     </accordion-group>
     <accordion-group heading="Contact">
         <ul class="list-group">
             <li class="list-group-item">
-                <a ui-sref="main.admin.contact"><i class="fa fa-cubes"></i>&nbsp;Quản lí [Contact]</a>
+                <a ui-sref="main.admin.contact"><i class="fa fa-cubes"></i>&nbsp;[Contact] Management</a>
             </li>
         </ul>
     </accordion-group>
     <accordion-group heading="Booking">
         <ul class="list-group">
             <li class="list-group-item">
-                <a ui-sref="main.admin.table"><i class="fa fa-cubes"></i>&nbsp;Danh sách Booking [Table]</a>
+                <a ui-sref="main.admin.table"><i class="fa fa-cubes"></i>&nbsp;List Booking [Table]</a>
             </li>
             <li class="list-group-item">
-                <a ui-sref="main.admin.boat"><i class="fa fa-cubes"></i>&nbsp;Danh sách Booking [Boat]</a>
+                <a ui-sref="main.admin.boat"><i class="fa fa-cubes"></i>&nbsp;List Booking [Boat]</a>
             </li>
             <li class="list-group-item">
-                <a ui-sref="main.admin.events"><i class="fa fa-cubes"></i>&nbsp;Danh sách Booking [Event]</a>
+                <a ui-sref="main.admin.events"><i class="fa fa-cubes"></i>&nbsp;List Booking [Event]</a>
             </li>
         </ul>
     </accordion-group>
