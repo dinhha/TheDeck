@@ -193,7 +193,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                          $scope.getMainClass = function () {
                              return $state.current.name == 'main.home.index' ? 'homepage' : "";
                          }
-
+                        
                          var playlistConfig = {
                              'skin':'skins/black/skin.css',
                              'autoplay':true,
@@ -266,7 +266,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                                              setTimeout(init, 10);
                                              return;
                                          }
-                                         if (isOutside) outside(); else inside();
+                                         if (isOutside) { outside(); $(window).trigger('resize'); } else inside();
+                                         
                                      },
 
                                      outside = function () {
@@ -298,7 +299,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                                                      document.body.removeChild(document.body.firstChild);
                                                  while (document.body.lastChild != scmframe)
                                                      document.body.removeChild(document.body.lastChild);
+                                                 
                                              }, 0);
+                                            
                                          });
 
                                          //fix frame height in IE
@@ -383,6 +386,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                                          });
 
                                          addEvent(window, 'load', function () {
+                                             
                                          });
 
                                      };
@@ -406,7 +410,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                                  window.SCMMusicPlayer = window.SCMMusicPlayer || SCM;
                                  window.SCM = window.SCM || SCM;
                              })();
+                         
                          });
+                        
                      }]
                 }//end vMain
             }
