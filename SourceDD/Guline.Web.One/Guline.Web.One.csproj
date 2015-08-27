@@ -1297,6 +1297,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="files\Vatoicungyeuem-DucHuy_ywq.mp3" />
+    <Content Include="files\web-song-02.m4a" />
+    <Content Include="files\web-song-1.m4a" />
     <Content Include="fonts\AvenirLTStd-Black.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\AvenirLTStd-Medium.svg" />
@@ -1309,6 +1312,8 @@
     <Content Include="Images\arrow_l_hover.png" />
     <Content Include="Images\arrow_r.png" />
     <Content Include="Images\arrow_r_hover.png" />
+    <Content Include="Images\audio\pause.png" />
+    <Content Include="Images\audio\play.png" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\background1.jpg" />
     <Content Include="Images\background2.jpg" />
@@ -1581,6 +1586,15 @@
     <Content Include="Module\greensock\plugins\.DS_Store" />
     <Content Include="Module\greensock\utils\.DS_Store" />
     <Content Include="files\Breakfast A4.pdf" />
+    <Content Include="files\BREAKFAST.pdf" />
+    <Content Include="files\BRUNCH.pdf" />
+    <Content Include="files\DESSERTS.pdf" />
+    <Content Include="files\DINNER.pdf" />
+    <Content Include="files\LUNCH.pdf" />
+    <Content Include="files\VEGETERIAN  GLUTEN FREE.pdf" />
+    <Content Include="files\Bar Menu.pdf" />
+    <Content Include="files\Boat Experiences.pdf" />
+    <Content Include="files\Boat Quotation.pdf" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Module\angular-material\angular-material.css" />
     <Content Include="Module\angular-material\angular-material.js" />

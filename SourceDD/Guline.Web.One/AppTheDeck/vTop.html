@@ -3,42 +3,56 @@
 <div class="vtop">
     <div class="container">
         <div class="col-md-12 col-xs12">
-            <div class="col-md-2 col-xs-4 logo">
-                <a href="/"><img src="../Images/logo.png" /></a>
-            </div>
-            <div class="col-md-10 header-nav hidden-xs">
-                <div class="col-md-12 p-right-0">
-                    <div class="sub-nav pull-right">
-                        <ul class="nav nav-tabs">
-                            <li><a ui-sref="main.home.photo">gallery</a></li>
-                            <li><a ui-sref="main.home.giftcard">gift card</a></li>
-                            <!-- <li><a ui-sref="main.home.location">location</a></li> -->
-                            <li><a ui-sref="main.home.contact">contact us</a></li>
-                            <li><a ui-sref="main.home.reservation">reservation</a></li>
+            <div class="audio">
+        
+                        <!--<audio id="audioplayer" controls autoplay loop>
+                    <source src="../files/web-song-1.m4a" type="audio/mp4">
+                    Your browser does not support the audio tag.
+                </audio>
+                <button id="pButton" class="play" ng-click="playAudio()"></button>
+                <div id="audioplayer">
 
-                        </ul>
+                    <div id="timeline">
+                        <div id="playhead"></div>
+                    </div>
+                </div>-->
+                    </div>
+                    <div class="col-md-2 col-xs-4 logo">
+                        <a href="/"><img src="../Images/logo.png" /></a>
+                    </div>
+                    <div class="col-md-10 header-nav hidden-xs">
+                        <div class="col-md-12 p-right-0">
+                            <div class="sub-nav pull-right">
+                                <ul class="nav nav-tabs">
+                                    <li><a ui-sref="main.home.photo">gallery</a></li>
+                                    <li><a ui-sref="main.home.giftcard">gift card</a></li>
+                                    <!-- <li><a ui-sref="main.home.location">location</a></li> -->
+                                    <li><a ui-sref="main.home.contact">contact us</a></li>
+                                    <li><a ui-sref="main.home.reservation">reservation</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-nav pull-right ">
+                            <ul class="nav nav-tabs">
+                                <li ng-class="activeNav('main.home.index')"><a class="cmn-t-underline" ui-sref="main.home.index">Home</a></li>
+                                <li ng-class="activeNav('main.home.ourstory')"><a class="cmn-t-underline" ui-sref="main.home.ourstory">Our Story</a></li>
+                                <li ng-class="activeNav('main.home.menu')"><a class="cmn-t-underline" ui-sref="main.home.menu">Menu</a></li>
+                                <li ng-class="activeNav('main.home.arrive_boat')"><a class="cmn-t-underline" ui-sref="main.home.arrive_boat">Arrive by boat</a></li>
+                                <li ng-class="activeNav('main.home.event')"><a class="cmn-t-underline" ui-sref="main.home.event">Events & Catering</a></li>
+                                <li ng-class="activeNav('main.home.thedeckbar')"><a class="cmn-t-underline" ui-sref="main.home.thedeckbar">The deck bar</a></li>
+                                <!-- <li ng-class="activeNav('main.home.photo')"><a class="cmn-t-underline" ui-sref="main.home.photo">Gallery</a></li> -->
+                                <li ng-class="activeNav('main.home.martini_club')"><a class="cmn-t-underline" ui-sref="main.home.martini_club">The martini club</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-8 p-left-0 visible-xs">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+                        </div>
                     </div>
                 </div>
-                <div class="main-nav pull-right ">
-                    <ul class="nav nav-tabs">
-                        <li ng-class="activeNav('main.home.index')"><a class="cmn-t-underline" ui-sref="main.home.index">Home</a></li>
-                        <li ng-class="activeNav('main.home.ourstory')"><a class="cmn-t-underline" ui-sref="main.home.ourstory">Our Story</a></li>
-                        <li ng-class="activeNav('main.home.menu')"><a class="cmn-t-underline" ui-sref="main.home.menu">Menu</a></li>
-                        <li ng-class="activeNav('main.home.arrive_boat')"><a class="cmn-t-underline" ui-sref="main.home.arrive_boat">Arrive by boat</a></li>
-                        <li ng-class="activeNav('main.home.event')"><a class="cmn-t-underline" ui-sref="main.home.event">Events & Catering</a></li>
-                        <li ng-class="activeNav('main.home.thedeckbar')"><a class="cmn-t-underline" ui-sref="main.home.thedeckbar">The deck bar</a></li>
-                        <!-- <li ng-class="activeNav('main.home.photo')"><a class="cmn-t-underline" ui-sref="main.home.photo">Gallery</a></li> -->
-                        <li ng-class="activeNav('main.home.martini_club')"><a class="cmn-t-underline" ui-sref="main.home.martini_club">The martini club</a></li>
-                    </ul>
-                </div>
             </div>
-            <div class="col-xs-8 p-left-0 visible-xs">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-md-12 col-xs12 visible-xs" id="mobile-nav">
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

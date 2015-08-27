@@ -361,7 +361,16 @@ namespace Guline.Web.One.DIImpl
         }
         public void DeleteMenuCategory(MenuCategory menugroup)
         {
-            db.Delete(menugroup);
+            try { 
+                    db.BeginTransaction();
+                    db.Execute("Delete MenuDetails where MenuID=@0", menugroup.ID);
+                    db.Delete(menugroup);
+                    db.CompleteTransaction();
+                }
+            catch
+            {
+                db.AbortTransaction();
+            }
         }
         public Page<TableBooking> ListTableBooking(int page, int pagesize)
         {
