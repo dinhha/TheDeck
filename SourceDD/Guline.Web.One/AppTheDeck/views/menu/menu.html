@@ -5,7 +5,10 @@
     <div ng-repeat="mng in menuGroups" id="{{getIdMenu(mng)}}">
         <div class="main-banner">
             <!--<div class="parallax-window" id="parallax{{$index + 1}}" style="background-image:url(/Images/menu/menu_bg{{$index + 1}}.jpg)"></div>-->
-            <div class="img-holder" data-image="Images/menu/menu_bg{{$index + 1}}.jpg"></div>
+            <div class="hidden-xs img-holder" data-image="Images/menu/menu_bg{{$index + 1}}.jpg"></div>
+            <div class="visible-xs">
+                <img class="img-responsive img-full" src="Images/menu/menu_bg{{$index + 1}}.jpg" />
+            </div>
           <!--   <a href="/files/Bar Menu.pdf">
                 <div class="downloadourmenu" ng-if="$index == 0">
                     DOWNLOAD OUR MENU
@@ -16,11 +19,11 @@
             <div class="menu-box col-md-12 p-0">
                 <div class="col-md-12  p-right-0 p-top-20">
                     <p class="text-center">
-                        <strong class="title">|{{mng}}|</strong>
+                        <strong class="title">|{{menuGroupDetails[mng].name}}|</strong>
                         <!-- <a href="/files/{{mng.replace('&', '')}}.pdf" target="_blank"> <span class="text-right button-sexy">DOWNLOAD</span></a> -->
                     </p>
 
-                    <div class="col-md-8 col-md-offset-2">
+                    <div class="col-md-8 col-md-offset-2 menu-center">
                         <div class="menu-item" ng-repeat="mnCat in menuGroupDetails[mng].cates.center">
                             <p class="text-center">{{mnCat.Name}}</p>
                             <div class="col-md-12 p-0" ng-repeat="menu in mnCat.menus">
@@ -51,7 +54,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 p-left-0">
+                    <div class="col-md-6 p-left-0 menu-left">
                         <div class="menu-item" ng-repeat="mnCat in menuGroupDetails[mng].cates.left">
                             <p>{{mnCat.Name}}</p>
                             <div class="col-md-12 p-0" ng-repeat="menu in mnCat.menus">
@@ -81,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 p-right-0">
+                    <div class="col-md-6 p-right-0 menu-right">
                         <div class="menu-item" ng-repeat="mnCat in menuGroupDetails[mng].cates.right">
                             <p>{{mnCat.Name}}</p>
                             <div class="col-md-12 p-0" ng-repeat="menu in mnCat.menus">
@@ -120,7 +123,7 @@
 <div class="clearfix">
 
 </div>
-<div class="subMenu hidden-xs">
+<div class="menu subMenu">
     <div class="container">
         <ul class="list-inline">
             <li><a href="/menu#breakfast">BREAKFAST</a></li>

@@ -108,6 +108,8 @@ app.run(['$rootScope', '$state', '$stateParams',
         $rootScope.$stateParams = $stateParams;
         //$rootScope.msdate = convertfromMSDate;
 
+        $.mobile.loading("hide");
+
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
             $("#mobile-nav #navbar").removeClass("in");
             if (toState.name == "main.home.index") $("#page_wrapper").removeClass("white");
@@ -196,7 +198,39 @@ app.run(['$rootScope', '$state', '$stateParams',
                          $scope.getMainClass = function () {
                              return $state.current.name == 'main.home.index' ? 'homepage' : "";
                          }
-                        
+
+                         $scope.$on("slide_sub_menu", function (_, args) {
+                             $timeout(function () {
+
+                                 var $menuEl = $(args);
+                                 var $parentEl = $menuEl.parent();
+                                 var minLeft = $parentEl.innerWidth() - $menuEl.innerWidth();
+                                 var left = 0, dx, nextX = 0, startX;
+
+                                 $menuEl.on("touchstart", function (e) {
+                                     startX = e.originalEvent.touches[0].pageX;
+                                 });
+                                 $menuEl.on("touchend", function (e) {
+                                     left = nextX;
+                                 });
+                                 $menuEl.on("touchmove", function (e) {                                     
+                                     dx = e.originalEvent.touches[0].pageX - startX;
+                                     nextX = dx > 0 ? Math.min(0, left + dx) : Math.max(minLeft, left + dx);
+                                     console.log(dx, nextX)
+                                     TweenMax.fromTo($menuEl, 0, { x: left }, { x: nextX, ease: Power2.easeIn });
+                                 });
+                             });
+                         });
+
+                         var minHeightWindow = 720;
+                         $timeout(function () {
+                             if (window.innerWidth < 678) {
+                                 minHeightWindow = Math.max(minHeightWindow, window.innerHeight);
+                                 $("#page_wrapper").height(minHeightWindow);
+                             }
+                         });
+
+
                          var playlistConfig = {
                              'skin':'skins/black/skin.css',
                              'autoplay':true,
@@ -270,7 +304,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                                              return;
                                          }
                                          if (isOutside) { outside(); $(window).trigger('resize'); } else inside();
-                                         
+
                                      },
 
                                      outside = function () {
@@ -302,9 +336,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                                                      document.body.removeChild(document.body.firstChild);
                                                  while (document.body.lastChild != scmframe)
                                                      document.body.removeChild(document.body.lastChild);
-                                                 
+
                                              }, 0);
-                                            
+
                                          });
 
                                          //fix frame height in IE
@@ -389,7 +423,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                                          });
 
                                          addEvent(window, 'load', function () {
-                                             
+
                                          });
 
                                      };
@@ -413,9 +447,9 @@ app.run(['$rootScope', '$state', '$stateParams',
                                  window.SCMMusicPlayer = window.SCMMusicPlayer || SCM;
                                  window.SCM = window.SCM || SCM;
                              })();
-                         
+
                          });
-                        
+
                      }]
                 }//end vMain
             }
@@ -580,32 +614,30 @@ app.run(['$rootScope', '$state', '$stateParams',
                                         });
                                         menuCat.menus = data.data.Items;
                                     });
-                                    if ($scope.menuGroups.indexOf(menuCat.GroupName) == -1) {
-                                        $scope.menuGroups.push(menuCat.GroupName);
-                                        $scope.menuGroupDetails[menuCat.GroupName] = {
+                                    if ($scope.menuGroups.indexOf(menuCat.GroupName.toLowerCase()) == -1) {
+                                        $scope.menuGroups.push(menuCat.GroupName.toLowerCase());
+                                        $scope.menuGroupDetails[menuCat.GroupName.toLowerCase()] = {
                                             name: menuCat.GroupName,
                                             cates: { left: [], right: [], center: [] }
                                         };
                                     }
                                     var position = (menuCat.Position || "").replace(/\s/g, '').toLowerCase();
                                     if (position == 'left' || position == 'right' || position == 'center')
-                                        $scope.menuGroupDetails[menuCat.GroupName].cates[position].push(menuCat);
+                                        $scope.menuGroupDetails[menuCat.GroupName.toLowerCase()].cates[position].push(menuCat);
                                 });
 
-                                $timeout(function () {
-                                    //$('.parallax-window').css('height', rHeight);
-                                    //$('#parallax' + (i + 1)).parallax("0%", 0.1);
-
-                                    //$('.img-holder').css('height', rHeight);
-                                    $('.img-holder').imageScroll({
-                                        container: $('.menu'),
-                                        speed: .2,
-                                        holderMinHeight: 200,
-                                        holderMaxHeight: rHeight,
-                                        mediaWidth: 1550,
-                                        mediaHeight: 684,
+                                if (window.innerWidth > 678) {
+                                    $timeout(function () {
+                                        $('.img-holder').imageScroll({
+                                            container: $('.menu'),
+                                            speed: .2,
+                                            holderMinHeight: 200,
+                                            holderMaxHeight: rHeight,
+                                            mediaWidth: 1550,
+                                            mediaHeight: 684,
+                                        });
                                     });
-                                });
+                                }
                                 $timeout(function () {
                                     if ($location.hash()) {
                                         $anchorScroll();
@@ -619,13 +651,13 @@ app.run(['$rootScope', '$state', '$stateParams',
                             $window.on('scroll', function () {
                                 if ($window.scrollTop() > 150) {
                                     if (!onShow) {
-                                        TweenMax.fromTo(".subMenu", 0.2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
+                                        TweenMax.fromTo(".menu.subMenu", 0.2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
                                         TweenMax.fromTo("#gotop", 0.2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
                                         onShow = true;
                                     }
                                 }
                                 else {
-                                    TweenMax.to(".subMenu", 0.5, { autoAlpha: 0, ease: Power1.easeOut });
+                                    TweenMax.to(".menu.subMenu", 0.5, { autoAlpha: 0, ease: Power1.easeOut });
                                     TweenMax.to("#gotop", 0.5, { autoAlpha: 0, ease: Power1.easeOut });
                                     onShow = false;
                                 }
@@ -642,7 +674,10 @@ app.run(['$rootScope', '$state', '$stateParams',
                                     overwrite: 1
                                 });
                             });
+
                             $('#page_wrapper').addClass('white');
+                            $scope.$emit("slide_sub_menu", ".menu.subMenu ul");
+
                         }]
                    }
                },
@@ -713,13 +748,49 @@ app.run(['$rootScope', '$state', '$stateParams',
                      $scope.type = $state.params.type;
                      $scope.getActiveClass = function (type) {
                          return type == $scope.type ? 'active' : "";
-                     }
+                     };
+
+                     $scope.$emit("slide_sub_menu", ".event-header ul");
+                     $scope.$emit("slide_sub_menu", ".eventpage .subMenu ul");
+
+                     $timeout(function () {
+                         var offset = (window.innerWidth - $(".event-header ul li a.active").width()) / 2 - $(".event-header ul li a.active").offset().left;
+                         if (offset > 0) offset = 0;
+                         if (offset < ($(".event-header").width() - $(".event-header ul").width()))
+                             offset = ($(".event-header").width() - $(".event-header ul").width());
+                         var curOffset = $(".event-header ul").offset().left;
+//                         console.log(curOffset, offset);
+                         TweenMax.fromTo(".event-header ul", 0.02, { x: curOffset }, { x: offset, ease: Power2.easeIn });
+                     });
                  }]
             }
         }, onExit: function () {
             $('#page_wrapper').removeClass('white');
         }
-
+    })
+    .state('main.home.event_ga', {
+        url: "/event-gallery",
+        ncyBreadcrumb: {
+            label: 'Event Gallery', parent: null
+        },
+        data: { title: "Event Gallery" },
+        views: {
+            "homeMain": {
+                templateUrl: _gconfig.baseAppResouceUrl + "/views/event/gallery.html"
+               , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
+                function ($scope, $state, $http, appconfig, $timeout) {
+                    $(document).ready(function () {
+                        $('.pgwSlideshow').pgwSlideshow({
+                            transitionEffect: 'fading',
+                            autoSlide: true,
+                            intervalDuration: 5000
+                        });
+                        var realHeight = document.documentElement.clientWidth / 1550 * 710;
+                        $('.ps-current').css('height', realHeight);
+                    });
+                }]
+            }
+        }
     })
     .state('main.home.ourstory', {
         url: "/our-story",
