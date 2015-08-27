@@ -1298,8 +1298,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="files\Vatoicungyeuem-DucHuy_ywq.mp3" />
-    <Content Include="files\web-song-02.m4a" />
+    <Content Include="files\websong.m4a" />
     <Content Include="files\web-song-1.m4a" />
+    <Content Include="files\web-song-21.m4a" />
     <Content Include="fonts\AvenirLTStd-Black.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\AvenirLTStd-Medium.svg" />
