@@ -320,7 +320,7 @@ body {
 }
 
 .vtop .logo {
-    padding-top: 30px;
+    padding-top: 35px;
     padding-bottom: 30px;
 }
 
@@ -342,7 +342,7 @@ body {
 }
 
 .sub-nav {
-    padding-top: 15px;
+    padding-top: 25px;
     font-size: 9px;
 }
 
@@ -1865,7 +1865,51 @@ body {
 .list-inline li:last-child {
     padding-right: 0px;
 }
+.audio{
+    position:absolute;
+    top:0;
+    width:100%;
+    z-index:9999;
+    background:#000000;
+    height:33px;
+}
+#audioplayer{
+	width: 84%;
+    height:30px;
+    margin:0 auto;
+}
 
+#pButton{
+    height:30px; 
+    width: 30px;
+    border: none;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    float:left;
+    outline:none;
+}
+
+.play {
+    background: url('../../Images/audio/play.png');
+}
+.pause{background: url('../../Images/audio/pause.png') ;}
+
+#timeline{
+	width: 96%;
+	height: 5px;
+	margin-top: 15px;
+	float: left;
+	border-radius: 15px;
+	background: rgba(255,255,255,.3);
+  
+}
+#playhead{
+	width: 12px;
+	height: 5px;
+	background: #f58b20;
+
+}
 .ui-loader {
     display: none;
 }
