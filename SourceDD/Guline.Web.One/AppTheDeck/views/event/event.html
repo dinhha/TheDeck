@@ -61,7 +61,7 @@
                     <li><a ng-class="getActiveClass('wedding')" ui-sref="main.home.event({type:'wedding'})">WEDDING</a></li>
                     <li><a ng-class="getActiveClass('gourmet-catering')" ui-sref="main.home.event({type:'gourmet-catering'})">GOURMET CATERING</a></li>
                     <li><a ng-class="getActiveClass('arrive-boat')" ui-sref="main.home.event({type:'arrive-boat'})">ARRIVE BY BOAT</a></li>
-                    <li><a ui-sref="main.home.photo">GALLERY</a></li>
+                    <li><a ui-sref="main.home.event_ga">GALLERY</a></li>
                 </ul>
             </div>
             <div class="row col-md-12 event-content" ng-if="type==null || type == ''">
@@ -120,7 +120,7 @@
             </div>
         </div>
     </div>
-    <div class="subMenu hidden-xs" ng-if="type=='private' || type=='corporate' || type=='wedding' || type=='arrive-boat'">
+    <div class="subMenu" ng-if="type=='private' || type=='corporate' || type=='wedding' || type=='arrive-boat'">
         <ul ng-if="type=='private' || type=='corporate'" class="list-inline">
             <li><a target="_blank" href="/menu#lunch">LUNCH MENU</a></li>
             <li><a target="_blank" href="/menu#brunch">BRUNCH MENU</a></li>

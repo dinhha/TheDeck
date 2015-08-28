@@ -271,7 +271,7 @@ body {
 
     #slider_home img {
         width: 100%;
-        height: 100%;
+        height: auto;
         opacity: 0;
         position: absolute;
     }
@@ -1070,6 +1070,7 @@ body {
 .menu-item {
     display: table;
     margin-bottom: 40px;
+    width: 100%;
 }
 
     .menu-item p {
@@ -1105,12 +1106,12 @@ body {
     z-index: 100;
     text-align: center;
     opacity: 0;
+    border-bottom: 1px #9c9c9d solid;
 }
 
     .subMenu ul {
         list-style: none;
         margin-bottom: 0;
-        border-bottom: 1px #9c9c9d solid;
     }
 
         .subMenu ul li a {
@@ -1784,6 +1785,55 @@ body {
         .nav-footer li {
             padding-right: 50px;
         }
+
+    .menu .title {
+        letter-spacing: 4px;
+    }
+
+    .menu .menu-box .col-right {
+        padding: 0 15px 0 !important;
+    }
+
+    .event-header {
+        white-space: nowrap;
+        padding: 0;
+    }
+
+        .event-header .list-inline li:first-child,
+        .subMenu li:first-child {
+            margin-left: 15px;
+        }
+
+        .event-header .list-inline li:last-child,
+        .subMenu li:last-child {
+            margin-right: 15px;
+        }
+
+    .subMenu {
+        white-space: nowrap;
+        bottom: 60px;
+    }
+
+        .subMenu ul li a {
+            padding: 14px 15px;
+        }
+
+    #gotop {
+        bottom: 120px;
+    }
+
+    .event-header {
+        height: 66px;
+        position: relative;
+    }
+
+        .subMenu ul.list-inline, .event-header ul.list-inline {
+            position: absolute;
+        }
+
+    .page-title {
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1794,18 +1844,20 @@ body {
 }
 
 @media (max-width: 480px) {
-    #home_wrapper .home-content{
+    #home_wrapper .home-content {
         padding-top: 20%;
     }
-    #home_wrapper .home-content h2 {
-        font-size: 50px;
-    }
 
-    #home_wrapper .home-content .btn-home {
-        margin-top: 10px;
-        font-size: 10px;
-    }
-    .nav-footer li{
+        #home_wrapper .home-content h2 {
+            font-size: 50px;
+        }
+
+        #home_wrapper .home-content .btn-home {
+            margin-top: 10px;
+            font-size: 10px;
+        }
+
+    .nav-footer li {
         padding-right: 8px;
     }
 }
@@ -1857,4 +1909,7 @@ body {
 	height: 5px;
 	background: #fff;
 
+}
+.ui-loader {
+    display: none;
 }

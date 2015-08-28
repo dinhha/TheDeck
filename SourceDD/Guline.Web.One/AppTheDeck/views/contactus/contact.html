@@ -22,38 +22,45 @@
                 </div>
                 <div class="col-md-8">
                     <form class="ddeck-form" ng-submit="sendcontact()" style="margin-top:0">
-                        <div class="col-md-6 p-left-0">
-                            <p>Last name :*</p>
-                            <input type="text" id="lastname" class="form-control" ng-model="contact.LastName" required />
-                        </div>
-                        <div class="col-md-6 p-right-0">
-                            <p>First name :*</p>
-                            <input type="text" id="firstname" class="form-control" ng-model="contact.FirstName" required />
-                        </div>
-                        <div class="col-md-6 p-left-0 m-top-10">
-                            <p>Email :*</p>
-                            <input type="text" id="email" class="form-control" ng-model="contact.Email" required />
-                        </div>
-                        <div class="col-md-6 p-right-0 m-top-10">
-                            <p>Mobile :*</p>
-                            <input type="text" id="mobile" class="form-control" ng-model="contact.Mobile" required />
-                        </div>
-                        <div class="col-md-12 p-left-0 p-right-0 m-top-10">
-                            <p>Message :*</p>
-                            <textarea rows="5" style="height:150px;" ng-model="contact.Message" class="form-control" required></textarea>
-                        </div>
-                        <div class="col-md-12 p-left-0 p-right-0 m-top-20">
-                            <div class="col-md-4 col-md-offset-3">
-                                <button type="submit" ng-click="sendcontact()" class="button-sexy pull-right">SUBMIT</button>
-                                <!--<button type="submit"  class="btn  button-sexy btn-block">SUBMIT</button>-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last name :*</label>
+                                    <input type="text" id="lastname" class="form-control" ng-model="contact.LastName" required />
+                                </div>
                             </div>
-                          
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First name :*</label>
+                                    <input type="text" id="firstname" class="form-control" ng-model="contact.FirstName" required />
+                                </div>
+                            </div>
                         </div>
-                        <!--<a href="" ng-click="sendcontact()" class="btn-submit">
-            <div class="col-md-12 p-left-0 p-right-0 m-top-20 text-center box-submit">
-                SUBMIT
-            </div>
-        </a>-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email :*</label>
+                                    <input type="text" id="email" class="form-control" ng-model="contact.Email" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Mobile :*</label>
+                                    <input type="text" id="mobile" class="form-control" ng-model="contact.Mobile" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Message :*</label>
+                                    <textarea rows="5" style="height:150px;" ng-model="contact.Message" class="form-control" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" ng-click="sendcontact()" class="button-sexy">SUBMIT</button>
+                        </div>
                     </form>
                 </div>
             </div>
