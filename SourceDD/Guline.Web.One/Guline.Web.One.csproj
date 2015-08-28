@@ -260,6 +260,7 @@
     <Content Include="AppTheDeck\gNav.html" />
     <Content Include="AppTheDeck\langs\en-us.txt" />
     <Content Include="AppTheDeck\langs\vi-vn.txt" />
+    <Content Include="AppTheDeck\views\arrive-by-boat\arrive-by-boat.html" />
     <Content Include="AppTheDeck\views\career\career.html" />
     <Content Include="AppTheDeck\views\contactus\contact.html" />
     <Content Include="AppTheDeck\views\event\event.html" />
@@ -1345,6 +1346,9 @@
     <Content Include="Images\gallery\IMG_2216.JPG" />
     <Content Include="Images\gallery\IMG_2252.JPG" />
     <Content Include="Images\gallery\IMG_2263.JPG" />
+    <Content Include="Images\homepage_1.jpg" />
+    <Content Include="Images\homepage_2.jpg" />
+    <Content Include="Images\homepage_3.jpg" />
     <Content Include="Images\logo-guline3.png" />
     <Content Include="Images\map.jpg" />
     <Content Include="Images\map.png" />

@@ -215,7 +215,6 @@ app.run(['$rootScope', '$state', '$stateParams',
                                success(function (res, status, headers, config) {
                                        if (res.success) {
                                            $scope.product = res.data;
-                                           console.log($scope.product);
                                        }
                                        else {
                                            $scope.msg = response.msg;

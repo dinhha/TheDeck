@@ -1010,7 +1010,7 @@ body {
 /*End About*/
 /*The Deck Bar*/
 .thedeckbar {
-    min-height: 500px;
+    min-height:768px;
 }
 
 /*End The Deck Bar*/
@@ -1855,6 +1855,6 @@ body {
 #playhead{
 	width: 12px;
 	height: 5px;
-	background: #f58b20;
+	background: #fff;
 
 }
