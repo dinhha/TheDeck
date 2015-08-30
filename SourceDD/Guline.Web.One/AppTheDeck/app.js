@@ -1015,8 +1015,8 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
         views: {
             "homeMain": {
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/career/career.html"
-               , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
-                 function ($scope, $state, $http, appconfig, $timeout) {
+               , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout", "flash",
+                 function ($scope, $state, $http, appconfig, $timeout, flash) {
                      $scope.item = {
                          availableDate: moment.utc(Date.now()).format("MM/DD/YYYY"),
                          onlyJob: "Yes",
@@ -1025,6 +1025,28 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
                      }
 
                      $('#page_wrapper').addClass('white');
+
+                     $scope.apply = function(){
+
+						flash.success = "Apply Sucess";
+						$scope.item = {
+                         availableDate: moment.utc(Date.now()).format("MM/DD/YYYY"),
+                         onlyJob: "Yes",
+                         birdthDate: "01/01/1990",
+                         title: "Mr"
+                     }
+	                    /* $http.post(_gconfig.baseWebUrl + '/api/Object/BoatBooking', $scope.boat).
+	                     success(function (res, status, headers, config) {
+	                        if (res.success) {
+	                            flash.success = res.msg;
+	                        }
+	                        else {
+	                            flash.error = res.msg;
+	                        }
+	                    }).error(function (data, status, headers, config) {
+	                        flash.error = res.msg;
+	                    });*/
+                    }
                  }]
             }
         }, onExit: function () {
