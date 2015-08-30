@@ -3,7 +3,7 @@
     <div class="audio">
         <div class="col-md-12 col-xs12">
             <audio id="music" autoplay loop>
-                <source src="../files/web-song-1.m4a" type="audio/mp4">
+                <source src="../files/web-song-02.mp3" type="audio/mp3">
                 <!--<source src="../files/web-song-1.m4a" type="audio/mp4">-->
             </audio>
             <div id="audioplayer">
@@ -12,7 +12,8 @@
                     <div id="playhead"></div>
                 </div>
             </div>
-            <script>
+            <script>                
+
                 var music = document.getElementById('music'); // id for audio element
                 var duration; // Duration of audio clip
                 var pButton = document.getElementById('pButton'); // play button
@@ -22,6 +23,11 @@
                 var timeline = document.getElementById('timeline'); // timeline
                 // timeline width adjusted for playhead
                 var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+                
+                music.autoplay = false;
+                //if (window.innerWidth < 678) {
+                    $("#timeline").width($("#audioplayer").width() - 40);
+               // }
 
                 // timeupdate event listener
                 music.addEventListener("timeupdate", timeUpdate, false);
@@ -107,19 +113,20 @@
                 music.addEventListener("canplaythrough", function () {
                     duration = music.duration;
                 }, false);
+
             </script>
 
         </div>
     </div>
     <div ui-view="vTop" class="row">
-        
+
 
     </div>
     <div class="clearfix"></div>
 
     <div class="clearfix"></div>
-    <div >
-        <div ui-view="vContent" >
+    <div>
+        <div ui-view="vContent">
 
         </div>
         <div class="clearfix"></div>

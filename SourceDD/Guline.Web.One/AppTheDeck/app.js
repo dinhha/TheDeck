@@ -102,8 +102,8 @@ app.factory('broadcastService', function ($rootScope) {
     return broadcastService;
 });
 
-app.run(['$rootScope', '$state', '$stateParams',
-    function ($rootScope, $state, $stateParams) {
+app.run(['$rootScope', '$state', '$stateParams', "$timeout",
+    function ($rootScope, $state, $stateParams, $timeout) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         //$rootScope.msdate = convertfromMSDate;
@@ -112,6 +112,7 @@ app.run(['$rootScope', '$state', '$stateParams',
 
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
             $("#mobile-nav #navbar").removeClass("in");
+
             if (toState.name == "main.home.index") $("#page_wrapper").removeClass("white");
         });
     }
@@ -216,7 +217,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                                  $menuEl.on("touchmove", function (e) {                                     
                                      dx = e.originalEvent.touches[0].pageX - startX;
                                      nextX = dx > 0 ? Math.min(0, left + dx) : Math.max(minLeft, left + dx);
-                                     console.log(dx, nextX)
+                                     //console.log(dx, nextX)
                                      TweenMax.fromTo($menuEl, 0, { x: left }, { x: nextX, ease: Power2.easeIn });
                                  });
                              });
@@ -260,7 +261,8 @@ app.run(['$rootScope', '$state', '$stateParams',
                          //$scope.menu = appconfig.menus[0].Childrens;
                          $scope.appconfig = appconfig.config;
                          $scope.activeNav = function (state) {
-                             return (state == $state.current.name) ? "active" : "";
+                             if (state == "main.home.event" && $state.current.name == "main.home.event_ga") return "active";
+                            return (state == $state.current.name) ? "active" : "";
                          }
                        
                      }]
@@ -302,43 +304,48 @@ app.run(['$rootScope', '$state', '$stateParams',
 
                              var isMobile = window.innerWidth <= 768;
 
+                             var delayTransition = 5000;
+                             var slides = $('#slider_home img');
+                             var slideBtns = $('#slider_button span');
+                             var current = 0;
+                             var interVal = setInterval(setSlide, delayTransition);
+                             if (isMobile) {
+                                 slides = $("#slider_home_mob img");
+                                 slideBtns = $('#slider_home_mob #slider_button span');
+                             }
+
+                             slideBtns.on('click', function () {
+                                 if (!$(this).is('.current')) {
+                                     clearInterval(interVal);
+                                     setSlide(slideBtns.index($(this)));
+                                     interVal = setInterval(setSlide, delayTransition);
+                                 }
+                             });
+
+                             function setSlide(to) {
+                                 if (to == null) {
+                                     to = (current == slides.length - 1 ? 0 : current + 1);
+                                 }
+
+                                 TweenMax.to(slides.eq(current), .4, { autoAlpha: 0, ease: Power0.easeOut });
+                                 TweenMax.fromTo(slides.eq(to), .2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
+                                 slideBtns.eq(current).removeClass('current');
+                                 slideBtns.eq(to).addClass('current');
+                                 current = to;
+                             }
+
                              if (!isMobile) {
                                  tl.from('.vtop', 1, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
                                  tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
                                  tl.from('.vtop .logo, .vtop .sub-nav, .vtop .main-nav, .home-content, .navbar-header', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-
-                                 var delayTransition = 5000;
-                                 var slides = $('#slider_home img');
-                                 var slideBtns = $('#slider_button span');
-                                 var current = 0;
-                                 var interVal = setInterval(setSlide, delayTransition);
-
-                                 $('#slider_button span').on('click', function () {
-                                     if (!$(this).is('.current')) {
-                                         clearInterval(interVal);
-                                         setSlide(slideBtns.index($(this)));
-                                         interVal = setInterval(setSlide, delayTransition);
-                                     }
-                                 });
-
-                                 function setSlide(to) {
-                                     if (to == null) {
-                                         to = (current == slides.length - 1 ? 0 : current + 1);
-                                     }
-
-                                     TweenMax.to(slides.eq(current), .4, { autoAlpha: 0, ease: Power0.easeOut });
-                                     TweenMax.fromTo(slides.eq(to), .2, { autoAlpha: 0 }, { autoAlpha: 1, ease: Power1.easeIn });
-                                     slideBtns.eq(current).removeClass('current');
-                                     slideBtns.eq(to).addClass('current');
-                                     current = to;
-                                 }
+                                 
                              } else {
                                  tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
                                  tl.from('.home-content', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
 
                                  var bgRatio = 700 / 684;
                                  var imgHeight = Math.floor(window.innerWidth / bgRatio);
-                                 $(".home-content").css("height", imgHeight + "px");
+                                 $(".home-content").css("height", imgHeight + "px");                                 
                              }
                          }
                      }]
@@ -411,7 +418,7 @@ app.run(['$rootScope', '$state', '$stateParams',
                                 if (window.innerWidth > 678) {
                                     $timeout(function () {
                                         $('.img-holder').imageScroll({
-                                            container: $('.menu'),
+                                            container: $('#menu_wrapper.menu'),
                                             speed: .2,
                                             holderMinHeight: 200,
                                             holderMaxHeight: rHeight,
@@ -1010,8 +1017,18 @@ app.run(['$rootScope', '$state', '$stateParams',
                 templateUrl: _gconfig.baseAppResouceUrl + "/views/career/career.html"
                , controller: ['$scope', '$state', '$http', 'appconfig', "$timeout",
                  function ($scope, $state, $http, appconfig, $timeout) {
+                     $scope.item = {
+                         availableDate: moment.utc(Date.now()).format("MM/DD/YYYY"),
+                         onlyJob: "Yes",
+                         birdthDate: "01/01/1990",
+                         title: "Mr"
+                     }
+
+                     $('#page_wrapper').addClass('white');
                  }]
             }
+        }, onExit: function () {
+            $('#page_wrapper').removeClass('white');
         }
     })
 
