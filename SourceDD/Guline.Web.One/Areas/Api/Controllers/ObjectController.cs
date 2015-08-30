@@ -569,6 +569,25 @@ namespace Guline.Web.One.Areas.Api.Controllers
                 return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
             }
         }
+        public JsonResult SubmitCareer(Career carrer)
+        {
+            try
+            {
+                var cvfile = Request.Files["cvFile"];
+                var photo = Request.Files["photo"];
+                var cvname=sc.SaveCV(cvfile);
+                
+                var cvphoto=sc.SaveImage(photo);
+                carrer.cvFile = cvname;
+                carrer.photo = cvphoto;
+                sc.SubmitCareer(carrer);
+                return Json(new { success = true, msg = "Thông tin của bạn đã gửi thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { success = false, msg = "Đã có lỗi xảy ra" }, JsonRequestBehavior.AllowGet);
+            }
+        }
         #endregion
     }
 }

@@ -225,6 +225,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="gModels\Career.cs" />
     <Compile Include="gModels\Cart.cs" />
     <Compile Include="gModels\gObject.cs" />
     <Compile Include="gModels\gObjectAttr.cs" />

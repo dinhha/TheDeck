@@ -7,11 +7,13 @@ using Guline.Web.One.Models;
 using PetaPoco;
 using Guline.Web.One.gModels;
 using System.Web.Script.Serialization;
+using System.IO;
 
 namespace Guline.Web.One.DIImpl
 {
     public class ObjectGroup : IObjectGroup
     {
+        private const string FileFolder = "~/files/Career";
         private mContext db;
 
         public ObjectGroup(mContext _db)
@@ -411,6 +413,40 @@ namespace Guline.Web.One.DIImpl
         public void AddContact(Contact contact)
         {
             db.Insert(contact);
+        }
+        public string SaveCV(System.Web.HttpPostedFileBase cvfile)
+        {
+            var folder = HttpContext.Current.Server.MapPath(FileFolder);
+            if (System.IO.Directory.Exists(folder) == false)
+            {
+                System.IO.Directory.CreateDirectory(folder);
+            }
+
+            //TODO: kiểm tra file hợp lệ
+
+            //Save file
+            var fileName = Guid.NewGuid().ToString();
+            cvfile.SaveAs(System.IO.Path.Combine(folder, cvfile.FileName));
+            return cvfile.FileName;
+        }
+        public string SaveImage(System.Web.HttpPostedFileBase photo)
+        {
+            var folder = HttpContext.Current.Server.MapPath(FileFolder);
+            if (System.IO.Directory.Exists(folder) == false)
+            {
+                System.IO.Directory.CreateDirectory(folder);
+            }
+
+            //TODO: kiểm tra file hợp lệ
+
+            //Save file
+            var fileName = Guid.NewGuid().ToString();
+            photo.SaveAs(System.IO.Path.Combine(folder, fileName));
+            return fileName;
+        }
+        public void SubmitCareer(Career carrer)
+        {
+            db.Insert(carrer);
         }
     }
 }

@@ -77,6 +77,12 @@ namespace Guline.Web.One.DInject
         Page<Contact> ListContact(int page, int pagesize);
         void AddContact(Contact contact);
         void AddMartini(MartiniClub martini);
-      
+
+
+        string SaveCV(System.Web.HttpPostedFileBase cvfile);
+
+        string SaveImage(System.Web.HttpPostedFileBase photo);
+
+        void SubmitCareer(Career carrer);
     }
 }
