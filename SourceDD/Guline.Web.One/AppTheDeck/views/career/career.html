@@ -3,7 +3,7 @@
 </div>
 <div ui-view="TheDeckBar" class="thedeckbar">
     <div class="container">
-        <div class="col-md-8 col-md-offset-2 p-left-0 p-right-0 m-top-20 p-top-20">
+        <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 career">
             <div class="row col-md-12"><p class="page-title text-center">CAREER</p></div>
             <form role="form" class="ddeck-form m-top-10" ng-submit="apply()">
                 <h4>APPLICATION INFORMATION</h4>
@@ -110,26 +110,26 @@
 
                 <h4>YOUR CV</h4>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-3">
                         <div class="form-group">
                             <label for="cvFile">Please attach your CV</label>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-xs-9">
                         <div class="form-group">
-                            <input type="file" class="form-control" id="cvFile" required ng-model="item.cvFile">
+                            <input type="file" class="form-control" name="cvFile" id="cvFile" required>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-3">
                         <div class="form-group">
                             <label for="photo">Please attach your photo</label>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-xs-9">
                         <div class="form-group">
-                            <input type="file" class="form-control" id="photo" required ng-model="item.photo">
+                            <input type="file" class="form-control" name="photo" id="photo" required>
                         </div>
                     </div>
                 </div>

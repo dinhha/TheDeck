@@ -440,7 +440,7 @@ namespace Guline.Web.One.DIImpl
             //TODO: kiểm tra file hợp lệ
 
             //Save file
-            var fileName = Guid.NewGuid().ToString();
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(folder + "/" + photo.FileName);
             photo.SaveAs(System.IO.Path.Combine(folder, fileName));
             return fileName;
         }

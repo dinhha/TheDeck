@@ -189,73 +189,73 @@ namespace Guline.Web.One.Areas.Api.Controllers
         }
 
         //send mail
-        public ActionResult SendMail(SendMail model)
-        {
+        //public ActionResult SendMail(SendMail model)
+        //{
 
-            var mailconfig = sc.getOneObject("mailconfig", Organize.ID);
-            if (mailconfig == null)
-                return Json(new { success = false, msg = "You should config mail sender first." }, JsonRequestBehavior.AllowGet);
+        //    var mailconfig = sc.getOneObject("mailconfig", Organize.ID);
+        //    if (mailconfig == null)
+        //        return Json(new { success = false, msg = "You should config mail sender first." }, JsonRequestBehavior.AllowGet);
 
-            var config = mailconfig.Attrs.ToDictionary(m => m.AttrName, m => m.AttrValue);
-            try
-            {
-                var template = sc.findObject("mailtemplate", model.TemplateID, Organize.ID);
-                if (template == null)
-                    return Json(new { success = false, msg = "Template not found" }, JsonRequestBehavior.AllowGet);
+        //    var config = mailconfig.Attrs.ToDictionary(m => m.AttrName, m => m.AttrValue);
+        //    try
+        //    {
+        //        var template = sc.findObject("mailtemplate", model.TemplateID, Organize.ID);
+        //        if (template == null)
+        //            return Json(new { success = false, msg = "Template not found" }, JsonRequestBehavior.AllowGet);
 
-                var SmtpServer = new SmtpClient(config["host"]);
-                SmtpServer.Port = int.Parse(config["port"]);
-                SmtpServer.Credentials = new System.Net.NetworkCredential(config["user"], config["password"]);
-                SmtpServer.EnableSsl = true;
-
-
-
-                List<Receiver> listerror = new List<Receiver>();
-                List<gModels.gObjectAttr> listAttr = new List<gObjectAttr>();
-                string recevers = "";
-                foreach (var receiver in model.Receivers)
-                {
-                    try
-                    {
-                        var email = new GuMail();
-                        email.mSmtp = SmtpServer;
-                        email.From = config["user"];
-                        //get email template
-                        var templateconfig = template.Attrs.ToDictionary(m => m.AttrName, m => m.AttrValue);
-                        email.Title = template.Title;
-                        email.ContentText = templateconfig["shortdescription"];
-                        email.ContentHtml = templateconfig["mailcontent"];
-                        email.To = receiver.text;
-                        email.Send();
-                        if (recevers != "") recevers += "," + receiver.text;
-                        else recevers += receiver.text;
+        //        var SmtpServer = new SmtpClient(config["host"]);
+        //        SmtpServer.Port = int.Parse(config["port"]);
+        //        SmtpServer.Credentials = new System.Net.NetworkCredential(config["user"], config["password"]);
+        //        SmtpServer.EnableSsl = true;
 
 
-                    }
-                    catch
-                    {
-                        listerror.Add(receiver);
-                    }
-                }
-                listAttr.Add(new gModels.gObjectAttr() { ID = 9, AttrValue = recevers, gObjectGroupID = 3, Status = 1, CreateDate = DateTime.Now, AttrType = 17 });
-                listAttr.Add(new gModels.gObjectAttr() { ID = 11, AttrValue = JsonConvert.SerializeObject(template), gObjectGroupID = 3, Status = 1, CreateDate = DateTime.Now, AttrType = 4 });
-                //hh
-                sc.UpdateOneModel(new gObject()
-                {
-                    Title = template.Title,
-                    CreateDate = DateTime.Now,
-                    Status = 1,
-                    gGroupID = 3,
-                    Slug = template.Slug,
-                    Attrs = listAttr
-                }, Organize.ID);
-                return Json(new { success = true, error = listerror }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, mgs = ex.Message }, JsonRequestBehavior.AllowGet);
-            }
-        }
+
+        //        List<Receiver> listerror = new List<Receiver>();
+        //        List<gModels.gObjectAttr> listAttr = new List<gObjectAttr>();
+        //        string recevers = "";
+        //        foreach (var receiver in model.Receivers)
+        //        {
+        //            try
+        //            {
+        //                var email = new GuMail();
+        //                email.mSmtp = SmtpServer;
+        //                email.From = config["user"];
+        //                //get email template
+        //                var templateconfig = template.Attrs.ToDictionary(m => m.AttrName, m => m.AttrValue);
+        //                email.Title = template.Title;
+        //                email.ContentText = templateconfig["shortdescription"];
+        //                email.ContentHtml = templateconfig["mailcontent"];
+        //                email.To = receiver.text;
+        //                email.Send();
+        //                if (recevers != "") recevers += "," + receiver.text;
+        //                else recevers += receiver.text;
+
+
+        //            }
+        //            catch
+        //            {
+        //                listerror.Add(receiver);
+        //            }
+        //        }
+        //        listAttr.Add(new gModels.gObjectAttr() { ID = 9, AttrValue = recevers, gObjectGroupID = 3, Status = 1, CreateDate = DateTime.Now, AttrType = 17 });
+        //        listAttr.Add(new gModels.gObjectAttr() { ID = 11, AttrValue = JsonConvert.SerializeObject(template), gObjectGroupID = 3, Status = 1, CreateDate = DateTime.Now, AttrType = 4 });
+        //        //hh
+        //        sc.UpdateOneModel(new gObject()
+        //        {
+        //            Title = template.Title,
+        //            CreateDate = DateTime.Now,
+        //            Status = 1,
+        //            gGroupID = 3,
+        //            Slug = template.Slug,
+        //            Attrs = listAttr
+        //        }, Organize.ID);
+        //        return Json(new { success = true, error = listerror }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { success = false, mgs = ex.Message }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
         //get object home
         public ActionResult GetPanelObjects(string objects)
         {
@@ -423,7 +423,7 @@ namespace Guline.Web.One.Areas.Api.Controllers
         {
             return Json(new { data = sc.ListMenuCategory(page,pagesize), msg = "List Menu Category" }, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetDetailMenu(long MenuCatID,int page=1,int pagesize=10)
+        public JsonResult GetDetailMenu(long MenuCatID,int page=1,int pagesize=100)
         {
             return Json(new { data = sc.GetDetailMenu(MenuCatID,page, pagesize), msg = "List Menu Detail" }, JsonRequestBehavior.AllowGet);
         }

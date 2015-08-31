@@ -10,7 +10,7 @@ namespace Guline.Web.One
         {
             bundles.Add(new ScriptBundle("~/Module/basejs.js").Include(
                   "~/Scripts/jquery-1.11.2.js",
-                  "~/Scripts/jquery.mobile-1.4.5.min.js",
+                  //"~/Scripts/jquery.mobile-1.4.5.min.js",
                   "~/Module/greensock/TweenMax.js",
                   "~/Module/jquerylazyload/jquery.lazyload.js",
                 //"~/Scripts/bootstrap-slider.min.js"

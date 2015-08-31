@@ -3,54 +3,6 @@
         <img class="img-responsive img-full" src="../../../Images/event_bg.jpg" />
     </div>
     <div class="event container">
-        <!--<div class="col-md-offset-1 contact-box col-md-10">
-
-            <div class="col-md-12 p-left-0 p-right-0 event-content">
-                <div class="col-md-6 p-left-0">
-                    <p class="page-title">PLAN YOUR EVENT</p>
-                    <p class="p-top-10">
-                        <h5>DESIGN</h5>
-                        We realise that it isn’t just food and drinks that make the perfect party. Whilst we can ensure that side of things always exceeds your expectations, we like to work with the very best suppliers and products elsewhere too, so that everything runs as smoothly as the food, from flowers to music, from candle to cushion, from curtain up to curtain down - we like to create the utterly extraordinary.
-                    </p>
-                    <p>
-                        <h5>CORPORATE</h5>
-                        What makes our friendly service different is the location and 5 star service. There are many hotels in Saigon boasting good corporate facilities but none of them can claim a grade A service right on the banks of Saigon River. With both indoor and outdoor facilities, we can cater to both daytime events inside cool chic lounges, and outdoor evening events under the stars.
-                    </p>
-                    <p>
-                        <h5>LOCATION VENUE</h5>
-                        We have the perfect location for your press events, product launches, fashion shows and film shoots only minutes from the heart of Saigon. With unbeatable natural light enhanced by the Saigon River, beautiful garden and top class food, we have the perfect combination of nature and cosmopolitan life all in one place. And all of this with one of Asia's most stunning rivers as a backdrop.
-                    </p>
-                    <p>
-                        <h5>PRIVATE EVENTS AT The Deck</h5>
-                        The Deck is able to offer its beautiful setting for a limited number of private events. The restaurant can accommodate 150 guests for lunch and dinner functions and up to 300 for drink receptions. With The Saigon River at your feet and open-air garden with private bar, create a beautiful setting for corporate or private functions.
-
-                    </p>
-                    <p>
-                        The Deck is available year-round for your exclusive event, please email to info@thedecksaigon.com for more information.
-
-                    </p>
-                    <a href="/reservation#event" class="btn-form">
-                        <div class="col-md-12 p-left-0 p-right-0 m-top-20 text-center box-form">
-
-                            GO TO BOOK EVENT
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <p class="page-title">BOAT SERVICES</p>
-                    <p class="p-top-45">Let us know in advance and we can arrange to bring you right to your dinner table by boat. When you have a location as good as ours, right on the river, there's no other way to arrive. </p>
-                    <a href="/reservation#boat" class="btn-form">
-                        <div class="col-md-12 p-left-0 p-right-0 m-top-20 text-center box-form">
-
-                            GO TO BOOK BOAT
-
-
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>-->
         <div class="col-md-12">
             <div class="row col-md-12 event-header text-center">
                 <p class="page-title text-center">EVENTS & CATERING </p>
@@ -61,7 +13,7 @@
                     <li><a ng-class="getActiveClass('wedding')" ui-sref="main.home.event({type:'wedding'})">WEDDING</a></li>
                     <li><a ng-class="getActiveClass('gourmet-catering')" ui-sref="main.home.event({type:'gourmet-catering'})">GOURMET CATERING</a></li>
                     <li><a ng-class="getActiveClass('arrive-boat')" ui-sref="main.home.event({type:'arrive-boat'})">ARRIVE BY BOAT</a></li>
-                    <li><a ui-sref="main.home.event_ga">GALLERY</a></li>
+                    <li><a ng-class="getActiveClass('gallery')" ui-sref="main.home.event({type:'gallery'})">GALLERY</a></li>
                 </ul>
             </div>
             <div class="row col-md-12 event-content" ng-if="type==null || type == ''">
@@ -110,8 +62,15 @@
                 </div>
             </div>
             <div class="row col-md-12 event-content" ng-if="type=='gallery'">
-                <p class="page-title"></p>
-                Coming soon
+                <ul class="pgwSlideshow">
+                    <li><img src="/Images/event_ga/thumb_E _ C Gallery 5.jpg" alt="" data-large-src="/Images/event_ga/E _ C Gallery 5.jpg"></li>
+                    <li><img src="/Images/event_ga/thumb_E _ C Gallery 6.jpg" alt="" data-large-src="/Images/event_ga/E _ C Gallery 6.jpg"></li>
+                    <li><img src="/Images/event_ga/thumb_E _ C Homepage Photo.jpg" alt="" data-large-src="/Images/event_ga/E _ C Homepage Photo.jpg"></li>
+                    <li><img src="/Images/event_ga/thumb_Gallery events _ catering 2.JPG" alt="" data-large-src="/Images/event_ga/Gallery events _ catering 2.JPG"></li>
+                    <li><img src="/Images/event_ga/thumb_Gallery events _ catering 3.jpg" alt="" data-large-src="/Images/event_ga/Gallery events _ catering 3.jpg"></li>
+                    <li><img src="/Images/event_ga/thumb_Gallery events _ catering.JPG" alt="" data-large-src="/Images/event_ga/Gallery events _ catering.JPG"></li>
+                    <li><img src="/Images/event_ga/thumb_gallery IMG_1468.jpg" alt="" data-large-src="/Images/event_ga/gallery IMG_1468.jpg"></li>
+                </ul>
             </div>
             <div class="row col-md-12 event-content" ng-if="type=='boat-experience'">
                 <p class="page-title">BOAT EXPERIENCE</p>

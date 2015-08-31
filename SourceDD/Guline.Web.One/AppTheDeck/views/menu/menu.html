@@ -18,7 +18,7 @@
         <div class="container">
             <div class="menu-box col-md-12 p-0">
                 <div class="col-md-12  p-right-0 p-top-20">
-                    <p class="text-center">
+                    <p class="text-center p-top-30">
                         <strong class="title">|{{menuGroupDetails[mng].name}}|</strong>
                         <!-- <a href="/files/{{mng.replace('&', '')}}.pdf" target="_blank"> <span class="text-right button-sexy">DOWNLOAD</span></a> -->
                     </p>
@@ -28,7 +28,7 @@
                             <p class="text-center">{{mnCat.Name}}</p>
                             <div class="col-md-12 p-0" ng-repeat="menu in mnCat.menus">
                                 <div class="col-md-12 p-0">
-                                    <div class="col-md-9 p-left-0">
+                                    <div class="col-md-9 col-xs-8 p-left-0">
                                         <div class="menu-item-title">
                                             {{menu.Name}}
                                             <div class="menu-item-des" ng-show="menu.Description != ''">
@@ -36,7 +36,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 p-right-0 text-right p-top-10">
+                                    <div class="col-md-3 col-xs-4 p-right-0 text-right p-top-10">
                                         {{menu.Price}}
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                             <p>{{mnCat.Name}}</p>
                             <div class="col-md-12 p-0" ng-repeat="menu in mnCat.menus">
                                 <div class="col-md-12 p-0">
-                                    <div class="col-md-9 p-left-0">
+                                    <div class="col-md-9 col-xs-8 p-left-0">
                                         <div class="menu-item-title">
                                             {{menu.Name}}
                                             <div class="menu-item-des" ng-show="menu.Description != ''">
@@ -67,7 +67,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 p-right-0 text-right p-top-10">
+                                    <div class="col-md-3 col-xs-4 p-right-0 text-right p-top-10">
                                         {{menu.Price}}
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                             <p>{{mnCat.Name}}</p>
                             <div class="col-md-12 p-0" ng-repeat="menu in mnCat.menus">
                                 <div class="col-md-12 p-0">
-                                    <div class="col-md-9 p-left-0">
+                                    <div class="col-md-9 col-xs-8 p-left-0">
                                         <div class="menu-item-title">
                                             {{menu.Name}}
                                             <div class="menu-item-des" ng-show="menu.Description != ''">
@@ -97,7 +97,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 p-right-0 text-right p-top-10">
+                                    <div class="col-md-3 col-xs-4 p-right-0 text-right p-top-10">
                                         {{menu.Price}}
                                     </div>
                                 </div>
@@ -126,13 +126,13 @@
 <div class="menu subMenu">
     <div class="container">
         <ul class="list-inline">
-            <li><a href="/menu#breakfast">BREAKFAST</a></li>
-            <li><a href="/menu#brunch">BRUNCH</a></li>
-            <li><a href="/menu#lunch">LUNCH</a></li>
-            <li><a href="/menu#dinner">DINNER</a></li>
-            <li><a href="/menu#desserts">DESSERTS</a></li>
-            <li><a href="/menu#barmenu">BAR MENU</a></li>
-            <li><a href="/menu#vegeterian& gluten free">VEGETERIAN & GLUTEN FREE</a></li>
+            <li><a href="#breakfast">BREAKFAST</a></li>
+            <li><a href="#brunch">BRUNCH</a></li>
+            <li><a href="#lunch">LUNCH</a></li>
+            <li><a href="#dinner">DINNER</a></li>
+            <li><a href="#desserts">DESSERTS</a></li>
+            <li><a href="#barmenu">BAR MENU</a></li>
+            <li><a href="#vegeterian& gluten free">VEGETERIAN & GLUTEN FREE</a></li>
         </ul>
     </div>
 </div>

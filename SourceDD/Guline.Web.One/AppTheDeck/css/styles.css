@@ -1011,7 +1011,7 @@ body {
 /*End About*/
 /*The Deck Bar*/
 .thedeckbar {
-    min-height: 768px;
+    /*min-height: 768px;*/
 }
 
 /*End The Deck Bar*/
@@ -1042,16 +1042,16 @@ body {
     position: relative;
 }
 
-.menu-box {
+    /*.menu-box {
     margin-bottom: 50px;
-}
+}*/
 
-.menu .title {
-    font-family: 'AvenirLTStd-Heavy';
-    text-transform: uppercase;
-    letter-spacing: 15px;
-    font-size: 28px;
-}
+    .menu .title {
+        font-family: 'AvenirLTStd-Heavy';
+        text-transform: uppercase;
+        letter-spacing: 15px;
+        font-size: 28px;
+    }
 
 .button-sexy {
     color: #fff;
@@ -1154,6 +1154,10 @@ body {
     font-family: 'AvenirLTStd-Medium';
     margin-bottom: 100px;
 }
+
+    .contact-content > .col-md-4 {
+        padding-left: 0px;
+    }
 
 .contact form {
     font-size: 14px;
@@ -1722,6 +1726,13 @@ body {
 
 @media (max-width: 768px) {
 
+    .container{
+        padding-bottom: 65px;
+    }
+
+    .vtop .container{
+        padding-bottom:0;
+    }
     #slider_home_mob {
         position: relative;
     }
@@ -1731,13 +1742,17 @@ body {
         z-index: 100 !important;
     }
 
-    .vtop .navbar-header button.navbar-toggle {
-        width: 60px;
-        height: 40px;
-        background: url("../../Images/menu-btn.png") no-repeat;
-        margin: 16.5% 0 0;
-        background-size: 100% 100%;
+    .vtop .navbar-header {
+        margin-top: 35px;
     }
+
+        .vtop .navbar-header button.navbar-toggle {
+            width: 50px;
+            height: 32px;
+            background: url("../../Images/menu-btn.png") no-repeat;
+            margin: 16.5% 0 0;
+            background-size: 100% 100%;
+        }
 
     .vtop .logo {
         padding-right: 0;
@@ -1842,9 +1857,17 @@ body {
         position: relative;
     }
 
-        .subMenu ul.list-inline, .event-header ul.list-inline {
-            position: absolute;
+    .event-content {
+        margin-top: 40px;
+    }
+
+        .event-content .page-title {
+            text-align: left;
         }
+
+    .subMenu ul.list-inline, .event-header ul.list-inline {
+        position: absolute;
+    }
 
     .page-title {
         text-align: center;
@@ -1861,16 +1884,45 @@ body {
         #audioplayer #pButton {
             padding-left: 0;
         }
-}
 
-@media (max-width: 480px) {
-    .vtop .navbar-header button.navbar-toggle {
-        width: 50px;
-        height: 35px;
+    .pgwSlideshow .ps-list li .ps-item {
+        margin: 0 5px !important;
+    }
+
+    .pgwSlideshow .ps-list .ps-prev, .pgwSlideshow .ps-list .ps-next, .pgwSlideshow.narrow .ps-list .ps-next, .pgwSlideshow.narrow .ps-list .ps-prev {
+        top: 30px !important;
+    }
+
+    .menu-right {
+        padding: 0 15px 0 0 !important;
+    }
+
+    .contact-content > .col-md-4 {
+        padding-left: 15px!important;
+    }
+    #mobile-nav .nav>li:last-child>a{
+        margin-right: 10px;
+    }
+
+    .eventpage .subMenu ul{
+        padding-left: 0;
+    }
+
+    .container.event{
+        padding-bottom: 100px;
     }
 }
 
 @media (max-width: 480px) {
+    .vtop .navbar-header button.navbar-toggle {
+        width: 40px;
+        height: 28px;
+    }
+
+    .pgwSlideshow .ps-list .ps-prev, .pgwSlideshow .ps-list .ps-next, .pgwSlideshow.narrow .ps-list .ps-next, .pgwSlideshow.narrow .ps-list .ps-prev {
+        top: 8px !important;
+    }
+
     #home_wrapper .home-content {
         padding-top: 20%;
     }
@@ -1962,4 +2014,10 @@ body {
     #audioplayer {
         width: 926px;
     }
+}
+
+/*Career*/
+.career {
+    margin-top: 40px;
+    margin-bottom: 80px;
 }

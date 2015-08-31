@@ -63,6 +63,12 @@ function url_friendly(alias) {
     str = str.replace(/\s+/g, '-').toLowerCase();
     return str;
 }
+$(document).bind("mobileinit", function () {
+    $.mobile.ajaxEnabled = false;
+    $.mobile.linkBindingEnabled = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
+});
 app = angular.module('gulineWebApp', ['ezfb', 'ui.router', 'ui.bootstrap', 'pascalprecht.translate', 'ncy-angular-breadcrumb', 'chieffancypants.loadingBar', 'ngAnimate', 'ngCookies', 'angular-flash.service', 'angular-flash.flash-alert-directive', ]);
 app.config(['$translateProvider', 'cfpLoadingBarProvider', "$sceProvider", '$locationProvider', 'ezfbProvider', 'flashProvider',
     function ($translateProvider, cfpLoadingBarProvider, $sceProvider, $locationProvider, ezfbProvider, flashProvider) {
@@ -107,8 +113,6 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         //$rootScope.msdate = convertfromMSDate;
-
-        $.mobile.loading("hide");
 
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
             $("#mobile-nav #navbar").removeClass("in");
@@ -214,7 +218,7 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
                                  $menuEl.on("touchend", function (e) {
                                      left = nextX;
                                  });
-                                 $menuEl.on("touchmove", function (e) {                                     
+                                 $menuEl.on("touchmove", function (e) {
                                      dx = e.originalEvent.touches[0].pageX - startX;
                                      nextX = dx > 0 ? Math.min(0, left + dx) : Math.max(minLeft, left + dx);
                                      //console.log(dx, nextX)
@@ -223,7 +227,7 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
                              });
                          });
 
-                         var minHeightWindow = 720;
+                         var minHeightWindow = $("#page_wrapper").height();
                          $timeout(function () {
                              if (window.innerWidth < 678) {
                                  minHeightWindow = Math.max(minHeightWindow, window.innerHeight);
@@ -262,9 +266,9 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
                          $scope.appconfig = appconfig.config;
                          $scope.activeNav = function (state) {
                              if (state == "main.home.event" && $state.current.name == "main.home.event_ga") return "active";
-                            return (state == $state.current.name) ? "active" : "";
+                             return (state == $state.current.name) ? "active" : "";
                          }
-                       
+
                      }]
 
                 },
@@ -338,14 +342,14 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
                                  tl.from('.vtop', 1, { x: 0, y: -80 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut, delay: 1 });
                                  tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
                                  tl.from('.vtop .logo, .vtop .sub-nav, .vtop .main-nav, .home-content, .navbar-header', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
-                                 
+
                              } else {
                                  tl.from('.gNav', 1, { x: 0, y: 150 }, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Power0.easeOut });
                                  tl.from('.home-content', 0.8, { autoAlpha: 0, y: 0, ease: Back.easeOut });
 
                                  var bgRatio = 700 / 684;
                                  var imgHeight = Math.floor(window.innerWidth / bgRatio);
-                                 $(".home-content").css("height", imgHeight + "px");                                 
+                                 $(".home-content").css("height", imgHeight + "px");
                              }
                          }
                      }]
@@ -548,8 +552,20 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
                          if (offset < ($(".event-header").width() - $(".event-header ul").width()))
                              offset = ($(".event-header").width() - $(".event-header ul").width());
                          var curOffset = $(".event-header ul").offset().left;
-//                         console.log(curOffset, offset);
+                         //                         console.log(curOffset, offset);
                          TweenMax.fromTo(".event-header ul", 0.02, { x: curOffset }, { x: offset, ease: Power2.easeIn });
+
+                         if ($scope.type == "gallery") {
+                             $(document).ready(function () {
+                                 $('.pgwSlideshow').pgwSlideshow({
+                                     transitionEffect: 'fading',
+                                     autoSlide: false,
+                                     intervalDuration: 5000
+                                 });
+                                 var realHeight = $(".event.container").width() / 1550 * 710;
+                                 $('.ps-current').css('height', realHeight);
+                             });
+                         }
                      });
                  }]
             }
@@ -1026,27 +1042,40 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
 
                      $('#page_wrapper').addClass('white');
 
-                     $scope.apply = function(){
+                     $scope.apply = function () {
 
-						flash.success = "Apply Sucess";
-						$scope.item = {
-                         availableDate: moment.utc(Date.now()).format("MM/DD/YYYY"),
-                         onlyJob: "Yes",
-                         birdthDate: "01/01/1990",
-                         title: "Mr"
+                         //flash.success = "Apply Sucess";
+                         var fmData = new FormData();
+                         for (var key in $scope.item) {
+                             var val = $scope.item[key];
+                             if (key == "onlyJob")
+                                 val = val.toString().toLowerCase() == "yes";
+                             fmData.append(key, val);
+                         }
+                         fmData.append("cvFile",document.getElementById("cvFile").files[0]);
+                         fmData.append("photo", document.getElementById("photo").files[0]);
+                         
+                         $http.post(_gconfig.baseWebUrl + '/api/Object/SubmitCareer', fmData, {
+                             transformRequest: angular.identity,
+                             headers: { 'Content-Type': undefined }
+                         }).
+                         success(function (res, status, headers, config) {
+                             if (res.success) {
+                                 flash.success = res.msg;
+                                 $scope.item = {
+                                     availableDate: moment.utc(Date.now()).format("MM/DD/YYYY"),
+                                     onlyJob: "Yes",
+                                     birdthDate: "01/01/1990",
+                                     title: "Mr"
+                                 }
+                             }
+                             else {
+                                 flash.error = res.msg;
+                             }
+                         }).error(function (data, status, headers, config) {
+                             flash.error = res.msg;
+                         });
                      }
-	                    /* $http.post(_gconfig.baseWebUrl + '/api/Object/BoatBooking', $scope.boat).
-	                     success(function (res, status, headers, config) {
-	                        if (res.success) {
-	                            flash.success = res.msg;
-	                        }
-	                        else {
-	                            flash.error = res.msg;
-	                        }
-	                    }).error(function (data, status, headers, config) {
-	                        flash.error = res.msg;
-	                    });*/
-                    }
                  }]
             }
         }, onExit: function () {
