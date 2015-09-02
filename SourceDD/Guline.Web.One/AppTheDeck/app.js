@@ -229,7 +229,7 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
 
                          var minHeightWindow = $("#page_wrapper").height();
                          $timeout(function () {
-                             if (window.innerWidth < 678) {
+                             if (window.innerWidth < 768) {
                                  minHeightWindow = Math.max(minHeightWindow, window.innerHeight);
                                  $("#page_wrapper").height(minHeightWindow);
                              }
@@ -547,13 +547,16 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
                      $scope.$emit("slide_sub_menu", ".eventpage .subMenu ul");
 
                      $timeout(function () {
-                         var offset = (window.innerWidth - $(".event-header ul li a.active").width()) / 2 - $(".event-header ul li a.active").offset().left;
-                         if (offset > 0) offset = 0;
-                         if (offset < ($(".event-header").width() - $(".event-header ul").width()))
-                             offset = ($(".event-header").width() - $(".event-header ul").width());
-                         var curOffset = $(".event-header ul").offset().left;
-                         //                         console.log(curOffset, offset);
-                         TweenMax.fromTo(".event-header ul", 0.02, { x: curOffset }, { x: offset, ease: Power2.easeIn });
+						 
+						 if(window.innerWidth < 768){
+							 var offset = (window.innerWidth - $(".event-header ul li a.active").width()) / 2 - $(".event-header ul li a.active").offset().left;
+							 if (offset > 0) offset = 0;
+							 if (offset < ($(".event-header").width() - $(".event-header ul").width()))
+								 offset = ($(".event-header").width() - $(".event-header ul").width());
+							 var curOffset = $(".event-header ul").offset().left;
+							 //                         console.log(curOffset, offset);
+							 TweenMax.fromTo(".event-header ul", 0.02, { x: curOffset }, { x: offset, ease: Power2.easeIn });
+						 }
 
                          if ($scope.type == "gallery") {
                              $(document).ready(function () {
