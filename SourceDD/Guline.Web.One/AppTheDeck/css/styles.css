@@ -242,14 +242,14 @@ body {
     }
 
 .comming-soon {
-    padding-top: 50px;
     font-family: 'AvenirLTStd-Black';
-    font-size: 28px;
+    font-size: 14px;
     letter-spacing: 5px;
     display: table-cell;
-    height: 400px;
+    height: 100px;
     width: 3000px;
     vertical-align: middle;
+    text-transform: uppercase;
 }
 
 .container {
@@ -457,8 +457,8 @@ body {
     position: fixed;
     bottom: 35px;
     color: #fff;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 5px;
     width: 100%;
     font-size: 13px;
     background: #000000;
@@ -1912,6 +1912,10 @@ body {
     .container.event{
         padding-bottom: 100px;
     }
+	
+	.about-box  .page-title, .arrive_by_boat .page-title , .career .page-title {
+		text-align: center!important;
+	}
 }
 
 @media (max-width: 480px) {
