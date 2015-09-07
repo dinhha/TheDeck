@@ -560,11 +560,11 @@ app.run(['$rootScope', '$state', '$stateParams', "$timeout",
 
                          if ($scope.type == "gallery") {
                              $(document).ready(function () {
-                                 $('.pgwSlideshow').pgwSlideshow({
-                                     transitionEffect: 'fading',
-                                     autoSlide: false,
-                                     intervalDuration: 5000
-                                 });
+                                 //$('.pgwSlideshow').pgwSlideshow({
+                                 //    transitionEffect: 'fading',
+                                 //    autoSlide: false,
+                                 //    intervalDuration: 5000
+                                 //});
                                  var realHeight = $(".event.container").width() / 1550 * 710;
                                  $('.ps-current').css('height', realHeight);
                              });
