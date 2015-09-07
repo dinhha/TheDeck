@@ -1240,6 +1240,10 @@ body {
     padding-bottom: 10px;
 }
 
+.event-header .page-title{
+	padding-bottom: 15px;
+}
+
     .event-header .list-inline li {
         padding: 0;
     }
