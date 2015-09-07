@@ -306,6 +306,7 @@
     <Content Include="App_Admin\gNav.html" />
     <Content Include="App_Admin\langs\en-us.txt" />
     <Content Include="App_Admin\langs\vi-vn.txt" />
+    <Content Include="App_Admin\views\admin\career.html" />
     <Content Include="App_Admin\views\admin\contact.html" />
     <Content Include="App_Admin\views\admin\home.html" />
     <Content Include="App_Admin\views\admin\index.html" />
