@@ -278,94 +278,100 @@ D:\Job\Pesional\Company Source\TheDeck\Source\Guline.Web.One\bin\zh-Hant\System.
 D:\Job\Pesional\Company Source\TheDeck\Source\Guline.Web.One\obj\Debug\Guline.Web.One.dll
 D:\Job\Pesional\Company Source\TheDeck\Source\Guline.Web.One\obj\Debug\Guline.Web.One.pdb
 D:\Job\Pesional\Company Source\TheDeck\Source\Guline.Web.One\obj\Debug\Guline.Web.One.csprojResolveAssemblyReference.cache
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Guline.Web.One.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Antlr3.Runtime.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.AspNet.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.Core.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.Consumer.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\EntityFramework.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Data.Edm.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Data.OData.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Web.WebPages.OAuth.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Newtonsoft.Json.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Ninject.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Ninject.Web.Common.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Ninject.Web.Mvc.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Spatial.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Http.OData.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Optimization.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\WebActivatorEx.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\WebGrease.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Guline.Web.One.dll.config
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Guline.Web.One.pdb
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Web.Infrastructure.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Net.Http.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Net.Http.WebRequest.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Helpers.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Mvc.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Razor.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Deployment.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.WebPages.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Razor.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\WebMatrix.Data.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\WebMatrix.WebData.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Ninject.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Ninject.Web.Common.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Ninject.Web.Mvc.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\EntityFramework.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Newtonsoft.Json.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Net.Http.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Net.Http.WebRequest.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Helpers.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Mvc.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Razor.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.WebPages.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Deployment.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Razor.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\WebMatrix.Data.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Web.WebPages.OAuth.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\WebMatrix.WebData.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.AspNet.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.Core.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.Consumer.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Web.Http.OData.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Data.Edm.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\Microsoft.Data.OData.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\System.Spatial.xml
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\de\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\es\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\fr\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\it\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ja\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ko\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ru\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\de\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\es\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\fr\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\it\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ja\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ko\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ru\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\zh-Hans\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\zh-Hant\Microsoft.Data.OData.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\de\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\es\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\fr\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\it\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ja\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ko\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\ru\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\zh-Hans\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\bin\zh-Hant\System.Spatial.resources.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\obj\Debug\Guline.Web.One.dll
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\obj\Debug\Guline.Web.One.pdb
-D:\Job\Pesional\Company Source\TheDeckGit\SourceDD\Guline.Web.One\obj\Debug\Guline.Web.One.csprojResolveAssemblyReference.cache
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Guline.Web.One.dll.config
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Guline.Web.One.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Guline.Web.One.pdb
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Antlr3.Runtime.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.AspNet.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.Core.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\EntityFramework.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Data.Edm.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Data.OData.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Web.Infrastructure.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Web.WebPages.OAuth.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Newtonsoft.Json.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Ninject.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Ninject.Web.Common.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Ninject.Web.Mvc.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Net.Http.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Net.Http.Formatting.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Net.Http.WebRequest.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Spatial.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Helpers.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Http.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Http.OData.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Http.WebHost.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Mvc.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Optimization.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Razor.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Deployment.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.WebPages.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Razor.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\WebActivatorEx.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\WebGrease.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\WebMatrix.Data.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\WebMatrix.WebData.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Ninject.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Ninject.Web.Common.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Ninject.Web.Mvc.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\EntityFramework.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Newtonsoft.Json.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Net.Http.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Net.Http.Formatting.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Net.Http.WebRequest.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Helpers.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Http.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Http.WebHost.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Mvc.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Razor.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.WebPages.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Deployment.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.WebPages.Razor.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\WebMatrix.Data.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Web.WebPages.OAuth.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\WebMatrix.WebData.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.AspNet.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.Core.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OAuth.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Web.Http.OData.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Data.Edm.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\Microsoft.Data.OData.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\System.Spatial.xml
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\de\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\es\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\it\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\de\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\es\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\fr\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\it\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ja\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ko\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\ru\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\zh-Hans\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\bin\zh-Hant\System.Spatial.resources.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\obj\Debug\Guline.Web.One.dll
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\obj\Debug\Guline.Web.One.pdb
+D:\Web\Project\TheDeck\SourceDD\Guline.Web.One\obj\Debug\Guline.Web.One.csprojResolveAssemblyReference.cache
